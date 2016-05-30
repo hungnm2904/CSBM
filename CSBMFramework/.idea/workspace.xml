@@ -2640,40 +2640,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="CSBMFramework" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSBMFramework" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSBMFramework" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2974,32 +2950,32 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25727773" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3024,9 +3000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.64400715">
           <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#942#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3034,7 +3007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3042,11 +3014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19499105">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1849#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1032#1033#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3054,10 +3021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27549195">
           <caret line="112" column="69" selection-start-line="112" selection-start-column="69" selection-end-line="112" selection-end-column="69" />
-          <folding>
-            <element signature="e#2728#2874#0" expanded="true" />
-            <element signature="e#2873#2874#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3065,10 +3028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9491525">
           <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-          <folding>
-            <element signature="e#2361#2603#0" expanded="true" />
-            <element signature="e#2602#2603#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3076,7 +3035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21466905">
           <caret line="22" column="9" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3084,9 +3042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19499105">
           <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#3783#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3094,9 +3049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8389982">
           <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3104,34 +3056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27906978">
           <caret line="731" column="4" selection-start-line="731" selection-start-column="4" selection-end-line="731" selection-end-column="4" />
-          <folding>
-            <element signature="e#24428#24898#0" expanded="true" />
-            <element signature="e#24710#24882#0" expanded="true" />
-            <element signature="e#24881#24882#0" expanded="true" />
-            <element signature="e#24897#24898#0" expanded="true" />
-            <element signature="e#27202#27655#0" expanded="true" />
-            <element signature="e#27473#27639#0" expanded="true" />
-            <element signature="e#27638#27639#0" expanded="true" />
-            <element signature="e#27654#27655#0" expanded="true" />
-            <element signature="e#37620#38347#0" expanded="true" />
-            <element signature="e#37824#38331#0" expanded="true" />
-            <element signature="e#38121#38307#0" expanded="true" />
-            <element signature="e#38306#38307#0" expanded="true" />
-            <element signature="e#38330#38331#0" expanded="true" />
-            <element signature="e#38346#38347#0" expanded="true" />
-            <element signature="e#38450#42034#0" expanded="true" />
-            <element signature="e#38949#40493#0" expanded="true" />
-            <element signature="e#39713#40453#0" expanded="true" />
-            <element signature="e#40452#40453#0" expanded="true" />
-            <element signature="e#40492#40493#0" expanded="true" />
-            <element signature="e#40924#41891#0" expanded="true" />
-            <element signature="e#41890#41891#0" expanded="true" />
-            <element signature="e#42033#42034#0" expanded="true" />
-            <element signature="e#48682#48895#0" expanded="true" />
-            <element signature="e#48894#48895#0" expanded="true" />
-            <element signature="e#51904#52212#0" expanded="true" />
-            <element signature="e#52211#52212#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3139,7 +3063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.053667262">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3147,9 +3070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7316637">
           <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3157,7 +3077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54382825">
           <caret line="54" column="17" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3165,9 +3084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33273703">
           <caret line="32" column="52" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#2703#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3175,7 +3091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08050089">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3183,7 +3098,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.29516995">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3191,10 +3105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33273703">
           <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#1458#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3202,9 +3112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45617172">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#807#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3212,7 +3119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3220,9 +3126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.509839">
           <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#4419#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3230,7 +3133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30232558">
           <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3238,7 +3140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3246,9 +3147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.7864406">
           <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10979#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3256,7 +3154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22182469">
           <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3264,9 +3161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19499105">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#1732#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3274,7 +3168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08765653">
           <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3282,7 +3175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.053667262">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3290,9 +3182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24865831">
           <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3300,7 +3189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78533095">
           <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3308,7 +3196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3316,7 +3203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3324,7 +3210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026833631">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3332,7 +3217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5084746">
           <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3340,7 +3224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.076271184">
           <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3348,7 +3231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15254237">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3356,7 +3238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3364,7 +3245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.27966103">
           <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3372,7 +3252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20508474">
           <caret line="93" column="75" selection-start-line="93" selection-start-column="75" selection-end-line="93" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3380,7 +3259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31355932">
           <caret line="364" column="57" selection-start-line="364" selection-start-column="57" selection-end-line="364" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3388,7 +3266,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.2542373">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3396,9 +3273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24865831">
           <caret line="61" column="91" selection-start-line="61" selection-start-column="91" selection-end-line="61" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3406,16 +3280,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27906978">
           <caret line="2864" column="64" selection-start-line="2864" selection-start-column="64" selection-end-line="2864" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#141723#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#91031#92610#0" expanded="true" />
-            <element signature="e#92609#92610#0" expanded="true" />
-            <element signature="e#94534#94988#0" expanded="true" />
-            <element signature="e#94987#94988#0" expanded="true" />
-            <element signature="e#102486#102487#0" expanded="true" />
-            <element signature="e#102513#102514#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3423,9 +3287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47457626">
           <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#7148#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3433,71 +3294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3322034">
           <caret line="341" column="32" selection-start-line="341" selection-start-column="32" selection-end-line="341" selection-end-column="32" />
-          <folding>
-            <element signature="docComment;class#BEACL#0" expanded="false" />
-            <element signature="class#Permissions#0;class#BEACL#0" expanded="false" />
-            <element signature="method#Permissions#0;class#Permissions#0;class#BEACL#0" expanded="false" />
-            <element signature="method#Permissions#1;class#Permissions#0;class#BEACL#0" expanded="false" />
-            <element signature="method#toJSONObject#0;class#Permissions#0;class#BEACL#0" expanded="false" />
-            <element signature="method#createPermissionsFromJSONObject#0;class#Permissions#0;class#BEACL#0" expanded="false" />
-            <element signature="method#getDefaultACLController#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setDefaultACL#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setDefaultACL#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;field#unresolvedUser#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#BEACL#0;class#BEACL#0" expanded="false" />
-            <element signature="method#BEACL#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#BEACL#1;class#BEACL#0" expanded="false" />
-            <element signature="method#BEACL#1;class#BEACL#0" expanded="false" />
-            <element signature="method#toJSONObject#0;class#BEACL#0" expanded="false" />
-            <element signature="method#createACLFromJSONObject#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#BEACL#2;class#BEACL#0" expanded="false" />
-            <element signature="method#BEACL#2;class#BEACL#0" expanded="false" />
-            <element signature="method#resolveUser#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setPermissionsIfNonEmpty#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setPublicReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getPublicReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setPublicWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getPublicWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#getReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#getWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#setReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#setUnresolvedReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setUnresolvedWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="e#10908#10974#0" expanded="false" />
-            <element signature="docComment;method#getReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#getReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#setWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#getWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getRoleReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#getRoleReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setRoleReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setRoleReadAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getRoleWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#getRoleWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setRoleWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#setRoleWriteAccess#0;class#BEACL#0" expanded="false" />
-            <element signature="method#validateRoleState#0;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getRoleReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#getRoleReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setRoleReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#setRoleReadAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#getRoleWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#getRoleWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="docComment;method#setRoleWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="method#setRoleWriteAccess#1;class#BEACL#0" expanded="false" />
-            <element signature="class#UserResolutionListener#0;class#BEACL#0" expanded="false" />
-            <element signature="method#done#0;class#UserResolutionListener#0;class#BEACL#0" expanded="false" />
-            <element signature="e#17463#17528#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3505,9 +3301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5338983">
           <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3515,7 +3308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8220339">
           <caret line="43" column="1" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3523,7 +3315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3531,7 +3322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3539,7 +3329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3547,7 +3336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
