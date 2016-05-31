@@ -35,17 +35,17 @@ import bolts.Task;
 
 /** package */ class BERESTCommand extends BERequest<JSONObject> {
 
-  /* package */ static final String HEADER_APPLICATION_ID = "X-CSBM-Application-Id";
-  /* package */ static final String HEADER_CLIENT_KEY = "X-CSBM-Client-Key";
-  /* package */ static final String HEADER_CLIENT_VERSION = "X-CSBM-Client-Version";
-  /* package */ static final String HEADER_APP_BUILD_VERSION = "X-CSBM-App-Build-Version";
-  /* package */ static final String HEADER_APP_DISPLAY_VERSION = "X-CSBM-App-Display-Version";
-  /* package */ static final String HEADER_OS_VERSION = "X-CSBM-OS-Version";
+  /* package */ static final String HEADER_APPLICATION_ID = "X-Parse-Application-Id";
+  /* package */ static final String HEADER_CLIENT_KEY = "X-Parse-Client-Key";
+  /* package */ static final String HEADER_CLIENT_VERSION = "X-Parse-Client-Version";
+  /* package */ static final String HEADER_APP_BUILD_VERSION = "X-Parse-App-Build-Version";
+  /* package */ static final String HEADER_APP_DISPLAY_VERSION = "X-Parse-App-Display-Version";
+  /* package */ static final String HEADER_OS_VERSION = "X-Parse-OS-Version";
 
-  /* package */ static final String HEADER_INSTALLATION_ID = "X-CSBM-Installation-Id";
+  /* package */ static final String HEADER_INSTALLATION_ID = "X-Parse-Installation-Id";
   /* package */ static final String USER_AGENT = "User-Agent";
-  private static final String HEADER_SESSION_TOKEN = "X-CSBM-Session-Token";
-  private static final String HEADER_MASTER_KEY = "X-CSBM-Master-Key";
+  private static final String HEADER_SESSION_TOKEN = "X-Parse-Session-Token";
+  private static final String HEADER_MASTER_KEY = "X-Parse-Master-Key";
   private static final String PARAMETER_METHOD_OVERRIDE = "_method";
 
   // Set via CSBM.initialize(Configuration)
