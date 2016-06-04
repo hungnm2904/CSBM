@@ -1,0 +1,37 @@
+<div id="login" class="flex-scrollable" layout="column" ms-scroll>
+    <div id="login-form-wrapper" layout="column" layout-align="center center">
+        <div id="login-form" class="md-whiteframe-8dp">
+            <div class="logo md-accent-bg">
+                <span>F</span>
+            </div>
+
+            <div class="title" translate="LOGIN.TITLE">Log in to your account</div>
+
+            <form name="loginForm" novalidate ng-submit="vm.login()">
+                <md-input-container class="md-block" md-no-float>
+                    <input type="text" name="user" ng-model="vm.form.email" placeholder="Email"
+                    translate translate-attr-placeholder="LOGIN.EMAIL" required>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="vm.form.password" placeholder="Password"
+                    translate translate-attr-placeholder="LOGIN.PASSWORD"
+                    required>
+                </md-input-container>
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
+                translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN">
+                LOG IN
+            </md-button>
+        </form>
+        <form name="loginForm" novalidate ng-submit="vm.createApplication()">
+            <md-button type="submit" class="md-raised md-accent submit-button" aria-label="Create Application"
+            translate="Create Application" translate-attr-aria-label="Create Application">
+            Create application
+        </md-button>
+    </form>
+    <div class="register" layout="row" layout-sm="column" layout-align="center center">
+        <span class="text" translate=""></span>
+    </div>
+</div>
+</div>
+</div>

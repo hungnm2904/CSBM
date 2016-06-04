@@ -1,0 +1,25 @@
+    <div id="cards" class="page-layout simple fullwidth doc-page">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">MANAGEMENT</span>
+            </div>
+            <div class="title">Applications</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" md-background-bg>
+        <div ng-repeat="card in vm.applications">
+            <!-- MS-CARD -->
+            <ms-card template="'app/core/directives/ms-card/templates/template-7/template-7.html'" ng-model="card"></ms-card>
+            <!-- / MS-CARD -->
+        </div>
+    </div>
+    <!-- / CONTENT -->
+</div>

@@ -1,0 +1,53 @@
+<div id="classes" class="page-layout simple fullwidth doc-page">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">MANAGEMENT</span>
+            </div>
+            <div class="title">Classes</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <!-- CONTENT -->
+    <div class="content" md-background-bg>
+        <div class="white-bg md-whiteframe-4dp">
+            <form name="myform" id="myform">
+                <table class="simple" id="table" ms-responsive-table>
+                    <thead>
+                        <tr>
+                            <th ng-repeat="(key,val) in classes[0]">{{key}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div>
+                            <tr ng-repeat="class in classes">
+                                <td>{{class.id}}</td>
+                                <td>{{class.CreateAt}}</td>
+                                <td>{{class.UpdateAt}}</td>
+                            </tr>
+                        </div>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-4dp" ng-controller="ClassesController">
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <input type="text" name="txtKey" ng-model="Key" placeholder="Key">
+                </md-input-container>
+            </div>
+            <center>
+                <md-button class="md-raised md-accent" type="submit" id="submit" value="Submit" ng-click="addRow()">
+                    Add
+                </md-button>
+            </center>
+        </div>
+        <!-- / BASIC FORM -->
+    </div>
+    <!-- / CONTENT -->
+</div>
