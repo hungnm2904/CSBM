@@ -3,26 +3,18 @@
 
 const express = require('express');
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser');
-const expressSession = require('express-session');
 const ParseServer = require('parse-server').ParseServer;
 const path = require('path');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const Application = require('./models/application');
 const passport = require('passport');
-const initPassport = require('./passport/init');
-const flash = require('connect-flash');
 const configHelpers = require('./configHelpers');
 
 var csbm = express();
 csbm.use(bodyParser.json({ strict: true }));
 csbm.use(bodyParser.urlencoded({ extended: true }));
-csbm.use(cookieParser());
-csbm.use(expressSession({ secret: 'csbmserverparseserver' }));
 csbm.use(passport.initialize());
-csbm.use(passport.session());
-csbm.use(flash());
 csbm.use(function(req, res, next) {
 
     // Website you wish to allow to connect
@@ -41,8 +33,6 @@ csbm.use(function(req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
-initPassport(passport);
 
 const appHelpers = require('./appHelpers')(csbm);
 const routes = require('./routes/index')(appHelpers, passport);

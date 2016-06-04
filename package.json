@@ -11,17 +11,14 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.2",
     "express": "~4.11.x",
-    "express-session": "^1.13.0",
     "kerberos": "~0.0.x",
     "mongoose": "^4.4.19",
     "nodemailer": "^2.4.2",
     "parse": "~1.8.0",
     "parse-server": "~2.2.2",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
+    "passport-http-bearer": "^1.0.1",
     "randomstring": "^1.1.5"
   },
   "scripts": {

@@ -1,59 +1,152 @@
 const express = require('express');
 var router = express.Router();
+const authController = require('../controllers/auth');
 const User = require('../models/user');
 const Application = require('../models/application');
+const Token = require('../models/token');
 
-var isAuthenticated = function(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    res.send('Unauthenticated');
-}
+module.exports = function(appHelpers) {
 
-module.exports = function(appHelpers, passport) {
-
-    router.get('/', isAuthenticated, function(req, res){
+    router.get('/', function(req, res) {
         res.send('Welocome to CSBM server');
     });
 
     router.post('/login', function(req, res, next) {
-        passport.authenticate('login', function(err, user, info) {
-            if (err) {
-                return res.send('Error while processing');
-            }
+        var username = req.body.username;
+        var password = req.body.password;
 
-            if (!user) {
-                return res.send(info.message);
-            }
-
-            req.logIn(user, function(err) {
+        User.findOne({ 'username': username },
+            function(err, user) {
                 if (err) {
-                    return next(err);
+                    console.log(err);
+                    return res.json({
+                        status: 500,
+                        message: 'Error occurred while processing'
+                    });
                 }
-                return res.send(user);
-            });
-        })(req, res, next);
+                // Username does not exist, log the error and redirect back
+                if (!user) {
+                    return res.json({
+                        statu: 403,
+                        message: 'Invalid username'
+                    });
+                }
+                // User exists but wrong password, log the error 
+                user.verifyPassword(password, function(err, isMath) {
+                    if (err) {
+                        console.log(err);
+                        return res.json({
+                            status: 500,
+                            message: 'Error occurred while processing'
+                        });
+                    } else if (!isMath) {
+                        return res.json({
+                            status: 403,
+                            message: 'Invalid password'
+                        });
+                    }
+                });
+                // Valid username and password
+                var token = new Token({
+                    value: uid(256),
+                    userId: user._id,
+                });
+
+                token.save(function(err) {
+                    if (err) {
+                        console.log(err)
+                        return res.json({
+                            status: 500,
+                            message: 'Error occurred while processing'
+                        });
+                    }
+                });
+
+                res.json({
+                    status: 200,
+                    message: 'Login successfully',
+                    data: {
+                        userId: user._id,
+                        name: user.name,
+                        token: token.value
+                    }
+                });
+            }
+        );
     });
 
     router.post('/signup', function(req, res, next) {
-        passport.authenticate('signup', function(err, user, info) {
+        var username = req.body.username;
+        var password = req.body.password;
+
+        if (!username || !password) {
+            return res.json({
+                status: 403,
+                message: 'Username and Password are required'
+            });
+        }
+
+        User.findOne({ 'username': username },
+            function(err, user) {
+                if (err) {
+                    console.log(err);
+                    return res.json({
+                        status: 500,
+                        message: 'Error occurred while processing'
+                    });
+                } else if (user) {
+                    return res.json({
+                        status: 403,
+                        message: 'Username is duplicated'
+                    });
+                }
+            }
+        );
+
+        var user = new User({
+            username: username,
+            password: password
+        });
+
+        user.save(function(err) {
             if (err) {
-                return res.send('Error while processing');
+                return res.json({
+                    status: 500,
+                    message: 'Error occurred while processing'
+                });
             }
+        });
 
-            if (!user) {
-                return res.send(info.message);
+        res.json({
+            status: 200,
+            message: 'Signup successfully',
+            data: {
+                userId: user._id,
+                name: user.name
             }
-
-            return res.send('Signup successfully with username: ' + user.username);
-        })(req, res, next);
+        });
     });
 
     router.get('/signout', function(req, res) {
-        req.logout();
-        res.send('CSBM...');
+        var accessToken = req.body.access_token || req.params.access_token || req.get('Authorization').split(' ')[1]
+        if (accessToken) {
+            Token.findOneAndRemove({ 'value': accessToken }, function(err) {
+                if (err) {
+                    return res.json({
+                        status: 500,
+                        message: 'Error occurred while processing'
+                    });
+                }
+            });
+        }
+
+        res.json({
+            status: 200,
+            message: 'Signout from CSBM Server successfully'
+        });
     });
 
-    router.get('/application/create/:name', isAuthenticated, function(req, res) {
+    router.get('/application/create/:name', authController.isAuthenticated, function(req, res) {
         var name = req.params.name;
         var newApp = new Application({
             name: name,
@@ -76,4 +169,20 @@ module.exports = function(appHelpers, passport) {
     });
 
     return router;
+}
+
+function uid(len) {
+    var buf = [],
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+        charlen = chars.length;
+
+    for (var i = 0; i < len; ++i) {
+        buf.push(chars[getRandomInt(0, charlen - 1)]);
+    }
+
+    return buf.join('');
+};
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
