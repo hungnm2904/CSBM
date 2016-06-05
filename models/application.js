@@ -5,6 +5,7 @@ const randomstring = require('randomstring');
 var applicationSchema = new Schema({
     name: { type: String, required: true, unique: true },
     clientKey: String,
+    masterKey: String,
     userId: { type: String, require: true },
     created_at: Date,
     updated_at: Date
@@ -21,8 +22,11 @@ applicationSchema.pre('save', function(next) {
     if (!this.clientKey) {
         this.clientKey = randomstring.generate(24);
     }
+
+    if (!this.masterKey) {
+        this.masterKey = randomstring.generate(48);
+    }
     next();
 });
 
-var Application = mongoose.model('Application', applicationSchema);
-module.exports = Application;
+module.exports = mongoose.model('Application', applicationSchema);

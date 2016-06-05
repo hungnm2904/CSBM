@@ -10,7 +10,7 @@ module.exports = function(server) {
             cloud: __dirname + '/cloud/main.js',
             appId: application._id,
             clientKey: application.clientKey,
-            masterKey: '', // Keep it secret!
+            masterKey: application.masterKey, // Keep it secret!
             serverURL: 'http://localhost:1337/csbm'
         });
         server.use('/csbm', api);
@@ -39,13 +39,8 @@ module.exports = function(server) {
         });
     };
 
-    var getApplicationConfigById = function() {
-        console.log(server);
-    };
-
     return {
         runApplication: runApplication,
-        runAllApplication: runAllApplication,
-        getApplicationConfigById: getApplicationConfigById
+        runAllApplication: runAllApplication
     }
 }

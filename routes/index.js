@@ -12,6 +12,7 @@ module.exports = function(appHelpers) {
     });
 
     router.post('/login', function(req, res, next) {
+        // Get username and password form request body
         var username = req.body.username;
         var password = req.body.password;
 
@@ -19,15 +20,11 @@ module.exports = function(appHelpers) {
             function(err, user) {
                 if (err) {
                     console.log(err);
-                    return res.json({
-                        status: 500,
-                        message: 'Error occurred while processing'
-                    });
+                    return res.status(500).send({ message: 'Error occurred while processing' });
                 }
                 // Username does not exist, log the error and redirect back
                 if (!user) {
-                    return res.json({
-                        statu: 403,
+                    return res.status(403).send({
                         message: 'Invalid username'
                     });
                 }
@@ -35,41 +32,47 @@ module.exports = function(appHelpers) {
                 user.verifyPassword(password, function(err, isMath) {
                     if (err) {
                         console.log(err);
-                        return res.json({
-                            status: 500,
-                            message: 'Error occurred while processing'
-                        });
-                    } else if (!isMath) {
-                        return res.json({
-                            status: 403,
+                        return res.status(500).send({ message: 'Error occurred while processing' });
+                    }
+
+                    if (!isMath) {
+                        return res.status(403).send({
                             message: 'Invalid password'
                         });
                     }
-                });
-                // Valid username and password
-                var token = new Token({
-                    value: uid(256),
-                    userId: user._id,
-                });
 
-                token.save(function(err) {
-                    if (err) {
-                        console.log(err)
-                        return res.json({
-                            status: 500,
-                            message: 'Error occurred while processing'
-                        });
-                    }
-                });
+                    // Check and remove previous token from this user.
+                    Token.findOneAndRemove({ 'userId': user._id }, function(err) {
+                        if (err) {
+                            return res.status(500).send({
+                                message: 'Error occurred while processing'
+                            });
+                        }
+                    });
 
-                res.json({
-                    status: 200,
-                    message: 'Login successfully',
-                    data: {
+                    // Valid username and password
+                    var token = new Token({
+                        value: uid(256),
                         userId: user._id,
-                        name: user.name,
-                        token: token.value
-                    }
+                    });
+
+                    token.save(function(err) {
+                        if (err) {
+                            console.log(err)
+                            return res.status(500).send({
+                                message: 'Error occurred while processing'
+                            });
+                        }
+                    });
+
+                    res.status(200).send({
+                        message: 'Login successfully',
+                        data: {
+                            userId: user._id,
+                            name: user.name,
+                            token: token.value
+                        }
+                    });
                 });
             }
         );
@@ -80,8 +83,7 @@ module.exports = function(appHelpers) {
         var password = req.body.password;
 
         if (!username || !password) {
-            return res.json({
-                status: 403,
+            return res.status(403).send({
                 message: 'Username and Password are required'
             });
         }
@@ -90,13 +92,11 @@ module.exports = function(appHelpers) {
             function(err, user) {
                 if (err) {
                     console.log(err);
-                    return res.json({
-                        status: 500,
+                    return res.status(500).send({
                         message: 'Error occurred while processing'
                     });
                 } else if (user) {
-                    return res.json({
-                        status: 403,
+                    return res.status(403).send({
                         message: 'Username is duplicated'
                     });
                 }
@@ -110,15 +110,13 @@ module.exports = function(appHelpers) {
 
         user.save(function(err) {
             if (err) {
-                return res.json({
-                    status: 500,
+                return res.status(500).json({
                     message: 'Error occurred while processing'
                 });
             }
         });
 
-        res.json({
-            status: 200,
+        res.status(200).json({
             message: 'Signup successfully',
             data: {
                 userId: user._id,
@@ -132,21 +130,17 @@ module.exports = function(appHelpers) {
         if (accessToken) {
             Token.findOneAndRemove({ 'value': accessToken }, function(err) {
                 if (err) {
-                    return res.json({
-                        status: 500,
-                        message: 'Error occurred while processing'
-                    });
+                    return res.status(500).json({ message: 'Error occurred while processing' });
                 }
             });
         }
 
-        res.json({
-            status: 200,
+        res.status(200).json({
             message: 'Signout from CSBM Server successfully'
         });
     });
 
-    router.get('/application/create/:name', authController.isAuthenticated, function(req, res) {
+    router.get('/application/:name', authController.isAuthenticated, function(req, res) {
         var name = req.params.name;
         var newApp = new Application({
             name: name,
@@ -155,16 +149,41 @@ module.exports = function(appHelpers) {
 
         newApp.save(function(error, application) {
             if (error) {
-                console.log(JSON.stringify(error));
+                console.log(error);
                 if (error.code === 11000) {
-                    res.send('Application name is duplicated');
+                    res.status(403).send({
+                        message: 'Application name is duplicated'
+                    });
                 } else {
-                    res.send('Error while processing');
+                    res.status(500).send({
+                        message: 'Error while processing'
+                    });
                 }
             } else {
                 appHelpers.runApplication(application);
+
+                // Clear masterKey before response to client
+                application.masterKey = '';
                 res.send(application);
             }
+        });
+    });
+
+    router.get('/application', authController.isAuthenticated, function(req, res) {
+        Application.find({ 'userId': req.user._id }, function(err, applications) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            // Clear masterKey before response to client
+            applications.forEach(function(application, index){
+                application.masterKey = '';
+            });
+            
+            res.status(200).send(applications);
         });
     });
 

@@ -11,27 +11,27 @@ var userSchema = new Schema({
 });
 
 userSchema.pre('save', function(next, done) {
+    var user = this;
     var curDate = Date();
 
-    this.updated_at = curDate;
-    if (!this.created_at) {
-        this.created_at = curDate;
+    user.updated_at = curDate;
+    if (!user.created_at) {
+        user.created_at = curDate;
     }
 
     // Break out if the password hasn't changed
     if (!user.isModified('password')) return next();
 
     // Password changed so we need to hash it
-    bcrypt.genSalt(5, function(err, salt) {
+    bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);
 
         bcrypt.hash(user.password, salt, null, function(err, hash) {
             if (err) return next(err);
             user.password = hash;
+            next();
         });
     });
-
-    next();
 });
 
 userSchema.methods.verifyPassword = function(password, cb) {
