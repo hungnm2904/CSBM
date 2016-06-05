@@ -3,20 +3,28 @@
     'use strict';
 
     angular
-        .module('app.managements.applications')
-        .controller('ApplicationsController', ApplicationsController);
+    .module('app.managements.applications')
+    .controller('ApplicationsController', function($scope, $http, $cookies, $window, $state, ApplicationService){
+        if(!$cookies.get('accessToken')){
+            // $window.location.href = '/login';
+            $state.go('app.pages_auth_login');
+        }
+        // $http.get('/app/data/applications/applications.json').success(function(data) {
+        //     $scope.applications = data.data;
+        // });
 
-    /** @ngInject */
-    function ApplicationsController(Applications)
-    {
-        var vm = this;
+        var obj = {};
+        ApplicationService.getAll(function (response) {
+            if(response.message) {
+                alert(response.message);
+            } else {
+                $scope.applications = response;
+                console.log($scope.applications);
+            }
+        });
 
-        // Data
-        vm.applications = Applications.data;
-
-        // Methods
-
-        //////////
-    }
-
+        $scope.showDialog = function () {
+            ApplicationService.showDialog();
+        }
+    });
 })();

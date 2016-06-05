@@ -1,7 +1,7 @@
 {
     "LOGIN": {
         "TITLE": "Log in to your account",
-        "EMAIL": "Email",
+        "USERNAME": "User Name",
         "PASSWORD": "Password",
         "REMEMBER_ME": "Remember Me",
         "FORGOT_PASSWORD": "Forgot Password?",
@@ -12,8 +12,7 @@
         "DONT_HAVE_ACCOUNT": "Don't have an account?",
         "CREATE_ACCOUNT": "Create an account",
         "ERRORS": {
-            "EMAIL_REQUIRED": "Email field is required",
-            "EMAIL_MUST_VALID": "Email must be a valid e-mail address",
+            "USERNAME_REQUIRED": "Username field is required",
             "PASSWORD_REQUIRED": "Password field is required"
         }
     }

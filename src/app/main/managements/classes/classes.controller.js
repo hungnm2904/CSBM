@@ -4,10 +4,16 @@
 
     angular
     .module('app.managements.classes')
-    .controller('ClassesController', function($scope, $http){
+    .controller('ClassesController', function($scope, $http, $cookies, $window, $state){
+        if(!$cookies.get('accessToken')){
+            // $window.location.href = '/login';
+            $state.go('app.pages_auth_login');
+        }
+        
         $http.get('/app/data/classes/classes.json').success(function(data) {
             $scope.classes = data.classes;
         });
+
         var myform = $('#myform');
 
         $scope.addRow = function(){

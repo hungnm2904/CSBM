@@ -10,12 +10,19 @@
             </div>
             <div class="title">Applications</div>
         </div>
+
+        <div layout="row" layout-align="start center">
+            <md-button class="md-primary md-raised" ng-click="showDialog($event)">
+                <md-icon md-font-icon="icon-apps"></md-icon>
+                <span>Create new application</span>
+            </md-button>
+        </div>
     </div>
     <!-- / HEADER -->
 
     <!-- CONTENT -->
     <div class="content" md-background-bg>
-        <div ng-repeat="card in vm.applications">
+        <div ng-repeat="card in applications.data">
             <!-- MS-CARD -->
             <ms-card template="'app/core/directives/ms-card/templates/template-7/template-7.html'" ng-model="card"></ms-card>
             <!-- / MS-CARD -->

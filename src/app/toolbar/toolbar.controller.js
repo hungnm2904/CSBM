@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.toolbar')
-        .controller('ToolbarController', ToolbarController);
+    .module('app.toolbar')
+    .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast, $location)
+    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast, $location, $http, $cookies, $window, $state, ToolbarService)
     {
         var vm = this;
 
@@ -18,31 +18,31 @@
 
         vm.bodyEl = angular.element('body');
         vm.userStatusOptions = [
-            {
-                'title': 'Online',
-                'icon' : 'icon-checkbox-marked-circle',
-                'color': '#4CAF50'
-            },
-            {
-                'title': 'Away',
-                'icon' : 'icon-clock',
-                'color': '#FFC107'
-            },
-            {
-                'title': 'Do not Disturb',
-                'icon' : 'icon-minus-circle',
-                'color': '#F44336'
-            },
-            {
-                'title': 'Invisible',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#BDBDBD'
-            },
-            {
-                'title': 'Offline',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#616161'
-            }
+        {
+            'title': 'Online',
+            'icon' : 'icon-checkbox-marked-circle',
+            'color': '#4CAF50'
+        },
+        {
+            'title': 'Away',
+            'icon' : 'icon-clock',
+            'color': '#FFC107'
+        },
+        {
+            'title': 'Do not Disturb',
+            'icon' : 'icon-minus-circle',
+            'color': '#F44336'
+        },
+        {
+            'title': 'Invisible',
+            'icon' : 'icon-checkbox-blank-circle-outline',
+            'color': '#BDBDBD'
+        },
+        {
+            'title': 'Offline',
+            'icon' : 'icon-checkbox-blank-circle-outline',
+            'color': '#616161'
+        }
         ];
         vm.languages = {
             en: {
@@ -79,8 +79,8 @@
         /**
          * Initialize
          */
-        function init()
-        {
+         function init()
+         {
             // Select the first status as a default
             vm.userStatus = vm.userStatusOptions[0];
 
@@ -94,8 +94,8 @@
          *
          * @param sidenavId
          */
-        function toggleSidenav(sidenavId)
-        {
+         function toggleSidenav(sidenavId)
+         {
             $mdSidenav(sidenavId).toggle();
         }
 
@@ -103,24 +103,28 @@
          * Sets User Status
          * @param status
          */
-        function setUserStatus(status)
-        {
+         function setUserStatus(status)
+         {
             vm.userStatus = status;
         }
 
         /**
          * Logout Function
          */
-        function logout()
-        {
-            $location.path('/');
+         function logout()
+         {
+            ToolbarService.logout(function (response) {
+                if(response.message){
+                    alert(response.message);
+                }
+            });
         }
 
         /**
          * Change Language
          */
-        function changeLanguage(lang)
-        {
+         function changeLanguage(lang)
+         {
             vm.selectedLanguage = lang;
 
             /**
@@ -135,8 +139,8 @@
              * end of this if block. If you have all the translation files, remove this if
              * block and the translations should work without any problems.
              */
-            if ( lang.code !== 'en' )
-            {
+             if ( lang.code !== 'en' )
+             {
                 var message = 'Fuse supports translations through angular-translate module, but currently we do not have any translations other than English language. If you want to help us, send us a message through ThemeForest profile page.';
 
                 $mdToast.show({
@@ -156,8 +160,8 @@
         /**
          * Toggle horizontal mobile menu
          */
-        function toggleHorizontalMobileMenu()
-        {
+         function toggleHorizontalMobileMenu()
+         {
             vm.bodyEl.toggleClass('ms-navigation-horizontal-mobile-menu-active');
         }
     }
