@@ -3,7 +3,11 @@
 
     angular
         .module('app.application.classes')
-        .controller('ClassesController', function($scope, $http, $cookies, $window, $state) {
+        .controller('ClassesController', function($scope, $http, $cookies, $window, $state, $stateParams,
+            msSchemasService) {
+
+            console.log(msSchemasService.getSchema($stateParams.index));
+
             if (!$cookies.get('accessToken')) {
                 // $window.location.href = '/login';
                 $state.go('app.pages_auth_login');

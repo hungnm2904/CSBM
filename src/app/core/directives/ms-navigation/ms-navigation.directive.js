@@ -6,6 +6,7 @@
         .provider('msNavigationService', msNavigationServiceProvider)
         .controller('MsNavigationController', MsNavigationController)
         .provider('msModeService', msModeServiceProvider)
+        .provider('msSchemasService', msSchemasServiceProvider)
         // Vertical
         .directive('msNavigation', msNavigationDirective)
         .controller('MsNavigationNodeController', MsNavigationNodeController)
@@ -397,15 +398,15 @@
         service.setMode = setMode;
         service.checkMode = checkMode;
 
-        function getMode () {
+        function getMode() {
             return mode;
         }
 
-        function setMode (_mode) {
+        function setMode(_mode) {
             mode = _mode;
         }
 
-        function checkMode (_mode) {
+        function checkMode(_mode) {
             return mode === _mode;
         }
 
@@ -429,6 +430,53 @@
             function checkMode(_mode) {
                 return mode === _mode;
             }
+        };
+    }
+
+    function msSchemasServiceProvider() {
+        var $rootScope = angular.injector(['ng']).get('$rootScope');
+
+        var service = this;
+        var schemas = [];
+
+        service.getSchemas = getSchemas;
+        service.setSchemas = setSchemas;
+        service.getShema = getSchema;
+
+        function getSchemas() {
+            return schemas
+        };
+
+        function setSchemas(_schemas) {
+            schemas = _schemas;
+            $rootScope.$broadcast('schemas-change');
+        };
+
+        function getSchema(index) {
+            return schemas[index];
+        };
+
+        this.$get = function($rootScope) {
+            var service = {
+                getSchemas: getSchemas,
+                setSchemas: setSchemas,
+                getSchema: getSchema
+            }
+
+            return service;
+
+            function getSchemas() {
+                return schemas
+            };
+
+            function setSchemas(_schemas) {
+                schemas = _schemas;
+                $rootScope.$broadcast('schemas-change');
+            };
+
+            function getSchema(index) {
+                return schemas[index];
+            };
         };
     }
 

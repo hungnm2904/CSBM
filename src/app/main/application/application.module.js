@@ -8,7 +8,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, msNavigationServiceProvider, msModeServiceProvider) {
+    function config($stateProvider) {
 
     }
 })();

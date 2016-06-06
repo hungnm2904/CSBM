@@ -4,7 +4,7 @@
     angular
         .module('app.managements.applications')
         .factory('ApplicationService', function($http, $cookies, $state, $mdDialog, $document,
-            msNavigationService) {
+            msModeService, msSchemasService) {
 
             var service = {};
             var domain = 'http://localhost:1337';
@@ -62,32 +62,10 @@
                             'X-CSBM-Master-Key': masterKey
                         }
                     }).then(function(response) {
-                        console.log(response);
+                        // console.log(response);
                         var schemas = response.data.results;
-
-                        //Navigation
-                        msNavigationService.saveItem('application', {
-                            title: 'Application',
-                            group: true,
-                            weight: 1,
-                        });
-
-                        msNavigationService.saveItem('application.classes', {
-                            title: 'Classes',
-                            icon: 'icon-library-plus'
-                                // state: 'app.application_classes'
-                        });
-
-                        for (var i = 0; i < schemas.length; i++) {
-                            var schema = schemas[i];
-
-                            // Create navigation for schema
-                            msNavigationService.saveItem('application.classes.' + schema.className, {
-                                title: schema.className,
-                                icon: 'icon-apps',
-                                state: 'application.classes_' + schema.className
-                            });
-                        }
+                        msModeService.setMode('application');
+                        msSchemasService.setSchemas(schemas);
                     }, function(response) {
                         alert(response.data.data.message);
                         console.log(response);
