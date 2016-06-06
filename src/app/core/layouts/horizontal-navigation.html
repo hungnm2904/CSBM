@@ -1,10 +1,11 @@
-<div id="layout-horizontal-navigation" class="template-layout" layout="column" flex>
+<div id="layout-vertical-navigation" class="template-layout" layout="row" flex>
 
-    <md-toolbar id="toolbar" class="md-menu-toolbar" ui-view="toolbar"></md-toolbar>
-
-    <div id="horizontal-navigation" class="md-whiteframe-1dp" ui-view="navigation"></div>
+    <md-sidenav id="vertical-navigation" class="md-primary-bg" md-is-locked-open="$mdMedia('gt-sm')"
+                md-component-id="navigation" ms-scroll ui-view="navigation"></md-sidenav>
 
     <div id="content-container" flex layout="column">
+        <md-toolbar id="toolbar" class="md-menu-toolbar md-whiteframe-1dp" ui-view="toolbar"></md-toolbar>
+
         <md-content id="content" class="animate-slide-up md-background md-hue-1" ms-scroll
                     ui-view="content" flex></md-content>
     </div>

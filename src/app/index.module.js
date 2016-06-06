@@ -24,6 +24,9 @@
             'app.pages',
 
             // Managements
-            'app.managements'
+            'app.managements',
+
+            // Application
+            'app.application'
         ]);
 })();

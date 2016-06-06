@@ -1,5 +1,4 @@
-    <div id="cards" class="page-layout simple fullwidth doc-page">
-
+<div id="cards" class="page-layout simple fullwidth doc-page">
     <!-- HEADER -->
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="center start">
@@ -10,21 +9,19 @@
             </div>
             <div class="title">Applications</div>
         </div>
-
         <div layout="row" layout-align="start center">
             <md-button class="md-primary md-raised" ng-click="showDialog($event)">
-                <md-icon md-font-icon="icon-apps"></md-icon>
+                <md-icon md-font-icon="icon-plus"></md-icon>
                 <span>Create new application</span>
             </md-button>
         </div>
     </div>
     <!-- / HEADER -->
-
     <!-- CONTENT -->
-    <div class="content" md-background-bg>
-        <div ng-repeat="card in applications.data">
+    <div class="content" md-background-bg layout="row" layout-wrap>
+        <div ng-repeat="application in applications" flex="33">
             <!-- MS-CARD -->
-            <ms-card template="'app/core/directives/ms-card/templates/template-7/template-7.html'" ng-model="card"></ms-card>
+            <ms-card template="'app/core/directives/ms-card/templates/template-7/template-7.html'" ng-model="application" ng-click="goToAppManagement(application._id)"></ms-card>
             <!-- / MS-CARD -->
         </div>
     </div>
