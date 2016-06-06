@@ -438,10 +438,13 @@
 
         var service = this;
         var schemas = [];
+        var appId = null;
 
         service.getSchemas = getSchemas;
         service.setSchemas = setSchemas;
         service.getShema = getSchema;
+        service.getAppId = getAppId;
+        service.getAppId = getAppId;
 
         function getSchemas() {
             return schemas
@@ -456,11 +459,21 @@
             return schemas[index];
         };
 
+        function getAppId() {
+            return appId;
+        };
+
+        function setAppId(_appId) {
+            appId = _appId;
+        };
+
         this.$get = function($rootScope) {
             var service = {
                 getSchemas: getSchemas,
                 setSchemas: setSchemas,
-                getSchema: getSchema
+                getSchema: getSchema,
+                getAppId: getAppId,
+                setAppId: setAppId
             }
 
             return service;
@@ -476,6 +489,14 @@
 
             function getSchema(index) {
                 return schemas[index];
+            };
+
+            function getAppId() {
+                return appId;
+            };
+
+            function setAppId(_appId) {
+                appId = _appId;
             };
         };
     }

@@ -2,46 +2,46 @@
     'use strict';
 
     angular
-        .module('app.application.classes')
-        .controller('ClassesController', function($scope, $http, $cookies, $window, $state, $stateParams,
-            msSchemasService) {
+    .module('app.application.classes')
+    .controller('ClassesController', function($scope, $http, $cookies, $window, $state, $stateParams,
+        msSchemasService, ClassesService) {
 
-            console.log(msSchemasService.getSchema($stateParams.index));
-
-            if (!$cookies.get('accessToken')) {
+        if (!$cookies.get('accessToken')) {
                 // $window.location.href = '/login';
                 $state.go('app.pages_auth_login');
             }
 
-            $http.get('/app/data/classes/classes.json').success(function(data) {
-                $scope.classes = data.classes;
+            var obj = msSchemasService.getSchema($stateParams.index);
+            console.log(obj);
+            console.log(msSchemasService.getAppId());
+            delete obj.fields.objectId;
+            delete obj.fields.ACL;
+            $scope.classes = obj.fields;
+
+            ClassesService.getClassData(msSchemasService.getAppId(), obj.className, function (response) {
+                if (response.message) {
+                    alert(response.message);
+                } else {
+                    $scope.datas = response.data.results;
+                }
             });
+
+            console.log($scope.datas);
+
+            
+
+            // $http.get('/app/data/classes/classes.json').success(function(data) {
+            //     $scope.classes = data.classes;
+            // });
 
             var myform = $('#myform');
 
             $scope.addRow = function() {
                 var key = $scope.Key;
-                var count = 0;
+                ClassesService.addColumn(msSchemasService.getAppId(), obj.className, key);
+            };
 
-                for (var k in $scope.classes[0]) {
-                    if (key === k) {
-                        alert("Column already exists!!");
-                        count++;
-                    }
-                }
-
-                if (count == 0 && key != "" && key != null) {
-                    $('#table thead tr').append($("<th>"));
-                    $('#table thead tr>th:last').html(key);
-                    $('#table tbody tr').append($("<td>"));
-                    for (var i = 0; i < $scope.classes.length; i++) {
-                        $scope.classes[i][key] = null;
-                        var index = i + 1;
-                        $('#table tbody tr:eq(' + i + ')').children('td:last')
-                            .append("<input type='text' id='" + index + "txtVal' name='" + index +
-                                "txtVal' ng-model='Val' placeholder='Value'>");
-                    }
-                }
+            $scope.updateRow = function() {
                 $scope.Key = '';
                 var keys = [];
                 for (var k in $scope.classes[0]) {

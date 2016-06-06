@@ -7,7 +7,7 @@
             msModeService, msSchemasService) {
 
             var service = {};
-            var domain = 'http://localhost:1337';
+            var domain = 'http://192.168.1.29:1337';
             var accessToken = $cookies.get('accessToken');
 
             service.getAll = function(callback) {
@@ -40,7 +40,7 @@
             service.getMasterKey = function(appId, callback) {
                 $http({
                     method: 'GET',
-                    url: domain + '/schemas',
+                    url: domain + '/masterKey',
                     headers: {
                         'Authorization': 'Bearer ' + accessToken,
                         'X-CSBM-Application-Id': appId
@@ -65,6 +65,7 @@
                         // console.log(response);
                         var schemas = response.data.results;
                         msModeService.setMode('application');
+                        msSchemasService.setAppId(appId);
                         msSchemasService.setSchemas(schemas);
                     }, function(response) {
                         alert(response.data.data.message);

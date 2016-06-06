@@ -19,17 +19,17 @@
                 <table class="simple" id="table" ms-responsive-table>
                     <thead>
                         <tr>
-                            <th ng-repeat="(key,val) in classes[0]">{{key}}</th>
+                            <th ng-repeat="(key,val) in classes">{{key}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <div>
-                            <tr ng-repeat="class in classes">
-                                <td>{{class.id}}</td>
-                                <td>{{class.CreateAt}}</td>
-                                <td>{{class.UpdateAt}}</td>
-                            </tr>
-                        </div>
+                        <tr ng-repeat="data in datas">
+                            <td>{{data.createdAt}}</td>
+                            <td>{{data.updatedAt}}</td>
+                            <td><input type="text" name="{{data.score}}" value="{{data.score}}" placeholder="Value"></td>
+                            <td><input type="text" name="{{data.playerName}}" value="{{data.playerName}}" placeholder="Value"></td>
+                            <td><input type="text" name="{{data.cheatMode}}" value="{{data.cheatMode}}" placeholder="Value"></td>
+                        </tr>
                     </tbody>
                 </table>
             </form>
@@ -44,6 +44,9 @@
             <center>
                 <md-button class="md-raised md-accent" type="submit" id="submit" value="Submit" ng-click="addRow()">
                     Add
+                </md-button>
+                <md-button class="md-raised md-accent" type="submit" id="submit" value="Submit" ng-click="updateROw()">
+                    Update
                 </md-button>
             </center>
         </div>
