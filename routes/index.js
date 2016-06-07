@@ -179,11 +179,30 @@ module.exports = function(appHelpers) {
             }
 
             // Clear masterKey before response to client
-            applications.forEach(function(application, index){
+            applications.forEach(function(application, index) {
                 application.masterKey = '';
             });
-            
+
             res.status(200).send(applications);
+        });
+    });
+
+    router.get('/masterKey', authController.isAuthenticated, function(req, res) {
+        var appId = req.get('X-CSBM-Application-Id');
+        Application.findOne({ '_id': appId }, function(err, application) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            res.status(200).send({
+                message: '',
+                data: {
+                    masterKey: application.masterKey
+                }
+            });
         });
     });
 
