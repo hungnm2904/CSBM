@@ -18,15 +18,25 @@
 
             $scope.className = schemaObj.className;
             $scope.fields = Object.getOwnPropertyNames(schemaObj.fields);
+            for(var index in $scope.fields){
+                if($scope.fields[index]==='ACL'){
+                    $scope.fields.splice(index, 1);
+                }
+            }
             $scope.appId = msSchemasService.getAppId();
             $scope.columnName = '';
 
-            $http.get('/app/data/classes/classes.json').success(function(data) {
-                $scope.classes = data.classes;
-            });
-
             ClassesService.getDocuments($scope.className, $scope.appId, function(result) {
                 $scope.documents = result;
+                for(var i = 0; i < result.length; i++) {
+                    var list = Object.keys(result[i]);
+                    for(var index in list) {
+                        if(list[index] != 'objectId' && list[index] != 'createdAt' && list[index] != 'updatedAt'){
+                            result[i][list[index]] = '<input type="text" name="txtVal" placeholder="Value" value="' + result[i][list[index]] + '">';
+                        }
+                    }
+                }
+                // console.log($scope.documents);
             });
 
             $rootScope.$on('fields-change', function(event, args) {

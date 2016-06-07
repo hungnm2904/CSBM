@@ -7,7 +7,7 @@
             msModeService, msSchemasService) {
 
             var service = {};
-            var domain = 'http://localhost:1337';
+            var domain = 'http://192.168.1.32:1337';
             var accessToken = $cookies.get('accessToken');
 
             service.getAll = function(callback) {

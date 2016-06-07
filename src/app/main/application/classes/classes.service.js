@@ -5,7 +5,7 @@
         .module('app.application.classes')
         .factory('ClassesService', function($http, $cookies, $state) {
             var service = {};
-            var domain = 'http://localhost:1337';
+            var domain = 'http://192.168.1.32:1337';
 
             service.getDocuments = function(className, appId, callback) {
                 $http({

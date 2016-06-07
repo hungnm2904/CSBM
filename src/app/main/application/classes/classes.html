@@ -24,21 +24,13 @@
                 <table class="simple" id="table" ms-responsive-table>
                     <thead>
                         <tr>
-                            <th ng-repeat="field in fields track by $index">{{field}}</th>
+                            <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <div>
-                            <tr ng-repeat="(key, value) in documents">
-                                <td>{{value[key]}}</td>
-                                <td>{{value[key]}}</td>
-                                <td>{{document.updatedAt}}</td>
-                                <td></td>
-                                <td>{{document.score}}</td>
-                                <td>{{document.playerName}}</td>
-                                <td>{{document.cheatMode}}</td>
-                            </tr>
-                        </div>
+                    <tbody ng-repeat="document in documents">
+                        <tr>
+                            <td ng-repeat="(key, value) in document">{{value}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </form>
