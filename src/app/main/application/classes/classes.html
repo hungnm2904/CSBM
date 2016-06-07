@@ -1,5 +1,4 @@
 <div id="classes" class="page-layout simple fullwidth doc-page">
-
     <!-- HEADER -->
     <div class="header md-accent-bg" layout="row" layout-align="space-between">
         <div layout="column" layout-align="center start">
@@ -10,6 +9,12 @@
             </div>
             <div class="title">Classes</div>
         </div>
+        <div layout="row" layout-align="start center">
+            <md-button class="md-primary md-raised" ng-click="showDialog($event)">
+                <md-icon md-font-icon="icon-plus"></md-icon>
+                <span>Create new class</span>
+            </md-button>
+        </div>
     </div>
     <!-- / HEADER -->
     <!-- CONTENT -->
@@ -19,34 +24,35 @@
                 <table class="simple" id="table" ms-responsive-table>
                     <thead>
                         <tr>
-                            <th ng-repeat="(key,val) in classes">{{key}}</th>
+                            <th ng-repeat="field in fields track by $index">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="data in datas">
-                            <td>{{data.createdAt}}</td>
-                            <td>{{data.updatedAt}}</td>
-                            <td><input type="text" name="{{data.score}}" value="{{data.score}}" placeholder="Value"></td>
-                            <td><input type="text" name="{{data.playerName}}" value="{{data.playerName}}" placeholder="Value"></td>
-                            <td><input type="text" name="{{data.cheatMode}}" value="{{data.cheatMode}}" placeholder="Value"></td>
-                        </tr>
+                        <div>
+                            <tr ng-repeat="(key, value) in documents">
+                                <td>{{value[key]}}</td>
+                                <td>{{value[key]}}</td>
+                                <td>{{document.updatedAt}}</td>
+                                <td></td>
+                                <td>{{document.score}}</td>
+                                <td>{{document.playerName}}</td>
+                                <td>{{document.cheatMode}}</td>
+                            </tr>
+                        </div>
                     </tbody>
                 </table>
             </form>
         </div>
         <!-- BASIC FORM -->
         <div class="form-wrapper md-whiteframe-4dp" ng-controller="ClassesController">
-            <div layout="column" layout-gt-sm="row">
+<!--             <div layout="column" layout-gt-sm="row">
                 <md-input-container flex>
-                    <input type="text" name="txtKey" ng-model="Key" placeholder="Key">
+                    <input type="text" name="txtKey" ng-model="columnName" placeholder="Key">
                 </md-input-container>
-            </div>
+            </div> -->
             <center>
-                <md-button class="md-raised md-accent" type="submit" id="submit" value="Submit" ng-click="addRow()">
-                    Add
-                </md-button>
-                <md-button class="md-raised md-accent" type="submit" id="submit" value="Submit" ng-click="updateROw()">
-                    Update
+                <md-button class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
+                    Add Column
                 </md-button>
             </center>
         </div>

@@ -2,82 +2,93 @@
     'use strict';
 
     angular
-    .module('app.application.classes')
-    .factory('ClassesService', function($http, $cookies, $state) {
-        var service = {};
-        var domain = 'http://192.168.1.29:1337';
+        .module('app.application.classes')
+        .factory('ClassesService', function($http, $cookies, $state) {
+            var service = {};
+            var domain = 'http://localhost:1337';
 
-        service.getClassData = function(appId, className, callback) {
-            $http({
-                method: 'GET',
-                url: domain + '/csbm/classes/' + className,
-                headers: {
-                    'X-CSBM-Application-Id': appId
-                }
-            }).then(function(response) {
-                console.log(response);
-
-                response.message = '';
-                callback(response);
-                    // $window.location.href = '/managements/applications';
-
-                    // this callback will be called asynchronously
-                    // when the response is available
-                }, function(response) {
-                    response.message = 'error';
-                    callback(response);
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                });
-        };
-
-        service.addColumn = function(appId, className, newField) {
-            service.getMasterKey(appId, className, function(masterKey) {
+            service.getDocuments = function(className, appId, callback) {
                 $http({
-                    method: 'PUT',
+                    method: 'GET',
                     url: domain + '/csbm/classes/' + className,
                     headers: {
-                        'X-CSBM-Application-Id': appId,
-                        'X-CSBM-MasterKey': masterKey
-                    },
-                    data: {
-                        'classname': className,
-                        'fields': {
-                            "'"+newField+"'": {
-                                'type': 'String'
-                            }
-                        }
+                        'X-CSBM-Application-Id': appId
                     }
                 }).then(function(response) {
-                    console.log(response);
-                       // $window.location.href = '/managements/applications';
-
-                    // this callback will be called asynchronously
-                    // when the response is available
+                    callback(response.data.results);
                 }, function(response) {
-                    response.message = 'error';
                     alert('error');
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
                 });
-            });
-        };
+            };
 
-        service.getMasterKey = function(appId, callback) {
-            $http({
-                method: 'GET',
-                url: domain + '/masterKey',
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken,
-                    'X-CSBM-Application-Id': appId
+            service.getMasterKey = function(appId, accessToken, callback) {
+                $http({
+                    method: 'GET',
+                    url: domain + '/masterKey',
+                    headers: {
+                        'Authorization': 'Bearer ' + accessToken,
+                        'X-CSBM-Application-Id': appId
+                    }
+                }).then(function(response) {
+                    callback(response.data.data.masterKey);
+                }, function(response) {
+                    callback(response);
+                });
+            }
+
+            service.addColumn = function(className, appId, accessToken, columnName, type, callback) {
+                var data = {
+                    'className': className,
+                    'fields': {}
                 }
-            }).then(function(response) {
-                callback(response.data.data.masterKey);
-            }, function(response) {
-                callback(response);
-            });
-        }
+                data.fields[columnName] = {
+                    'type': type
+                }
 
-        return service;
-    });
+                service.getMasterKey(appId, accessToken, function(result) {
+                    var masterKey = result;
+                    $http({
+                        method: 'PUT',
+                        url: domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: data
+                    }).then(function(response) {
+                        callback(response.data);
+                    }, function(response) {
+                        alert('error');
+                    });
+                });
+            }
+
+            service.createClass = function(className, appId, accessToken, callback) {
+                service.getMasterKey(appId, accessToken, function(result) {
+                    var masterKey = result;
+                    $http({
+                        method: 'POST',
+                        url: domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: {
+                            'className': className,
+                            'fields': {
+
+                            }
+                        }
+                    }).then(function(response) {
+                        callback(response.data);
+                    }, function() {
+                        alert('error');
+                    });
+                });
+            }
+
+            return service;
+        });
 })()

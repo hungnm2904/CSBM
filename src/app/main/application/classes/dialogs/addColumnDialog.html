@@ -1,0 +1,35 @@
+<md-dialog class="compose-dialog" aria-label="New Message">
+    <form class="md-inline-form">
+        <md-toolbar class="md-accent md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <span class="title" translate="NEW APPLICATION">New Column</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" tranlate translate-aria-label="CLOSE DIALOG">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content ms-scroll>
+            <div layout="row">
+                <md-input-container class="md-block" flex="60">
+                    <label translate="COLUMN NAME">Column Name</label>
+                    <input ng-model="columnName" type="text">
+                </md-input-container>
+                <md-input-container flex=40>
+                    <label>Type</label>
+                    <md-select ng-model="type">
+                        <md-option ng-repeat="type in types" value="{{type}}">
+                            {{type}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <md-button ng-click="addColumn()" class="send-button md-accent md-raised" aria-label="Create" translate="CREATE COLUMN" translate-attr-aria-label="CREATE COLUMN">
+                    SEND
+                </md-button>
+            </div>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -12,16 +12,16 @@
 
         <md-dialog-content ms-scroll>
             <md-input-container class="md-block">
-                <label translate="APPLICATION NAME">Class Name</label>
-                <input ng-model="vm.form.name" type="text">
+                <label translate="APPLICATION NAME">Application Name</label>
+                <input ng-model="className" type="text">
             </md-input-container>
         </md-dialog-content>
 
         <md-dialog-actions layout="row" layout-align="space-between center">
             <div layout="row" layout-align="start center">
-                <md-button ng-click="vm.closeDialog()" class="send-button md-accent md-raised" aria-label="Create"
-                           translate="CREATE APPLICATION"
-                           translate-attr-aria-label="CREATE APPLICATION">
+                <md-button ng-click="createClass()" class="send-button md-accent md-raised" aria-label="Create"
+                           translate="CREATE CLASS"
+                           translate-attr-aria-label="CREATE CLASS">
                     SEND
                 </md-button>
             </div>

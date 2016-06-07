@@ -437,14 +437,17 @@
         var $rootScope = angular.injector(['ng']).get('$rootScope');
 
         var service = this;
-        var schemas = [];
         var appId = null;
+        var schemas = [];
 
         service.getSchemas = getSchemas;
         service.setSchemas = setSchemas;
         service.getShema = getSchema;
         service.getAppId = getAppId;
-        service.getAppId = getAppId;
+        service.setAppId = setAppId;
+        service.addSchema = addSchema;
+        service.findByName = findByName;
+        service.updateFields = updateFields;
 
         function getSchemas() {
             return schemas
@@ -467,13 +470,38 @@
             appId = _appId;
         };
 
+        function addSchema(_schema) {
+            schemas.push(_schema);
+        };
+
+        function findByName(_name) {
+            schemas.forEach(function(schema, index) {
+                if (schema.className === _name) {
+                    return schema;
+                }
+            });
+        };
+
+        function updateFields(_name, _fields) {
+            schemas.forEach(function(schema, index) {
+                if (schema.className === _name) {
+                    schema.fields = _fields;
+                    return;
+                }
+            });
+            $rootScope.$broadcast('fields-change', { 'fields': fields });
+        }
+
         this.$get = function($rootScope) {
             var service = {
                 getSchemas: getSchemas,
                 setSchemas: setSchemas,
                 getSchema: getSchema,
                 getAppId: getAppId,
-                setAppId: setAppId
+                setAppId: setAppId,
+                addSchema: addSchema,
+                findByName: findByName,
+                updateFields: updateFields
             }
 
             return service;
@@ -498,6 +526,30 @@
             function setAppId(_appId) {
                 appId = _appId;
             };
+
+            function addSchema(_schema) {
+                schemas.push(_schema);
+                $rootScope.$broadcast('schemas-change');
+            };
+
+            function findByName(_name) {
+                console.log(_name);
+                schemas.forEach(function(schema, index) {
+                    if (schema.className === _name) {
+                        return schema;
+                    }
+                });
+            };
+
+            function updateFields(_name, _fields) {
+                schemas.forEach(function(schema, index) {
+                    if (schema.className === _name) {
+                        schema.fields = _fields;
+                        return;
+                    }
+                });
+                $rootScope.$broadcast('fields-change', { fields: _fields });
+            }
         };
     }
 
