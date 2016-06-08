@@ -5,7 +5,7 @@
         .module('app.pages.auth.login')
         .factory('LoginService', function($http, $cookies, $state) {
             var service = {};
-            var domain = 'http://192.168.1.32:1337';
+            var domain = 'http://localhost:1337';
 
             service.Login = function(username, password, callback) {
                 $http({
