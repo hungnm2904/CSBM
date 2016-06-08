@@ -1,0 +1,1585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		278CC6591CF52CB100B9AC79 /* BEFrameworkLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 278CC65A1CF52CB100B9AC79 /* Build configuration list for PBXAggregateTarget "BEFrameworkLib" */;
+			buildPhases = (
+				278CC65F1CF52D9000B9AC79 /* ShellScript */,
+			);
+			dependencies = (
+				278CC65E1CF52CB700B9AC79 /* PBXTargetDependency */,
+			);
+			name = BEFrameworkLib;
+			productName = BEFrameworkLib;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		278CC64E1CF5292900B9AC79 /* BEFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278CC64D1CF5292900B9AC79 /* BEFramework.h */; };
+		278CC6571CF52A4700B9AC79 /* BEFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC64D1CF5292900B9AC79 /* BEFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6621CF52E5600B9AC79 /* libBolts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 278CC6601CF52E5600B9AC79 /* libBolts.a */; };
+		278CC6631CF52E5600B9AC79 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 278CC6611CF52E5600B9AC79 /* libOCMock.a */; };
+		278CC6691CF5486A00B9AC79 /* CSBM.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6671CF5486A00B9AC79 /* CSBM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC66A1CF5486A00B9AC79 /* CSBM.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6681CF5486A00B9AC79 /* CSBM.m */; };
+		278CC6711CF548F800B9AC79 /* BEClientConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC66F1CF548F800B9AC79 /* BEClientConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6721CF548F800B9AC79 /* BEClientConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6701CF548F800B9AC79 /* BEClientConfiguration.m */; };
+		278CC6751CF5490D00B9AC79 /* BEConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6731CF5490D00B9AC79 /* BEConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6761CF5490D00B9AC79 /* BEConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6741CF5490D00B9AC79 /* BEConstants.m */; };
+		278CC6801CF54ED100B9AC79 /* BECommandRunningConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC67E1CF54ED100B9AC79 /* BECommandRunningConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6811CF54ED100B9AC79 /* BECommandRunningConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC67F1CF54ED100B9AC79 /* BECommandRunningConstants.m */; };
+		278CC6861CF5529900B9AC79 /* BEHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6841CF5529900B9AC79 /* BEHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6871CF5529900B9AC79 /* BEHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6851CF5529900B9AC79 /* BEHash.m */; };
+		278CC68C1CF553AC00B9AC79 /* BEObjectUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC68A1CF553AC00B9AC79 /* BEObjectUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC68D1CF553AC00B9AC79 /* BEObjectUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC68B1CF553AC00B9AC79 /* BEObjectUtilities.m */; };
+		278CC6911CF5547D00B9AC79 /* BEOperationSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC68F1CF5547D00B9AC79 /* BEOperationSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6921CF5547D00B9AC79 /* BEOperationSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6901CF5547D00B9AC79 /* BEOperationSet.m */; };
+		278CC6951CF554D000B9AC79 /* BEEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6931CF554D000B9AC79 /* BEEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6961CF554D000B9AC79 /* BEEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6941CF554D000B9AC79 /* BEEncoder.m */; };
+		278CC6991CF5569C00B9AC79 /* BEObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6971CF5569C00B9AC79 /* BEObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC69A1CF5569C00B9AC79 /* BEObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6981CF5569C00B9AC79 /* BEObject.m */; };
+		278CC69D1CF559CF00B9AC79 /* BEBase64Encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC69B1CF559CF00B9AC79 /* BEBase64Encoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC69E1CF559CF00B9AC79 /* BEBase64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC69C1CF559CF00B9AC79 /* BEBase64Encoder.m */; };
+		278CC6A11CF55A0B00B9AC79 /* BEDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC69F1CF55A0B00B9AC79 /* BEDateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6A21CF55A0B00B9AC79 /* BEDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6A01CF55A0B00B9AC79 /* BEDateFormatter.m */; };
+		278CC6A51CF55D7C00B9AC79 /* BEDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6A31CF55D7C00B9AC79 /* BEDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6A61CF55D7C00B9AC79 /* BEDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6A41CF55D7C00B9AC79 /* BEDecoder.m */; };
+		278CC6AA1CF5967600B9AC79 /* BEFieldOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6A81CF5967600B9AC79 /* BEFieldOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6AB1CF5967600B9AC79 /* BEFieldOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6A91CF5967600B9AC79 /* BEFieldOperation.m */; };
+		278CC6AE1CF59CC100B9AC79 /* BEInternalUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6AC1CF59CC100B9AC79 /* BEInternalUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6AF1CF59CC100B9AC79 /* BEInternalUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6AD1CF59CC100B9AC79 /* BEInternalUtils.m */; };
+		278CC6B71CF59FF600B9AC79 /* BEClientConfiguration_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6B51CF59FF600B9AC79 /* BEClientConfiguration_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6BB1CF5B04200B9AC79 /* BEManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6B91CF5B04200B9AC79 /* BEManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6BC1CF5B04200B9AC79 /* BEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6BA1CF5B04200B9AC79 /* BEManager.m */; };
+		278CC6C01CF5B1E100B9AC79 /* BECommandRunning.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6BE1CF5B1E100B9AC79 /* BECommandRunning.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6C11CF5B1E100B9AC79 /* BECommandRunning.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6BF1CF5B1E100B9AC79 /* BECommandRunning.m */; };
+		278CC6C61CF5B46C00B9AC79 /* BEInstallationIdentifierStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6C41CF5B46C00B9AC79 /* BEInstallationIdentifierStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6C71CF5B46C00B9AC79 /* BEInstallationIdentifierStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6C51CF5B46C00B9AC79 /* BEInstallationIdentifierStore.m */; };
+		278CC6CA1CF5BDDA00B9AC79 /* BECoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6C81CF5BDDA00B9AC79 /* BECoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6CB1CF5BDDA00B9AC79 /* BECoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6C91CF5BDDA00B9AC79 /* BECoreManager.m */; };
+		278CC6CE1CF5DBB000B9AC79 /* BEBaseState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6CC1CF5DBB000B9AC79 /* BEBaseState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6CF1CF5DBB000B9AC79 /* BEBaseState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6CD1CF5DBB000B9AC79 /* BEBaseState.m */; };
+		278CC6D31CF5DD4900B9AC79 /* BEPropertyInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6D11CF5DD4900B9AC79 /* BEPropertyInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6D41CF5DD4900B9AC79 /* BEPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6D21CF5DD4900B9AC79 /* BEPropertyInfo.m */; };
+		278CC6D71CF5DDC600B9AC79 /* BEPropeprtyInfo_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6D51CF5DDC600B9AC79 /* BEPropeprtyInfo_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6DB1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6D91CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6DC1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6DA1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.m */; };
+		278CC6DF1CF5E21300B9AC79 /* BENetworkCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6DD1CF5E21300B9AC79 /* BENetworkCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6E51CF5E2D200B9AC79 /* BERESTCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6E31CF5E2D200B9AC79 /* BERESTCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6E61CF5E2D200B9AC79 /* BERESTCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6E41CF5E2D200B9AC79 /* BERESTCommand.m */; };
+		278CC6E91CF5E36800B9AC79 /* BERESTCommand_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6E71CF5E36800B9AC79 /* BERESTCommand_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6F01CF5EDED00B9AC79 /* BECommandResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6EE1CF5EDED00B9AC79 /* BECommandResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6F11CF5EDED00B9AC79 /* BECommandResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6EF1CF5EDED00B9AC79 /* BECommandResult.m */; };
+		278CC6F41CF5EEA400B9AC79 /* BEUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6F21CF5EEA400B9AC79 /* BEUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6F51CF5EEA400B9AC79 /* BEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6F31CF5EEA400B9AC79 /* BEUser.m */; };
+		278CC6F91CF5EF1A00B9AC79 /* BESubclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6F71CF5EF1A00B9AC79 /* BESubclassing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6FD1CF5EF5800B9AC79 /* BEQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC6FB1CF5EF5800B9AC79 /* BEQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC6FE1CF5EF5800B9AC79 /* BEQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC6FC1CF5EF5800B9AC79 /* BEQuery.m */; };
+		278CC7021CF5FBC900B9AC79 /* BEQueryPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7001CF5FBC900B9AC79 /* BEQueryPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7061CF5FD8300B9AC79 /* BEQuery+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7041CF5FD8300B9AC79 /* BEQuery+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC70B1CF601C700B9AC79 /* BEUserPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7091CF601C700B9AC79 /* BEUserPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7101CF6038200B9AC79 /* BEUserController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC70E1CF6038200B9AC79 /* BEUserController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7111CF6038200B9AC79 /* BEUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC70F1CF6038200B9AC79 /* BEUserController.m */; };
+		278CC7151CF6040C00B9AC79 /* BEObjectControlling.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7131CF6040C00B9AC79 /* BEObjectControlling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC71A1CF6074100B9AC79 /* BFTask+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7181CF6074100B9AC79 /* BFTask+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC71B1CF6074100B9AC79 /* BFTask+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7191CF6074100B9AC79 /* BFTask+Private.m */; };
+		278CC7201CF6088A00B9AC79 /* BELogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC71E1CF6088A00B9AC79 /* BELogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7211CF6088A00B9AC79 /* BELogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC71F1CF6088A00B9AC79 /* BELogger.m */; };
+		278CC7241CF6091D00B9AC79 /* BEApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7221CF6091D00B9AC79 /* BEApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7251CF6091D00B9AC79 /* BEApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7231CF6091D00B9AC79 /* BEApplication.m */; };
+		278CC7291CF60E4D00B9AC79 /* BECurrentUserController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7271CF60E4D00B9AC79 /* BECurrentUserController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC72A1CF60E4D00B9AC79 /* BECurrentUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7281CF60E4D00B9AC79 /* BECurrentUserController.m */; };
+		278CC72E1CF60EAA00B9AC79 /* BECurrentObjectControlling.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC72C1CF60EAA00B9AC79 /* BECurrentObjectControlling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7351CF6107B00B9AC79 /* BEAnonymousUtils_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7331CF6107B00B9AC79 /* BEAnonymousUtils_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7391CF6110E00B9AC79 /* BEAnonymousUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7371CF6110E00B9AC79 /* BEAnonymousUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC73A1CF6110E00B9AC79 /* BEAnonymousUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7381CF6110E00B9AC79 /* BEAnonymousUtils.m */; };
+		278CC73D1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC73B1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC73E1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC73C1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.m */; };
+		278CC7411CF6120A00B9AC79 /* BEUserAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC73F1CF6120A00B9AC79 /* BEUserAuthenticationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7451CF678BA00B9AC79 /* BEAsyncTaskQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7431CF678BA00B9AC79 /* BEAsyncTaskQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7461CF678BA00B9AC79 /* BEAsyncTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7441CF678BA00B9AC79 /* BEAsyncTaskQueue.m */; };
+		278CC74A1CF679D000B9AC79 /* BEMutableUserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7481CF679D000B9AC79 /* BEMutableUserState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC74B1CF679D000B9AC79 /* BEMutableUserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7491CF679D000B9AC79 /* BEMutableUserState.m */; };
+		278CC74E1CF67BBF00B9AC79 /* BEUserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC74C1CF67BBF00B9AC79 /* BEUserState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC74F1CF67BBF00B9AC79 /* BEUserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC74D1CF67BBF00B9AC79 /* BEUserState.m */; };
+		278CC7521CF67BF200B9AC79 /* BEObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7501CF67BF200B9AC79 /* BEObjectState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7531CF67BF200B9AC79 /* BEObjectState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7511CF67BF200B9AC79 /* BEObjectState.m */; };
+		278CC7561CF67CAF00B9AC79 /* BEObjectState_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7541CF67CAF00B9AC79 /* BEObjectState_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC75B1CF67E0F00B9AC79 /* BEMutableObjectState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7591CF67E0F00B9AC79 /* BEMutableObjectState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC75C1CF67E0F00B9AC79 /* BEMutableObjectState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC75A1CF67E0F00B9AC79 /* BEMutableObjectState.m */; };
+		278CC75F1CF691B700B9AC79 /* BEObjectState_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC75D1CF691B700B9AC79 /* BEObjectState_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7641CF694F100B9AC79 /* BEObjectConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7621CF694F100B9AC79 /* BEObjectConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7651CF694F100B9AC79 /* BEObjectConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7631CF694F100B9AC79 /* BEObjectConstant.m */; };
+		278CC7691CF69A0A00B9AC79 /* BEUserConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7671CF69A0A00B9AC79 /* BEUserConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC76A1CF69A0A00B9AC79 /* BEUserConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7681CF69A0A00B9AC79 /* BEUserConstants.m */; };
+		278CC76D1CF69BA300B9AC79 /* BEUserState_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC76B1CF69BA300B9AC79 /* BEUserState_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7711CF69DEF00B9AC79 /* BEObjectPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC76F1CF69DEF00B9AC79 /* BEObjectPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7751CF69E2600B9AC79 /* BEMulticastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7731CF69E2600B9AC79 /* BEMulticastDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7761CF69E2600B9AC79 /* BEMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7741CF69E2600B9AC79 /* BEMulticastDelegate.m */; };
+		278CC7791CF6B0BF00B9AC79 /* BEUser+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7771CF6B0BF00B9AC79 /* BEUser+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC77D1CF6B1BD00B9AC79 /* BEObject+Synchronous.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC77B1CF6B1BD00B9AC79 /* BEObject+Synchronous.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7811CF6DDF400B9AC79 /* BEErrorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC77F1CF6DDF400B9AC79 /* BEErrorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7821CF6DDF400B9AC79 /* BEErrorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7801CF6DDF400B9AC79 /* BEErrorUtilities.m */; };
+		278CC7851CF6DF1900B9AC79 /* BEObject+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7831CF6DF1900B9AC79 /* BEObject+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7891CF6E03D00B9AC79 /* BERESTUserCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7871CF6E03D00B9AC79 /* BERESTUserCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC78A1CF6E03D00B9AC79 /* BERESTUserCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7881CF6E03D00B9AC79 /* BERESTUserCommand.m */; };
+		278CC78F1CF6E32400B9AC79 /* BESessionUtitlites.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC78D1CF6E32400B9AC79 /* BESessionUtitlites.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7901CF6E32400B9AC79 /* BESessionUtitlites.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC78E1CF6E32400B9AC79 /* BESessionUtitlites.m */; };
+		278CC7931CF6E3B900B9AC79 /* BETaskQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7911CF6E3B900B9AC79 /* BETaskQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7941CF6E3B900B9AC79 /* BETaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7921CF6E3B900B9AC79 /* BETaskQueue.m */; };
+		278CC7981CF6E57B00B9AC79 /* BEUserAuthenticationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7961CF6E57B00B9AC79 /* BEUserAuthenticationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7991CF6E57B00B9AC79 /* BEUserAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7971CF6E57B00B9AC79 /* BEUserAuthenticationController.m */; };
+		278CC7A31CF6EA3200B9AC79 /* BEUserFileCodingLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7A11CF6EA3200B9AC79 /* BEUserFileCodingLogic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7A41CF6EA3200B9AC79 /* BEUserFileCodingLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7A21CF6EA3200B9AC79 /* BEUserFileCodingLogic.m */; };
+		278CC7A71CF6EAC400B9AC79 /* BEObjectFileCodingLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7A51CF6EAC400B9AC79 /* BEObjectFileCodingLogic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7A81CF6EAC400B9AC79 /* BEObjectFileCodingLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7A61CF6EAC400B9AC79 /* BEObjectFileCodingLogic.m */; };
+		278CC7AB1CF6EC9800B9AC79 /* CSBM_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7A91CF6EC9800B9AC79 /* CSBM_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7AF1CF6F60C00B9AC79 /* BEQuery+Deprecated.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7AD1CF6F60C00B9AC79 /* BEQuery+Deprecated.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7B41CF6F71A00B9AC79 /* BEMutableQueryState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7B21CF6F71A00B9AC79 /* BEMutableQueryState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7B51CF6F71A00B9AC79 /* BEMutableQueryState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7B31CF6F71A00B9AC79 /* BEMutableQueryState.m */; };
+		278CC7B81CF6F7C800B9AC79 /* BEQueryState.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7B61CF6F7C800B9AC79 /* BEQueryState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7B91CF6F7C800B9AC79 /* BEQueryState.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7B71CF6F7C800B9AC79 /* BEQueryState.m */; };
+		278CC7BC1CF6F94900B9AC79 /* BEQueryState_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7BA1CF6F94900B9AC79 /* BEQueryState_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7C01CF6FA4100B9AC79 /* BEQueryConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7BE1CF6FA4100B9AC79 /* BEQueryConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7C11CF6FA4100B9AC79 /* BEQueryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7BF1CF6FA4100B9AC79 /* BEQueryConstants.m */; };
+		278CC7C51CF6FB4900B9AC79 /* BEQueryController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7C31CF6FB4900B9AC79 /* BEQueryController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7C61CF6FB4900B9AC79 /* BEQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7C41CF6FB4900B9AC79 /* BEQueryController.m */; };
+		278CC7C91CF6FBFF00B9AC79 /* BERESTQueryCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7C71CF6FBFF00B9AC79 /* BERESTQueryCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7CA1CF6FBFF00B9AC79 /* BERESTQueryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7C81CF6FBFF00B9AC79 /* BERESTQueryCommand.m */; };
+		278CC7CE1CF6FD9F00B9AC79 /* BEQueryUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7CC1CF6FD9F00B9AC79 /* BEQueryUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7CF1CF6FD9F00B9AC79 /* BEQueryUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7CD1CF6FD9F00B9AC79 /* BEQueryUtilities.m */; };
+		278CC7D21CF6FED600B9AC79 /* CSBMInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7D01CF6FED600B9AC79 /* CSBMInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7D61CF6FF6800B9AC79 /* BECommandCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7D41CF6FF6800B9AC79 /* BECommandCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7D71CF6FF6800B9AC79 /* BECommandCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7D51CF6FF6800B9AC79 /* BECommandCache.m */; };
+		278CC7DA1CF6FFAB00B9AC79 /* BEEventuallyQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7D81CF6FFAB00B9AC79 /* BEEventuallyQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7DB1CF6FFAB00B9AC79 /* BEEventuallyQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7D91CF6FFAB00B9AC79 /* BEEventuallyQueue.m */; };
+		278CC7DE1CF7006100B9AC79 /* BEEventuallyQueue_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7DC1CF7006100B9AC79 /* BEEventuallyQueue_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7E21CF7030100B9AC79 /* CSBMModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7E01CF7030100B9AC79 /* CSBMModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7E31CF7030100B9AC79 /* CSBMModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7E11CF7030100B9AC79 /* CSBMModule.m */; };
+		278CC7E61CF7061A00B9AC79 /* BECacheQueryController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7E41CF7061A00B9AC79 /* BECacheQueryController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7E71CF7061A00B9AC79 /* BECacheQueryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7E51CF7061A00B9AC79 /* BECacheQueryController.m */; };
+		278CC7EA1CF707B900B9AC79 /* BEJSONSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7E81CF707B900B9AC79 /* BEJSONSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7EB1CF707B900B9AC79 /* BEJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7E91CF707B900B9AC79 /* BEJSONSerialization.m */; };
+		278CC7EF1CF70A0D00B9AC79 /* BEKeyValueCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7ED1CF70A0D00B9AC79 /* BEKeyValueCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7F01CF70A0D00B9AC79 /* BEKeyValueCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7EE1CF70A0D00B9AC79 /* BEKeyValueCache.m */; };
+		278CC7F31CF70A4500B9AC79 /* BEKeyValueCache_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7F11CF70A4500B9AC79 /* BEKeyValueCache_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7F71CF70C0A00B9AC79 /* BEObjectController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7F51CF70C0A00B9AC79 /* BEObjectController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7F81CF70C0A00B9AC79 /* BEObjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7F61CF70C0A00B9AC79 /* BEObjectController.m */; };
+		278CC7FB1CF70C6A00B9AC79 /* BEObjectController_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7F91CF70C6A00B9AC79 /* BEObjectController_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC7FF1CF70D0600B9AC79 /* BERESTObjectCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC7FD1CF70D0600B9AC79 /* BERESTObjectCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8001CF70D0600B9AC79 /* BERESTObjectCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC7FE1CF70D0600B9AC79 /* BERESTObjectCommand.m */; };
+		278CC8051CF70FB900B9AC79 /* BEConfigController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8031CF70FB900B9AC79 /* BEConfigController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8061CF70FB900B9AC79 /* BEConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8041CF70FB900B9AC79 /* BEConfigController.m */; };
+		278CC8091CF7107900B9AC79 /* BEConfig_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8071CF7107900B9AC79 /* BEConfig_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC80D1CF710B700B9AC79 /* BEConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC80B1CF710B700B9AC79 /* BEConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC80E1CF710B700B9AC79 /* BEConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC80C1CF710B700B9AC79 /* BEConfig.m */; };
+		278CC8111CF7126E00B9AC79 /* BECurrentConfigController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC80F1CF7126E00B9AC79 /* BECurrentConfigController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8121CF7126E00B9AC79 /* BECurrentConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8101CF7126E00B9AC79 /* BECurrentConfigController.m */; };
+		278CC8151CF7139900B9AC79 /* BERESTConfigCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8131CF7139900B9AC79 /* BERESTConfigCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8161CF7139900B9AC79 /* BERESTConfigCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8141CF7139900B9AC79 /* BERESTConfigCommand.m */; };
+		278CC81A1CF7152100B9AC79 /* BEObjectBatchController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8181CF7152100B9AC79 /* BEObjectBatchController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC81B1CF7152100B9AC79 /* BEObjectBatchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8191CF7152100B9AC79 /* BEObjectBatchController.m */; };
+		278CC81E1CF7161200B9AC79 /* BERESTObjectBatchCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC81C1CF7161200B9AC79 /* BERESTObjectBatchCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC81F1CF7161200B9AC79 /* BERESTObjectBatchCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC81D1CF7161200B9AC79 /* BERESTObjectBatchCommand.m */; };
+		278CC8231CF7168E00B9AC79 /* BEURLConstructor.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8211CF7168E00B9AC79 /* BEURLConstructor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8241CF7168E00B9AC79 /* BEURLConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8221CF7168E00B9AC79 /* BEURLConstructor.m */; };
+		278CC8281CF72D3B00B9AC79 /* BEObjectSubclassingController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8261CF72D3B00B9AC79 /* BEObjectSubclassingController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8291CF72D3B00B9AC79 /* BEObjectSubclassingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8271CF72D3B00B9AC79 /* BEObjectSubclassingController.m */; };
+		278CC82C1CF72DC600B9AC79 /* BEObjectSubclassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC82A1CF72DC600B9AC79 /* BEObjectSubclassInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC82D1CF72DC600B9AC79 /* BEObjectSubclassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC82B1CF72DC600B9AC79 /* BEObjectSubclassInfo.m */; };
+		278CC8311CF72F5200B9AC79 /* BESessionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC82F1CF72F5200B9AC79 /* BESessionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8321CF72F5200B9AC79 /* BESessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8301CF72F5200B9AC79 /* BESessionController.m */; };
+		278CC8351CF72FF400B9AC79 /* BERESTSessionCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8331CF72FF400B9AC79 /* BERESTSessionCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8361CF72FF400B9AC79 /* BERESTSessionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8341CF72FF400B9AC79 /* BERESTSessionCommand.m */; };
+		278CC8391CF7306300B9AC79 /* BESession.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8371CF7306300B9AC79 /* BESession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC83A1CF7306300B9AC79 /* BESession.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8381CF7306300B9AC79 /* BESession.m */; };
+		278CC83E1CF7386800B9AC79 /* BEInstallationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC83C1CF7386800B9AC79 /* BEInstallationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC83F1CF7386800B9AC79 /* BEInstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC83D1CF7386800B9AC79 /* BEInstallationController.m */; };
+		278CC8431CF7399100B9AC79 /* BECurrentInstallationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8411CF7399100B9AC79 /* BECurrentInstallationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8441CF7399100B9AC79 /* BECurrentInstallationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8421CF7399100B9AC79 /* BECurrentInstallationController.m */; };
+		278CC8471CF73BBA00B9AC79 /* BEInstallationPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8451CF73BBA00B9AC79 /* BEInstallationPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC84B1CF73BF200B9AC79 /* BEInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8491CF73BF200B9AC79 /* BEInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC84C1CF73BF200B9AC79 /* BEInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC84A1CF73BF200B9AC79 /* BEInstallation.m */; };
+		278CC8501CF73D0400B9AC79 /* BEInstallationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC84E1CF73D0400B9AC79 /* BEInstallationConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8511CF73D0400B9AC79 /* BEInstallationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC84F1CF73D0400B9AC79 /* BEInstallationConstants.m */; };
+		278CC8551CF73D9D00B9AC79 /* BEObjectEstimateData.h in Headers */ = {isa = PBXBuildFile; fileRef = 278CC8531CF73D9D00B9AC79 /* BEObjectEstimateData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278CC8561CF73D9D00B9AC79 /* BEObjectEstimateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 278CC8541CF73D9D00B9AC79 /* BEObjectEstimateData.m */; };
+		278CC8581CF7435800B9AC79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278CC8571CF7435800B9AC79 /* Foundation.framework */; };
+		3F988E83A3E4575C58FD8A91 /* libPods-BEFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC83B0EF46B092FD89483E78 /* libPods-BEFramework.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		278CC65D1CF52CB700B9AC79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 278CC6421CF5292900B9AC79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 278CC6491CF5292900B9AC79;
+			remoteInfo = BEFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		278CC6481CF5292900B9AC79 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				278CC64E1CF5292900B9AC79 /* BEFramework.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		278CC64A1CF5292900B9AC79 /* libBEFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBEFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		278CC64D1CF5292900B9AC79 /* BEFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BEFramework.h; sourceTree = "<group>"; };
+		278CC6601CF52E5600B9AC79 /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/Bolts/libBolts.a"; sourceTree = "<group>"; };
+		278CC6611CF52E5600B9AC79 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = "Pods/../build/Debug-iphoneos/OCMock/libOCMock.a"; sourceTree = "<group>"; };
+		278CC6671CF5486A00B9AC79 /* CSBM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBM.h; sourceTree = "<group>"; };
+		278CC6681CF5486A00B9AC79 /* CSBM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBM.m; sourceTree = "<group>"; };
+		278CC66F1CF548F800B9AC79 /* BEClientConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEClientConfiguration.h; sourceTree = "<group>"; };
+		278CC6701CF548F800B9AC79 /* BEClientConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEClientConfiguration.m; sourceTree = "<group>"; };
+		278CC6731CF5490D00B9AC79 /* BEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEConstants.h; sourceTree = "<group>"; };
+		278CC6741CF5490D00B9AC79 /* BEConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEConstants.m; sourceTree = "<group>"; };
+		278CC67E1CF54ED100B9AC79 /* BECommandRunningConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECommandRunningConstants.h; path = Internal/Commands/CommandRunner/BECommandRunningConstants.h; sourceTree = "<group>"; };
+		278CC67F1CF54ED100B9AC79 /* BECommandRunningConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECommandRunningConstants.m; path = Internal/Commands/CommandRunner/BECommandRunningConstants.m; sourceTree = "<group>"; };
+		278CC6821CF54FBA00B9AC79 /* BEMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BEMacros.h; path = Internal/BEMacros.h; sourceTree = "<group>"; };
+		278CC6831CF5500500B9AC79 /* BEAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BEAssert.h; path = Internal/BEAssert.h; sourceTree = "<group>"; };
+		278CC6841CF5529900B9AC79 /* BEHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEHash.h; path = Internal/BEHash.h; sourceTree = "<group>"; };
+		278CC6851CF5529900B9AC79 /* BEHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEHash.m; path = Internal/BEHash.m; sourceTree = "<group>"; };
+		278CC68A1CF553AC00B9AC79 /* BEObjectUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectUtilities.h; path = Internal/Object/Utilities/BEObjectUtilities.h; sourceTree = "<group>"; };
+		278CC68B1CF553AC00B9AC79 /* BEObjectUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectUtilities.m; path = Internal/Object/Utilities/BEObjectUtilities.m; sourceTree = "<group>"; };
+		278CC68F1CF5547D00B9AC79 /* BEOperationSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEOperationSet.h; path = Internal/Object/OperationSet/BEOperationSet.h; sourceTree = "<group>"; };
+		278CC6901CF5547D00B9AC79 /* BEOperationSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEOperationSet.m; path = Internal/Object/OperationSet/BEOperationSet.m; sourceTree = "<group>"; };
+		278CC6931CF554D000B9AC79 /* BEEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEncoder.h; path = Internal/BEEncoder.h; sourceTree = "<group>"; };
+		278CC6941CF554D000B9AC79 /* BEEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEncoder.m; path = Internal/BEEncoder.m; sourceTree = "<group>"; };
+		278CC6971CF5569C00B9AC79 /* BEObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEObject.h; sourceTree = "<group>"; };
+		278CC6981CF5569C00B9AC79 /* BEObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEObject.m; sourceTree = "<group>"; };
+		278CC69B1CF559CF00B9AC79 /* BEBase64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEBase64Encoder.h; path = Internal/BEBase64Encoder.h; sourceTree = "<group>"; };
+		278CC69C1CF559CF00B9AC79 /* BEBase64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEBase64Encoder.m; path = Internal/BEBase64Encoder.m; sourceTree = "<group>"; };
+		278CC69F1CF55A0B00B9AC79 /* BEDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEDateFormatter.h; path = Internal/BEDateFormatter.h; sourceTree = "<group>"; };
+		278CC6A01CF55A0B00B9AC79 /* BEDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEDateFormatter.m; path = Internal/BEDateFormatter.m; sourceTree = "<group>"; };
+		278CC6A31CF55D7C00B9AC79 /* BEDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEDecoder.h; path = Internal/BEDecoder.h; sourceTree = "<group>"; };
+		278CC6A41CF55D7C00B9AC79 /* BEDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEDecoder.m; path = Internal/BEDecoder.m; sourceTree = "<group>"; };
+		278CC6A81CF5967600B9AC79 /* BEFieldOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEFieldOperation.h; path = Internal/FieldOperation/BEFieldOperation.h; sourceTree = "<group>"; };
+		278CC6A91CF5967600B9AC79 /* BEFieldOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEFieldOperation.m; path = Internal/FieldOperation/BEFieldOperation.m; sourceTree = "<group>"; };
+		278CC6AC1CF59CC100B9AC79 /* BEInternalUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEInternalUtils.h; path = Internal/BEInternalUtils.h; sourceTree = "<group>"; };
+		278CC6AD1CF59CC100B9AC79 /* BEInternalUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEInternalUtils.m; path = Internal/BEInternalUtils.m; sourceTree = "<group>"; };
+		278CC6B51CF59FF600B9AC79 /* BEClientConfiguration_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEClientConfiguration_Private.h; path = Internal/BEClientConfiguration_Private.h; sourceTree = "<group>"; };
+		278CC6B91CF5B04200B9AC79 /* BEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEManager.h; path = Internal/BEManager.h; sourceTree = "<group>"; };
+		278CC6BA1CF5B04200B9AC79 /* BEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEManager.m; path = Internal/BEManager.m; sourceTree = "<group>"; };
+		278CC6BD1CF5B18400B9AC79 /* BEDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BEDataProvider.h; path = Internal/BEDataProvider.h; sourceTree = "<group>"; };
+		278CC6BE1CF5B1E100B9AC79 /* BECommandRunning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECommandRunning.h; path = Internal/Commands/CommandRunner/BECommandRunning.h; sourceTree = "<group>"; };
+		278CC6BF1CF5B1E100B9AC79 /* BECommandRunning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECommandRunning.m; path = Internal/Commands/CommandRunner/BECommandRunning.m; sourceTree = "<group>"; };
+		278CC6C41CF5B46C00B9AC79 /* BEInstallationIdentifierStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEInstallationIdentifierStore.h; path = Internal/Installation/InstallationIdentifierStore/BEInstallationIdentifierStore.h; sourceTree = "<group>"; };
+		278CC6C51CF5B46C00B9AC79 /* BEInstallationIdentifierStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEInstallationIdentifierStore.m; path = Internal/Installation/InstallationIdentifierStore/BEInstallationIdentifierStore.m; sourceTree = "<group>"; };
+		278CC6C81CF5BDDA00B9AC79 /* BECoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECoreManager.h; path = Internal/BECoreManager.h; sourceTree = "<group>"; };
+		278CC6C91CF5BDDA00B9AC79 /* BECoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECoreManager.m; path = Internal/BECoreManager.m; sourceTree = "<group>"; };
+		278CC6CC1CF5DBB000B9AC79 /* BEBaseState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEBaseState.h; path = Internal/BEBaseState.h; sourceTree = "<group>"; };
+		278CC6CD1CF5DBB000B9AC79 /* BEBaseState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEBaseState.m; path = Internal/BEBaseState.m; sourceTree = "<group>"; };
+		278CC6D11CF5DD4900B9AC79 /* BEPropertyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEPropertyInfo.h; path = Internal/PropertyInfo/BEPropertyInfo.h; sourceTree = "<group>"; };
+		278CC6D21CF5DD4900B9AC79 /* BEPropertyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEPropertyInfo.m; path = Internal/PropertyInfo/BEPropertyInfo.m; sourceTree = "<group>"; };
+		278CC6D51CF5DDC600B9AC79 /* BEPropeprtyInfo_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEPropeprtyInfo_Private.h; path = Internal/PropertyInfo/BEPropeprtyInfo_Private.h; sourceTree = "<group>"; };
+		278CC6D91CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEPropertyInfo_Runtime.h; path = Internal/PropertyInfo/BEPropertyInfo_Runtime.h; sourceTree = "<group>"; };
+		278CC6DA1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEPropertyInfo_Runtime.m; path = Internal/PropertyInfo/BEPropertyInfo_Runtime.m; sourceTree = "<group>"; };
+		278CC6DD1CF5E21300B9AC79 /* BENetworkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BENetworkCommand.h; path = Internal/Commands/BENetworkCommand.h; sourceTree = "<group>"; };
+		278CC6E31CF5E2D200B9AC79 /* BERESTCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTCommand.h; path = Internal/Commands/REST/Command/BERESTCommand.h; sourceTree = "<group>"; };
+		278CC6E41CF5E2D200B9AC79 /* BERESTCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTCommand.m; path = Internal/Commands/REST/Command/BERESTCommand.m; sourceTree = "<group>"; };
+		278CC6E71CF5E36800B9AC79 /* BERESTCommand_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTCommand_Private.h; path = Internal/Commands/REST/Command/BERESTCommand_Private.h; sourceTree = "<group>"; };
+		278CC6ED1CF5E42200B9AC79 /* BEHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BEHTTPRequest.h; path = Internal/HTTPRequest/RequestConstructor/BEHTTPRequest.h; sourceTree = "<group>"; };
+		278CC6EE1CF5EDED00B9AC79 /* BECommandResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECommandResult.h; path = Internal/Commands/BECommandResult.h; sourceTree = "<group>"; };
+		278CC6EF1CF5EDED00B9AC79 /* BECommandResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECommandResult.m; path = Internal/Commands/BECommandResult.m; sourceTree = "<group>"; };
+		278CC6F21CF5EEA400B9AC79 /* BEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEUser.h; sourceTree = "<group>"; };
+		278CC6F31CF5EEA400B9AC79 /* BEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEUser.m; sourceTree = "<group>"; };
+		278CC6F71CF5EF1A00B9AC79 /* BESubclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BESubclassing.h; sourceTree = "<group>"; };
+		278CC6FB1CF5EF5800B9AC79 /* BEQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEQuery.h; sourceTree = "<group>"; };
+		278CC6FC1CF5EF5800B9AC79 /* BEQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEQuery.m; sourceTree = "<group>"; };
+		278CC7001CF5FBC900B9AC79 /* BEQueryPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryPrivate.h; path = Internal/Query/BEQueryPrivate.h; sourceTree = "<group>"; };
+		278CC7041CF5FD8300B9AC79 /* BEQuery+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BEQuery+Synchronous.h"; sourceTree = "<group>"; };
+		278CC7091CF601C700B9AC79 /* BEUserPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserPrivate.h; path = Internal/User/BEUserPrivate.h; sourceTree = "<group>"; };
+		278CC70E1CF6038200B9AC79 /* BEUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserController.h; path = Internal/User/Controller/BEUserController.h; sourceTree = "<group>"; };
+		278CC70F1CF6038200B9AC79 /* BEUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEUserController.m; path = Internal/User/Controller/BEUserController.m; sourceTree = "<group>"; };
+		278CC7131CF6040C00B9AC79 /* BEObjectControlling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectControlling.h; path = Internal/Object/Controller/BEObjectControlling.h; sourceTree = "<group>"; };
+		278CC7181CF6074100B9AC79 /* BFTask+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BFTask+Private.h"; path = "Internal/Tasks/BFTask+Private.h"; sourceTree = "<group>"; };
+		278CC7191CF6074100B9AC79 /* BFTask+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BFTask+Private.m"; path = "Internal/Tasks/BFTask+Private.m"; sourceTree = "<group>"; };
+		278CC71D1CF6084800B9AC79 /* BELogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BELogging.h; path = Internal/Logging/BELogging.h; sourceTree = "<group>"; };
+		278CC71E1CF6088A00B9AC79 /* BELogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BELogger.h; path = Internal/Logging/BELogger.h; sourceTree = "<group>"; };
+		278CC71F1CF6088A00B9AC79 /* BELogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BELogger.m; path = Internal/Logging/BELogger.m; sourceTree = "<group>"; };
+		278CC7221CF6091D00B9AC79 /* BEApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEApplication.h; path = Internal/BEApplication.h; sourceTree = "<group>"; };
+		278CC7231CF6091D00B9AC79 /* BEApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEApplication.m; path = Internal/BEApplication.m; sourceTree = "<group>"; };
+		278CC7271CF60E4D00B9AC79 /* BECurrentUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECurrentUserController.h; path = Internal/User/CurrentUserController/BECurrentUserController.h; sourceTree = "<group>"; };
+		278CC7281CF60E4D00B9AC79 /* BECurrentUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECurrentUserController.m; path = Internal/User/CurrentUserController/BECurrentUserController.m; sourceTree = "<group>"; };
+		278CC72C1CF60EAA00B9AC79 /* BECurrentObjectControlling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECurrentObjectControlling.h; path = Internal/Object/CurrentController/BECurrentObjectControlling.h; sourceTree = "<group>"; };
+		278CC7331CF6107B00B9AC79 /* BEAnonymousUtils_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEAnonymousUtils_Private.h; path = Internal/User/AuthenticationProviders/Providers/Anonymous/BEAnonymousUtils_Private.h; sourceTree = "<group>"; };
+		278CC7371CF6110E00B9AC79 /* BEAnonymousUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEAnonymousUtils.h; sourceTree = "<group>"; };
+		278CC7381CF6110E00B9AC79 /* BEAnonymousUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEAnonymousUtils.m; sourceTree = "<group>"; };
+		278CC73B1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEAnonymousAuthenticationProvider.h; path = Internal/User/AuthenticationProviders/Providers/Anonymous/BEAnonymousAuthenticationProvider.h; sourceTree = "<group>"; };
+		278CC73C1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEAnonymousAuthenticationProvider.m; path = Internal/User/AuthenticationProviders/Providers/Anonymous/BEAnonymousAuthenticationProvider.m; sourceTree = "<group>"; };
+		278CC73F1CF6120A00B9AC79 /* BEUserAuthenticationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEUserAuthenticationDelegate.h; sourceTree = "<group>"; };
+		278CC7431CF678BA00B9AC79 /* BEAsyncTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEAsyncTaskQueue.h; path = Internal/BEAsyncTaskQueue.h; sourceTree = "<group>"; };
+		278CC7441CF678BA00B9AC79 /* BEAsyncTaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEAsyncTaskQueue.m; path = Internal/BEAsyncTaskQueue.m; sourceTree = "<group>"; };
+		278CC7481CF679D000B9AC79 /* BEMutableUserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMutableUserState.h; path = Internal/User/State/BEMutableUserState.h; sourceTree = "<group>"; };
+		278CC7491CF679D000B9AC79 /* BEMutableUserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMutableUserState.m; path = Internal/User/State/BEMutableUserState.m; sourceTree = "<group>"; };
+		278CC74C1CF67BBF00B9AC79 /* BEUserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserState.h; path = Internal/User/State/BEUserState.h; sourceTree = "<group>"; };
+		278CC74D1CF67BBF00B9AC79 /* BEUserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEUserState.m; path = Internal/User/State/BEUserState.m; sourceTree = "<group>"; };
+		278CC7501CF67BF200B9AC79 /* BEObjectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectState.h; path = Internal/User/State/BEObjectState.h; sourceTree = "<group>"; };
+		278CC7511CF67BF200B9AC79 /* BEObjectState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectState.m; path = Internal/User/State/BEObjectState.m; sourceTree = "<group>"; };
+		278CC7541CF67CAF00B9AC79 /* BEObjectState_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectState_Private.h; path = Internal/User/State/BEObjectState_Private.h; sourceTree = "<group>"; };
+		278CC7591CF67E0F00B9AC79 /* BEMutableObjectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMutableObjectState.h; path = Internal/Object/State/BEMutableObjectState.h; sourceTree = "<group>"; };
+		278CC75A1CF67E0F00B9AC79 /* BEMutableObjectState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMutableObjectState.m; path = Internal/Object/State/BEMutableObjectState.m; sourceTree = "<group>"; };
+		278CC75D1CF691B700B9AC79 /* BEObjectState_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectState_Private.h; path = Internal/Object/State/BEObjectState_Private.h; sourceTree = "<group>"; };
+		278CC7621CF694F100B9AC79 /* BEObjectConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectConstant.h; path = Internal/Object/Constant/BEObjectConstant.h; sourceTree = "<group>"; };
+		278CC7631CF694F100B9AC79 /* BEObjectConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectConstant.m; path = Internal/Object/Constant/BEObjectConstant.m; sourceTree = "<group>"; };
+		278CC7671CF69A0A00B9AC79 /* BEUserConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserConstants.h; path = Internal/User/Constants/BEUserConstants.h; sourceTree = "<group>"; };
+		278CC7681CF69A0A00B9AC79 /* BEUserConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEUserConstants.m; path = Internal/User/Constants/BEUserConstants.m; sourceTree = "<group>"; };
+		278CC76B1CF69BA300B9AC79 /* BEUserState_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserState_Private.h; path = Internal/User/State/BEUserState_Private.h; sourceTree = "<group>"; };
+		278CC76F1CF69DEF00B9AC79 /* BEObjectPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectPrivate.h; path = Internal/Object/BEObjectPrivate.h; sourceTree = "<group>"; };
+		278CC7731CF69E2600B9AC79 /* BEMulticastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMulticastDelegate.h; path = Internal/BEMulticastDelegate.h; sourceTree = "<group>"; };
+		278CC7741CF69E2600B9AC79 /* BEMulticastDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMulticastDelegate.m; path = Internal/BEMulticastDelegate.m; sourceTree = "<group>"; };
+		278CC7771CF6B0BF00B9AC79 /* BEUser+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BEUser+Synchronous.h"; sourceTree = "<group>"; };
+		278CC77B1CF6B1BD00B9AC79 /* BEObject+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BEObject+Synchronous.h"; sourceTree = "<group>"; };
+		278CC77F1CF6DDF400B9AC79 /* BEErrorUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEErrorUtilities.h; path = Internal/BEErrorUtilities.h; sourceTree = "<group>"; };
+		278CC7801CF6DDF400B9AC79 /* BEErrorUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEErrorUtilities.m; path = Internal/BEErrorUtilities.m; sourceTree = "<group>"; };
+		278CC7831CF6DF1900B9AC79 /* BEObject+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BEObject+Subclass.h"; sourceTree = "<group>"; };
+		278CC7871CF6E03D00B9AC79 /* BERESTUserCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTUserCommand.h; path = Internal/Commands/REST/Command/BERESTUserCommand.h; sourceTree = "<group>"; };
+		278CC7881CF6E03D00B9AC79 /* BERESTUserCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTUserCommand.m; path = Internal/Commands/REST/Command/BERESTUserCommand.m; sourceTree = "<group>"; };
+		278CC78D1CF6E32400B9AC79 /* BESessionUtitlites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BESessionUtitlites.h; path = Internal/Session/Utilities/BESessionUtitlites.h; sourceTree = "<group>"; };
+		278CC78E1CF6E32400B9AC79 /* BESessionUtitlites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BESessionUtitlites.m; path = Internal/Session/Utilities/BESessionUtitlites.m; sourceTree = "<group>"; };
+		278CC7911CF6E3B900B9AC79 /* BETaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BETaskQueue.h; path = Internal/BETaskQueue.h; sourceTree = "<group>"; };
+		278CC7921CF6E3B900B9AC79 /* BETaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BETaskQueue.m; path = Internal/BETaskQueue.m; sourceTree = "<group>"; };
+		278CC7961CF6E57B00B9AC79 /* BEUserAuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserAuthenticationController.h; path = Internal/User/AuthenticationProviders/Controller/BEUserAuthenticationController.h; sourceTree = "<group>"; };
+		278CC7971CF6E57B00B9AC79 /* BEUserAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEUserAuthenticationController.m; path = Internal/User/AuthenticationProviders/Controller/BEUserAuthenticationController.m; sourceTree = "<group>"; };
+		278CC79E1CF6E7FF00B9AC79 /* BECoreDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BECoreDataProvider.h; path = Internal/BECoreDataProvider.h; sourceTree = "<group>"; };
+		278CC7A11CF6EA3200B9AC79 /* BEUserFileCodingLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEUserFileCodingLogic.h; path = Internal/User/Coder/File/BEUserFileCodingLogic.h; sourceTree = "<group>"; };
+		278CC7A21CF6EA3200B9AC79 /* BEUserFileCodingLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEUserFileCodingLogic.m; path = Internal/User/Coder/File/BEUserFileCodingLogic.m; sourceTree = "<group>"; };
+		278CC7A51CF6EAC400B9AC79 /* BEObjectFileCodingLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectFileCodingLogic.h; path = Internal/User/Coder/File/BEObjectFileCodingLogic.h; sourceTree = "<group>"; };
+		278CC7A61CF6EAC400B9AC79 /* BEObjectFileCodingLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectFileCodingLogic.m; path = Internal/User/Coder/File/BEObjectFileCodingLogic.m; sourceTree = "<group>"; };
+		278CC7A91CF6EC9800B9AC79 /* CSBM_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSBM_Private.h; path = Internal/CSBM_Private.h; sourceTree = "<group>"; };
+		278CC7AD1CF6F60C00B9AC79 /* BEQuery+Deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BEQuery+Deprecated.h"; sourceTree = "<group>"; };
+		278CC7B21CF6F71A00B9AC79 /* BEMutableQueryState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMutableQueryState.h; path = Internal/Query/State/BEMutableQueryState.h; sourceTree = "<group>"; };
+		278CC7B31CF6F71A00B9AC79 /* BEMutableQueryState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMutableQueryState.m; path = Internal/Query/State/BEMutableQueryState.m; sourceTree = "<group>"; };
+		278CC7B61CF6F7C800B9AC79 /* BEQueryState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryState.h; path = Internal/Query/State/BEQueryState.h; sourceTree = "<group>"; };
+		278CC7B71CF6F7C800B9AC79 /* BEQueryState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEQueryState.m; path = Internal/Query/State/BEQueryState.m; sourceTree = "<group>"; };
+		278CC7BA1CF6F94900B9AC79 /* BEQueryState_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryState_Private.h; path = Internal/Query/State/BEQueryState_Private.h; sourceTree = "<group>"; };
+		278CC7BE1CF6FA4100B9AC79 /* BEQueryConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryConstants.h; path = Internal/Query/BEQueryConstants.h; sourceTree = "<group>"; };
+		278CC7BF1CF6FA4100B9AC79 /* BEQueryConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEQueryConstants.m; path = Internal/Query/BEQueryConstants.m; sourceTree = "<group>"; };
+		278CC7C31CF6FB4900B9AC79 /* BEQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryController.h; path = Internal/Query/Controller/BEQueryController.h; sourceTree = "<group>"; };
+		278CC7C41CF6FB4900B9AC79 /* BEQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEQueryController.m; path = Internal/Query/Controller/BEQueryController.m; sourceTree = "<group>"; };
+		278CC7C71CF6FBFF00B9AC79 /* BERESTQueryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTQueryCommand.h; path = Internal/Commands/REST/Command/BERESTQueryCommand.h; sourceTree = "<group>"; };
+		278CC7C81CF6FBFF00B9AC79 /* BERESTQueryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTQueryCommand.m; path = Internal/Commands/REST/Command/BERESTQueryCommand.m; sourceTree = "<group>"; };
+		278CC7CC1CF6FD9F00B9AC79 /* BEQueryUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEQueryUtilities.h; path = Internal/Query/Utilities/BEQueryUtilities.h; sourceTree = "<group>"; };
+		278CC7CD1CF6FD9F00B9AC79 /* BEQueryUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEQueryUtilities.m; path = Internal/Query/Utilities/BEQueryUtilities.m; sourceTree = "<group>"; };
+		278CC7D01CF6FED600B9AC79 /* CSBMInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBMInternal.h; sourceTree = "<group>"; };
+		278CC7D41CF6FF6800B9AC79 /* BECommandCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECommandCache.h; path = Internal/Commands/BECommandCache.h; sourceTree = "<group>"; };
+		278CC7D51CF6FF6800B9AC79 /* BECommandCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECommandCache.m; path = Internal/Commands/BECommandCache.m; sourceTree = "<group>"; };
+		278CC7D81CF6FFAB00B9AC79 /* BEEventuallyQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEventuallyQueue.h; path = Internal/Commands/BEEventuallyQueue.h; sourceTree = "<group>"; };
+		278CC7D91CF6FFAB00B9AC79 /* BEEventuallyQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEEventuallyQueue.m; path = Internal/Commands/BEEventuallyQueue.m; sourceTree = "<group>"; };
+		278CC7DC1CF7006100B9AC79 /* BEEventuallyQueue_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEEventuallyQueue_Private.h; path = Internal/Commands/BEEventuallyQueue_Private.h; sourceTree = "<group>"; };
+		278CC7E01CF7030100B9AC79 /* CSBMModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSBMModule.h; path = Internal/CSBMModule.h; sourceTree = "<group>"; };
+		278CC7E11CF7030100B9AC79 /* CSBMModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSBMModule.m; path = Internal/CSBMModule.m; sourceTree = "<group>"; };
+		278CC7E41CF7061A00B9AC79 /* BECacheQueryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECacheQueryController.h; path = Internal/Query/Controller/BECacheQueryController.h; sourceTree = "<group>"; };
+		278CC7E51CF7061A00B9AC79 /* BECacheQueryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECacheQueryController.m; path = Internal/Query/Controller/BECacheQueryController.m; sourceTree = "<group>"; };
+		278CC7E81CF707B900B9AC79 /* BEJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEJSONSerialization.h; path = Internal/BEJSONSerialization.h; sourceTree = "<group>"; };
+		278CC7E91CF707B900B9AC79 /* BEJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEJSONSerialization.m; path = Internal/BEJSONSerialization.m; sourceTree = "<group>"; };
+		278CC7ED1CF70A0D00B9AC79 /* BEKeyValueCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEKeyValueCache.h; path = Internal/KeyValueCache/BEKeyValueCache.h; sourceTree = "<group>"; };
+		278CC7EE1CF70A0D00B9AC79 /* BEKeyValueCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEKeyValueCache.m; path = Internal/KeyValueCache/BEKeyValueCache.m; sourceTree = "<group>"; };
+		278CC7F11CF70A4500B9AC79 /* BEKeyValueCache_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEKeyValueCache_Private.h; path = Internal/KeyValueCache/BEKeyValueCache_Private.h; sourceTree = "<group>"; };
+		278CC7F51CF70C0A00B9AC79 /* BEObjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectController.h; path = Internal/Object/Controller/BEObjectController.h; sourceTree = "<group>"; };
+		278CC7F61CF70C0A00B9AC79 /* BEObjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectController.m; path = Internal/Object/Controller/BEObjectController.m; sourceTree = "<group>"; };
+		278CC7F91CF70C6A00B9AC79 /* BEObjectController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectController_Private.h; path = Internal/Object/Controller/BEObjectController_Private.h; sourceTree = "<group>"; };
+		278CC7FD1CF70D0600B9AC79 /* BERESTObjectCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTObjectCommand.h; path = Internal/Commands/REST/Command/BERESTObjectCommand.h; sourceTree = "<group>"; };
+		278CC7FE1CF70D0600B9AC79 /* BERESTObjectCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTObjectCommand.m; path = Internal/Commands/REST/Command/BERESTObjectCommand.m; sourceTree = "<group>"; };
+		278CC8031CF70FB900B9AC79 /* BEConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEConfigController.h; path = Internal/Config/Controller/BEConfigController.h; sourceTree = "<group>"; };
+		278CC8041CF70FB900B9AC79 /* BEConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEConfigController.m; path = Internal/Config/Controller/BEConfigController.m; sourceTree = "<group>"; };
+		278CC8071CF7107900B9AC79 /* BEConfig_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEConfig_Private.h; path = Internal/Config/BEConfig_Private.h; sourceTree = "<group>"; };
+		278CC80B1CF710B700B9AC79 /* BEConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEConfig.h; sourceTree = "<group>"; };
+		278CC80C1CF710B700B9AC79 /* BEConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEConfig.m; sourceTree = "<group>"; };
+		278CC80F1CF7126E00B9AC79 /* BECurrentConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECurrentConfigController.h; path = Internal/Config/Controller/BECurrentConfigController.h; sourceTree = "<group>"; };
+		278CC8101CF7126E00B9AC79 /* BECurrentConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECurrentConfigController.m; path = Internal/Config/Controller/BECurrentConfigController.m; sourceTree = "<group>"; };
+		278CC8131CF7139900B9AC79 /* BERESTConfigCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTConfigCommand.h; path = Internal/Commands/REST/Command/BERESTConfigCommand.h; sourceTree = "<group>"; };
+		278CC8141CF7139900B9AC79 /* BERESTConfigCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTConfigCommand.m; path = Internal/Commands/REST/Command/BERESTConfigCommand.m; sourceTree = "<group>"; };
+		278CC8181CF7152100B9AC79 /* BEObjectBatchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectBatchController.h; path = Internal/Object/BatchController/BEObjectBatchController.h; sourceTree = "<group>"; };
+		278CC8191CF7152100B9AC79 /* BEObjectBatchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectBatchController.m; path = Internal/Object/BatchController/BEObjectBatchController.m; sourceTree = "<group>"; };
+		278CC81C1CF7161200B9AC79 /* BERESTObjectBatchCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTObjectBatchCommand.h; path = Internal/Commands/REST/Command/BERESTObjectBatchCommand.h; sourceTree = "<group>"; };
+		278CC81D1CF7161200B9AC79 /* BERESTObjectBatchCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTObjectBatchCommand.m; path = Internal/Commands/REST/Command/BERESTObjectBatchCommand.m; sourceTree = "<group>"; };
+		278CC8211CF7168E00B9AC79 /* BEURLConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEURLConstructor.h; path = Internal/HTTPRequest/URLConstructor/BEURLConstructor.h; sourceTree = "<group>"; };
+		278CC8221CF7168E00B9AC79 /* BEURLConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEURLConstructor.m; path = Internal/HTTPRequest/URLConstructor/BEURLConstructor.m; sourceTree = "<group>"; };
+		278CC8261CF72D3B00B9AC79 /* BEObjectSubclassingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectSubclassingController.h; path = Internal/Object/Subclassing/BEObjectSubclassingController.h; sourceTree = "<group>"; };
+		278CC8271CF72D3B00B9AC79 /* BEObjectSubclassingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectSubclassingController.m; path = Internal/Object/Subclassing/BEObjectSubclassingController.m; sourceTree = "<group>"; };
+		278CC82A1CF72DC600B9AC79 /* BEObjectSubclassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectSubclassInfo.h; path = Internal/Object/Subclassing/BEObjectSubclassInfo.h; sourceTree = "<group>"; };
+		278CC82B1CF72DC600B9AC79 /* BEObjectSubclassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectSubclassInfo.m; path = Internal/Object/Subclassing/BEObjectSubclassInfo.m; sourceTree = "<group>"; };
+		278CC82F1CF72F5200B9AC79 /* BESessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BESessionController.h; path = Internal/Session/Controller/BESessionController.h; sourceTree = "<group>"; };
+		278CC8301CF72F5200B9AC79 /* BESessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BESessionController.m; path = Internal/Session/Controller/BESessionController.m; sourceTree = "<group>"; };
+		278CC8331CF72FF400B9AC79 /* BERESTSessionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BERESTSessionCommand.h; path = Internal/Commands/REST/Command/BERESTSessionCommand.h; sourceTree = "<group>"; };
+		278CC8341CF72FF400B9AC79 /* BERESTSessionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BERESTSessionCommand.m; path = Internal/Commands/REST/Command/BERESTSessionCommand.m; sourceTree = "<group>"; };
+		278CC8371CF7306300B9AC79 /* BESession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BESession.h; sourceTree = "<group>"; };
+		278CC8381CF7306300B9AC79 /* BESession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BESession.m; sourceTree = "<group>"; };
+		278CC83C1CF7386800B9AC79 /* BEInstallationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEInstallationController.h; path = Internal/Installation/Controller/BEInstallationController.h; sourceTree = "<group>"; };
+		278CC83D1CF7386800B9AC79 /* BEInstallationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEInstallationController.m; path = Internal/Installation/Controller/BEInstallationController.m; sourceTree = "<group>"; };
+		278CC8411CF7399100B9AC79 /* BECurrentInstallationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BECurrentInstallationController.h; path = Internal/Installation/CurrentInstallationController/BECurrentInstallationController.h; sourceTree = "<group>"; };
+		278CC8421CF7399100B9AC79 /* BECurrentInstallationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BECurrentInstallationController.m; path = Internal/Installation/CurrentInstallationController/BECurrentInstallationController.m; sourceTree = "<group>"; };
+		278CC8451CF73BBA00B9AC79 /* BEInstallationPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEInstallationPrivate.h; path = Internal/Installation/BEInstallationPrivate.h; sourceTree = "<group>"; };
+		278CC8491CF73BF200B9AC79 /* BEInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEInstallation.h; sourceTree = "<group>"; };
+		278CC84A1CF73BF200B9AC79 /* BEInstallation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEInstallation.m; sourceTree = "<group>"; };
+		278CC84E1CF73D0400B9AC79 /* BEInstallationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEInstallationConstants.h; path = Internal/Installation/Constants/BEInstallationConstants.h; sourceTree = "<group>"; };
+		278CC84F1CF73D0400B9AC79 /* BEInstallationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEInstallationConstants.m; path = Internal/Installation/Constants/BEInstallationConstants.m; sourceTree = "<group>"; };
+		278CC8531CF73D9D00B9AC79 /* BEObjectEstimateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEObjectEstimateData.h; path = Internal/Object/EstimateData/BEObjectEstimateData.h; sourceTree = "<group>"; };
+		278CC8541CF73D9D00B9AC79 /* BEObjectEstimateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEObjectEstimateData.m; path = Internal/Object/EstimateData/BEObjectEstimateData.m; sourceTree = "<group>"; };
+		278CC8571CF7435800B9AC79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C66D2D68993A4E7C48223D26 /* Pods-BEFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-BEFramework/Pods-BEFramework.release.xcconfig"; sourceTree = "<group>"; };
+		CC83B0EF46B092FD89483E78 /* libPods-BEFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BEFramework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52F8AB5ADE9E3CEEC10CACD /* Pods-BEFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BEFramework/Pods-BEFramework.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		278CC6471CF5292900B9AC79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278CC8581CF7435800B9AC79 /* Foundation.framework in Frameworks */,
+				278CC6621CF52E5600B9AC79 /* libBolts.a in Frameworks */,
+				278CC6631CF52E5600B9AC79 /* libOCMock.a in Frameworks */,
+				3F988E83A3E4575C58FD8A91 /* libPods-BEFramework.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		278CC6411CF5292900B9AC79 = {
+			isa = PBXGroup;
+			children = (
+				278CC64C1CF5292900B9AC79 /* BEFramework */,
+				278CC64B1CF5292900B9AC79 /* Products */,
+				9D1419FB623308A7EEE06D9A /* Pods */,
+				F9D04886B754C3239F5BCFB0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		278CC64B1CF5292900B9AC79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				278CC64A1CF5292900B9AC79 /* libBEFramework.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		278CC64C1CF5292900B9AC79 /* BEFramework */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6771CF54E4700B9AC79 /* Internal */,
+				278CC6671CF5486A00B9AC79 /* CSBM.h */,
+				278CC6681CF5486A00B9AC79 /* CSBM.m */,
+				278CC66F1CF548F800B9AC79 /* BEClientConfiguration.h */,
+				278CC6701CF548F800B9AC79 /* BEClientConfiguration.m */,
+				278CC6731CF5490D00B9AC79 /* BEConstants.h */,
+				278CC6741CF5490D00B9AC79 /* BEConstants.m */,
+				278CC6971CF5569C00B9AC79 /* BEObject.h */,
+				278CC6981CF5569C00B9AC79 /* BEObject.m */,
+				278CC6F21CF5EEA400B9AC79 /* BEUser.h */,
+				278CC6F31CF5EEA400B9AC79 /* BEUser.m */,
+				278CC6F71CF5EF1A00B9AC79 /* BESubclassing.h */,
+				278CC6FB1CF5EF5800B9AC79 /* BEQuery.h */,
+				278CC6FC1CF5EF5800B9AC79 /* BEQuery.m */,
+				278CC7041CF5FD8300B9AC79 /* BEQuery+Synchronous.h */,
+				278CC7371CF6110E00B9AC79 /* BEAnonymousUtils.h */,
+				278CC7381CF6110E00B9AC79 /* BEAnonymousUtils.m */,
+				278CC73F1CF6120A00B9AC79 /* BEUserAuthenticationDelegate.h */,
+				278CC7771CF6B0BF00B9AC79 /* BEUser+Synchronous.h */,
+				278CC77B1CF6B1BD00B9AC79 /* BEObject+Synchronous.h */,
+				278CC77F1CF6DDF400B9AC79 /* BEErrorUtilities.h */,
+				278CC7801CF6DDF400B9AC79 /* BEErrorUtilities.m */,
+				278CC7831CF6DF1900B9AC79 /* BEObject+Subclass.h */,
+				278CC7AD1CF6F60C00B9AC79 /* BEQuery+Deprecated.h */,
+				278CC80B1CF710B700B9AC79 /* BEConfig.h */,
+				278CC80C1CF710B700B9AC79 /* BEConfig.m */,
+				278CC8371CF7306300B9AC79 /* BESession.h */,
+				278CC8381CF7306300B9AC79 /* BESession.m */,
+				278CC8491CF73BF200B9AC79 /* BEInstallation.h */,
+				278CC84A1CF73BF200B9AC79 /* BEInstallation.m */,
+			);
+			path = BEFramework;
+			sourceTree = "<group>";
+		};
+		278CC6661CF547F800B9AC79 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				278CC64D1CF5292900B9AC79 /* BEFramework.h */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		278CC6771CF54E4700B9AC79 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8011CF70F9700B9AC79 /* Config */,
+				278CC7EC1CF709EC00B9AC79 /* CacheValue */,
+				278CC78B1CF6E2A800B9AC79 /* Session */,
+				278CC71C1CF6082100B9AC79 /* Logging */,
+				278CC7171CF6072300B9AC79 /* Tasks */,
+				278CC7081CF601AC00B9AC79 /* User */,
+				278CC6FF1CF5FBAD00B9AC79 /* Query */,
+				278CC6EB1CF5E3E900B9AC79 /* HTTPRequest */,
+				278CC6D01CF5DD2E00B9AC79 /* PropertyInfo */,
+				278CC6C21CF5B43400B9AC79 /* Installation */,
+				278CC6A71CF5964800B9AC79 /* FieldOperation */,
+				278CC6881CF5538800B9AC79 /* Object */,
+				278CC6781CF54E4E00B9AC79 /* Commands */,
+				278CC6821CF54FBA00B9AC79 /* BEMacros.h */,
+				278CC6831CF5500500B9AC79 /* BEAssert.h */,
+				278CC6841CF5529900B9AC79 /* BEHash.h */,
+				278CC6851CF5529900B9AC79 /* BEHash.m */,
+				278CC6931CF554D000B9AC79 /* BEEncoder.h */,
+				278CC6941CF554D000B9AC79 /* BEEncoder.m */,
+				278CC69B1CF559CF00B9AC79 /* BEBase64Encoder.h */,
+				278CC69C1CF559CF00B9AC79 /* BEBase64Encoder.m */,
+				278CC69F1CF55A0B00B9AC79 /* BEDateFormatter.h */,
+				278CC6A01CF55A0B00B9AC79 /* BEDateFormatter.m */,
+				278CC6A31CF55D7C00B9AC79 /* BEDecoder.h */,
+				278CC6A41CF55D7C00B9AC79 /* BEDecoder.m */,
+				278CC6AC1CF59CC100B9AC79 /* BEInternalUtils.h */,
+				278CC6AD1CF59CC100B9AC79 /* BEInternalUtils.m */,
+				278CC6B51CF59FF600B9AC79 /* BEClientConfiguration_Private.h */,
+				278CC6B91CF5B04200B9AC79 /* BEManager.h */,
+				278CC6BA1CF5B04200B9AC79 /* BEManager.m */,
+				278CC6BD1CF5B18400B9AC79 /* BEDataProvider.h */,
+				278CC6C81CF5BDDA00B9AC79 /* BECoreManager.h */,
+				278CC6C91CF5BDDA00B9AC79 /* BECoreManager.m */,
+				278CC6CC1CF5DBB000B9AC79 /* BEBaseState.h */,
+				278CC6CD1CF5DBB000B9AC79 /* BEBaseState.m */,
+				278CC7221CF6091D00B9AC79 /* BEApplication.h */,
+				278CC7231CF6091D00B9AC79 /* BEApplication.m */,
+				278CC7431CF678BA00B9AC79 /* BEAsyncTaskQueue.h */,
+				278CC7441CF678BA00B9AC79 /* BEAsyncTaskQueue.m */,
+				278CC7731CF69E2600B9AC79 /* BEMulticastDelegate.h */,
+				278CC7741CF69E2600B9AC79 /* BEMulticastDelegate.m */,
+				278CC7911CF6E3B900B9AC79 /* BETaskQueue.h */,
+				278CC7921CF6E3B900B9AC79 /* BETaskQueue.m */,
+				278CC6661CF547F800B9AC79 /* Public */,
+				278CC7A91CF6EC9800B9AC79 /* CSBM_Private.h */,
+				278CC7D01CF6FED600B9AC79 /* CSBMInternal.h */,
+				278CC7E01CF7030100B9AC79 /* CSBMModule.h */,
+				278CC7E11CF7030100B9AC79 /* CSBMModule.m */,
+				278CC7E81CF707B900B9AC79 /* BEJSONSerialization.h */,
+				278CC7E91CF707B900B9AC79 /* BEJSONSerialization.m */,
+			);
+			name = Internal;
+			sourceTree = "<group>";
+		};
+		278CC6781CF54E4E00B9AC79 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6E11CF5E2B200B9AC79 /* REST */,
+				278CC6791CF54E5700B9AC79 /* CommandRunner */,
+				278CC6DD1CF5E21300B9AC79 /* BENetworkCommand.h */,
+				278CC6EE1CF5EDED00B9AC79 /* BECommandResult.h */,
+				278CC6EF1CF5EDED00B9AC79 /* BECommandResult.m */,
+				278CC7D41CF6FF6800B9AC79 /* BECommandCache.h */,
+				278CC7D51CF6FF6800B9AC79 /* BECommandCache.m */,
+				278CC7D81CF6FFAB00B9AC79 /* BEEventuallyQueue.h */,
+				278CC7D91CF6FFAB00B9AC79 /* BEEventuallyQueue.m */,
+			);
+			name = Commands;
+			sourceTree = "<group>";
+		};
+		278CC6791CF54E5700B9AC79 /* CommandRunner */ = {
+			isa = PBXGroup;
+			children = (
+				278CC67E1CF54ED100B9AC79 /* BECommandRunningConstants.h */,
+				278CC67F1CF54ED100B9AC79 /* BECommandRunningConstants.m */,
+				278CC6BE1CF5B1E100B9AC79 /* BECommandRunning.h */,
+				278CC6BF1CF5B1E100B9AC79 /* BECommandRunning.m */,
+			);
+			name = CommandRunner;
+			sourceTree = "<group>";
+		};
+		278CC6881CF5538800B9AC79 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8521CF73D8000B9AC79 /* EstimateDate */,
+				278CC8251CF72D1F00B9AC79 /* Subclassing */,
+				278CC8171CF7150300B9AC79 /* BatchController */,
+				278CC7611CF694C000B9AC79 /* Constants */,
+				278CC7581CF67DF900B9AC79 /* State */,
+				278CC72B1CF60E7700B9AC79 /* CurrentController */,
+				278CC7121CF603EF00B9AC79 /* Controller */,
+				278CC68E1CF5545F00B9AC79 /* OperationSet */,
+				278CC6891CF5539000B9AC79 /* Utilities */,
+				278CC76F1CF69DEF00B9AC79 /* BEObjectPrivate.h */,
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
+		278CC6891CF5539000B9AC79 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				278CC68A1CF553AC00B9AC79 /* BEObjectUtilities.h */,
+				278CC68B1CF553AC00B9AC79 /* BEObjectUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		278CC68E1CF5545F00B9AC79 /* OperationSet */ = {
+			isa = PBXGroup;
+			children = (
+				278CC68F1CF5547D00B9AC79 /* BEOperationSet.h */,
+				278CC6901CF5547D00B9AC79 /* BEOperationSet.m */,
+			);
+			name = OperationSet;
+			sourceTree = "<group>";
+		};
+		278CC6A71CF5964800B9AC79 /* FieldOperation */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6A81CF5967600B9AC79 /* BEFieldOperation.h */,
+				278CC6A91CF5967600B9AC79 /* BEFieldOperation.m */,
+			);
+			name = FieldOperation;
+			sourceTree = "<group>";
+		};
+		278CC6C21CF5B43400B9AC79 /* Installation */ = {
+			isa = PBXGroup;
+			children = (
+				278CC84D1CF73CD300B9AC79 /* Constants */,
+				278CC8401CF7394500B9AC79 /* CurrentInstallationController */,
+				278CC83B1CF7384700B9AC79 /* Controller */,
+				278CC6C31CF5B44000B9AC79 /* InstallationIdentifierStore */,
+				278CC8451CF73BBA00B9AC79 /* BEInstallationPrivate.h */,
+			);
+			name = Installation;
+			sourceTree = "<group>";
+		};
+		278CC6C31CF5B44000B9AC79 /* InstallationIdentifierStore */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6C41CF5B46C00B9AC79 /* BEInstallationIdentifierStore.h */,
+				278CC6C51CF5B46C00B9AC79 /* BEInstallationIdentifierStore.m */,
+			);
+			name = InstallationIdentifierStore;
+			sourceTree = "<group>";
+		};
+		278CC6D01CF5DD2E00B9AC79 /* PropertyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6D11CF5DD4900B9AC79 /* BEPropertyInfo.h */,
+				278CC6D21CF5DD4900B9AC79 /* BEPropertyInfo.m */,
+				278CC6D51CF5DDC600B9AC79 /* BEPropeprtyInfo_Private.h */,
+				278CC6D91CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.h */,
+				278CC6DA1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.m */,
+			);
+			name = PropertyInfo;
+			sourceTree = "<group>";
+		};
+		278CC6E11CF5E2B200B9AC79 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6E21CF5E2B700B9AC79 /* Command */,
+			);
+			name = REST;
+			sourceTree = "<group>";
+		};
+		278CC6E21CF5E2B700B9AC79 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6E31CF5E2D200B9AC79 /* BERESTCommand.h */,
+				278CC6E41CF5E2D200B9AC79 /* BERESTCommand.m */,
+				278CC6E71CF5E36800B9AC79 /* BERESTCommand_Private.h */,
+				278CC7871CF6E03D00B9AC79 /* BERESTUserCommand.h */,
+				278CC7881CF6E03D00B9AC79 /* BERESTUserCommand.m */,
+				278CC7C71CF6FBFF00B9AC79 /* BERESTQueryCommand.h */,
+				278CC7C81CF6FBFF00B9AC79 /* BERESTQueryCommand.m */,
+				278CC7DC1CF7006100B9AC79 /* BEEventuallyQueue_Private.h */,
+				278CC7FD1CF70D0600B9AC79 /* BERESTObjectCommand.h */,
+				278CC7FE1CF70D0600B9AC79 /* BERESTObjectCommand.m */,
+				278CC8131CF7139900B9AC79 /* BERESTConfigCommand.h */,
+				278CC8141CF7139900B9AC79 /* BERESTConfigCommand.m */,
+				278CC81C1CF7161200B9AC79 /* BERESTObjectBatchCommand.h */,
+				278CC81D1CF7161200B9AC79 /* BERESTObjectBatchCommand.m */,
+				278CC8331CF72FF400B9AC79 /* BERESTSessionCommand.h */,
+				278CC8341CF72FF400B9AC79 /* BERESTSessionCommand.m */,
+			);
+			name = Command;
+			sourceTree = "<group>";
+		};
+		278CC6EB1CF5E3E900B9AC79 /* HTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8201CF7167200B9AC79 /* URLConstructor */,
+				278CC6EC1CF5E3F300B9AC79 /* RequestConstructor */,
+			);
+			name = HTTPRequest;
+			sourceTree = "<group>";
+		};
+		278CC6EC1CF5E3F300B9AC79 /* RequestConstructor */ = {
+			isa = PBXGroup;
+			children = (
+				278CC6ED1CF5E42200B9AC79 /* BEHTTPRequest.h */,
+			);
+			name = RequestConstructor;
+			sourceTree = "<group>";
+		};
+		278CC6FF1CF5FBAD00B9AC79 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7CB1CF6FD7D00B9AC79 /* Utilities */,
+				278CC7C21CF6FB2E00B9AC79 /* Controller */,
+				278CC7B11CF6F6FA00B9AC79 /* State */,
+				278CC7001CF5FBC900B9AC79 /* BEQueryPrivate.h */,
+				278CC7BE1CF6FA4100B9AC79 /* BEQueryConstants.h */,
+				278CC7BF1CF6FA4100B9AC79 /* BEQueryConstants.m */,
+			);
+			name = Query;
+			sourceTree = "<group>";
+		};
+		278CC7081CF601AC00B9AC79 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				278CC79F1CF6EA0800B9AC79 /* Coder */,
+				278CC7661CF699F000B9AC79 /* Constants */,
+				278CC7471CF679B100B9AC79 /* State */,
+				278CC7301CF6102800B9AC79 /* AuthenticationProviders */,
+				278CC7261CF60E2D00B9AC79 /* CurrentUserController */,
+				278CC70D1CF6036B00B9AC79 /* Controller */,
+				278CC7091CF601C700B9AC79 /* BEUserPrivate.h */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		278CC70D1CF6036B00B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC70E1CF6038200B9AC79 /* BEUserController.h */,
+				278CC70F1CF6038200B9AC79 /* BEUserController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC7121CF603EF00B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7131CF6040C00B9AC79 /* BEObjectControlling.h */,
+				278CC7F51CF70C0A00B9AC79 /* BEObjectController.h */,
+				278CC7F61CF70C0A00B9AC79 /* BEObjectController.m */,
+				278CC7F91CF70C6A00B9AC79 /* BEObjectController_Private.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC7171CF6072300B9AC79 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7181CF6074100B9AC79 /* BFTask+Private.h */,
+				278CC7191CF6074100B9AC79 /* BFTask+Private.m */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		278CC71C1CF6082100B9AC79 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				278CC71D1CF6084800B9AC79 /* BELogging.h */,
+				278CC71E1CF6088A00B9AC79 /* BELogger.h */,
+				278CC71F1CF6088A00B9AC79 /* BELogger.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		278CC7261CF60E2D00B9AC79 /* CurrentUserController */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7271CF60E4D00B9AC79 /* BECurrentUserController.h */,
+				278CC7281CF60E4D00B9AC79 /* BECurrentUserController.m */,
+			);
+			name = CurrentUserController;
+			sourceTree = "<group>";
+		};
+		278CC72B1CF60E7700B9AC79 /* CurrentController */ = {
+			isa = PBXGroup;
+			children = (
+				278CC72C1CF60EAA00B9AC79 /* BECurrentObjectControlling.h */,
+			);
+			name = CurrentController;
+			sourceTree = "<group>";
+		};
+		278CC7301CF6102800B9AC79 /* AuthenticationProviders */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7951CF6E53100B9AC79 /* Controller */,
+				278CC7311CF6103800B9AC79 /* Providers */,
+			);
+			name = AuthenticationProviders;
+			sourceTree = "<group>";
+		};
+		278CC7311CF6103800B9AC79 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7321CF6103E00B9AC79 /* Anonymous */,
+			);
+			name = Providers;
+			sourceTree = "<group>";
+		};
+		278CC7321CF6103E00B9AC79 /* Anonymous */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7331CF6107B00B9AC79 /* BEAnonymousUtils_Private.h */,
+				278CC73B1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.h */,
+				278CC73C1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.m */,
+			);
+			name = Anonymous;
+			sourceTree = "<group>";
+		};
+		278CC7471CF679B100B9AC79 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7481CF679D000B9AC79 /* BEMutableUserState.h */,
+				278CC7491CF679D000B9AC79 /* BEMutableUserState.m */,
+				278CC74C1CF67BBF00B9AC79 /* BEUserState.h */,
+				278CC74D1CF67BBF00B9AC79 /* BEUserState.m */,
+				278CC7501CF67BF200B9AC79 /* BEObjectState.h */,
+				278CC7511CF67BF200B9AC79 /* BEObjectState.m */,
+				278CC7541CF67CAF00B9AC79 /* BEObjectState_Private.h */,
+				278CC76B1CF69BA300B9AC79 /* BEUserState_Private.h */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		278CC7581CF67DF900B9AC79 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7591CF67E0F00B9AC79 /* BEMutableObjectState.h */,
+				278CC75A1CF67E0F00B9AC79 /* BEMutableObjectState.m */,
+				278CC75D1CF691B700B9AC79 /* BEObjectState_Private.h */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		278CC7611CF694C000B9AC79 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7621CF694F100B9AC79 /* BEObjectConstant.h */,
+				278CC7631CF694F100B9AC79 /* BEObjectConstant.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		278CC7661CF699F000B9AC79 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7671CF69A0A00B9AC79 /* BEUserConstants.h */,
+				278CC7681CF69A0A00B9AC79 /* BEUserConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		278CC78B1CF6E2A800B9AC79 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				278CC82E1CF72F3300B9AC79 /* Controller */,
+				278CC78C1CF6E2AF00B9AC79 /* Utilities */,
+				278CC79E1CF6E7FF00B9AC79 /* BECoreDataProvider.h */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		278CC78C1CF6E2AF00B9AC79 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				278CC78D1CF6E32400B9AC79 /* BESessionUtitlites.h */,
+				278CC78E1CF6E32400B9AC79 /* BESessionUtitlites.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		278CC7951CF6E53100B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7961CF6E57B00B9AC79 /* BEUserAuthenticationController.h */,
+				278CC7971CF6E57B00B9AC79 /* BEUserAuthenticationController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC79F1CF6EA0800B9AC79 /* Coder */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7A01CF6EA0F00B9AC79 /* File */,
+			);
+			name = Coder;
+			sourceTree = "<group>";
+		};
+		278CC7A01CF6EA0F00B9AC79 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7A11CF6EA3200B9AC79 /* BEUserFileCodingLogic.h */,
+				278CC7A21CF6EA3200B9AC79 /* BEUserFileCodingLogic.m */,
+				278CC7A51CF6EAC400B9AC79 /* BEObjectFileCodingLogic.h */,
+				278CC7A61CF6EAC400B9AC79 /* BEObjectFileCodingLogic.m */,
+			);
+			name = File;
+			sourceTree = "<group>";
+		};
+		278CC7B11CF6F6FA00B9AC79 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7B21CF6F71A00B9AC79 /* BEMutableQueryState.h */,
+				278CC7B31CF6F71A00B9AC79 /* BEMutableQueryState.m */,
+				278CC7B61CF6F7C800B9AC79 /* BEQueryState.h */,
+				278CC7B71CF6F7C800B9AC79 /* BEQueryState.m */,
+				278CC7BA1CF6F94900B9AC79 /* BEQueryState_Private.h */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		278CC7C21CF6FB2E00B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7C31CF6FB4900B9AC79 /* BEQueryController.h */,
+				278CC7C41CF6FB4900B9AC79 /* BEQueryController.m */,
+				278CC7E41CF7061A00B9AC79 /* BECacheQueryController.h */,
+				278CC7E51CF7061A00B9AC79 /* BECacheQueryController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC7CB1CF6FD7D00B9AC79 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7CC1CF6FD9F00B9AC79 /* BEQueryUtilities.h */,
+				278CC7CD1CF6FD9F00B9AC79 /* BEQueryUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		278CC7EC1CF709EC00B9AC79 /* CacheValue */ = {
+			isa = PBXGroup;
+			children = (
+				278CC7ED1CF70A0D00B9AC79 /* BEKeyValueCache.h */,
+				278CC7EE1CF70A0D00B9AC79 /* BEKeyValueCache.m */,
+				278CC7F11CF70A4500B9AC79 /* BEKeyValueCache_Private.h */,
+			);
+			name = CacheValue;
+			sourceTree = "<group>";
+		};
+		278CC8011CF70F9700B9AC79 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8021CF70FA000B9AC79 /* Controller */,
+				278CC8071CF7107900B9AC79 /* BEConfig_Private.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		278CC8021CF70FA000B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8031CF70FB900B9AC79 /* BEConfigController.h */,
+				278CC8041CF70FB900B9AC79 /* BEConfigController.m */,
+				278CC80F1CF7126E00B9AC79 /* BECurrentConfigController.h */,
+				278CC8101CF7126E00B9AC79 /* BECurrentConfigController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC8171CF7150300B9AC79 /* BatchController */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8181CF7152100B9AC79 /* BEObjectBatchController.h */,
+				278CC8191CF7152100B9AC79 /* BEObjectBatchController.m */,
+			);
+			name = BatchController;
+			sourceTree = "<group>";
+		};
+		278CC8201CF7167200B9AC79 /* URLConstructor */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8211CF7168E00B9AC79 /* BEURLConstructor.h */,
+				278CC8221CF7168E00B9AC79 /* BEURLConstructor.m */,
+			);
+			name = URLConstructor;
+			sourceTree = "<group>";
+		};
+		278CC8251CF72D1F00B9AC79 /* Subclassing */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8261CF72D3B00B9AC79 /* BEObjectSubclassingController.h */,
+				278CC8271CF72D3B00B9AC79 /* BEObjectSubclassingController.m */,
+				278CC82A1CF72DC600B9AC79 /* BEObjectSubclassInfo.h */,
+				278CC82B1CF72DC600B9AC79 /* BEObjectSubclassInfo.m */,
+			);
+			name = Subclassing;
+			sourceTree = "<group>";
+		};
+		278CC82E1CF72F3300B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC82F1CF72F5200B9AC79 /* BESessionController.h */,
+				278CC8301CF72F5200B9AC79 /* BESessionController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC83B1CF7384700B9AC79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				278CC83C1CF7386800B9AC79 /* BEInstallationController.h */,
+				278CC83D1CF7386800B9AC79 /* BEInstallationController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		278CC8401CF7394500B9AC79 /* CurrentInstallationController */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8411CF7399100B9AC79 /* BECurrentInstallationController.h */,
+				278CC8421CF7399100B9AC79 /* BECurrentInstallationController.m */,
+			);
+			name = CurrentInstallationController;
+			sourceTree = "<group>";
+		};
+		278CC84D1CF73CD300B9AC79 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				278CC84E1CF73D0400B9AC79 /* BEInstallationConstants.h */,
+				278CC84F1CF73D0400B9AC79 /* BEInstallationConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		278CC8521CF73D8000B9AC79 /* EstimateDate */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8531CF73D9D00B9AC79 /* BEObjectEstimateData.h */,
+				278CC8541CF73D9D00B9AC79 /* BEObjectEstimateData.m */,
+			);
+			name = EstimateDate;
+			sourceTree = "<group>";
+		};
+		9D1419FB623308A7EEE06D9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E52F8AB5ADE9E3CEEC10CACD /* Pods-BEFramework.debug.xcconfig */,
+				C66D2D68993A4E7C48223D26 /* Pods-BEFramework.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F9D04886B754C3239F5BCFB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				278CC8571CF7435800B9AC79 /* Foundation.framework */,
+				278CC6601CF52E5600B9AC79 /* libBolts.a */,
+				278CC6611CF52E5600B9AC79 /* libOCMock.a */,
+				CC83B0EF46B092FD89483E78 /* libPods-BEFramework.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		278CC6561CF52A2800B9AC79 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278CC8551CF73D9D00B9AC79 /* BEObjectEstimateData.h in Headers */,
+				278CC6711CF548F800B9AC79 /* BEClientConfiguration.h in Headers */,
+				278CC7061CF5FD8300B9AC79 /* BEQuery+Synchronous.h in Headers */,
+				278CC7931CF6E3B900B9AC79 /* BETaskQueue.h in Headers */,
+				278CC75F1CF691B700B9AC79 /* BEObjectState_Private.h in Headers */,
+				278CC6991CF5569C00B9AC79 /* BEObject.h in Headers */,
+				278CC7291CF60E4D00B9AC79 /* BECurrentUserController.h in Headers */,
+				278CC7A71CF6EAC400B9AC79 /* BEObjectFileCodingLogic.h in Headers */,
+				278CC7A31CF6EA3200B9AC79 /* BEUserFileCodingLogic.h in Headers */,
+				278CC7151CF6040C00B9AC79 /* BEObjectControlling.h in Headers */,
+				278CC7FB1CF70C6A00B9AC79 /* BEObjectController_Private.h in Headers */,
+				278CC80D1CF710B700B9AC79 /* BEConfig.h in Headers */,
+				278CC7751CF69E2600B9AC79 /* BEMulticastDelegate.h in Headers */,
+				278CC6CE1CF5DBB000B9AC79 /* BEBaseState.h in Headers */,
+				278CC7E21CF7030100B9AC79 /* CSBMModule.h in Headers */,
+				278CC83E1CF7386800B9AC79 /* BEInstallationController.h in Headers */,
+				278CC7351CF6107B00B9AC79 /* BEAnonymousUtils_Private.h in Headers */,
+				278CC6911CF5547D00B9AC79 /* BEOperationSet.h in Headers */,
+				278CC7C01CF6FA4100B9AC79 /* BEQueryConstants.h in Headers */,
+				278CC6CA1CF5BDDA00B9AC79 /* BECoreManager.h in Headers */,
+				278CC7AB1CF6EC9800B9AC79 /* CSBM_Private.h in Headers */,
+				278CC6AA1CF5967600B9AC79 /* BEFieldOperation.h in Headers */,
+				278CC8281CF72D3B00B9AC79 /* BEObjectSubclassingController.h in Headers */,
+				278CC7E61CF7061A00B9AC79 /* BECacheQueryController.h in Headers */,
+				278CC81E1CF7161200B9AC79 /* BERESTObjectBatchCommand.h in Headers */,
+				278CC8471CF73BBA00B9AC79 /* BEInstallationPrivate.h in Headers */,
+				278CC7C91CF6FBFF00B9AC79 /* BERESTQueryCommand.h in Headers */,
+				278CC7FF1CF70D0600B9AC79 /* BERESTObjectCommand.h in Headers */,
+				278CC7811CF6DDF400B9AC79 /* BEErrorUtilities.h in Headers */,
+				278CC84B1CF73BF200B9AC79 /* BEInstallation.h in Headers */,
+				278CC8351CF72FF400B9AC79 /* BERESTSessionCommand.h in Headers */,
+				278CC6AE1CF59CC100B9AC79 /* BEInternalUtils.h in Headers */,
+				278CC7F31CF70A4500B9AC79 /* BEKeyValueCache_Private.h in Headers */,
+				278CC7D61CF6FF6800B9AC79 /* BECommandCache.h in Headers */,
+				278CC68C1CF553AC00B9AC79 /* BEObjectUtilities.h in Headers */,
+				278CC7B41CF6F71A00B9AC79 /* BEMutableQueryState.h in Headers */,
+				278CC6F91CF5EF1A00B9AC79 /* BESubclassing.h in Headers */,
+				278CC7851CF6DF1900B9AC79 /* BEObject+Subclass.h in Headers */,
+				278CC7AF1CF6F60C00B9AC79 /* BEQuery+Deprecated.h in Headers */,
+				278CC7B81CF6F7C800B9AC79 /* BEQueryState.h in Headers */,
+				278CC6D31CF5DD4900B9AC79 /* BEPropertyInfo.h in Headers */,
+				278CC7C51CF6FB4900B9AC79 /* BEQueryController.h in Headers */,
+				278CC6861CF5529900B9AC79 /* BEHash.h in Headers */,
+				278CC82C1CF72DC600B9AC79 /* BEObjectSubclassInfo.h in Headers */,
+				278CC6A51CF55D7C00B9AC79 /* BEDecoder.h in Headers */,
+				278CC8391CF7306300B9AC79 /* BESession.h in Headers */,
+				278CC8151CF7139900B9AC79 /* BERESTConfigCommand.h in Headers */,
+				278CC7791CF6B0BF00B9AC79 /* BEUser+Synchronous.h in Headers */,
+				278CC7521CF67BF200B9AC79 /* BEObjectState.h in Headers */,
+				278CC69D1CF559CF00B9AC79 /* BEBase64Encoder.h in Headers */,
+				278CC6DF1CF5E21300B9AC79 /* BENetworkCommand.h in Headers */,
+				278CC73D1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.h in Headers */,
+				278CC7561CF67CAF00B9AC79 /* BEObjectState_Private.h in Headers */,
+				278CC6E51CF5E2D200B9AC79 /* BERESTCommand.h in Headers */,
+				278CC7411CF6120A00B9AC79 /* BEUserAuthenticationDelegate.h in Headers */,
+				278CC7691CF69A0A00B9AC79 /* BEUserConstants.h in Headers */,
+				278CC78F1CF6E32400B9AC79 /* BESessionUtitlites.h in Headers */,
+				278CC7641CF694F100B9AC79 /* BEObjectConstant.h in Headers */,
+				278CC6FD1CF5EF5800B9AC79 /* BEQuery.h in Headers */,
+				278CC7F71CF70C0A00B9AC79 /* BEObjectController.h in Headers */,
+				278CC6F01CF5EDED00B9AC79 /* BECommandResult.h in Headers */,
+				278CC8311CF72F5200B9AC79 /* BESessionController.h in Headers */,
+				278CC7EA1CF707B900B9AC79 /* BEJSONSerialization.h in Headers */,
+				278CC7CE1CF6FD9F00B9AC79 /* BEQueryUtilities.h in Headers */,
+				278CC6A11CF55A0B00B9AC79 /* BEDateFormatter.h in Headers */,
+				278CC7DE1CF7006100B9AC79 /* BEEventuallyQueue_Private.h in Headers */,
+				278CC74E1CF67BBF00B9AC79 /* BEUserState.h in Headers */,
+				278CC76D1CF69BA300B9AC79 /* BEUserState_Private.h in Headers */,
+				278CC7451CF678BA00B9AC79 /* BEAsyncTaskQueue.h in Headers */,
+				278CC72E1CF60EAA00B9AC79 /* BECurrentObjectControlling.h in Headers */,
+				278CC7891CF6E03D00B9AC79 /* BERESTUserCommand.h in Headers */,
+				278CC7101CF6038200B9AC79 /* BEUserController.h in Headers */,
+				278CC7981CF6E57B00B9AC79 /* BEUserAuthenticationController.h in Headers */,
+				278CC8051CF70FB900B9AC79 /* BEConfigController.h in Headers */,
+				278CC6951CF554D000B9AC79 /* BEEncoder.h in Headers */,
+				278CC8501CF73D0400B9AC79 /* BEInstallationConstants.h in Headers */,
+				278CC7BC1CF6F94900B9AC79 /* BEQueryState_Private.h in Headers */,
+				278CC8091CF7107900B9AC79 /* BEConfig_Private.h in Headers */,
+				278CC7DA1CF6FFAB00B9AC79 /* BEEventuallyQueue.h in Headers */,
+				278CC8231CF7168E00B9AC79 /* BEURLConstructor.h in Headers */,
+				278CC74A1CF679D000B9AC79 /* BEMutableUserState.h in Headers */,
+				278CC7391CF6110E00B9AC79 /* BEAnonymousUtils.h in Headers */,
+				278CC7711CF69DEF00B9AC79 /* BEObjectPrivate.h in Headers */,
+				278CC6B71CF59FF600B9AC79 /* BEClientConfiguration_Private.h in Headers */,
+				278CC6DB1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.h in Headers */,
+				278CC7EF1CF70A0D00B9AC79 /* BEKeyValueCache.h in Headers */,
+				278CC6801CF54ED100B9AC79 /* BECommandRunningConstants.h in Headers */,
+				278CC70B1CF601C700B9AC79 /* BEUserPrivate.h in Headers */,
+				278CC6D71CF5DDC600B9AC79 /* BEPropeprtyInfo_Private.h in Headers */,
+				278CC6C01CF5B1E100B9AC79 /* BECommandRunning.h in Headers */,
+				278CC77D1CF6B1BD00B9AC79 /* BEObject+Synchronous.h in Headers */,
+				278CC6BB1CF5B04200B9AC79 /* BEManager.h in Headers */,
+				278CC6751CF5490D00B9AC79 /* BEConstants.h in Headers */,
+				278CC71A1CF6074100B9AC79 /* BFTask+Private.h in Headers */,
+				278CC6C61CF5B46C00B9AC79 /* BEInstallationIdentifierStore.h in Headers */,
+				278CC7201CF6088A00B9AC79 /* BELogger.h in Headers */,
+				278CC7D21CF6FED600B9AC79 /* CSBMInternal.h in Headers */,
+				278CC7021CF5FBC900B9AC79 /* BEQueryPrivate.h in Headers */,
+				278CC6E91CF5E36800B9AC79 /* BERESTCommand_Private.h in Headers */,
+				278CC8111CF7126E00B9AC79 /* BECurrentConfigController.h in Headers */,
+				278CC75B1CF67E0F00B9AC79 /* BEMutableObjectState.h in Headers */,
+				278CC8431CF7399100B9AC79 /* BECurrentInstallationController.h in Headers */,
+				278CC7241CF6091D00B9AC79 /* BEApplication.h in Headers */,
+				278CC81A1CF7152100B9AC79 /* BEObjectBatchController.h in Headers */,
+				278CC6F41CF5EEA400B9AC79 /* BEUser.h in Headers */,
+				278CC6691CF5486A00B9AC79 /* CSBM.h in Headers */,
+				278CC6571CF52A4700B9AC79 /* BEFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		278CC6491CF5292900B9AC79 /* BEFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 278CC6531CF5292900B9AC79 /* Build configuration list for PBXNativeTarget "BEFramework" */;
+			buildPhases = (
+				43A1FECAF646C82D28A291E0 /* 📦 Check Pods Manifest.lock */,
+				278CC6461CF5292900B9AC79 /* Sources */,
+				278CC6471CF5292900B9AC79 /* Frameworks */,
+				278CC6481CF5292900B9AC79 /* CopyFiles */,
+				278CC6561CF52A2800B9AC79 /* Headers */,
+				278CC6581CF52B7700B9AC79 /* ShellScript */,
+				0250CEE8B5A9F9A18477A81E /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BEFramework;
+			productName = BEFramework;
+			productReference = 278CC64A1CF5292900B9AC79 /* libBEFramework.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		278CC6421CF5292900B9AC79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Loc Nguyen";
+				TargetAttributes = {
+					278CC6491CF5292900B9AC79 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9YNS969KZE;
+					};
+					278CC6591CF52CB100B9AC79 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9YNS969KZE;
+					};
+				};
+			};
+			buildConfigurationList = 278CC6451CF5292900B9AC79 /* Build configuration list for PBXProject "BEFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 278CC6411CF5292900B9AC79;
+			productRefGroup = 278CC64B1CF5292900B9AC79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				278CC6491CF5292900B9AC79 /* BEFramework */,
+				278CC6591CF52CB100B9AC79 /* BEFrameworkLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0250CEE8B5A9F9A18477A81E /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEFramework/Pods-BEFramework-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		278CC6581CF52B7700B9AC79 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		278CC65F1CF52D9000B9AC79 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"libPods-${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild ONLY_ACTIVE_ARCH=NO -workspace \"${PROJECT_DIR}/${PROJECT_NAME}.xcworkspace\" -scheme \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
+		};
+		43A1FECAF646C82D28A291E0 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		278CC6461CF5292900B9AC79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278CC80E1CF710B700B9AC79 /* BEConfig.m in Sources */,
+				278CC76A1CF69A0A00B9AC79 /* BEUserConstants.m in Sources */,
+				278CC6921CF5547D00B9AC79 /* BEOperationSet.m in Sources */,
+				278CC7821CF6DDF400B9AC79 /* BEErrorUtilities.m in Sources */,
+				278CC6F51CF5EEA400B9AC79 /* BEUser.m in Sources */,
+				278CC8561CF73D9D00B9AC79 /* BEObjectEstimateData.m in Sources */,
+				278CC6C71CF5B46C00B9AC79 /* BEInstallationIdentifierStore.m in Sources */,
+				278CC8121CF7126E00B9AC79 /* BECurrentConfigController.m in Sources */,
+				278CC7A41CF6EA3200B9AC79 /* BEUserFileCodingLogic.m in Sources */,
+				278CC6CF1CF5DBB000B9AC79 /* BEBaseState.m in Sources */,
+				278CC8511CF73D0400B9AC79 /* BEInstallationConstants.m in Sources */,
+				278CC83F1CF7386800B9AC79 /* BEInstallationController.m in Sources */,
+				278CC7761CF69E2600B9AC79 /* BEMulticastDelegate.m in Sources */,
+				278CC7A81CF6EAC400B9AC79 /* BEObjectFileCodingLogic.m in Sources */,
+				278CC7251CF6091D00B9AC79 /* BEApplication.m in Sources */,
+				278CC81F1CF7161200B9AC79 /* BERESTObjectBatchCommand.m in Sources */,
+				278CC7461CF678BA00B9AC79 /* BEAsyncTaskQueue.m in Sources */,
+				278CC6AF1CF59CC100B9AC79 /* BEInternalUtils.m in Sources */,
+				278CC8161CF7139900B9AC79 /* BERESTConfigCommand.m in Sources */,
+				278CC6CB1CF5BDDA00B9AC79 /* BECoreManager.m in Sources */,
+				278CC7E31CF7030100B9AC79 /* CSBMModule.m in Sources */,
+				278CC7EB1CF707B900B9AC79 /* BEJSONSerialization.m in Sources */,
+				278CC7B91CF6F7C800B9AC79 /* BEQueryState.m in Sources */,
+				278CC7941CF6E3B900B9AC79 /* BETaskQueue.m in Sources */,
+				278CC6721CF548F800B9AC79 /* BEClientConfiguration.m in Sources */,
+				278CC8361CF72FF400B9AC79 /* BERESTSessionCommand.m in Sources */,
+				278CC7DB1CF6FFAB00B9AC79 /* BEEventuallyQueue.m in Sources */,
+				278CC7C61CF6FB4900B9AC79 /* BEQueryController.m in Sources */,
+				278CC6DC1CF5DE4800B9AC79 /* BEPropertyInfo_Runtime.m in Sources */,
+				278CC8291CF72D3B00B9AC79 /* BEObjectSubclassingController.m in Sources */,
+				278CC74F1CF67BBF00B9AC79 /* BEUserState.m in Sources */,
+				278CC69E1CF559CF00B9AC79 /* BEBase64Encoder.m in Sources */,
+				278CC7211CF6088A00B9AC79 /* BELogger.m in Sources */,
+				278CC7E71CF7061A00B9AC79 /* BECacheQueryController.m in Sources */,
+				278CC6D41CF5DD4900B9AC79 /* BEPropertyInfo.m in Sources */,
+				278CC74B1CF679D000B9AC79 /* BEMutableUserState.m in Sources */,
+				278CC84C1CF73BF200B9AC79 /* BEInstallation.m in Sources */,
+				278CC6F11CF5EDED00B9AC79 /* BECommandResult.m in Sources */,
+				278CC7F01CF70A0D00B9AC79 /* BEKeyValueCache.m in Sources */,
+				278CC73A1CF6110E00B9AC79 /* BEAnonymousUtils.m in Sources */,
+				278CC7F81CF70C0A00B9AC79 /* BEObjectController.m in Sources */,
+				278CC7CF1CF6FD9F00B9AC79 /* BEQueryUtilities.m in Sources */,
+				278CC71B1CF6074100B9AC79 /* BFTask+Private.m in Sources */,
+				278CC6C11CF5B1E100B9AC79 /* BECommandRunning.m in Sources */,
+				278CC78A1CF6E03D00B9AC79 /* BERESTUserCommand.m in Sources */,
+				278CC7991CF6E57B00B9AC79 /* BEUserAuthenticationController.m in Sources */,
+				278CC7651CF694F100B9AC79 /* BEObjectConstant.m in Sources */,
+				278CC6761CF5490D00B9AC79 /* BEConstants.m in Sources */,
+				278CC6A21CF55A0B00B9AC79 /* BEDateFormatter.m in Sources */,
+				278CC8321CF72F5200B9AC79 /* BESessionController.m in Sources */,
+				278CC72A1CF60E4D00B9AC79 /* BECurrentUserController.m in Sources */,
+				278CC68D1CF553AC00B9AC79 /* BEObjectUtilities.m in Sources */,
+				278CC69A1CF5569C00B9AC79 /* BEObject.m in Sources */,
+				278CC6E61CF5E2D200B9AC79 /* BERESTCommand.m in Sources */,
+				278CC7CA1CF6FBFF00B9AC79 /* BERESTQueryCommand.m in Sources */,
+				278CC8441CF7399100B9AC79 /* BECurrentInstallationController.m in Sources */,
+				278CC6A61CF55D7C00B9AC79 /* BEDecoder.m in Sources */,
+				278CC7111CF6038200B9AC79 /* BEUserController.m in Sources */,
+				278CC6811CF54ED100B9AC79 /* BECommandRunningConstants.m in Sources */,
+				278CC8061CF70FB900B9AC79 /* BEConfigController.m in Sources */,
+				278CC83A1CF7306300B9AC79 /* BESession.m in Sources */,
+				278CC6BC1CF5B04200B9AC79 /* BEManager.m in Sources */,
+				278CC7D71CF6FF6800B9AC79 /* BECommandCache.m in Sources */,
+				278CC75C1CF67E0F00B9AC79 /* BEMutableObjectState.m in Sources */,
+				278CC7531CF67BF200B9AC79 /* BEObjectState.m in Sources */,
+				278CC6961CF554D000B9AC79 /* BEEncoder.m in Sources */,
+				278CC8001CF70D0600B9AC79 /* BERESTObjectCommand.m in Sources */,
+				278CC7C11CF6FA4100B9AC79 /* BEQueryConstants.m in Sources */,
+				278CC6871CF5529900B9AC79 /* BEHash.m in Sources */,
+				278CC66A1CF5486A00B9AC79 /* CSBM.m in Sources */,
+				278CC8241CF7168E00B9AC79 /* BEURLConstructor.m in Sources */,
+				278CC6AB1CF5967600B9AC79 /* BEFieldOperation.m in Sources */,
+				278CC7B51CF6F71A00B9AC79 /* BEMutableQueryState.m in Sources */,
+				278CC82D1CF72DC600B9AC79 /* BEObjectSubclassInfo.m in Sources */,
+				278CC81B1CF7152100B9AC79 /* BEObjectBatchController.m in Sources */,
+				278CC7901CF6E32400B9AC79 /* BESessionUtitlites.m in Sources */,
+				278CC6FE1CF5EF5800B9AC79 /* BEQuery.m in Sources */,
+				278CC73E1CF611C800B9AC79 /* BEAnonymousAuthenticationProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		278CC65E1CF52CB700B9AC79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 278CC6491CF5292900B9AC79 /* BEFramework */;
+			targetProxy = 278CC65D1CF52CB700B9AC79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		278CC6511CF5292900B9AC79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		278CC6521CF5292900B9AC79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		278CC6541CF5292900B9AC79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E52F8AB5ADE9E3CEEC10CACD /* Pods-BEFramework.debug.xcconfig */;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Bolts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/OCMock",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		278CC6551CF5292900B9AC79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C66D2D68993A4E7C48223D26 /* Pods-BEFramework.release.xcconfig */;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Bolts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/OCMock",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		278CC65B1CF52CB100B9AC79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		278CC65C1CF52CB100B9AC79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		278CC6451CF5292900B9AC79 /* Build configuration list for PBXProject "BEFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278CC6511CF5292900B9AC79 /* Debug */,
+				278CC6521CF5292900B9AC79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		278CC6531CF5292900B9AC79 /* Build configuration list for PBXNativeTarget "BEFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278CC6541CF5292900B9AC79 /* Debug */,
+				278CC6551CF5292900B9AC79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		278CC65A1CF52CB100B9AC79 /* Build configuration list for PBXAggregateTarget "BEFrameworkLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278CC65B1CF52CB100B9AC79 /* Debug */,
+				278CC65C1CF52CB100B9AC79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 278CC6421CF5292900B9AC79 /* Project object */;
+}

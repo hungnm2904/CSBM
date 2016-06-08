@@ -1,0 +1,7 @@
+target 'BEFramework' do
+
+  pod 'Bolts', '~> 1.7'
+
+  pod 'OCMock', '~> 3.3'
+
+end

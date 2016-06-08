@@ -1,0 +1,20 @@
+PODS:
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - OCMock (3.3)
+
+DEPENDENCIES:
+  - Bolts (~> 1.7)
+  - OCMock (~> 3.3)
+
+SPEC CHECKSUMS:
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
+
+PODFILE CHECKSUM: 4403498614c1ce8f16a05a5d21983f85ab84f15d
+
+COCOAPODS: 1.0.0.beta.5
