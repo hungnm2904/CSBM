@@ -4,23 +4,21 @@
     angular
         .module('app.managements.applications')
         .controller('ApplicationsController',
-            function($scope, $http, $cookies, $window, $state, ApplicationService, msModeService) {
+            function($scope, $http, $cookies, $window, $state, $rootScope, ApplicationService,
+                msModeService, msSchemasService) {
 
                 if (!$cookies.get('accessToken')) {
-                    // $window.location.href = '/login';
                     $state.go('app.pages_auth_login');
                 }
-                // $http.get('/app/data/applications/applications.json').success(function(data) {
-                //     $scope.applications = data.data;
-                // });
 
-                var obj = {};
-                ApplicationService.getAll(function(response) {
-                    if (response.message) {
-                        alert(response.message);
+                $scope.applications = [];
+
+                ApplicationService.getAll(function(error, results) {
+                    if (error) {
+                        console.log(error);
+                        alert(response.statusText);
                     } else {
-                        $scope.applications = response.data;
-                        console.log($scope.applications);
+                        $scope.applications = results.data;
                     }
                 });
 
@@ -29,8 +27,11 @@
                 };
 
                 $scope.goToAppManagement = function(appId) {
-                    msModeService.setMode('application');
-                    ApplicationService.getSchema(appId);
+                    msSchemasService.getSchemas(appId, function(error, results) {
+                        if (error) {
+                            return alert(error.statusText);
+                        }
+                    });
                 };
             });
 })();

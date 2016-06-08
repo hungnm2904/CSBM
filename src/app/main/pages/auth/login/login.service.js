@@ -3,9 +3,9 @@
 
     angular
         .module('app.pages.auth.login')
-        .factory('LoginService', function($http, $cookies, $state) {
+        .factory('LoginService', function($http, $cookies, $state, msConfigService) {
             var service = {};
-            var domain = 'http://localhost:1337';
+            var domain = (msConfigService.getConfig()).domain;
 
             service.Login = function(username, password, callback) {
                 $http({

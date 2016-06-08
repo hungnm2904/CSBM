@@ -3,9 +3,9 @@
 
     angular
         .module('app.application.classes')
-        .factory('ClassesService', function($http, $cookies, $state) {
+        .factory('ClassesService', function($http, $cookies, $state, msConfigService) {
             var service = {};
-            var domain = 'http://localhost:1337';
+            var domain = (msConfigService.getConfig()).domain;
 
             service.getDocuments = function(className, appId, callback) {
                 $http({

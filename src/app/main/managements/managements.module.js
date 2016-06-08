@@ -17,7 +17,7 @@
             group: true,
             weight: 1,
             hidden: function() {
-                return !msModeServiceProvider.checkMode('user');
+                return !msModeServiceProvider.isUserMode();
             }
         });
 
@@ -32,11 +32,5 @@
             icon: 'icon-account-multiple',
             state: 'app.managements_users'
         });
-
-        // msNavigationServiceProvider.saveItem('managements.classes', {
-        //     title : 'Classes',
-        //     icon  : 'icon-library-plus',
-        //     state : 'app.managements_classes'
-        // });
     }
 })();
