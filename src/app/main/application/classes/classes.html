@@ -29,7 +29,10 @@
                     </thead>
                     <tbody ng-repeat="document in documents">
                         <tr>
-                            <td ng-repeat="(key, value) in document">{{value}}</td>
+                            <td ng-repeat="(key, value) in document">
+                                <span ng-if="!editable(key)">{{value}}</span>
+                                <input ng-if="editable(key)" type="text" value="{{value}}" />
+                            </td>
                         </tr>
                     </tbody>
                 </table>

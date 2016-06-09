@@ -25,15 +25,12 @@
                 $scope.className = results.className;
                 var fields = Object.getOwnPropertyNames(results.fields);
                 $scope.fields = [].concat(fields);
-                console.log(fields);
 
                 for (var index in $scope.fields) {
                     if ($scope.fields[index] === 'ACL') {
                         $scope.fields.splice(index, 1);
                     }
                 }
-
-                console.log($scope.fields);
 
                 ClassesService.getDocuments($scope.className, appId, function(results) {
                     for (var i in results) {
@@ -54,6 +51,12 @@
             $rootScope.$on('fields-change', function(event, args) {
                 $scope.fields = Object.getOwnPropertyNames(args.fields);
             });
+
+            var uneditableFileds = ['objectId', 'createdAt', 'updatedAt'];
+            $scope.editable = function(field) {
+                console.log(uneditableFileds.indexOf(field));
+                return uneditableFileds.indexOf(field) === -1;
+            };
 
             $scope.showDialog = function(ev) {
                 $mdDialog.show({

@@ -4,8 +4,8 @@
     angular
         .module('app.managements.applications')
         .controller('ApplicationsController',
-            function($scope, $http, $cookies, $window, $state, $rootScope, ApplicationService,
-                msModeService, msSchemasService) {
+            function($scope, $http, $cookies, $window, $state, $rootScope, $mdDialog, $document,
+                msApplicationService, msModeService, msSchemasService, msDialogService) {
 
                 if (!$cookies.get('accessToken')) {
                     $state.go('app.pages_auth_login');
@@ -13,17 +13,16 @@
 
                 $scope.applications = [];
 
-                ApplicationService.getAll(function(error, results) {
+                msApplicationService.getAll(function(error, results) {
                     if (error) {
-                        console.log(error);
-                        alert(response.statusText);
-                    } else {
-                        $scope.applications = results.data;
+                        return alert(error.statusText);
                     }
+
+                    $scope.applications = results;
                 });
 
-                $scope.showDialog = function() {
-                    ApplicationService.showDialog();
+                $scope.showDialog = function(ev) {
+                    msDialogService.showDialog(ev, 'app/core/services/dialogs/newApplicationDialog.html');
                 };
 
                 $scope.goToAppManagement = function(appId) {
