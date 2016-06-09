@@ -47,12 +47,19 @@
             };
 
             function create(name, callback) {
+                var data = {
+                    "className": name,
+                    "fields": {
+
+                    }
+                }
                 $http({
-                    method: 'GET',
+                    method: 'POST',
                     url: domain + '/application/' + name,
                     headers: {
                         'Authorization': 'Bearer ' + accessToken
-                    }
+                    },
+                    data: data
                 }).then(function(response) {
                     add(response.data);
                     callback(null, response.data);

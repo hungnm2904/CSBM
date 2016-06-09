@@ -64,6 +64,33 @@
                 });
             }
 
+            service.delColumn = function(className, appId, accessToken, columnName, callback) {
+                var data = {
+                    'className': className,
+                    'fields': {}
+                }
+                data.fields[columnName] = {
+                    '__op': 'Delete'
+                }
+                service.getMasterKey(appId, accessToken, function(result) {
+                    var masterKey = result;
+                    $http({
+                        method: 'PUT',
+                        url: domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: data
+                    }).then(function(response) {
+                        callback(response.data);
+                    }, function(response) {
+                        alert('error');
+                    });
+                });
+            }
+
             service.createClass = function(className, appId, accessToken, callback) {
                 service.getMasterKey(appId, accessToken, function(result) {
                     var masterKey = result;
@@ -84,6 +111,29 @@
                     }).then(function(response) {
                         callback(response.data);
                     }, function() {
+                        alert('error');
+                    });
+                });
+            }
+
+            service.updateSchemas = function(className, appId, accessToken, columnName, value, objectId, callback) {
+                var data = {};
+                data[columnName] = value;
+
+                service.getMasterKey(appId, accessToken, function(result) {
+                    var masterKey = result;
+                    $http({
+                        method: 'PUT',
+                        url: domain + '/csbm/classes/' + className + '/' + objectId,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: data
+                    }).then(function(response) {
+                        callback(response.data);
+                    }, function(response) {
                         alert('error');
                     });
                 });

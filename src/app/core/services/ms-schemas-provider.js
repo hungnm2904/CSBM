@@ -59,7 +59,7 @@
 
             function getSchema(_appId, index, callback) {
                 if (schemas && schemas.length > 0) {
-                    return callback(null, schemas[index]);
+                    return callback(null,   schemas[index]);
                 }
 
                 service.getSchemas(_appId, function(error, results){

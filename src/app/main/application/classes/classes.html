@@ -16,6 +16,20 @@
             </md-button>
         </div>
     </div>
+    <div layout="row" layout-align="start center">
+        <md-button class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
+            <md-icon md-font-icon="icon-plus"></md-icon>
+            <span>Create new column</span>
+        </md-button>
+        <md-button class="md-raised md-accent" ng-click="update()">
+            <md-icon md-font-icon="icon-table-edit"></md-icon>
+            <span>Update Schemas</span>
+        </md-button>
+        <md-button class="md-raised md-accent" ng-click="showDelColumnDialog($event)">
+            <md-icon md-font-icon="icon-delete"></md-icon>
+            <span>Delete column</span>
+        </md-button>
+    </div>
     <!-- / HEADER -->
     <!-- CONTENT -->
     <div class="content" md-background-bg>
@@ -31,22 +45,19 @@
                         <tr>
                             <td ng-repeat="(key, value) in document">
                                 <span ng-if="!editable(key)">{{value}}</span>
-                                <input ng-if="editable(key)" type="text" value="{{value}}" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-        <!-- BASIC FORM -->
-        <div class="form-wrapper md-whiteframe-4dp">
-            <center>
-                <md-button class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
-                    Add Column
-                </md-button>
-            </center>
-        </div>
-        <!-- / BASIC FORM -->
+                                <md-input-container md-no-float class="md-block">
+                                  <input ng-if="editable(key)" placeholder="Value" name="schemavalue" type="text" value="{{value}}" />
+                              </md-input-container>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </form>
+      </div>
+      <!-- BASIC FORM -->
+      <div class="form-wrapper md-whiteframe-4dp">
     </div>
-    <!-- / CONTENT -->
+    <!-- / BASIC FORM -->
+</div>
+<!-- / CONTENT -->
 </div>

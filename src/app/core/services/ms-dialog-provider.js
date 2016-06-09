@@ -33,11 +33,10 @@
 
         var vm = this;
 
-        // Data
-        $scope.applicationName = '';
+        // // Data
         // var schemaObj = msSchemasService.getSchema($stateParams.index);
         // $scope.className = '';
-        // $scope.appId = msSchemasService.getAppId();
+        // // $scope.appId = msSchemasService.getAppId();
         // var accessToken = $cookies.get('accessToken');
         // if (!accessToken) {
         //     $state.go('app.pages_auth_login');
@@ -45,16 +44,13 @@
         // $scope.types = ['String', 'Number'];
         // $scope.type = '';
         // $scope.columnName = '';
-        //////////
 
-        $scope.createApplication = function() {
-            msApplicationService.create($scope.applicationName, function(error, results) {
-                if (error) {
-                    closeDialog();
-                    return alert(error.statusText);
-                }
-                closeDialog();
-            });
+        // $scope.fields = Object.getOwnPropertyNames(schemaObj.fields);
+        // $scope.fields.splice(0, 4);
+        // //////////
+
+        vm.closeDialog = function() {
+            $mdDialog.hide();
         };
 
         // $scope.createClass = function() {
@@ -75,9 +71,22 @@
         //     $mdDialog.hide();
         // };
 
-        vm.closeDialog = function() {
+        // $scope.delColumn = function() {
+        //     ClassesService.delColumn(schemaObj.className, $scope.appId, accessToken, $scope.columnName,
+        //         function(result) {
+        //             msSchemasService.updateFields(schemaObj.className, result.fields);
+        //             console.log(result);
+        //         });
+        //     $mdDialog.hide();
+        // };
+
+        $scope.createApplication = function() {
+            msApplicationService.create($scope.applicationName,
+                function(result) {
+                    console.log(result);
+            });
             $mdDialog.hide();
-        };
+        }
 
         function closeDialog() {
             $mdDialog.hide();
