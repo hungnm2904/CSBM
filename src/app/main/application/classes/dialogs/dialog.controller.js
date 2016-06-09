@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-    .module('app.application.classes')
-    .controller('DialogController', DialogController);
+        .module('app.application.classes')
+        .controller('DialogController', DialogController);
 
     /** @ngInject */
     function DialogController($scope, $mdDialog, $cookies, $stateParams, ClassesService, msSchemasService, $rootScope) {
@@ -53,6 +53,7 @@
                     msSchemasService.updateFields($scope.className, result.fields);
                     console.log(result);
                 });
+
             $mdDialog.hide();
         };
 

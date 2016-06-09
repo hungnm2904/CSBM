@@ -116,26 +116,19 @@
                 });
             }
 
-            service.updateSchemas = function(className, appId, accessToken, columnName, value, objectId, callback) {
-                var data = {};
-                data[columnName] = value;
-
-                service.getMasterKey(appId, accessToken, function(result) {
-                    var masterKey = result;
-                    $http({
-                        method: 'PUT',
-                        url: domain + '/csbm/classes/' + className + '/' + objectId,
-                        headers: {
-                            'X-CSBM-Application-Id': appId,
-                            'X-CSBM-Master-Key': masterKey,
-                            'Content-Type': 'application/json'
-                        },
-                        data: data
-                    }).then(function(response) {
-                        callback(response.data);
-                    }, function(response) {
-                        alert('error');
-                    });
+            service.updateSchemas = function(className, appId, objectId, data, callback) {
+                $http({
+                    method: 'PUT',
+                    url: domain + '/csbm/classes/' + className + '/' + objectId,
+                    headers: {
+                        'X-CSBM-Application-Id': appId,
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
+                }).then(function(response) {
+                    callback(response.data);
+                }, function(response) {
+                    alert('error');
                 });
             }
 

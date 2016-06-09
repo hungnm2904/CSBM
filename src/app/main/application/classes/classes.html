@@ -19,15 +19,15 @@
     <div layout="row" layout-align="start center">
         <md-button class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
             <md-icon md-font-icon="icon-plus"></md-icon>
-            <span>Create new column</span>
-        </md-button>
-        <md-button class="md-raised md-accent" ng-click="update()">
-            <md-icon md-font-icon="icon-table-edit"></md-icon>
-            <span>Update Schemas</span>
+            <span>Add new column</span>
         </md-button>
         <md-button class="md-raised md-accent" ng-click="showDelColumnDialog($event)">
             <md-icon md-font-icon="icon-delete"></md-icon>
             <span>Delete column</span>
+        </md-button>
+        <md-button class="md-raised md-accent" ng-click="update()">
+            <md-icon md-font-icon="icon-table-edit"></md-icon>
+            <span>Update Values</span>
         </md-button>
     </div>
     <!-- / HEADER -->
@@ -41,23 +41,23 @@
                             <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
                     </thead>
-                    <tbody ng-repeat="document in documents">
-                        <tr>
+                    <tbody>
+                        <tr ng-repeat="document in documents" ng-init="position = $index">
                             <td ng-repeat="(key, value) in document">
                                 <span ng-if="!editable(key)">{{value}}</span>
                                 <md-input-container md-no-float class="md-block">
-                                  <input ng-if="editable(key)" placeholder="Value" name="schemavalue" type="text" value="{{value}}" />
-                              </md-input-container>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </form>
-      </div>
-      <!-- BASIC FORM -->
-      <div class="form-wrapper md-whiteframe-4dp">
+                                    <input ng-if="editable(key)" placeholder="Value" name="schemavalue" type="text" value="{{value}}" />
+                                </md-input-container>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-4dp">
+        </div>
+        <!-- / BASIC FORM -->
     </div>
-    <!-- / BASIC FORM -->
-</div>
-<!-- / CONTENT -->
+    <!-- / CONTENT -->
 </div>

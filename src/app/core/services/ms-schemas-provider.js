@@ -26,6 +26,11 @@
 
             function setSchemas(_appId, _schemas) {
                 schemas = _schemas;
+
+                schemas.forEach(function(schema, index) {
+                    delete schema.fields.ACL;
+                });
+
                 msModeService.setToApplicationMode();
                 $rootScope.$broadcast('schemas-changed', { 'appId': _appId });
             };
@@ -59,10 +64,10 @@
 
             function getSchema(_appId, index, callback) {
                 if (schemas && schemas.length > 0) {
-                    return callback(null,   schemas[index]);
+                    return callback(null, schemas[index]);
                 }
 
-                service.getSchemas(_appId, function(error, results){
+                service.getSchemas(_appId, function(error, results) {
                     if (error) {
                         return callback(error);
                     }
@@ -91,6 +96,12 @@
                         return;
                     }
                 });
+
+                schemas.forEach(function(schema, index) {
+                    delete schema.fields.ACL;
+                });
+
+
                 $rootScope.$broadcast('fields-change', { 'fields': _fields });
             }
         };
