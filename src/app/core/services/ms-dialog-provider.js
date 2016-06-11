@@ -28,67 +28,77 @@
         };
     };
 
-    function msDialogController($scope, $mdDialog, $cookies, $stateParams, ClassesService, msSchemasService,
-        msApplicationService) {
+    function msDialogController($scope, $mdDialog, $cookies, $stateParams, ClassesService,
+        msSchemasService, msApplicationService) {
 
         var vm = this;
+        var index = $stateParams.index;
+        var appId = $stateParams.appId;
 
-        // // Data
-        // var schemaObj = msSchemasService.getSchema($stateParams.index);
-        // $scope.className = '';
-        // // $scope.appId = msSchemasService.getAppId();
-        // var accessToken = $cookies.get('accessToken');
-        // if (!accessToken) {
-        //     $state.go('app.pages_auth_login');
-        // }
-        // $scope.types = ['String', 'Number'];
-        // $scope.type = '';
-        // $scope.columnName = '';
+        $scope.className = '';
+        $scope.fields = [];
+        $scope.types = ['String', 'Number'];
+        $scope.type = '';
 
-        // $scope.fields = Object.getOwnPropertyNames(schemaObj.fields);
-        // $scope.fields.splice(0, 4);
-        // //////////
+        msSchemasService.getSchema(appId, index, function(error, results) {
+            if (error) {
+                return alert(error.statusText);
+            }
 
-        vm.closeDialog = function() {
-            $mdDialog.hide();
-        };
-
-        // $scope.createClass = function() {
-        //     ClassesService.createClass($scope.className, $scope.appId, accessToken, function(result) {
-        //         console.log(result);
-        //         msSchemasService.addSchema(result);
-        //     });
-        //     $mdDialog.hide();
-        // };
-
-        // $scope.addColumn = function() {
-        //     ClassesService.addColumn(schemaObj.className, $scope.appId, accessToken, $scope.columnName,
-        //         $scope.type,
-        //         function(result) {
-        //             msSchemasService.updateFields(schemaObj.className, result.fields);
-        //             console.log(result);
-        //         });
-        //     $mdDialog.hide();
-        // };
-
-        // $scope.delColumn = function() {
-        //     ClassesService.delColumn(schemaObj.className, $scope.appId, accessToken, $scope.columnName,
-        //         function(result) {
-        //             msSchemasService.updateFields(schemaObj.className, result.fields);
-        //             console.log(result);
-        //         });
-        //     $mdDialog.hide();
-        // };
+            $scope.className = results.className;
+            var fields = Object.getOwnPropertyNames(results.fields);
+            $scope.fields = [].concat(fields);
+            $scope.fields.splice(0, 3);
+        });
 
         $scope.createApplication = function() {
             msApplicationService.create($scope.applicationName,
                 function(result) {
-                    console.log(result);
+                    // console.log(result);
+                });
+            closeDialog();
+        };
+
+        $scope.createClass = function() {
+            msSchemasService.createSchema($scope.className, appId, function(result) {
+                // console.log(result);
+                // msSchemasService.addSchema(result);
             });
+            closeDialog();
+        };
+
+        $scope.addColumn = function() {
+            msSchemasService.addField($scope.className, appId, $scope.columnName, $scope.type,
+                function(error, results) {
+                    if (error) {
+                        return alert(error.statusText)
+                    }
+
+                    // msSchemasService.updateFields($scope.className, result.fields);
+                    // console.log(results);
+                });
+
             $mdDialog.hide();
-        }
+        };
+
+        $scope.deleteColumn = function() {
+            msSchemasService.deleteField($scope.className, appId, $scope.columnName,
+                function(error, results) {
+                    if (error) {
+                        return alert(error.statusText);
+                    }
+
+                    // msSchemasService.updateFields($scope.className, result.fields);
+                    // console.log(results);
+                });
+            closeDialog();
+        };
 
         function closeDialog() {
+            $mdDialog.hide();
+        };
+
+        vm.closeDialog = function() {
             $mdDialog.hide();
         };
     };

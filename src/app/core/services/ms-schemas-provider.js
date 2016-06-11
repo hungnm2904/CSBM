@@ -8,102 +8,249 @@
     function msSchemasServiceProvider() {
         var $rootScope = angular.injector(['ng']).get('$rootScope');
 
-        var schemas = [];
+        var _schemas = [];
 
-        this.$get = function($rootScope, $http, msConfigService, msMasterKeyService, msModeService) {
-            var domain = (msConfigService.getConfig()).domain;
+        this.$get = function($rootScope, $http, $cookies, msConfigService, msMasterKeyService,
+            msModeService) {
+
+            var _domain = (msConfigService.getConfig()).domain;
 
             var service = {
                 setSchemas: setSchemas,
                 getSchemas: getSchemas,
                 getSchema: getSchema,
+                createSchema: createSchema,
                 addSchema: addSchema,
-                findByName: findByName,
-                updateFields: updateFields,
+                setDocuments: setDocuments,
+                getDocuments: getDocuments,
+                addField: addField,
+                deleteField: deleteField,
+                updateValues: updateValues
+                    // updateSchemas: updateSchemas
             }
 
             return service;
 
-            function setSchemas(_appId, _schemas) {
-                schemas = _schemas;
-
-                schemas.forEach(function(schema, index) {
+            function setSchemas(appId, index, schemas) {
+                _schemas = schemas;
+                _schemas.forEach(function(schema) {
                     delete schema.fields.ACL;
                 });
 
-                msModeService.setToApplicationMode();
-                $rootScope.$broadcast('schemas-changed', { 'appId': _appId });
-            };
-
-            function getSchemas(_appId, callback) {
-                if (schemas && schemas.length > 0) {
-                    return callback(null, schemas);
+                if (!index || index > _schemas.length - 1) {
+                    index = 0;
                 }
 
-                msMasterKeyService.getMasterKey(_appId, function(error, results) {
+                msModeService.setToApplicationMode();
+                $rootScope.$broadcast('schemas-changed', { 'appId': appId, 'index': index });
+            };
+
+            function getSchemas(appId, index, callback) {
+                if (_schemas && _schemas.length > 0) {
+                    return callback(null, _schemas);
+                }
+
+                msMasterKeyService.getMasterKey(appId, function(error, results) {
                     if (error) {
                         return callback(error);
                     }
 
-                    var masterKey = results.data.data.masterKey;
+                    var masterKey = results;
                     $http({
                         method: 'GET',
-                        url: domain + '/csbm/schemas',
+                        url: _domain + '/csbm/schemas',
                         headers: {
-                            'X-CSBM-Application-Id': _appId,
+                            'X-CSBM-Application-Id': appId,
                             'X-CSBM-Master-Key': masterKey
                         }
                     }).then(function(response) {
-                        service.setSchemas(_appId, response.data.results);
-                        callback(null, schemas);
+                        setSchemas(appId, index, response.data.results);
+                        callback(null, _schemas);
                     }, function(response) {
                         callback(response);
                     });
                 });
             };
 
-            function getSchema(_appId, index, callback) {
-                if (schemas && schemas.length > 0) {
-                    return callback(null, schemas[index]);
+            function getSchema(appId, index, callback) {
+                if (_schemas && _schemas.length > 0) {
+                    if (index > _schemas.length - 1) {
+                        index = 0;
+                    }
+                    return callback(null, _schemas[index]);
                 }
 
-                service.getSchemas(_appId, function(error, results) {
+                service.getSchemas(appId, index, function(error, results) {
                     if (error) {
                         return callback(error);
                     }
 
-                    callback(null, schemas[index]);
+                    callback(null, _schemas[index]);
                 });
             };
 
-            function addSchema(_schema) {
-                schemaObj.schemas.push(_schema);
-                $rootScope.$broadcast('schemas-changed', { 'schema': _schema });
+            function createSchema(className, appId, callback) {
+                msMasterKeyService.getMasterKey(appId, function(error, results) {
+                    if (error) {
+                        return callback(error);
+                    }
+
+                    var masterKey = results;
+                    $http({
+                        method: 'POST',
+                        url: _domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: {
+                            'className': className
+                        }
+                    }).then(function(response) {
+                        addSchema(appId, response.data);
+                        callback(null, response.data);
+                    }, function(response) {
+                        callback(response);
+                    });
+                });
             };
 
-            function findByName(_name) {
-                schemaObj.schemas.forEach(function(schema, index) {
-                    if (schema.className === _name) {
-                        return schema;
+            function addSchema(appId, schema) {
+                _schemas.push(schema);
+                var index = _schemas.length - 1;
+                $rootScope.$broadcast('schemas-changed', { 'appId': appId, 'index': index });
+            };
+
+            function setDocuments(className, documents) {
+                _schemas.forEach(function(schema, index) {
+                    if (schema.className === className) {
+                        return schema.documents = documents
                     }
                 });
             };
 
-            function updateFields(_name, _fields) {
-                schemas.forEach(function(schema, index) {
-                    if (schema.className === _name) {
-                        schema.fields = _fields;
-                        return;
+            function getDocuments(className, appId, callback) {
+                $http({
+                    method: 'GET',
+                    url: _domain + '/csbm/classes/' + className,
+                    headers: {
+                        'X-CSBM-Application-Id': appId
+                    }
+                }).then(function(response) {
+                    var documents = response.data.results
+
+                    setDocuments(className, documents);
+                    console.log(documents);
+                    console.log(_schemas);
+                    callback(null, documents);
+                }, function(response) {
+                    callback(response);
+                });
+            };
+
+            function addField(className, appId, columnName, type, callback) {
+                var accessToken = $cookies.get('accessToken');
+
+                var data = {
+                    'className': className,
+                    'fields': {}
+                }
+                data.fields[columnName] = {
+                    'type': type
+                }
+
+                msMasterKeyService.getMasterKey(appId, function(error, results) {
+                    if (error) {
+                        return callback(error);
+                    }
+
+                    var masterKey = results;
+                    $http({
+                        method: 'PUT',
+                        url: _domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: data
+                    }).then(function(response) {
+                        var schema = response.data;
+
+                        updateField(schema);
+                        callback(null, response.data);
+                    }, function(response) {
+                        callback(response);
+                    });
+                });
+            };
+
+            function deleteField(className, appId, columnName, callback) {
+                var accessToken = $cookies.get('accessToken');
+
+                var data = {
+                    'className': className,
+                    'fields': {}
+                }
+                data.fields[columnName] = {
+                    '__op': 'Delete'
+                }
+
+                msMasterKeyService.getMasterKey(appId, function(error, results) {
+                    if (error) {
+                        return callback(error);
+                    }
+
+                    var masterKey = results;
+                    $http({
+                        method: 'PUT',
+                        url: _domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                            'Content-Type': 'application/json'
+                        },
+                        data: data
+                    }).then(function(response) {
+                        var schema = response.data;
+
+                        updateField(schema);
+                        callback(null, schema);
+                    }, function(response) {
+                        callback(response);
+                    });
+                });
+            };
+
+            function updateField(schema) {
+                delete schema.fields.ACL;
+                var className = schema.className;
+                var fields = schema.fields
+
+                _schemas.forEach(function(schema, index) {
+                    if (schema.className === className) {
+                        $rootScope.$broadcast('fields-change', { 'fields': fields })
+                        return schema.fields = fields;
                     }
                 });
+            };
 
-                schemas.forEach(function(schema, index) {
-                    delete schema.fields.ACL;
+            function updateValues(className, appId, objectId, data, callback) {
+                $http({
+                    method: 'PUT',
+                    url: _domain + '/csbm/classes/' + className + '/' + objectId,
+                    headers: {
+                        'X-CSBM-Application-Id': appId,
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
+                }).then(function(response) {
+                    callback(null, response.data);
+                }, function(response) {
+                    alert(response);
                 });
-
-
-                $rootScope.$broadcast('fields-change', { 'fields': _fields });
-            }
+            };
         };
     };
 })();

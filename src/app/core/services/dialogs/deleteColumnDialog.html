@@ -10,10 +10,7 @@
         </md-toolbar>
         <md-dialog-content ms-scroll>
             <div layout="row">
-                <md-input-container class="md-block" flex="20">
-                <label translate=""></label>
-                </md-input-container>
-                <md-input-container flex=60>
+                <md-input-container flex=100>
                     <label>Column Name</label>
                     <md-select ng-model="columnName">
                         <md-option ng-repeat="field in fields" value="{{field}}">
@@ -23,9 +20,9 @@
                 </md-input-container>
             </div>
         </md-dialog-content>
-        <md-dialog-actions layout="row" layout-align="space-between center">
+        <md-dialog-actions layout="row" layout-align="start center">
             <div layout="row" layout-align="start center">
-                <md-button ng-click="delColumn()" class="send-button md-accent md-raised" aria-label="Delete" translate="DELETE COLUMN" translate-attr-aria-label="DELETE COLUMN">
+                <md-button ng-click="deleteColumn()" class="send-button md-accent md-raised" aria-label="Delete" translate="DELETE COLUMN" translate-attr-aria-label="DELETE COLUMN">
                     DELETE COLUMN
                 </md-button>
             </div>

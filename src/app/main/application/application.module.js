@@ -17,6 +17,7 @@
         $rootScope.$on('schemas-changed', function(event, args) {
 
             var appId = args.appId;
+            var index  = args.index;
 
             msNavigationService.saveItem('application', {
                 title: 'Application',
@@ -33,7 +34,7 @@
                 weight: 1
             });
 
-            var schemas = msSchemasService.getSchemas(appId, function(error, results) {
+            var schemas = msSchemasService.getSchemas(appId, index, function(error, results) {
                 if (error) {
                     alert(error.statusText);
                 }
@@ -49,7 +50,7 @@
                         stateParams: { 'appId': appId, 'index': i }
                     });
                 }
-                $state.go('app.application_classes', { 'appId': appId, 'index': 0 });
+                $state.go('app.application_classes', { 'appId': appId, 'index': index });
             });
 
         });

@@ -26,7 +26,7 @@
                         'X-CSBM-Application-Id': appId
                     }
                 }).then(function(response) {
-                    callback(null, response);
+                    callback(null, response.data.data.masterKey);
                 }, function(response) {
                     callback(response);
                 });

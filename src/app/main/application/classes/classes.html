@@ -7,10 +7,10 @@
                 <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
                 <span class="parent">MANAGEMENT</span>
             </div>
-            <div class="title">Classes</div>
+            <div class="title">{{className}}</div>
         </div>
         <div layout="row" layout-align="start center">
-            <md-button class="md-primary md-raised" ng-click="showDialog($event)">
+            <md-button class="md-primary md-raised" ng-click="showAddClassDialog($event)">
                 <md-icon md-font-icon="icon-plus"></md-icon>
                 <span>Create new class</span>
             </md-button>
@@ -21,11 +21,11 @@
             <md-icon md-font-icon="icon-plus"></md-icon>
             <span>Add new column</span>
         </md-button>
-        <md-button class="md-raised md-accent" ng-click="showDelColumnDialog($event)">
+        <md-button class="md-raised md-accent" ng-click="showDeleteColumnDialog($event)">
             <md-icon md-font-icon="icon-delete"></md-icon>
             <span>Delete column</span>
         </md-button>
-        <md-button class="md-raised md-accent" ng-click="update()">
+        <md-button class="md-raised md-accent" ng-click="updateValues()">
             <md-icon md-font-icon="icon-table-edit"></md-icon>
             <span>Update Values</span>
         </md-button>
@@ -42,11 +42,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="document in documents" ng-init="position = $index">
+                        <tr ng-repeat="document in documents track by document.objectId" ng-init="position = $index">
                             <td ng-repeat="(key, value) in document">
-                                <span ng-if="!editable(key)">{{value}}</span>
+                                <span ng-if="!editable(key)">
+                                    {{document[key]}}
+                                </span>
                                 <md-input-container md-no-float class="md-block">
-                                    <input ng-if="editable(key)" placeholder="Value" name="schemavalue" type="text" value="{{value}}" />
+                                    <input ng-if="editable(key)" placeholder="Value" name="schemavalue" type="text" ng-model="document[key]" />
                                 </md-input-container>
                             </td>
                         </tr>

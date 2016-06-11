@@ -26,7 +26,7 @@
             };
 
             $scope.goToAppManagement = function(appId) {
-                msSchemasService.getSchemas(appId, function(error, results) {
+                msSchemasService.getSchemas(appId, null, function(error, results) {
                     if (error) {
                         return alert(error.statusText);
                     }
