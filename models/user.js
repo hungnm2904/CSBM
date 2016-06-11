@@ -6,6 +6,7 @@ var userSchema = new Schema({
     name: String,
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    email: { type: String, required: true },
     created_at: Date,
     updated_at: Date
 });
@@ -19,10 +20,8 @@ userSchema.pre('save', function(next, done) {
         user.created_at = curDate;
     }
 
-    // Break out if the password hasn't changed
     if (!user.isModified('password')) return next();
 
-    // Password changed so we need to hash it
     bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);
 

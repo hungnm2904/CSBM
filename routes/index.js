@@ -67,7 +67,7 @@ module.exports = function(appHelpers) {
 
                     res.status(200).send({
                         message: 'Login successfully',
-                        data: {
+                        results: {
                             userId: user._id,
                             name: user.name,
                             token: token.value
@@ -81,6 +81,7 @@ module.exports = function(appHelpers) {
     router.post('/signup', function(req, res, next) {
         var username = req.body.username;
         var password = req.body.password;
+        var email = req.body.email;
 
         if (!username || !password) {
             return res.status(403).send({
@@ -97,7 +98,22 @@ module.exports = function(appHelpers) {
                     });
                 } else if (user) {
                     return res.status(403).send({
-                        message: 'Username is duplicated'
+                        message: 'Username is already exists'
+                    });
+                }
+            }
+        );
+
+        User.findOne({ 'email': email },
+            function(err, user) {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
+                    });
+                } else if (user) {
+                    return res.status(403).send({
+                        message: 'Email is already in use'
                     });
                 }
             }
@@ -110,15 +126,15 @@ module.exports = function(appHelpers) {
 
         user.save(function(err) {
             if (err) {
-                return res.status(500).json({
+                return res.status(500).send({
                     message: 'Error occurred while processing'
                 });
             }
         });
 
-        res.status(200).json({
+        res.status(200).send({
             message: 'Signup successfully',
-            data: {
+            results: {
                 userId: user._id,
                 name: user.name
             }
@@ -130,12 +146,14 @@ module.exports = function(appHelpers) {
         if (accessToken) {
             Token.findOneAndRemove({ 'value': accessToken }, function(err) {
                 if (err) {
-                    return res.status(500).json({ message: 'Error occurred while processing' });
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
+                    });
                 }
             });
         }
 
-        res.status(200).json({
+        res.status(200).send({
             message: 'Signout from CSBM Server successfully'
         });
     });
@@ -199,7 +217,7 @@ module.exports = function(appHelpers) {
 
             res.status(200).send({
                 message: '',
-                data: {
+                results: {
                     masterKey: application.masterKey
                 }
             });
