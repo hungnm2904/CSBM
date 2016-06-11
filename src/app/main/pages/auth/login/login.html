@@ -4,44 +4,37 @@
             <div class="logo md-accent-bg">
                 <span>F</span>
             </div>
-
             <div class="title" translate="LOGIN.TITLE">Log in to your account</div>
-
             <form name="loginForm" ng-submit="vm.login()" novalidate>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="text" name="username" ng-model="vm.username" placeholder="User Name"
-                    translate translate-attr-placeholder="LOGIN.USERNAME"
-                    required>
+                    <input type="text" name="username" ng-model="vm.username" placeholder="User Name" translate translate-attr-placeholder="LOGIN.USERNAME" required>
                     <div ng-messages="loginForm.username.$error" role="alert" multiple>
                         <div ng-message="required">
                             <span translate="LOGIN.ERRORS.USERNAME_REQUIRED">User Name field is required</span>
                         </div>
                     </div>
                 </md-input-container>
-
                 <md-input-container class="md-block" md-no-float>
-                    <input type="password" name="password" ng-model="vm.password" placeholder="Password"
-                    translate translate-attr-placeholder="LOGIN.PASSWORD"
-                    required>
+                    <input type="password" name="password" ng-model="vm.password" placeholder="Password" translate translate-attr-placeholder="LOGIN.PASSWORD" required>
                     <div ng-messages="loginForm.password.$error" role="alert">
                         <div ng-message="required">
                             <span translate="LOGIN.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
                         </div>
                     </div>
                 </md-input-container>
-
                 <md-input-container class="md-block" md-no-float>
                     <div ng-messages="loginForm.login.$error" role="alert">
                         <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
                     </div>
                 </md-input-container>
-
-                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
-                ng-disabled="loginForm.$invalid || loginForm.$pristine"
-                translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN">
-                LOG IN
-            </md-button>
-        </form>
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN" ng-disabled="loginForm.$invalid || loginForm.$pristine" translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN">
+                    LOG IN
+                </md-button>
+            </form>
+            <div class="register" layout="row" layout-sm="column" layout-align="center center">
+                <span class="text" translate="LOGIN.DONT_HAVE_ACCOUNT">Don't have an account?</span>
+                <a class="link" ui-sref="app.pages_auth_register" translate="LOGIN.CREATE_ACCOUNT">Create an account</a>
+            </div>
+        </div>
     </div>
-</div>
 </div>

@@ -5,7 +5,7 @@
         .module('app.application.classes')
         .controller('ClassesController', function($scope, $http, $cookies, $window, $state,
             $stateParams, $mdDialog, $document, $rootScope, msModeService, msSchemasService,
-            ClassesService, msDialogService) {
+            ClassesService, msDialogService, msToastService) {
 
             var accessToken = $cookies.get('accessToken');
             if (!accessToken) {
@@ -106,6 +106,7 @@
                             if ($scope.schemas[key].type === "Number") {
                                 value = Number(value);
                             }
+                            // msToastService.show(key + ' must be ' + $scope.schemas[key].type, 'error');
 
                             newDocument[key] = value;
                         }
@@ -121,22 +122,7 @@
                         objectId, d,
                         function(results) {});
                 });
-
-                // for (var i in $scope.documents) {
-                //     var data = {};
-                //     var objectId = $scope.documents[i].objectId;
-                //     for (var index in keys) {
-                //         var columnName = keys[index];
-                //         var value = strVal.shift();
-                //         if ($scope.schemas[columnName].type === "Number") {
-                //             value = Number(value);
-                //         }
-                //         data[columnName] = value
-                //     }
-
-                //     ClassesService.updateSchemas($scope.className, appId, objectId, data,
-                //         function(results) {});
-                // }
+                msToastService.show('Update values successful.', 'success');
             }
         });
 })();

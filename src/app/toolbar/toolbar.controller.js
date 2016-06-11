@@ -7,7 +7,7 @@
     .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast, $location, $http, $cookies, $window, $state, ToolbarService)
+    function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast, $location, $http, $cookies, $window, $state, msUserService)
     {
         var vm = this;
 
@@ -72,6 +72,8 @@
         vm.setUserStatus = setUserStatus;
         vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
 
+        vm.name = $cookies.get('username');
+
         //////////
 
         init();
@@ -113,7 +115,7 @@
          */
          function logout()
          {
-            ToolbarService.logout(function (response) {
+            msUserService.logout(function (response) {
                 if(response.message){
                     alert(response.message);
                 }

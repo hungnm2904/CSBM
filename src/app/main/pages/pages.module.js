@@ -4,7 +4,8 @@
 
     angular
         .module('app.pages', [
-            'app.pages.auth.login'
+            'app.pages.auth.login',
+            'app.pages.auth.register'
         ])
         .config(config);
 

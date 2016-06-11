@@ -73,25 +73,27 @@
                     if (error) {
                         return alert(error.statusText)
                     }
-
-                    // msSchemasService.updateFields($scope.className, result.fields);
-                    // console.log(results);
                 });
 
             $mdDialog.hide();
         };
 
         $scope.deleteColumn = function() {
-            msSchemasService.deleteField($scope.className, appId, $scope.columnName,
-                function(error, results) {
-                    if (error) {
-                        return alert(error.statusText);
-                    }
-
-                    // msSchemasService.updateFields($scope.className, result.fields);
-                    // console.log(results);
-                });
-            closeDialog();
+            var confirm = $mdDialog.confirm()
+                .title('Are you sure to delete ' + $scope.columnName + ' ?')
+                .ok('Yes')
+                .cancel('No');
+            $mdDialog.show(confirm).then(function() {
+                msSchemasService.deleteField($scope.className, appId, $scope.columnName,
+                    function(error, results) {
+                        if (error) {
+                            return alert(error.statusText);
+                        }
+                    });
+                closeDialog();
+            }, function() {
+                closeDialog();
+            });
         };
 
         function closeDialog() {

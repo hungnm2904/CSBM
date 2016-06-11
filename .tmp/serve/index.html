@@ -102,8 +102,9 @@
 
         <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
         <!-- inject:js -->
+        <script src="app/main/pages/auth/register/register.module.js"></script>
+        <script src="app/main/pages/auth/register/register.controller.js"></script>
         <script src="app/main/pages/auth/login/login.module.js"></script>
-        <script src="app/main/pages/auth/login/login.service.js"></script>
         <script src="app/main/pages/auth/login/login.controller.js"></script>
         <script src="app/main/application/classes/classes.module.js"></script>
         <script src="app/main/application/classes/dialogs/dialog.controller.js"></script>
@@ -138,6 +139,8 @@
         <script src="app/core/theming/fuse-generator.factory.js"></script>
         <script src="app/core/theme-options/theme-options.directive.js"></script>
         <script src="app/core/services/ms-utils.service.js"></script>
+        <script src="app/core/services/ms-user-provider.js"></script>
+        <script src="app/core/services/ms-toast-provider.js"></script>
         <script src="app/core/services/ms-schemas-provider.js"></script>
         <script src="app/core/services/ms-mode-provider.js"></script>
         <script src="app/core/services/ms-masterkey-provider.js"></script>
@@ -151,7 +154,6 @@
         <script src="app/core/directives/highlight.directive.js"></script>
         <script src="app/core/config/fuse-config.provider.js"></script>
         <script src="app/toolbar/toolbar.module.js"></script>
-        <script src="app/toolbar/toolbar.service.js"></script>
         <script src="app/toolbar/toolbar.controller.js"></script>
         <script src="app/quick-panel/quick-panel.controller.js"></script>
         <script src="app/navigation/navigation.module.js"></script>
