@@ -66,8 +66,7 @@ module.exports = function(appHelpers) {
                     });
 
                     res.status(200).send({
-                        message: 'Login successfully',
-                        results: {
+                        data: {
                             userId: user._id,
                             name: user.name,
                             token: token.value
@@ -134,7 +133,7 @@ module.exports = function(appHelpers) {
 
         res.status(200).send({
             message: 'Signup successfully',
-            results: {
+            data: {
                 userId: user._id,
                 name: user.name
             }
@@ -158,8 +157,8 @@ module.exports = function(appHelpers) {
         });
     });
 
-    router.get('/application/:name', authController.isAuthenticated, function(req, res) {
-        var name = req.params.name;
+    router.post('/applications', authController.isAuthenticated, function(req, res) {
+        var name = req.body.applicationName;
         var newApp = new Application({
             name: name,
             userId: req.user._id
@@ -187,7 +186,25 @@ module.exports = function(appHelpers) {
         });
     });
 
-    router.get('/application', authController.isAuthenticated, function(req, res) {
+    router.delete('/applications', authController.isAuthenticated, function(req, res) {
+        var appId = req.get('X-CSBM-Application-Id');
+
+        if (!appId) {
+            return res.status(403).send();
+        }
+        
+        Application.findOneAndRemove({ '_id': appId }, function(err, application) {
+            if (err) {
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+        });
+
+        res.status(200).send();
+    });
+
+    router.get('/applications', authController.isAuthenticated, function(req, res) {
         Application.find({ 'userId': req.user._id }, function(err, applications) {
             if (err) {
                 console.log(err);
@@ -217,7 +234,7 @@ module.exports = function(appHelpers) {
 
             res.status(200).send({
                 message: '',
-                results: {
+                data: {
                     masterKey: application.masterKey
                 }
             });
