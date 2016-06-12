@@ -31,6 +31,7 @@
             msNavigationService.saveItem('application.classes', {
                 title: 'Classes',
                 icon: 'icon-library-plus',
+                group: true,
                 weight: 1
             });
 

@@ -1,24 +1,26 @@
 <div id="login" class="flex-scrollable" layout="column" ms-scroll>
     <div id="login-form-wrapper" layout="column" layout-align="center center">
+        <div class="logo">
+            <span>Masamune</span>
+        </div>
         <div id="login-form" class="md-whiteframe-8dp">
-            <div class="logo md-accent-bg">
-                <span>F</span>
-            </div>
-            <div class="title" translate="LOGIN.TITLE">Log in to your account</div>
-            <form name="loginForm" ng-submit="vm.login()" novalidate>
+            <div class="title">Log into your Dashboard</div>
+            <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="text" name="username" ng-model="vm.username" placeholder="User Name" translate translate-attr-placeholder="LOGIN.USERNAME" required>
+                    <label>Username</label>
+                    <input type="text" name="username" ng-model="vm.username" required>
                     <div ng-messages="loginForm.username.$error" role="alert" multiple>
                         <div ng-message="required">
-                            <span translate="LOGIN.ERRORS.USERNAME_REQUIRED">User Name field is required</span>
+                            <span>User Name field is required</span>
                         </div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="password" name="password" ng-model="vm.password" placeholder="Password" translate translate-attr-placeholder="LOGIN.PASSWORD" required>
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="vm.password" required>
                     <div ng-messages="loginForm.password.$error" role="alert">
                         <div ng-message="required">
-                            <span translate="LOGIN.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
+                            <span>Password field is required</span>
                         </div>
                     </div>
                 </md-input-container>
@@ -27,14 +29,14 @@
                         <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
                     </div>
                 </md-input-container>
-                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN" ng-disabled="loginForm.$invalid || loginForm.$pristine" translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN">
-                    LOG IN
-                </md-button>
             </form>
-            <div class="register" layout="row" layout-sm="column" layout-align="center center">
-                <span class="text" translate="LOGIN.DONT_HAVE_ACCOUNT">Don't have an account?</span>
-                <a class="link" ui-sref="app.pages_auth_register" translate="LOGIN.CREATE_ACCOUNT">Create an account</a>
-            </div>
+        </div>
+        <md-button class="md-raised md-accent submit-button" ng-disabled="loginForm.$invalid || loginForm.$pristine" ng-click="vm.login()">
+            Log In
+        </md-button>
+        <div class="register" layout="row" layout-sm="column" layout-align="center center">
+            <span class="text" translate="LOGIN.DONT_HAVE_ACCOUNT">Don't have an account?</span>
+            <a class="link" ui-sref="app.pages_auth_register" translate="LOGIN.CREATE_ACCOUNT">Create an account</a>
         </div>
     </div>
 </div>

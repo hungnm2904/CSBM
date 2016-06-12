@@ -7,7 +7,7 @@
 
     function msMasterKeyServiceProvider() {
         var service = this;
-        this.$get = function(msConfigService, $cookies, $http) {
+        this.$get = function($cookies, $http, msUserService, msConfigService) {
             var domain = (msConfigService.getConfig()).domain;
 
             var service = {
@@ -17,7 +17,7 @@
             return service;
 
             function getMasterKey(appId, callback) {
-                var accessToken = $cookies.get('accessToken');
+                var accessToken = msUserService.getAccessToken();
                 $http({
                     method: 'GET',
                     url: domain + '/masterKey',

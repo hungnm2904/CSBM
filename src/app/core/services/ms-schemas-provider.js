@@ -10,8 +10,8 @@
 
         var _schemas = [];
 
-        this.$get = function($rootScope, $http, $cookies, msConfigService, msMasterKeyService,
-            msModeService) {
+        this.$get = function($rootScope, $http, $cookies, msConfigService, 
+            msMasterKeyService, msModeService) {
 
             var _domain = (msConfigService.getConfig()).domain;
 
@@ -26,7 +26,6 @@
                 addField: addField,
                 deleteField: deleteField,
                 updateValues: updateValues
-                    // updateSchemas: updateSchemas
             }
 
             return service;
@@ -141,8 +140,6 @@
                     var documents = response.data.results
 
                     setDocuments(className, documents);
-                    console.log(documents);
-                    console.log(_schemas);
                     callback(null, documents);
                 }, function(response) {
                     callback(response);
@@ -150,7 +147,7 @@
             };
 
             function addField(className, appId, columnName, type, callback) {
-                var accessToken = $cookies.get('accessToken');
+                var accessToken = msUserService.getAccessToken();
 
                 var data = {
                     'className': className,
@@ -187,7 +184,7 @@
             };
 
             function deleteField(className, appId, columnName, callback) {
-                var accessToken = $cookies.get('accessToken');
+                var accessToken = msUserService.getAccessToken();
 
                 var data = {
                     'className': className,

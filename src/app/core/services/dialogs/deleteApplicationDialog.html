@@ -1,22 +1,29 @@
 <md-dialog class="compose-dialog" aria-label="New Message">
     <form class="md-inline-form">
-        <md-toolbar class="md-accent md-hue-2">
-            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-                <span class="title" translate="NEW APPLICATION">New Application</span>
-                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" tranlate translate-aria-label="CLOSE DIALOG">
-                    <md-icon md-font-icon="icon-close"></md-icon>
-                </md-button>
+        <md-toolbar class="md-warn md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="center center">
+                <span class="title">DELETE APPLICATION</span>
             </div>
         </md-toolbar>
         <md-dialog-content ms-scroll>
-            <md-input-container class="md-block">
-                <label translate="APPLICATION NAME">Application name</label>
-                <input ng-model="applicationName" type="text">
-            </md-input-container>
+            <div layout="row">
+                <md-input-container flex=100>
+                    <label>Applications</label>
+                    <md-select ng-model="applicationId">
+                        <md-option ng-repeat="application in applications track by application._id" value="{{application._id}}">
+                            {{application.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
         </md-dialog-content>
-        <md-dialog-actions layout="row" layout-align="space-between center">
+        <md-dialog-actions layout="row" layout-align="start center">
             <div layout="row" layout-align="start center">
-                <md-button ng-click="createApplication()" class="send-button md-accent md-raised" aria-label="Create" translate="CREATE APPLICATION" translate-attr-aria-label="CREATE APPLICATION">
+                <md-button ng-click="deleteApplication()" class="send-button md-raised md-warn md-default-theme" ng-disabled="!applicationId">
+                    Delete Application
+                </md-button>
+                <md-button class="md-default md-raised" ng-click="vm.closeDialog()">
+                    Close
                 </md-button>
             </div>
         </md-dialog-actions>

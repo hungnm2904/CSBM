@@ -6,41 +6,54 @@
         .provider('msApplicationService', msApplicationServiceProvider);
 
     function msApplicationServiceProvider() {
-        var service = this;
-        this.$get = function($http, $cookies, $rootScope, msConfigService) {
-            var domain = (msConfigService.getConfig()).domain;
-            var accessToken = $cookies.get('accessToken');
+        var _applications = [];
 
-            var applications = [];
+        var service = this;
+        this.$get = function($http, $state, $cookies, $rootScope, msConfigService,
+            msUserService) {
+
+            var _domain = (msConfigService.getConfig()).domain;
+
 
             var service = {
                 getAll: getAll,
-                create: create
+                create: create,
+                remove: remove
             };
 
             return service;
 
-            function setNew(_applications) {
-                applications = _applications;
+            function setApplications(applications) {
+                _applications = applications;
             };
 
+            function removeApplication(id) {
+                _applications.forEach(function(application, index) {
+                    if (application._id === id) {
+                        return _applications.splice(index, 1);
+                    }
+                });
+            }
+
             function add(application) {
-                applications.push(application);
+                _applications.push(application);
             };
 
             function getAll(callback) {
-                if (applications && applications.length > 0) {
-                    callback(applications);
+                if (_applications && _applications.length > 0) {
+                    return callback(null, _applications);
                 }
+
+                var accessToken = msUserService.getAccessToken();
                 $http({
                     method: 'GET',
-                    url: domain + '/application',
+                    url: _domain + '/applications',
                     headers: {
                         'Authorization': 'Bearer ' + accessToken
                     }
                 }).then(function(response) {
-                    setNew(response.data);
-                    callback(null, applications);
+                    setApplications(response.data);
+                    callback(null, _applications);
                 }, function(response) {
                     callback(response);
                 });
@@ -48,14 +61,13 @@
 
             function create(name, callback) {
                 var data = {
-                    "className": name,
-                    "fields": {
-
-                    }
+                    "applicationName": name
                 }
+
+                var accessToken = msUserService.getAccessToken();
                 $http({
                     method: 'POST',
-                    url: domain + '/application/' + name,
+                    url: _domain + '/applications/',
                     headers: {
                         'Authorization': 'Bearer ' + accessToken
                     },
@@ -67,6 +79,23 @@
                     callback(response);
                 });
             };
+
+            function remove(id, callback) {
+                var accessToken = msUserService.getAccessToken();
+                $http({
+                    method: 'DELETE',
+                    url: _domain + '/applications/',
+                    headers: {
+                        'X-CSBM-Application-Id': id,
+                        'Authorization': 'Bearer ' + accessToken
+                    }
+                }).then(function(response) {
+                    removeApplication(id);
+                    callback(null, _applications);
+                }, function(response) {
+                    callback(response);
+                });
+            }
         };
     };
 })();

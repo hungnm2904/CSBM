@@ -10,6 +10,9 @@
         // State
         $stateProvider.state('app.pages_auth_login', {
             url: '/login',
+            // params: {
+            //     error: null
+            // },
             views: {
                 'main@': {
                     templateUrl: 'app/core/layouts/content-only.html',

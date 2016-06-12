@@ -6,19 +6,21 @@
         .provider('msUserService', msUserServiceProvider);
 
     function msUserServiceProvider() {
-        var $rootScope = angular.injector(['ng']).get('$rootScope');
+        // var $rootScope = angular.injector(['ng']).get('$rootScope');
 
-        var _user = [];
+        var _currentUser;
 
-        this.$get = function($rootScope, $http, $cookies, msConfigService, msMasterKeyService,
-            msModeService, $state) {
+        this.$get = function($http, $cookies, msConfigService) {
 
             var _domain = (msConfigService.getConfig()).domain;
 
             var service = {
                 login: login,
                 logout: logout,
-                register: register
+                register: register,
+                getCurrentUser: getCurrentUser,
+                getAccessToken: getAccessToken,
+                getCurrentUsername: getCurrentUsername
             }
 
             return service;
@@ -32,25 +34,24 @@
                         password: password
                     }
                 }).then(function(response) {
-                    var obj = {
-                        currentUser: {
-                            userId: response.data.data.userId,
-                            token: response.data.data.token
-                        }
-                    };
-                    $cookies.put('accessToken', response.data.data.token);
-                    $cookies.put('username', username);
-                    $state.go('app.managements_applications');
-                    response.message = '';
-                    callback(response);
+                    var user = {
+                        'userId': response.data.data.userId,
+                        'username': response.data.data.name,
+                        'accessToken': response.data.data.token
+                    }
+
+                    var expiresDate = new Date();
+                    expiresDate.setDate(expiresDate.getDate() + 1);
+                    $cookies.putObject('USER', user, { expires: expiresDate });
+                    setCurrentUser(user);
+                    callback(null, _currentUser);
                 }, function(response) {
-                    response.message = 'Username or password is incorrect';
                     callback(response);
                 });
             };
 
             function logout(callback) {
-                var accessToken = $cookies.get('accessToken');
+                var accessToken = getAccessToken();
                 $http({
                     method: 'GET',
                     url: _domain + '/signout',
@@ -58,13 +59,9 @@
                         'Authorization': 'Bearer ' + accessToken
                     }
                 }).then(function(response) {
-                    $cookies.remove('accessToken');
-                    $cookies.remove('username');
-                    $state.go('app.pages_auth_login');
-                    response.message = '';
-                    callback(response);
+                    deleteCurrentUser();
+                    callback(null, response);
                 }, function(response) {
-                    response.message = 'error';
                     callback(response);
                 });
             };
@@ -88,6 +85,57 @@
                 }, function(response) {
                     callback(response);
                 });
+            };
+
+            function setCurrentUser(user) {
+                _currentUser = user;
+            };
+
+            function getCurrentUser() {
+                if (_currentUser) {
+                    return _currentUser;
+                }
+
+                var user = $cookies.getObject('USER');
+                if (user) {
+                    setCurrentUser(user);
+                    return _currentUser;
+                }
+
+                return null;
+            };
+
+            function getAccessToken() {
+                if (_currentUser) {
+                    return _currentUser.accessToken;
+                }
+
+                var user = $cookies.getObject('USER');
+                if (user) {
+                    setCurrentUser(user);
+                    return _currentUser.accessToken;
+                }
+
+                return null;
+            }
+
+            function getCurrentUsername() {
+                if (_currentUser) {
+                    return _currentUser.username;
+                }
+
+                var user = $cookies.getObject('USER');
+                if (user) {
+                    setCurrentUser(user);
+                    return _currentUser.username;
+                }
+
+                return null;
+            }
+
+            function deleteCurrentUser() {
+                _currentUser = null;
+                $cookies.remove('USER');
             };
         };
     };

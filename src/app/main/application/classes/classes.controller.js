@@ -3,13 +3,12 @@
 
     angular
         .module('app.application.classes')
-        .controller('ClassesController', function($scope, $http, $cookies, $window, $state,
-            $stateParams, $mdDialog, $document, $rootScope, msModeService, msSchemasService,
-            ClassesService, msDialogService, msToastService) {
+        .controller('ClassesController', function($scope, $http, $cookies, $window, 
+            $state, $stateParams, $mdDialog, $document, $rootScope, msModeService, 
+            msSchemasService, msDialogService, msToastService, msUserService) {
 
-            var accessToken = $cookies.get('accessToken');
-            if (!accessToken) {
-                return $state.go('app.pages_auth_login');
+            if (!msUserService.getAccessToken()) {
+                $state.go('app.pages_auth_login');
             }
 
             var index = $stateParams.index;
@@ -21,6 +20,10 @@
             var renderClass = function() {
                 msSchemasService.getSchema(appId, index, function(error, results) {
                     if (error) {
+                        if (error.status === 401) {
+                            return $state.go('app.pages_auth_login');
+                        }
+
                         return alert(error.statusText);
                     }
 
@@ -82,15 +85,18 @@
             };
 
             $scope.showAddClassDialog = function(ev) {
-                msDialogService.showDialog(ev, 'app/core/services/dialogs/addClassDialog.html');
+                msDialogService
+                    .showDialog(ev, 'app/core/services/dialogs/addClassDialog.html');
             };
 
             $scope.showAddColumnDialog = function(ev) {
-                msDialogService.showDialog(ev, 'app/core/services/dialogs/addColumnDialog.html');
+                msDialogService
+                    .showDialog(ev, 'app/core/services/dialogs/addColumnDialog.html');
             }
 
             $scope.showDeleteColumnDialog = function(ev) {
-                msDialogService.showDialog(ev, 'app/core/services/dialogs/deleteColumnDialog.html');
+                msDialogService
+                    .showDialog(ev, 'app/core/services/dialogs/deleteColumnDialog.html');
             }
 
             $scope.updateValues = function() {

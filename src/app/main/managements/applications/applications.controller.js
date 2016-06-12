@@ -2,35 +2,50 @@
     'use strict';
 
     angular
-    .module('app.managements.applications')
-    .controller('ApplicationsController',
-        function($scope, $http, $cookies, $window, $state, $rootScope, $mdDialog, $document,
-            msApplicationService, msModeService, msSchemasService, msDialogService) {
+        .module('app.managements.applications')
+        .controller('ApplicationsController', ApplicationsController);
 
-            if (!$cookies.get('accessToken')) {
-                $state.go('app.pages_auth_login');
-            }
+    function ApplicationsController($scope, $state, msUserService, msApplicationService,
+        msSchemasService, msDialogService) {
 
-            $scope.applications = [];
+        if (!msUserService.getAccessToken()) {
+            $state.go('app.pages_auth_login');
+        }
 
-            msApplicationService.getAll(function(error, results) {
-                if (error) {
-                    return alert(error.statusText);
+        $scope.applications = [];
+
+        msApplicationService.getAll(function(error, results) {
+            if (error) {
+                if (error.status === 401) {
+                    return $state.go('app.pages_auth_login', { error: error.statusText });
                 }
 
-                $scope.applications = results;
-            });
+                return alert(error.statusText);
+            }
 
-            $scope.showAddDialog = function(ev) {
-                msDialogService.showDialog(ev, 'app/core/services/dialogs/newApplicationDialog.html');
-            };
-
-            $scope.goToAppManagement = function(appId) {
-                msSchemasService.getSchemas(appId, null, function(error, results) {
-                    if (error) {
-                        return alert(error.statusText);
-                    }
-                });
-            };
+            $scope.applications = results;
         });
+
+        $scope.showAddDialog = function(ev) {
+            msDialogService
+                .showDialog(ev, 'app/core/services/dialogs/newApplicationDialog.html');
+        };
+
+        $scope.showDeleteDialog = function(ev) {
+            msDialogService
+                .showDialog(ev, 'app/core/services/dialogs/deleteApplicationDialog.html');
+        }
+
+        $scope.goToAppManagement = function(appId) {
+            msSchemasService.getSchemas(appId, null, function(error, results) {
+                if (error) {
+                    if (error.status === 401) {
+                        return $state.go('app.pages_auth_login', { error: error });
+                    }
+
+                    return alert(error.statusText);
+                }
+            });
+        };
+    }
 })();
