@@ -10,7 +10,7 @@
 
         var _schemas = [];
 
-        this.$get = function($rootScope, $http, $cookies, msConfigService, 
+        this.$get = function($rootScope, $http, $cookies, msConfigService,
             msMasterKeyService, msModeService) {
 
             var _domain = (msConfigService.getConfig()).domain;
@@ -23,11 +23,11 @@
                 addSchema: addSchema,
                 setDocuments: setDocuments,
                 getDocuments: getDocuments,
+                createDocument: createDocument,
                 addField: addField,
+                deleteDocuments: deleteDocuments,
                 deleteField: deleteField,
-                updateValues: updateValues,
-                deleteRow: deleteRow,
-                addRow: addRow
+                updateValues: updateValues
             }
 
             return service;
@@ -148,6 +148,60 @@
                 });
             };
 
+            function addDocument(className, _document) {
+                _schemas.forEach(function(schema, index) {
+                    if (schema.className === className) {
+                        return schema.documents.push(_document);
+                    }
+                });
+            }
+
+            function createDocument(className, appId, data, callback) {
+                $http({
+                    method: 'POST',
+                    url: _domain + '/csbm/classes/' + className,
+                    headers: {
+                        'X-CSBM-Application-Id': appId,
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
+                }).then(function(response) {
+                    var _document = response.data;
+                    _document.updatedAt = _document.createdAt;
+                    Object.assign(_document, data);
+                    addDocument(className, _document);
+                    callback(null, _document);
+                }, function(response) {
+                    callback(response);
+                });
+            };
+
+            function deleteDocuments(className, appId, objectIds, callback) {
+                var data = {
+                    'requests': []
+                };
+
+                objectIds.forEach(function(objectId, index) {
+                    data.requests.push({
+                        'method': 'DELETE',
+                        'path': '/csbm/classes/' + className + '/' + objectId
+                    });
+                });
+
+                $http({
+                    method: 'POST',
+                    url: _domain + '/csbm/batch',
+                    headers: {
+                        'X-CSBM-Application-Id': appId
+                    },
+                    data: data
+                }).then(function(response) {
+                    callback(null, objectIds);
+                }, function(response) {
+                    callback(response);
+                });
+            };
+
             function addField(className, appId, columnName, type, callback) {
                 var accessToken = msUserService.getAccessToken();
 
@@ -247,39 +301,9 @@
                 }).then(function(response) {
                     callback(null, response.data);
                 }, function(response) {
-                    alert(response);
+                    callback(response);
                 });
             };
-
-            function deleteRow(className, appId, objectId, callback) {
-                $http({
-                    method: 'DELETE',
-                    url: _domain + '/csbm/classes/' + className + '/' + objectId,
-                    headers: {
-                        'X-CSBM-Application-Id': appId
-                    }
-                }).then(function(response) {
-                    callback(null, response.data);
-                }, function(response) {
-                    alert(response);
-                });
-            };
-
-            function addRow(className, appId, data, callback) {
-                $http({
-                    method: 'POST',
-                    url: _domain + '/csbm/classes/' + className,
-                    headers: {
-                        'X-CSBM-Application-Id': appId,
-                        'Content-Type': 'application/json'
-                    },
-                    data: data
-                }).then(function(response) {
-                    callback(null, response.data);
-                }, function(response) {
-                    alert(response);
-                });
-            }
         };
     };
 })();

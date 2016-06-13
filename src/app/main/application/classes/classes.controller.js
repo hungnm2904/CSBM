@@ -16,6 +16,7 @@
             $scope.columnName = '';
             $scope.fields = [];
             $scope.documents = [];
+            $scope.add = [];
 
             var renderClass = function() {
                 msSchemasService.getSchema(appId, index, function(error, results) {
@@ -101,7 +102,8 @@
 
             $scope.updateValues = function() {
                 var data = [];
-                $scope.documents.forEach(function(_document) {
+                console.log($scope.schemas);
+                $scope.documents.forEach(function(_document, index) {
                     var newDocument = {};
                     for (var key in _document) {
                         if (key != "objectId" && key != "createdAt" &&
@@ -109,18 +111,24 @@
 
                             var value = _document[key];
 
-                            if ($scope.schemas[key].type === "Number") {
-                                value = Number(value);
+                            if (value) {
+                                if ($scope.schemas[key].type === 'Number') {
+                                    value = Number(value);
+                                }
+
+                                if ($scope.schemas[key].type === 'Array' && value.length > 0) {
+                                    value = value.split(',');
+                                    value = value.map(function(v) {
+                                        return v.trim();
+                                    });
+                                }
                             }
-                            // msToastService.show(key + ' must be ' + $scope.schemas[key].type, 'error');
 
                             newDocument[key] = value;
                         }
                     }
                     data.push(newDocument);
                 });
-
-                console.log(data);
 
                 data.forEach(function(d, i) {
                     var objectId = $scope.documents[i].objectId;
@@ -146,25 +154,54 @@
             };
 
             $scope.deleteRow = function() {
-                console.log(checked);
-                checked.forEach(function(objectId) {
-                    msSchemasService.deleteRow($scope.className, appId, objectId,
-                        function(results) {});
-                });
-                msToastService.show('Delete row(s) successful.', 'success');
+                msSchemasService.deleteDocuments($scope.className, appId, checked,
+                    function(error, results) {
+                        if (error) {
+                            return alert(error.statusText);
+                        }
+
+                        results.forEach(function(objectId, index) {
+                            $scope.documents.forEach(function(_document, index) {
+                                if (_document.objectId === objectId) {
+                                    return $scope.documents.splice(index, 1);
+                                }
+                            });
+                        });
+
+                        console.log($scope.documents);
+                    });
+
+
+                // checked.forEach(function(objectId) {
+                //     msSchemasService.deleteDocuments($scope.className, appId, objectId,
+                //         function(results) {});
+                // });
+                // msToastService.show('Delete row(s) successful.', 'success');
             };
 
-            $scope.add = [];
             $scope.addRow = function() {
+                console.log($scope.add);
                 var newSchema = {};
                 $scope.fields.forEach(function(field) {
                     if (field != "objectId" && field != "createdAt" &&
                         field != "updatedAt") {
-                        newSchema[field] = $scope.add[field];
+
+                        var value = $scope.add[field];
+                        if ($scope.schemas[field].type === "Number") {
+                            value = Number(value);
+                        }
+                        newSchema[field] = value;
                     }
                 });
-                msSchemasService.addRow($scope.className, appId, newSchema,
-                    function(results) {});
+                msSchemasService.createDocument($scope.className, appId, newSchema,
+                    function(error, results) {
+                        if (error) {
+                            return alert(error.statusText);
+                        }
+
+                        $scope.add = [];
+                        $scope.documents.push(results);
+                    });
             };
         });
 })();

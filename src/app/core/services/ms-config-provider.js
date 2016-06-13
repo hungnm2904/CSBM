@@ -7,7 +7,7 @@
 
     function msConfigServiceProvider() {
         var config = {
-        	domain: 'http://localhost:1337'
+        	domain: 'http://192.168.1.34:1337'
         };
 
         service = this;

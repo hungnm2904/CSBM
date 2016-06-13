@@ -5,26 +5,26 @@
             <div class="title">{{className}}</div>
         </div>
         <div layout="row" layout-align="start center">
-            <md-button class="md-primary md-raised" ng-click="showAddClassDialog($event)">
+            <md-button aria-label="" class="md-primary md-raised" ng-click="showAddClassDialog($event)">
                 <md-icon md-font-icon="icon-plus"></md-icon>
                 <span>Create new class</span>
             </md-button>
         </div>
     </div>
     <div layout="row" layout-align="start center">
-        <md-button class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
+        <md-button aria-label="" class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
             <md-icon md-font-icon="icon-plus"></md-icon>
             <span>Add new column</span>
         </md-button>
-        <md-button class="md-raised md-accent" ng-click="showDeleteColumnDialog($event)">
+        <md-button aria-label="" class="md-raised md-accent" ng-click="showDeleteColumnDialog($event)">
             <md-icon md-font-icon="icon-delete"></md-icon>
             <span>Delete column</span>
         </md-button>
-        <md-button class="md-raised md-accent" ng-click="updateValues()">
+        <md-button aria-label="" class="md-raised md-accent" ng-click="updateValues()">
             <md-icon md-font-icon="icon-table-edit"></md-icon>
             <span>Update Values</span>
         </md-button>
-        <md-button class="md-raised md-accent" ng-click="deleteRow()" ng-if="!exists()">
+        <md-button aria-label="" class="md-raised md-accent" ng-click="deleteRow()" ng-disabled="exists()">
             <md-icon md-font-icon="icon-delete"></md-icon>
             <span>Delete Rows</span>
         </md-button>
@@ -38,7 +38,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <md-checkbox ng-click=""></md-checkbox>
+                                <md-checkbox aria-label=" " ng-click=""></md-checkbox>
                             </th>
                             <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
@@ -46,7 +46,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <md-button class="md-raised md-accent" ng-click="addRow()">
+                                <md-button aria-label="" class="md-raised md-accent" ng-click="addRow()">
                                     <md-icon md-font-icon="icon-plus"></md-icon>
                                     <span>Add</span>
                                 </md-button>
@@ -57,9 +57,9 @@
                                 </md-input-container>
                             </td>
                         </tr>
-                        <tr ng-repeat="document in documents | orderBy:'updatedAt':true" ng-init="position = $index">
+                        <tr ng-repeat="document in documents | orderBy:'updatedAt':true track by document.objectId" ng-init="position = $index">
                             <td>
-                                <md-checkbox ng-click="toggle(document.objectId)"></md-checkbox>
+                                <md-checkbox aria-label=" " ng-click="toggle(document.objectId)"></md-checkbox>
                             </td>
                             <td ng-repeat="(key, value) in document">
                                 <span ng-if="!editable(key)">
