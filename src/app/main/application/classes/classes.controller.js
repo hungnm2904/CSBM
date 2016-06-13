@@ -148,7 +148,7 @@
             $scope.deleteRow = function() {
                 console.log(checked);
                 checked.forEach(function(objectId) {
-                    msSchemasService.deleteSchema($scope.className, appId, objectId,
+                    msSchemasService.deleteRow($scope.className, appId, objectId,
                         function(results) {});
                 });
                 msToastService.show('Delete row(s) successful.', 'success');
@@ -163,7 +163,7 @@
                         newSchema[field] = $scope.add[field];
                     }
                 });
-                msSchemasService.addSchema($scope.className, appId, newSchema,
+                msSchemasService.addRow($scope.className, appId, newSchema,
                     function(results) {});
             };
         });

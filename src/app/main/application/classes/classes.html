@@ -57,7 +57,7 @@
                                 </md-input-container>
                             </td>
                         </tr>
-                        <tr ng-repeat="document in documents track by document.objectId" ng-init="position = $index">
+                        <tr ng-repeat="document in documents | orderBy:'updatedAt':true" ng-init="position = $index">
                             <td>
                                 <md-checkbox ng-click="toggle(document.objectId)"></md-checkbox>
                             </td>
