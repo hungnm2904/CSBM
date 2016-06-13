@@ -11,7 +11,7 @@ module.exports = function(appHelpers) {
         res.send('Welocome to CSBM server');
     });
 
-    router.post('/login', function(req, res, next) {
+    router.post('/login', function(req, res) {
         // Get username and password form request body
         var username = req.body.username;
         var password = req.body.password;
@@ -77,14 +77,14 @@ module.exports = function(appHelpers) {
         );
     });
 
-    router.post('/signup', function(req, res, next) {
+    router.post('/signup', function(req, res) {
         var username = req.body.username;
         var password = req.body.password;
         var email = req.body.email;
 
-        if (!username || !password) {
+        if (!username || !password || !email) {
             return res.status(403).send({
-                message: 'Username and Password are required'
+                message: 'Username, Password and Email are required'
             });
         }
 
@@ -95,49 +95,55 @@ module.exports = function(appHelpers) {
                     return res.status(500).send({
                         message: 'Error occurred while processing'
                     });
-                } else if (user) {
+                }
+
+                if (user) {
                     return res.status(403).send({
                         message: 'Username is already exists'
                     });
                 }
+
+                User.findOne({ 'email': email },
+                    function(err, user) {
+                        if (err) {
+                            console.log(err);
+                            return res.status(500).send({
+                                message: 'Error occurred while processing'
+                            });
+                        }
+
+                        if (user) {
+                            return res.status(403).send({
+                                message: 'Email is already in use'
+                            });
+                        }
+
+                        var user = new User({
+                            username: username,
+                            password: password,
+                            email: email
+                        });
+
+                        user.save(function(err) {
+                            if (err) {
+                                return res.status(500).send({
+                                    message: 'Error occurred while processing'
+                                });
+                            }
+                        });
+
+                        res.status(200).send({
+                            message: 'Signup successfully',
+                            data: {
+                                userId: user._id,
+                                name: user.username,
+                                email: user.email
+                            }
+                        });
+                    }
+                );
             }
         );
-
-        User.findOne({ 'email': email },
-            function(err, user) {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).send({
-                        message: 'Error occurred while processing'
-                    });
-                } else if (user) {
-                    return res.status(403).send({
-                        message: 'Email is already in use'
-                    });
-                }
-            }
-        );
-
-        var user = new User({
-            username: username,
-            password: password
-        });
-
-        user.save(function(err) {
-            if (err) {
-                return res.status(500).send({
-                    message: 'Error occurred while processing'
-                });
-            }
-        });
-
-        res.status(200).send({
-            message: 'Signup successfully',
-            data: {
-                userId: user._id,
-                name: user.name
-            }
-        });
     });
 
     router.get('/signout', function(req, res) {
@@ -192,7 +198,7 @@ module.exports = function(appHelpers) {
         if (!appId) {
             return res.status(403).send();
         }
-        
+
         Application.findOneAndRemove({ '_id': appId }, function(err, application) {
             if (err) {
                 return res.status(500).send({
