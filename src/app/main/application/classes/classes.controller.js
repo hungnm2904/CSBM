@@ -3,8 +3,8 @@
 
     angular
         .module('app.application.classes')
-        .controller('ClassesController', function($scope, $http, $cookies, $window, 
-            $state, $stateParams, $mdDialog, $document, $rootScope, msModeService, 
+        .controller('ClassesController', function($scope, $http, $cookies, $window,
+            $state, $stateParams, $mdDialog, $document, $rootScope, msModeService,
             msSchemasService, msDialogService, msToastService, msUserService) {
 
             if (!msUserService.getAccessToken()) {
@@ -92,12 +92,12 @@
             $scope.showAddColumnDialog = function(ev) {
                 msDialogService
                     .showDialog(ev, 'app/core/services/dialogs/addColumnDialog.html');
-            }
+            };
 
             $scope.showDeleteColumnDialog = function(ev) {
                 msDialogService
                     .showDialog(ev, 'app/core/services/dialogs/deleteColumnDialog.html');
-            }
+            };
 
             $scope.updateValues = function() {
                 var data = [];
@@ -129,6 +129,28 @@
                         function(results) {});
                 });
                 msToastService.show('Update values successful.', 'success');
-            }
+            };
+
+            var checked = [];
+            $scope.toggle = function(objectId) {
+                var index = checked.indexOf(objectId);
+                if (index === -1) {
+                    checked.push(objectId);
+                } else {
+                    checked.splice(index, 1);
+                }
+            };
+
+            $scope.exists = function() {
+                return checked.length === 0;
+            };
+
+            $scope.deleteRow = function() {
+                console.log(checked);
+                checked.forEach(function(objectId) {
+                    msSchemasService.deleteRow($scope.className, appId, objectId, function(results) {});
+                });
+                msToastService.show('Delete row(s) successful.', 'success');
+            };
         });
 })();

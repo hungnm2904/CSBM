@@ -24,6 +24,10 @@
             <md-icon md-font-icon="icon-table-edit"></md-icon>
             <span>Update Values</span>
         </md-button>
+        <md-button class="md-raised md-accent" ng-click="deleteRow()" ng-if="!exists()">
+            <md-icon md-font-icon="icon-delete"></md-icon>
+            <span>Delete Rows</span>
+        </md-button>
     </div>
     <!-- / HEADER -->
     <!-- CONTENT -->
@@ -33,11 +37,15 @@
                 <table class="simple" id="table" ms-responsive-table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="document in documents track by document.objectId" ng-init="position = $index">
+                            <td>
+                                <md-checkbox ng-click="toggle(document.objectId)"></md-checkbox>
+                            </td>
                             <td ng-repeat="(key, value) in document">
                                 <span ng-if="!editable(key)">
                                     {{document[key]}}

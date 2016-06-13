@@ -44,7 +44,9 @@
                     expiresDate.setDate(expiresDate.getDate() + 1);
                     $cookies.putObject('USER', user, { expires: expiresDate });
                     setCurrentUser(user);
+                    console.log(user);
                     callback(null, _currentUser);
+                    console.log(_currentUser);
                 }, function(response) {
                     callback(response);
                 });
@@ -66,13 +68,14 @@
                 });
             };
 
-            function register(username, password, callback) {
+            function register(username, password, email, callback) {
                 $http({
                     method: 'POST',
                     url: _domain + '/signup',
                     data: {
                         username: username,
-                        password: password
+                        password: password,
+                        email: email
                     }
                 }).then(function(response) {
                     var obj = {

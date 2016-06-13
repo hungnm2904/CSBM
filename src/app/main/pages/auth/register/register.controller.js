@@ -16,11 +16,14 @@
                 vm.error = 'These passwords do not match. Try again?';
             } else {
                 vm.error = '';
-                msUserService.register(vm.username, vm.password, function(response) {
-                    if (response) {
-                        vm.error = response;
+                msUserService.register(vm.username, vm.password, vm.email, function(response) {
+                    if (response.status != 200) {
+                        vm.error = response.data.message;
                     } else {
-                        msUserService.login(vm.username, vm.password, function(response) {});
+                        console.log("login success");
+                        msUserService.login(vm.username, vm.password, function(response) {
+                            $state.go('app.managements_applications');
+                        });
                     }
                 });
             }

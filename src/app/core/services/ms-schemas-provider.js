@@ -25,7 +25,8 @@
                 getDocuments: getDocuments,
                 addField: addField,
                 deleteField: deleteField,
-                updateValues: updateValues
+                updateValues: updateValues,
+                deleteRow: deleteRow
             }
 
             return service;
@@ -248,6 +249,20 @@
                     alert(response);
                 });
             };
+
+            function deleteRow(className, appId, objectId, callback) {
+                $http({
+                    method: 'DELETE',
+                    url: _domain + '/csbm/classes/' + className + '/' + objectId,
+                    headers: {
+                        'X-CSBM-Application-Id': appId
+                    }
+                }).then(function(response) {
+                    callback(null, response.data);
+                }, function(response) {
+                    alert(response);
+                });
+            }
         };
     };
 })();
