@@ -26,7 +26,8 @@
                 addField: addField,
                 deleteField: deleteField,
                 updateValues: updateValues,
-                deleteRow: deleteRow
+                deleteSchema: deleteSchema,
+                addSchema: addSchema
             }
 
             return service;
@@ -250,13 +251,29 @@
                 });
             };
 
-            function deleteRow(className, appId, objectId, callback) {
+            function deleteSchema(className, appId, objectId, callback) {
                 $http({
                     method: 'DELETE',
                     url: _domain + '/csbm/classes/' + className + '/' + objectId,
                     headers: {
                         'X-CSBM-Application-Id': appId
                     }
+                }).then(function(response) {
+                    callback(null, response.data);
+                }, function(response) {
+                    alert(response);
+                });
+            };
+
+            function addSchema(className, appId, data, callback) {
+                $http({
+                    method: 'POST',
+                    url: _domain + '/csbm/classes/' + className,
+                    headers: {
+                        'X-CSBM-Application-Id': appId,
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
                 }).then(function(response) {
                     callback(null, response.data);
                 }, function(response) {

@@ -148,9 +148,23 @@
             $scope.deleteRow = function() {
                 console.log(checked);
                 checked.forEach(function(objectId) {
-                    msSchemasService.deleteRow($scope.className, appId, objectId, function(results) {});
+                    msSchemasService.deleteSchema($scope.className, appId, objectId,
+                        function(results) {});
                 });
                 msToastService.show('Delete row(s) successful.', 'success');
+            };
+
+            $scope.add = [];
+            $scope.addRow = function() {
+                var newSchema = {};
+                $scope.fields.forEach(function(field) {
+                    if (field != "objectId" && field != "createdAt" &&
+                        field != "updatedAt") {
+                        newSchema[field] = $scope.add[field];
+                    }
+                });
+                msSchemasService.addSchema($scope.className, appId, newSchema,
+                    function(results) {});
             };
         });
 })();

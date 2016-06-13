@@ -37,11 +37,26 @@
                 <table class="simple" id="table" ms-responsive-table>
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>
+                                <md-checkbox ng-click=""></md-checkbox>
+                            </th>
                             <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>
+                                <md-button class="md-raised md-accent" ng-click="addRow()">
+                                    <md-icon md-font-icon="icon-plus"></md-icon>
+                                    <span>Add</span>
+                                </md-button>
+                            </td>
+                            <td ng-repeat="field in fields">
+                                <md-input-container md-no-float class="md-block">
+                                    <input ng-if="editable(field)" placeholder="Value" name="val" type="text" ng-model="add[field]" />
+                                </md-input-container>
+                            </td>
+                        </tr>
                         <tr ng-repeat="document in documents track by document.objectId" ng-init="position = $index">
                             <td>
                                 <md-checkbox ng-click="toggle(document.objectId)"></md-checkbox>
