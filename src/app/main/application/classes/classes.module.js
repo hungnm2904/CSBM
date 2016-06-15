@@ -2,9 +2,9 @@
     'use strict';
 
     angular
-        .module('app.application.classes', [])
+        .module('app.application.classes', ['datatables'])
         .config(config);
-        // .run(run);
+    // .run(run);
 
     /** @ngInject */
     function config($stateProvider, msApiProvider) {

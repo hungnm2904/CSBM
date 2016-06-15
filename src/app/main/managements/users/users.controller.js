@@ -4,11 +4,10 @@
 
     angular
     .module('app.managements.users')
-    .controller('UsersController', function($scope,$http,$cookies,$window,$state){
-        if(!$cookies.get('accessToken')){
-            // $window.location.href = '/login';
-            $state.go('app.pages_auth_login');
-        }
+    .controller('UsersController', function($scope,$http,$cookies,$window,$state, msUserService){
+        if (!msUserService.getAccessToken()) {
+                $state.go('app.pages_auth_login');
+            }
         
         $http.get('/app/data/users/users.json').success(function(data) {
             $scope.users = data.data;

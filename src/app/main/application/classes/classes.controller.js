@@ -13,6 +13,8 @@
 
             var index = $stateParams.index;
             var appId = $stateParams.appId;
+            var checked = [];
+            var objectIdList = [];
             $scope.columnName = '';
             $scope.fields = [];
             $scope.documents = [];
@@ -52,6 +54,10 @@
 
                                 $scope.documents.push(newDocument);
                             }
+
+                            $scope.documents.forEach(function(_document) {
+                                objectIdList.push(_document.objectId);
+                            });
                         });
                 });
             };
@@ -139,7 +145,6 @@
                 msToastService.show('Update values successful.', 'success');
             };
 
-            var checked = [];
             $scope.toggle = function(objectId) {
                 var index = checked.indexOf(objectId);
                 if (index === -1) {
@@ -149,9 +154,26 @@
                 }
             };
 
-            $scope.exists = function() {
-                return checked.length === 0;
+            $scope.exists = function(objectId) {
+                return checked.indexOf(objectId) > -1;
             };
+
+            $scope.isIndeterminate = function() {
+                return (checked.length !== 0 &&
+                    checked.length !== objectIdList.length);
+            };
+
+            $scope.isChecked = function() {
+                return checked.length === objectIdList.length;
+            };
+
+            $scope.toggleAll = function() {
+                if (checked.length === objectIdList.length) {
+                    checked = [];
+                } else if (checked.length === 0 || checked.length > 0) {
+                    checked = objectIdList.slice(0);
+                }
+            }
 
             $scope.deleteRow = function() {
                 msSchemasService.deleteDocuments($scope.className, appId, checked,
@@ -202,6 +224,13 @@
                         $scope.add = [];
                         $scope.documents.push(results);
                     });
+            };
+
+            $scope.dtOptions = {
+                dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+                pagingType: 'simple',
+                autoWidth: false,
+                responsive: true,
             };
         });
 })();
