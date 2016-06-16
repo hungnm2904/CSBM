@@ -34,6 +34,7 @@
         var vm = this;
         var index = $stateParams.index;
         var appId = $stateParams.appId;
+        var className;
 
         $scope.applications = [];
         $scope.applicationId;
@@ -48,7 +49,7 @@
                     return alert(error.statusText);
                 }
 
-                $scope.className = results.className;
+                className = results.className;
                 var fields = Object.getOwnPropertyNames(results.fields);
                 $scope.fields = [].concat(fields);
                 $scope.fields.splice(0, 3);
@@ -110,7 +111,7 @@
         };
 
         $scope.addColumn = function() {
-            msSchemasService.addField($scope.className, appId, $scope.columnName, $scope.type,
+            msSchemasService.addField(className, appId, $scope.columnName, $scope.type,
                 function(error, results) {
                     if (error) {
                         if (error.status === 401) {
@@ -130,7 +131,7 @@
                 .ok('Yes')
                 .cancel('No');
             $mdDialog.show(confirm).then(function() {
-                msSchemasService.deleteField($scope.className, appId, $scope.columnName,
+                msSchemasService.deleteField(className, appId, $scope.columnName,
                     function(error, results) {
                         if (error) {
                             if (error.status === 401) {
@@ -145,6 +146,9 @@
                 closeDialog();
             });
         };
+
+        $scope.updateField = function() {
+        }
 
         function closeDialog() {
             $mdDialog.hide();

@@ -226,11 +226,16 @@
                     });
             };
 
+            $scope.updateField = function(ev) {
+                msDialogService
+                    .showDialog(ev, 'app/core/services/dialogs/updateField.html');
+            };
+
             $scope.dtOptions = {
                 dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                pagingType: 'simple',
+                pagingType: 'full_numbers',
                 autoWidth: false,
-                responsive: true,
+                responsive: false,
             };
         });
 })();

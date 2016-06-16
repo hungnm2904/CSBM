@@ -11,7 +11,7 @@
         var _schemas = [];
 
         this.$get = function($rootScope, $http, $cookies, msConfigService,
-            msMasterKeyService, msModeService) {
+            msMasterKeyService, msModeService, msUserService) {
 
             var _domain = (msConfigService.getConfig()).domain;
 

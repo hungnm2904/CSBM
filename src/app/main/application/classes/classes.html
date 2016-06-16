@@ -28,13 +28,17 @@
             <md-icon md-font-icon="icon-delete"></md-icon>
             <span>Delete Rows</span>
         </md-button>
+        <md-button aria-label="" class="md-raised md-accent" ng-click="updateField($event)">
+            <md-icon md-font-icon="icon-table-edit"></md-icon>
+            <span>Update Field</span>
+        </md-button>
     </div>
     <!-- / HEADER -->
     <!-- CONTENT -->
     <div class="content" md-background-bg>
         <div class="white-bg md-whiteframe-4dp">
             <form name="myform" id="myform">
-                <table class="simple dataTable row-border hover" datatable="ng" dt-options="dtOptions" id="table">
+                <table class="simple dataTable row-border hover" datatable="ng" dt-options="dtOptions" id="table" ms-responsive-table>
                     <thead>
                         <tr>
                             <th>
