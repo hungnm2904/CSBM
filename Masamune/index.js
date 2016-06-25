@@ -28,6 +28,7 @@ const batch = require('./parse-server/lib/batch');
 
 var csbm = express();
 var parse = express();
+const authentication = require('./authentication');
 
 parse.use('/', middlewares.allowCrossDomain, new _FilesRouter.FilesRouter().getExpressRouter({
     maxUploadSize: '20mb'
@@ -94,13 +95,18 @@ csbm.use(function(req, res, next) {
 });
 csbm.use(passport.initialize());
 const appHelpers = require('./helpers/application')(csbm);
-const applicationsRouter = require('./routers/applicationsRouter')(appHelpers);
-const usersRouter = require('./routers/usersRouter');
-const schemasRouter = require('./routers/schemasRouter');
-csbm.use('/', applicationsRouter);
-csbm.use('/', usersRouter);
-csbm.use('/', schemasRouter);
+const applicationsController = require('./controllers/applicationsController')(appHelpers);
+const usersController = require('./controllers/usersController');
+const schemasController = require('./controllers/schemasController');
 csbm.use('/csbm', parse);
+csbm.post('/login', usersController.login);
+csbm.post('/signup', usersController.signup);
+csbm.get('/signout', usersController.signout);
+csbm.post('/applications', authentication.isAuthenticated, applicationsController.create);
+csbm.delete('applications', authentication.isAuthenticated, applicationsController.remove);
+csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAll);
+csbm.get('/masterKey', authentication.isAuthenticated, schemasController.getMasterKey);
+csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
     if (err) {

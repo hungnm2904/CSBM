@@ -1,11 +1,9 @@
-const express = require('express');
-var router = express.Router();
 const authentication = require('../authentication');
 const Application = require('../models/application');
 
 module.exports = function(appHelpers) {
 
-    router.post('/applications', authentication.isAuthenticated, function(req, res) {
+    var create = function(req, res) {
         var name = req.body.applicationName;
         var newApp = new Application({
             name: name,
@@ -32,9 +30,9 @@ module.exports = function(appHelpers) {
                 res.send(application);
             }
         });
-    });
+    };
 
-    router.delete('/applications', authentication.isAuthenticated, function(req, res) {
+    var remove = function(req, res) {
         var appId = req.get('X-CSBM-Application-Id');
 
         if (!appId) {
@@ -50,9 +48,9 @@ module.exports = function(appHelpers) {
         });
 
         res.status(200).send();
-    });
+    };
 
-    router.get('/applications', authentication.isAuthenticated, function(req, res) {
+    var getAll = function(req, res) {
         Application.find({ 'userId': req.user._id }, function(err, applications) {
             if (err) {
                 console.log(err);
@@ -68,7 +66,20 @@ module.exports = function(appHelpers) {
 
             res.status(200).send(applications);
         });
-    });
+    };
 
-    return router;
+    // router.post('/applications', authentication.isAuthenticated, function(req, res) {
+    // });
+
+    // router.delete('/applications', authentication.isAuthenticated, function(req, res) {
+    // });
+
+    // router.get('/applications', authentication.isAuthenticated, function(req, res) {
+    // });
+
+    return {
+        create: create,
+        remove: remove,
+        getAll: getAll
+    };
 };
