@@ -37,6 +37,7 @@
 
             function add(application) {
                 _applications.push(application);
+                $rootScope.$broadcast('app-added', { 'app': application })
             };
 
             function getAll(callback) {

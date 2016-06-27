@@ -5,7 +5,7 @@
         .module('app.managements.applications')
         .controller('ApplicationsController', ApplicationsController);
 
-    function ApplicationsController($scope, $state, msUserService, msApplicationService,
+    function ApplicationsController($scope, $rootScope, $state, msUserService, msApplicationService,
         msSchemasService, msDialogService) {
 
         if (!msUserService.getAccessToken()) {
@@ -47,5 +47,9 @@
                 }
             });
         };
+
+        $rootScope.$on('app-added', function(event, agrs){
+            $scope.applications.push(agrs.app);
+        });
     }
 })();

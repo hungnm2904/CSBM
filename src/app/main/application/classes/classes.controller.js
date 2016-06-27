@@ -122,7 +122,9 @@
                                     value = Number(value);
                                 }
 
-                                if ($scope.schemas[key].type === 'Array' && value.length > 0) {
+                                if ($scope.schemas[key].type === 'Array' && value.constructor !== Array &&
+                                    value.length > 0) {
+
                                     value = value.split(',');
                                     value = value.map(function(v) {
                                         return v.trim();
@@ -202,16 +204,24 @@
             };
 
             $scope.addRow = function() {
-                console.log($scope.add);
                 var newSchema = {};
                 $scope.fields.forEach(function(field) {
-                    if (field != "objectId" && field != "createdAt" &&
-                        field != "updatedAt") {
+                    if (field != 'objectId' && field != 'createdAt' &&
+                        field != 'updatedAt') {
 
                         var value = $scope.add[field];
-                        if ($scope.schemas[field].type === "Number") {
+                        if ($scope.schemas[field].type === 'Number') {
                             value = Number(value);
                         }
+
+                        if ($scope.schemas[field].type === 'Array' && value.length > 0) {
+
+                            value = value.split(',');
+                            value = value.map(function(v) {
+                                return v.trim();
+                            });
+                        }
+
                         newSchema[field] = value;
                     }
                 });
