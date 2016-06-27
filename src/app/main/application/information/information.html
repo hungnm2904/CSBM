@@ -1,0 +1,36 @@
+<div id="classes" class="page-layout simple fullwidth doc-page">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="center start">
+            <div class="title">Class Information</div>
+        </div>
+        <div layout="row" layout-align="start center">
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <!-- CONTENT -->
+    <div class="content" md-background-bg>
+        <!-- BASIC FORM -->
+        <div class="form-wrapper md-whiteframe-4dp">
+            <form>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Appication ID:</td>
+                            <td>{{appId}}</td>
+                        </tr>
+                        <tr>
+                            <td>Master Key:</td>
+                            <td ng-show="masterKey">{{masterKey}}</td>
+                            <td>
+                                <md-button ng-click="showMasterKey()" class="md-raised md-warn">Show</md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <!-- / BASIC FORM -->
+    </div>
+    <!-- / CONTENT -->
+</div>

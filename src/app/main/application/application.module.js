@@ -4,7 +4,7 @@
     angular
         .module('app.application', [
             'app.application.classes',
-            'app.application.classes.info'
+            'app.application.info'
         ])
         .config(config)
         .run(run);
@@ -29,24 +29,23 @@
                 }
             });
 
+            msNavigationService.saveItem('application.info', {
+                title: 'Information',
+                icon: 'icon-key',
+                state: 'app.application_info',
+                stateParams: { 'appId': appId }
+            });
+
             msNavigationService.saveItem('application.classes', {
                 title: 'Classes',
                 icon: 'icon-library-plus',
-                group: true,
-                weight: 1
+                group: true
             });
 
             var schemas = msSchemasService.getSchemas(appId, index, function(error, results) {
                 if (error) {
                     alert(error.statusText);
                 }
-
-                msNavigationService.saveItem('application.classes.info', {
-                    title: 'info',
-                    icon: 'icon-key',
-                    state: 'app.application_classesinfo',
-                    stateParams: { 'appId': appId }
-                });
 
                 var schemas = results;
                 for (var i = 0; i < schemas.length; i++) {

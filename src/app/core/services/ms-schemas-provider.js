@@ -290,6 +290,29 @@
                 });
             };
 
+            function updateFieldName(className, appId, callback) {
+                msMasterKeyService.getMasterKey(appId, function(error, results) {
+                    if (error) {
+                        return callback(error);
+                    }
+
+                    var masterKey = results;
+                    $http({
+                        method: 'GET',
+                        url: _domain + '/csbm/schemas/' + className,
+                        headers: {
+                            'X-CSBM-Application-Id': appId,
+                            'X-CSBM-Master-Key': masterKey,
+                        }
+                    }).then(function(response) {
+                        console.log(response);
+                        callback(null, response.data);
+                    }, function(response) {
+                        callback(response);
+                    });
+                });
+            }
+
             function updateValues(className, appId, objectId, data, callback) {
                 $http({
                     method: 'PUT',
@@ -306,7 +329,9 @@
                 });
             };
 
-            function changeField(applicationName, className, fieldName, newFieldName, callback) {
+            function changeField(applicationName, className, fieldName, newFieldName, appId,
+                callback) {
+
                 var accessToken = msUserService.getAccessToken();
                 $http({
                     method: 'POST',
@@ -315,12 +340,15 @@
                         'Authorization': 'Bearer ' + accessToken
                     },
                     data: {
-                        appName: applicationName,
+                        applicationName: applicationName,
                         className: className,
                         fieldName: fieldName,
                         newFieldName: newFieldName
                     },
                 }).then(function(response) {
+                    updateFieldName(className, appId, function(error, results) {
+                        updateField(results);
+                    });
                     callback(null, response.data);
                 }, function(response) {
                     callback(response);

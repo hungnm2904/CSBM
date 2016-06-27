@@ -167,17 +167,21 @@
 
         $scope.updateField = function() {
             var confirm = $mdDialog.confirm()
-                .title('Are you sure to change ?')
+                .title('Are you sure to change ' + '"' + $scope.field + '"' +
+                    ' to ' + '"' + $scope.columnName + '"' + ' ?')
                 .ok('Yes')
                 .cancel('No');
             $mdDialog.show(confirm).then(function() {
                 msApplicationService.getAppName(appId, function(error, result) {
                     appName = result.data.data.appName;
 
-                    msSchemasService.changeField(appName, className, $scope.field, $scope.columnName, function(error, results) {
-                        console.log(error);
-                        console.log(results);
+                    msSchemasService.getSchema(appId, index, function(err, result) {
+                        var className = result.className;
+                        msSchemasService.changeField(appName, className, $scope.field,
+                            $scope.columnName, appId,
+                            function(error, results) {});
                     });
+
                 });
                 closeDialog();
             }, function() {

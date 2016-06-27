@@ -86,6 +86,17 @@
                     });
             });
 
+            // $rootScope.$on('field-name-changed', function(event, args) {
+            //     var fieldName = args.fieldName;
+            //     var newFieldName = args.newFieldName;
+
+            //     $scope.fields.forEach(function(field, index) {
+            //         if (field === fieldName) {
+            //             return $scope.fields[index] = newFieldName;
+            //         }
+            //     });
+            // });
+
             var uneditableFileds = ['objectId', 'createdAt', 'updatedAt'];
             $scope.editable = function(field) {
                 return uneditableFileds.indexOf(field) === -1;

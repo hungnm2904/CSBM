@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('app.application.classes')
-        .controller('ClassesInfoController', function($scope, $http, $cookies, $window,
+        .module('app.application.info')
+        .controller('InformationController', function($scope, $http, $cookies, $window,
             $state, $stateParams, $mdDialog, $document, $rootScope, msModeService,
             msSchemasService, msDialogService, msApplicationService, msUserService) {
 

@@ -30,7 +30,7 @@
         </md-button>
         <md-button aria-label="" class="md-raised md-accent" ng-click="updateField($event)">
             <md-icon md-font-icon="icon-table-edit"></md-icon>
-            <span>Update Field</span>
+            <span>Update Field Name</span>
         </md-button>
     </div>
     <!-- / HEADER -->
@@ -57,7 +57,7 @@
                             <th>
                                 <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
                             </th>
-                            <th ng-repeat="field in fields">{{field}}</th>
+                            <th ng-repeat="field in fields track by $index">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
