@@ -103,9 +103,10 @@ csbm.post('/login', usersController.login);
 csbm.post('/signup', usersController.signup);
 csbm.get('/signout', usersController.signout);
 csbm.post('/applications', authentication.isAuthenticated, applicationsController.create);
-csbm.delete('applications', authentication.isAuthenticated, applicationsController.remove);
+csbm.delete('/applications', authentication.isAuthenticated, applicationsController.remove);
 csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAll);
 csbm.get('/masterKey', authentication.isAuthenticated, schemasController.getMasterKey);
+csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppName);
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
