@@ -15,7 +15,28 @@ exports.getMasterKey = function(req, res) {
         res.status(200).send({
             message: '',
             data: {
-                masterKey: application.masterKey
+                masterKey: application.masterKey,
+                appName: application.name
+            }
+        });
+    });
+};
+
+exports.getAppName = function(req, res) {
+
+    var appId = req.get('X-CSBM-Application-Id');
+    Application.findOne({ '_id': appId }, function(err, application) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                message: 'Error occurred while processing'
+            });
+        }
+
+        res.status(200).send({
+            message: '',
+            data: {
+                appName: application.name
             }
         });
     });
