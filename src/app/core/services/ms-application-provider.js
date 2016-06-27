@@ -18,7 +18,9 @@
             var service = {
                 getAll: getAll,
                 create: create,
-                remove: remove
+                remove: remove,
+                getMasterkey: getMasterkey,
+                getAppName: getAppName
             };
 
             return service;
@@ -36,7 +38,7 @@
             }
 
             function add(application) {
-                _applications.push(application);
+                // _applications.push(application);
                 $rootScope.$broadcast('app-added', { 'app': application })
             };
 
@@ -64,7 +66,6 @@
                 var data = {
                     "applicationName": name
                 }
-
                 var accessToken = msUserService.getAccessToken();
                 $http({
                     method: 'POST',
@@ -93,6 +94,38 @@
                 }).then(function(response) {
                     removeApplication(id);
                     callback(null, _applications);
+                }, function(response) {
+                    callback(response);
+                });
+            };
+
+            function getMasterkey(id, callback) {
+                var accessToken = msUserService.getAccessToken();
+                $http({
+                    method: 'GET',
+                    url: _domain + '/masterKey',
+                    headers: {
+                        'X-CSBM-Application-Id': id,
+                        'Authorization': 'Bearer ' + accessToken
+                    }
+                }).then(function(response) {
+                    callback(null, response);
+                }, function(response) {
+                    callback(response);
+                });
+            };
+
+            function getAppName(id, callback) {
+                var accessToken = msUserService.getAccessToken();
+                $http({
+                    method: 'GET',
+                    url: _domain + '/appName',
+                    headers: {
+                        'X-CSBM-Application-Id': id,
+                        'Authorization': 'Bearer ' + accessToken
+                    }
+                }).then(function(response) {
+                    callback(null, response);
                 }, function(response) {
                     callback(response);
                 });

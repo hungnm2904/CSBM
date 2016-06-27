@@ -11,7 +11,7 @@
         <md-dialog-content ms-scroll>
             <div layout="row">
                 <md-input-container class="md-block" flex="60">
-                    <label translate="COLUMN NAME">Column Name</label>
+                    <label>Column Name</label>
                     <input ng-model="columnName" type="text">
                 </md-input-container>
                 <md-input-container flex=40>
@@ -23,6 +23,11 @@
                     </md-select>
                 </md-input-container>
             </div>
+            <md-input-container class="md-block" md-no-float>
+                <div role="alert">
+                    <div ng-show="error" class="alert alert-danger">{{error}}</div>
+                </div>
+            </md-input-container>
         </md-dialog-content>
         <md-dialog-actions layout="row" layout-align="space-between center">
             <div layout="row" layout-align="start center">

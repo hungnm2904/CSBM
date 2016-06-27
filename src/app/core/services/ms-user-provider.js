@@ -44,9 +44,7 @@
                     expiresDate.setDate(expiresDate.getDate() + 1);
                     $cookies.putObject('USER', user, { expires: expiresDate });
                     setCurrentUser(user);
-                    console.log(user);
                     callback(null, _currentUser);
-                    console.log(_currentUser);
                 }, function(response) {
                     callback(response);
                 });

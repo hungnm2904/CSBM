@@ -35,6 +35,7 @@
         var index = $stateParams.index;
         var appId = $stateParams.appId;
         var className;
+        var appName;
 
         $scope.applications = [];
         $scope.applicationId;
@@ -63,8 +64,6 @@
 
                     return alert(error.statusText);
                 }
-
-                console.log(results);
                 $scope.applications = results;
             });
         }
@@ -72,7 +71,15 @@
         $scope.createApplication = function() {
             msApplicationService.create($scope.applicationName,
                 function(result) {
-                    // console.log(result);
+                    if (result) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Application exists')
+                            .ok('OK')
+                        );
+                    }
                 });
             closeDialog();
         };
@@ -85,15 +92,12 @@
             $mdDialog.show(confirm).then(function() {
                 msApplicationService.remove($scope.applicationId,
                     function(error, results) {
-
                         if (error) {
                             if (error.status === 401) {
                                 return $state.go('app.pages_auth_login');
                             }
-
                             return alert(error.statusText);
                         }
-
                         console.log(results);
                     });
                 closeDialog();
@@ -111,43 +115,74 @@
         };
 
         $scope.addColumn = function() {
-            msSchemasService.addField(className, appId, $scope.columnName, $scope.type,
-                function(error, results) {
-                    if (error) {
-                        if (error.status === 401) {
-                            return $state.go('app.pages_auth_login');
-                        }
-
-                        return alert(error.statusText)
-                    }
-                });
-
-            $mdDialog.hide();
-        };
-
-        $scope.deleteColumn = function() {
-            var confirm = $mdDialog.confirm()
-                .title('Are you sure to delete ' + $scope.columnName + ' ?')
-                .ok('Yes')
-                .cancel('No');
-            $mdDialog.show(confirm).then(function() {
-                msSchemasService.deleteField(className, appId, $scope.columnName,
+            if ($scope.columnName === null || $scope.type === '') {
+                $scope.error = 'Name and Type not allow null.';
+            } else {
+                $scope.error = '';
+                msSchemasService.addField(className, appId, $scope.columnName, $scope.type,
                     function(error, results) {
                         if (error) {
                             if (error.status === 401) {
                                 return $state.go('app.pages_auth_login');
                             }
-
-                            return alert(error.statusText);
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Error')
+                                .textContent('Column exists')
+                                .ok('OK')
+                            );
                         }
                     });
+                $mdDialog.hide();
+            }
+        };
+
+        $scope.deleteColumn = function() {
+            if (!$scope.columnName) {
+                $scope.error = 'Please select column.';
+            } else {
+                $scope.error = '';
+                var confirm = $mdDialog.confirm()
+                    .title('Are you sure to delete ' + $scope.columnName + ' ?')
+                    .ok('Yes')
+                    .cancel('No');
+                $mdDialog.show(confirm).then(function() {
+                    msSchemasService.deleteField(className, appId, $scope.columnName,
+                        function(error, results) {
+                            if (error) {
+                                if (error.status === 401) {
+                                    return $state.go('app.pages_auth_login');
+                                }
+
+                                return alert(error.statusText);
+                            }
+                        });
+                    closeDialog();
+                }, function() {
+                    closeDialog();
+                });
+            }
+        };
+
+        $scope.updateField = function() {
+            var confirm = $mdDialog.confirm()
+                .title('Are you sure to change ?')
+                .ok('Yes')
+                .cancel('No');
+            $mdDialog.show(confirm).then(function() {
+                msApplicationService.getAppName(appId, function(error, result) {
+                    appName = result.data.data.appName;
+
+                    msSchemasService.changeField(appName, className, $scope.field, $scope.columnName, function(error, results) {
+                        console.log(error);
+                        console.log(results);
+                    });
+                });
                 closeDialog();
             }, function() {
                 closeDialog();
             });
-        };
-
-        $scope.updateField = function() {
         }
 
         function closeDialog() {

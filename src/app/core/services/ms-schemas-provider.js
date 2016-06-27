@@ -27,7 +27,8 @@
                 addField: addField,
                 deleteDocuments: deleteDocuments,
                 deleteField: deleteField,
-                updateValues: updateValues
+                updateValues: updateValues,
+                changeField: changeField
             }
 
             return service;
@@ -304,6 +305,27 @@
                     callback(response);
                 });
             };
+
+            function changeField(applicationName, className, fieldName, newFieldName, callback) {
+                var accessToken = msUserService.getAccessToken();
+                $http({
+                    method: 'POST',
+                    url: _domain + '/fields',
+                    headers: {
+                        'Authorization': 'Bearer ' + accessToken
+                    },
+                    data: {
+                        appName: applicationName,
+                        className: className,
+                        fieldName: fieldName,
+                        newFieldName: newFieldName
+                    },
+                }).then(function(response) {
+                    callback(null, response.data);
+                }, function(response) {
+                    callback(response);
+                });
+            }
         };
     };
 })();

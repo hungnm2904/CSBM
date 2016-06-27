@@ -20,7 +20,6 @@
                     if (response.status != 200) {
                         vm.error = response.data.message;
                     } else {
-                        console.log("login success");
                         msUserService.login(vm.username, vm.password, function(response) {
                             $state.go('app.managements_applications');
                         });

@@ -42,14 +42,6 @@
                     <thead>
                         <tr>
                             <th>
-                                <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
-                            </th>
-                            <th ng-repeat="field in fields">{{field}}</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>
                                 <md-button aria-label="" class="md-raised md-accent" ng-click="addRow()">
                                     <md-icon md-font-icon="icon-plus"></md-icon>
                                     <span>Add</span>
@@ -61,7 +53,13 @@
                                 </md-input-container>
                             </th>
                         </tr>
-                    </tfoot>
+                        <tr>
+                            <th>
+                                <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
+                            </th>
+                            <th ng-repeat="field in fields">{{field}}</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr ng-repeat="document in documents | orderBy:'updatedAt':true track by document.objectId" ng-init="position = $index">
                             <td>

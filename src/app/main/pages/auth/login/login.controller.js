@@ -17,9 +17,7 @@
                     return vm.error = error.data.message;
                 }
                 $state.go('app.managements_applications');
-
                 var user = msUserService.getCurrentUsername();
-                console.log(user);
             });
         };
     };

@@ -121,7 +121,6 @@
                                 if ($scope.schemas[key].type === 'Number') {
                                     value = Number(value);
                                 }
-
                                 if ($scope.schemas[key].type === 'Array' && value.constructor !== Array &&
                                     value.length > 0) {
 
@@ -131,7 +130,6 @@
                                     });
                                 }
                             }
-
                             newDocument[key] = value;
                         }
                     }
@@ -144,7 +142,6 @@
                         objectId, d,
                         function(results) {});
                 });
-                msToastService.show('Update values successful.', 'success');
             };
 
             $scope.toggle = function(objectId) {
@@ -191,8 +188,6 @@
                                 }
                             });
                         });
-
-                        console.log($scope.documents);
                     });
 
 

@@ -3,7 +3,8 @@
 
     angular
         .module('app.application', [
-            'app.application.classes'
+            'app.application.classes',
+            'app.application.classes.info'
         ])
         .config(config)
         .run(run);
@@ -17,7 +18,7 @@
         $rootScope.$on('schemas-changed', function(event, args) {
 
             var appId = args.appId;
-            var index  = args.index;
+            var index = args.index;
 
             msNavigationService.saveItem('application', {
                 title: 'Application',
@@ -39,6 +40,14 @@
                 if (error) {
                     alert(error.statusText);
                 }
+
+                msNavigationService.saveItem('application.classes.info', {
+                    title: 'info',
+                    icon: 'icon-key',
+                    state: 'app.application_classesinfo',
+                    stateParams: { 'appId': appId }
+                });
+
                 var schemas = results;
                 for (var i = 0; i < schemas.length; i++) {
                     var schema = schemas[i];
