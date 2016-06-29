@@ -31,6 +31,7 @@ import android.widget.TextView;
 import com.csbm.BEException;
 import com.csbm.BEObject;
 import com.csbm.BEQuery;
+import com.csbm.FindCallback;
 import com.csbm.GetCallback;
 import com.csbm.SaveCallback;
 
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button btnTodo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+        btnTodo = (Button) findViewById(R.id.btnTest);
+        btnTodo.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BEQuery<BEObject> query = BEQuery.getQuery("Todo");
+                query.findInBackground(new FindCallback<BEObject>() {
+                    @Override
+                    public void done(List<BEObject> objects, BEException e) {
+                        if (e == null){
+                            for (BEObject object : objects){
+                                Log.d("RESULT: ", object.getString("MyList"));
+                                Log.d("RESULT: ", object.getString("MyPriority"));
+                            }
+                        } else {
+                            Log.d("ERROR: ", e.getMessage());
+                        }
+
+                    }
+                });
+            }
+        });
+
     }
 
     private void populateAutoComplete() {

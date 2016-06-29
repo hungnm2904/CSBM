@@ -72,6 +72,13 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnTest"
+                android:text="ToDo"
+                />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
