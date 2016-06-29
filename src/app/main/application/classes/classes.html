@@ -9,29 +9,49 @@
                 <md-icon md-font-icon="icon-plus"></md-icon>
                 <span>Create new class</span>
             </md-button>
+            <md-button aria-label="" class="md-primary md-raised" ng-click="updateValues()">
+                <md-icon md-font-icon="icon-table-edit"></md-icon>
+                <span>Update Values</span>
+            </md-button>
+            <md-menu id="projects-menu">
+                <md-button aria-label="" class="md-primary md-raised" ng-click="$mdOpenMenu()" md-position-mode="target-right target">
+                    <md-icon md-font-icon="icon-dots-horizontal"></md-icon>
+                    <span>Select Action</span>
+                </md-button>
+                <md-menu-content width="3" class="md-background-bg">
+                    <md-menu-item>
+                        <md-button ng-click="showAddColumnDialog($event)" aria-label="">
+                            <md-icon md-font-icon="icon-plus"></md-icon>
+                            <span>Add new column</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="showAddRow()" aria-label="">
+                            <md-icon md-font-icon="icon-plus"></md-icon>
+                            <span>Add new row</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="showDeleteColumnDialog($event)" aria-label="">
+                            <md-icon md-font-icon="icon-delete"></md-icon>
+                            <span>Delete column</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="deleteRow()" aria-label="" ng-disabled="checkList() == 0">
+                            <md-icon md-font-icon="icon-delete"></md-icon>
+                            <span>Delete Rows</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="updateField($event)" aria-label="">
+                            <md-icon md-font-icon="icon-table-edit"></md-icon>
+                            <span>Update Field Name</span>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
-    </div>
-    <div layout="row" layout-align="start center">
-        <md-button aria-label="" class="md-raised md-accent" ng-click="showAddColumnDialog($event)">
-            <md-icon md-font-icon="icon-plus"></md-icon>
-            <span>Add new column</span>
-        </md-button>
-        <md-button aria-label="" class="md-raised md-accent" ng-click="showDeleteColumnDialog($event)">
-            <md-icon md-font-icon="icon-delete"></md-icon>
-            <span>Delete column</span>
-        </md-button>
-        <md-button aria-label="" class="md-raised md-accent" ng-click="updateValues()">
-            <md-icon md-font-icon="icon-table-edit"></md-icon>
-            <span>Update Values</span>
-        </md-button>
-        <md-button aria-label="" class="md-raised md-accent" ng-click="deleteRow()" ng-disabled="exists()">
-            <md-icon md-font-icon="icon-delete"></md-icon>
-            <span>Delete Rows</span>
-        </md-button>
-        <md-button aria-label="" class="md-raised md-accent" ng-click="updateField($event)">
-            <md-icon md-font-icon="icon-table-edit"></md-icon>
-            <span>Update Field Name</span>
-        </md-button>
     </div>
     <!-- / HEADER -->
     <!-- CONTENT -->
@@ -42,25 +62,33 @@
                     <thead>
                         <tr>
                             <th>
-                                <md-button aria-label="" class="md-raised md-accent" ng-click="addRow()">
-                                    <md-icon md-font-icon="icon-plus"></md-icon>
-                                    <span>Add</span>
-                                </md-button>
-                            </th>
-                            <th ng-repeat="field in fields">
-                                <md-input-container md-no-float class="md-block">
-                                    <input ng-if="editable(field)" placeholder="Value" name="val" type="text" ng-model="add[field]" />
-                                </md-input-container>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
                                 <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
                             </th>
                             <th ng-repeat="field in fields track by $index">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr ng-if="addNewSchema">
+                            <td></td>
+                            <td>
+                                <md-button aria-label="" class="md-raised md-accent" ng-click="addRow()">
+                                    <md-icon md-font-icon="icon-plus"></md-icon>
+                                    <span>Add</span>
+                                </md-button>
+                            </td>
+                            <td>
+                                <md-button class="md-raised md-warn md-default-theme" ng-click="cancelAddRow()">
+                                    <md-icon md-font-icon="icon-close"></md-icon>
+                                    <span>Cancel</span>
+                                </md-button>
+                            </td>
+                            <td></td>
+                            <td ng-repeat="field in fields_add">
+                                <md-input-container md-no-float class="md-block">
+                                    <input placeholder="Value" name="val" type="text" ng-model="add[field]" />
+                                </md-input-container>
+                            </td>
+                        </tr>
                         <tr ng-repeat="document in documents | orderBy:'updatedAt':true track by document.objectId" ng-init="position = $index">
                             <td>
                                 <md-checkbox aria-label=" " ng-checked="exists(document.objectId)" ng-click="toggle(document.objectId)"></md-checkbox>

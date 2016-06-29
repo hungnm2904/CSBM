@@ -17,8 +17,10 @@
             var objectIdList = [];
             $scope.columnName = '';
             $scope.fields = [];
+            $scope.fields_add = [];
             $scope.documents = [];
             $scope.add = [];
+            $scope.addNewSchema = false;
 
             var renderClass = function() {
                 msSchemasService.getSchema(appId, index, function(error, results) {
@@ -31,9 +33,11 @@
                     }
 
                     $scope.className = results.className;
-                    $scope.schemas = results.fields
+                    $scope.schemas = results.fields;
                     var fields = Object.getOwnPropertyNames(results.fields);
                     $scope.fields = [].concat(fields);
+                    $scope.fields_add = [].concat(fields);
+                    $scope.fields_add.splice(0, 3);
 
                     msSchemasService.getDocuments($scope.className, appId,
                         function(error, results) {
@@ -117,11 +121,20 @@
                     .showDialog(ev, 'app/core/services/dialogs/deleteColumnDialog.html');
             };
 
+            $scope.updateField = function(ev) {
+                msDialogService
+                    .showDialog(ev, 'app/core/services/dialogs/updateField.html');
+            };
+
             $scope.updateValues = function() {
                 var data = [];
-                console.log($scope.schemas);
+                var checkType = true;
+                var errorMessage;
+                var titleMessage;
+
                 $scope.documents.forEach(function(_document, index) {
                     var newDocument = {};
+
                     for (var key in _document) {
                         if (key != "objectId" && key != "createdAt" &&
                             key != "updatedAt") {
@@ -130,7 +143,14 @@
 
                             if (value) {
                                 if ($scope.schemas[key].type === 'Number') {
-                                    value = Number(value);
+
+                                    if (!Number(value) && value) {
+                                        checkType = false;
+                                        errorMessage = key + ' column has type is: ' + $scope.schemas[key].type;
+                                        titleMessage = 'Update Values Fail';
+                                    } else {
+                                        value = Number(value);
+                                    }
                                 }
                                 if ($scope.schemas[key].type === 'Array' && value.constructor !== Array &&
                                     value.length > 0) {
@@ -144,19 +164,25 @@
                             newDocument[key] = value;
                         }
                     }
-                    data.push(newDocument);
+                    if (checkType) {
+                        data.push(newDocument);
+                    }
                 });
-
-                data.forEach(function(d, i) {
-                    var objectId = $scope.documents[i].objectId;
-                    msSchemasService.updateValues($scope.className, appId,
-                        objectId, d,
-                        function(results) {});
-                });
+                if (checkType) {
+                    data.forEach(function(d, i) {
+                        var objectId = $scope.documents[i].objectId;
+                        msSchemasService.updateValues($scope.className, appId,
+                            objectId, d,
+                            function(results) {});
+                    });
+                } else {
+                    msDialogService.showAlertDialog(titleMessage, errorMessage);
+                }
             };
 
             $scope.toggle = function(objectId) {
                 var index = checked.indexOf(objectId);
+
                 if (index === -1) {
                     checked.push(objectId);
                 } else {
@@ -183,41 +209,56 @@
                 } else if (checked.length === 0 || checked.length > 0) {
                     checked = objectIdList.slice(0);
                 }
+            };
+
+            $scope.checkList = function() {
+                return checked.length;
             }
 
             $scope.deleteRow = function() {
-                msSchemasService.deleteDocuments($scope.className, appId, checked,
-                    function(error, results) {
-                        if (error) {
-                            return alert(error.statusText);
-                        }
+                var confirm = $mdDialog.confirm()
+                    .title('Are you sure to delete this rows ?')
+                    .ok('Yes')
+                    .cancel('No');
 
-                        results.forEach(function(objectId, index) {
-                            $scope.documents.forEach(function(_document, index) {
-                                if (_document.objectId === objectId) {
-                                    return $scope.documents.splice(index, 1);
-                                }
+                $mdDialog.show(confirm).then(function() {
+                    msSchemasService.deleteDocuments($scope.className, appId, checked,
+                        function(error, results) {
+                            if (error) {
+                                return alert(error.statusText);
+                            }
+
+                            results.forEach(function(objectId, index) {
+                                checked = [];
+                                $scope.documents.forEach(function(_document, index) {
+                                    if (_document.objectId === objectId) {
+                                        return $scope.documents.splice(index, 1);
+                                    }
+                                });
                             });
                         });
-                    });
-
-
-                // checked.forEach(function(objectId) {
-                //     msSchemasService.deleteDocuments($scope.className, appId, objectId,
-                //         function(results) {});
-                // });
-                // msToastService.show('Delete row(s) successful.', 'success');
+                }, function() {});
             };
 
             $scope.addRow = function() {
                 var newSchema = {};
+                var checkType = true;
+                var errorMessage;
+                var titleMessage;
                 $scope.fields.forEach(function(field) {
                     if (field != 'objectId' && field != 'createdAt' &&
                         field != 'updatedAt') {
 
                         var value = $scope.add[field];
+
                         if ($scope.schemas[field].type === 'Number') {
-                            value = Number(value);
+                            if (!Number(value) && value) {
+                                checkType = false;
+                                errorMessage = field + ' column has type is: ' + $scope.schemas[field].type;
+                                titleMessage = 'Add New Row Fail';
+                            } else {
+                                value = Number(value);
+                            }
                         }
 
                         if ($scope.schemas[field].type === 'Array' && value.length > 0) {
@@ -228,24 +269,37 @@
                             });
                         }
 
-                        newSchema[field] = value;
+                        if (checkType) {
+                            newSchema[field] = value;
+                        }
                     }
                 });
-                msSchemasService.createDocument($scope.className, appId, newSchema,
-                    function(error, results) {
-                        if (error) {
-                            return alert(error.statusText);
-                        }
-
-                        $scope.add = [];
-                        $scope.documents.push(results);
-                    });
+                if (checkType) {
+                    msSchemasService.createDocument($scope.className, appId, newSchema,
+                        function(error, results) {
+                            if (error) {
+                                return alert(error.statusText);
+                            }
+                            $scope.add = [];
+                            $scope.documents.push(results);
+                            objectIdList.push(results.objectId);
+                        });
+                    $scope.addNewSchema = false;
+                } else {
+                    msDialogService.showAlertDialog(titleMessage, errorMessage);
+                }
             };
 
-            $scope.updateField = function(ev) {
-                msDialogService
-                    .showDialog(ev, 'app/core/services/dialogs/updateField.html');
-            };
+            $scope.showAddRow = function() {
+                $scope.addNewSchema = !$scope.addNewSchema;
+            }
+
+            $scope.cancelAddRow = function() {
+                $scope.addNewSchema = false;
+                $scope.fields.forEach(function(field) {
+                    $scope.add[field] = '';
+                });
+            }
 
             $scope.dtOptions = {
                 dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
