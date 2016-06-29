@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.application.classes', ['datatables'])
+        .module('app.application.classes', [])
         .config(config);
     // .run(run);
 

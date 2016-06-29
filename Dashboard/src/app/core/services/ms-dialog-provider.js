@@ -10,7 +10,8 @@
         var service = this;
         this.$get = function($mdDialog, $document) {
             var service = {
-                showDialog: showDialog
+                showDialog: showDialog,
+                showAlertDialog: showAlertDialog
             };
 
             return service;
@@ -25,11 +26,21 @@
                     clickOutsideToClose: true
                 });
             };
+
+            function showAlertDialog(title, textContent) {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title(title)
+                    .textContent(textContent)
+                    .ok('OK')
+                );
+            };
         };
     };
 
     function msDialogController($scope, $mdDialog, $cookies, $state, $stateParams,
-        msSchemasService, msApplicationService) {
+        msSchemasService, msApplicationService, msDialogService) {
 
         var vm = this;
         var index = $stateParams.index;
@@ -72,16 +83,9 @@
             msApplicationService.create($scope.applicationName,
                 function(result) {
                     if (result) {
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                            .clickOutsideToClose(true)
-                            .title('Error')
-                            .textContent('Application exists')
-                            .ok('OK')
-                        );
+                        msDialogService.showAlertDialog('Create Application Fail', 'Application exists');
                     }
                 });
-            closeDialog();
         };
 
         $scope.deleteApplication = function(applicationName) {
@@ -89,6 +93,7 @@
                 .title('Are you sure to delete this application ?')
                 .ok('Yes')
                 .cancel('No');
+
             $mdDialog.show(confirm).then(function() {
                 msApplicationService.remove($scope.applicationId,
                     function(error, results) {
@@ -98,7 +103,6 @@
                             }
                             return alert(error.statusText);
                         }
-                        console.log(results);
                     });
                 closeDialog();
             }, function() {
@@ -115,23 +119,18 @@
         };
 
         $scope.addColumn = function() {
-            if ($scope.columnName === null || $scope.type === '') {
-                $scope.error = 'Name and Type not allow null.';
+            if (!$scope.columnName || !$scope.type) {
+
+                msDialogService.showAlertDialog('Add New Column Fail', 'Name and Type not allow null');
             } else {
-                $scope.error = '';
+
                 msSchemasService.addField(className, appId, $scope.columnName, $scope.type,
                     function(error, results) {
                         if (error) {
                             if (error.status === 401) {
                                 return $state.go('app.pages_auth_login');
                             }
-                            $mdDialog.show(
-                                $mdDialog.alert()
-                                .clickOutsideToClose(true)
-                                .title('Error')
-                                .textContent('Column exists')
-                                .ok('OK')
-                            );
+                            msDialogService.showAlertDialog('Add New Column Fail', 'Column exists');
                         }
                     });
                 $mdDialog.hide();
@@ -140,13 +139,13 @@
 
         $scope.deleteColumn = function() {
             if (!$scope.columnName) {
-                $scope.error = 'Please select column.';
+                msDialogService.showAlertDialog('Delete Exists Column Fail', 'Please select column.');
             } else {
-                $scope.error = '';
                 var confirm = $mdDialog.confirm()
                     .title('Are you sure to delete ' + $scope.columnName + ' ?')
                     .ok('Yes')
                     .cancel('No');
+
                 $mdDialog.show(confirm).then(function() {
                     msSchemasService.deleteField(className, appId, $scope.columnName,
                         function(error, results) {
@@ -171,6 +170,7 @@
                     ' to ' + '"' + $scope.columnName + '"' + ' ?')
                 .ok('Yes')
                 .cancel('No');
+
             $mdDialog.show(confirm).then(function() {
                 msApplicationService.getAppName(appId, function(error, result) {
                     appName = result.data.data.appName;
