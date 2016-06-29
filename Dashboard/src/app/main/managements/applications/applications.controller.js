@@ -12,9 +12,9 @@
             $state.go('app.pages_auth_login');
         }
 
-        $scope.applications = [];
+        $scope.applications = msApplicationService.applications();
 
-        msApplicationService.getAll(function(error, results) {
+        msApplicationService.getAll(function(error) {
             if (error) {
                 if (error.status === 401) {
                     return $state.go('app.pages_auth_login', { error: error.statusText });
@@ -22,8 +22,6 @@
 
                 return alert(error.statusText);
             }
-
-            $scope.applications = results;
         });
 
         $scope.showAddDialog = function(ev) {
@@ -48,8 +46,8 @@
             });
         };
 
-        $rootScope.$on('app-added', function(event, agrs){
-            $scope.applications.push(agrs.app);
-        });
+        // $rootScope.$on('app-added', function(event, agrs){
+        //     $scope.applications.push(agrs.app);
+        // });
     }
 })();

@@ -7,15 +7,15 @@
 
     function msApplicationServiceProvider() {
         var _applications = [];
-
-        var service = this;
-        this.$get = function($http, $state, $cookies, $rootScope, msConfigService,
+        // var service = this;
+        this.$get = function($http, $state, $cookies, msConfigService,
             msUserService) {
 
             var _domain = (msConfigService.getConfig()).domain;
 
 
             var service = {
+                applications: applications,
                 getAll: getAll,
                 create: create,
                 remove: remove,
@@ -25,8 +25,15 @@
 
             return service;
 
+            function applications() {
+                return _applications;
+            };
+
             function setApplications(applications) {
-                _applications = applications;
+                // _applications = applications;
+                applications.forEach(function(application, index){
+                    _applications.push(application);
+                });
             };
 
             function removeApplication(id) {
@@ -38,8 +45,8 @@
             }
 
             function add(application) {
-                // _applications.push(application);
-                $rootScope.$broadcast('app-added', { 'app': application })
+                _applications.push(application);
+                // $rootScope.$broadcast('app-added', { 'app': application })
             };
 
             function getAll(callback) {
@@ -56,7 +63,7 @@
                     }
                 }).then(function(response) {
                     setApplications(response.data);
-                    callback(null, _applications);
+                    callback(null);
                 }, function(response) {
                     callback(response);
                 });

@@ -30,7 +30,7 @@
             function showAlertDialog(title, textContent) {
                 $mdDialog.show(
                     $mdDialog.alert()
-                    .clickOutsideToClose(true)
+                    .clickOutsideToClose(false)
                     .title(title)
                     .textContent(textContent)
                     .ok('OK')
@@ -81,10 +81,17 @@
 
         $scope.createApplication = function() {
             msApplicationService.create($scope.applicationName,
-                function(result) {
-                    if (result) {
-                        msDialogService.showAlertDialog('Create Application Fail', 'Application exists');
+                function(error, results) {
+                    if (error) {
+                        if (error.status === 401) {
+                            return $state.go('app.pages_auth_login');
+                        }
+
+                        closeDialog();
+                        return alert(error.statusText);
                     }
+
+                    closeDialog();
                 });
         };
 
