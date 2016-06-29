@@ -200,7 +200,11 @@
             };
 
             $scope.isChecked = function() {
-                return checked.length === objectIdList.length;
+                if (objectIdList != 0) {
+                    return checked.length === objectIdList.length;
+                } else {
+                    return false;
+                }
             };
 
             $scope.toggleAll = function() {
@@ -301,11 +305,11 @@
                 });
             }
 
-            $scope.dtOptions = {
-                dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-                pagingType: 'full_numbers',
-                autoWidth: false,
-                responsive: false,
-            };
+            // $scope.dtOptions = {
+            //     dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+            //     pagingType: 'full_numbers',
+            //     autoWidth: false,
+            //     responsive: false,
+            // };
         });
 })();

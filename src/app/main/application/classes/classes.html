@@ -58,13 +58,13 @@
     <div class="content" md-background-bg>
         <div class="white-bg md-whiteframe-4dp">
             <form name="myform" id="myform">
-                <table class="simple dataTable row-border hover" datatable="ng" dt-options="dtOptions" id="table" ms-responsive-table>
+                <table class="simple dataTable row-border hover" id="table" ms-responsive-table>
                     <thead>
                         <tr>
                             <th>
                                 <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
                             </th>
-                            <th ng-repeat="field in fields track by $index">{{field}}</th>
+                            <th ng-repeat="field in fields">{{field}}</th>
                         </tr>
                     </thead>
                     <tbody>
