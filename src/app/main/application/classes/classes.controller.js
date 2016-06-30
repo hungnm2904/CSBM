@@ -6,7 +6,6 @@
         .controller('ClassesController', function($scope, $http, $cookies, $window,
             $state, $stateParams, $mdDialog, $document, $rootScope, msModeService,
             msSchemasService, msDialogService, msToastService, msUserService) {
-
             if (!msUserService.getAccessToken()) {
                 $state.go('app.pages_auth_login');
             }
@@ -15,12 +14,13 @@
             var appId = $stateParams.appId;
             var checked = [];
             var objectIdList = [];
+            var skip;
             $scope.columnName = '';
             $scope.fields = [];
             $scope.fields_add = [];
-            $scope.documents = [];
             $scope.add = [];
             $scope.addNewSchema = false;
+            $scope.numPerPage = 5;
 
             var renderClass = function() {
                 msSchemasService.getSchema(appId, index, function(error, results) {
@@ -28,10 +28,8 @@
                         if (error.status === 401) {
                             return $state.go('app.pages_auth_login');
                         }
-
                         return alert(error.statusText);
                     }
-
                     $scope.className = results.className;
                     $scope.schemas = results.fields;
                     var fields = Object.getOwnPropertyNames(results.fields);
@@ -39,55 +37,80 @@
                     $scope.fields_add = [].concat(fields);
                     $scope.fields_add.splice(0, 3);
 
-                    msSchemasService.getDocuments($scope.className, appId,
-                        function(error, results) {
-
-                            if (error) {
-                                return alert(error.statusText);
-                            }
-
-                            for (var i in results) {
-
-                                var _document = results[i];
-                                var newDocument = {};
-
-                                for (var y in $scope.fields) {
-                                    var field = $scope.fields[y];
-                                    newDocument[field] = _document[field];
-                                };
-
-                                $scope.documents.push(newDocument);
-                            }
-
-                            $scope.documents.forEach(function(_document) {
-                                objectIdList.push(_document.objectId);
-                            });
-                        });
+                    pagination();
                 });
             };
-            renderClass();
 
-            $rootScope.$on('fields-change', function(event, args) {
-                $scope.fields = Object.getOwnPropertyNames(args.fields);
-                msSchemasService.getDocuments($scope.className, appId,
-                    function(error, results) {
+            var pagination = function() {
+                if ($scope.currentPage === 1) {
+                    skip = 0;
+                } else {
+                    skip = ($scope.currentPage - 1) * $scope.numPerPage;
+                }
+                msSchemasService.getDocuments(appId, $scope.className, $scope.numPerPage, skip,
+                    function(error, results, count) {
                         if (error) {
-                            return results.statusText;
+                            return alert(error.statusText);
                         }
-
                         $scope.documents = [];
-
                         for (var i in results) {
                             var _document = results[i];
                             var newDocument = {};
-
                             for (var y in $scope.fields) {
                                 var field = $scope.fields[y];
                                 newDocument[field] = _document[field];
                             };
                             $scope.documents.push(newDocument);
                         }
+                        $scope.documents.forEach(function(_document) {
+                            objectIdList.push(_document.objectId);
+                        });
+
+                        $scope.totalItems = count;
                     });
+            }
+
+            var sort = function() {
+                $scope.predicate = 'updatedAt';
+                $scope.reverse = true;
+                $scope.currentPage = 1;
+                $scope.order = function(predicate) {
+                    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+                    $scope.predicate = predicate;
+                };
+            };
+
+            $scope.$watch('currentPage + numPerPage', function() {
+                pagination();
+                checked = [];
+            });
+            renderClass();
+            sort();
+
+
+            $rootScope.$on('fields-change', function(event, args) {
+                var fields = Object.getOwnPropertyNames(args.fields);
+                $scope.fields = [].concat(fields);
+                $scope.fields_add = [].concat(fields);
+                $scope.fields_add.splice(0, 3);
+                // msSchemasService.getDocuments($scope.className, appId,
+                //     function(error, results) {
+                //         if (error) {
+                //             return results.statusText;
+                //         }
+                //         $scope.documents = [];
+                //         for (var i in results) {
+                //             var _document = results[i];
+                //             var newDocument = {};
+                //             for (var y in $scope.fields) {
+                //                 var field = $scope.fields[y];
+                //                 newDocument[field] = _document[field];
+                //             };
+                //             $scope.documents.push(newDocument);
+                //         }
+
+                //     });
+                pagination();
             });
 
             // $rootScope.$on('field-name-changed', function(event, args) {
@@ -134,13 +157,10 @@
 
                 $scope.documents.forEach(function(_document, index) {
                     var newDocument = {};
-
                     for (var key in _document) {
                         if (key != "objectId" && key != "createdAt" &&
                             key != "updatedAt") {
-
                             var value = _document[key];
-
                             if (value) {
                                 if ($scope.schemas[key].type === 'Number') {
 
@@ -174,6 +194,7 @@
                         msSchemasService.updateValues($scope.className, appId,
                             objectId, d,
                             function(results) {});
+                        pagination();
                     });
                 } else {
                     msDialogService.showAlertDialog(titleMessage, errorMessage);
@@ -182,7 +203,6 @@
 
             $scope.toggle = function(objectId) {
                 var index = checked.indexOf(objectId);
-
                 if (index === -1) {
                     checked.push(objectId);
                 } else {
@@ -224,22 +244,21 @@
                     .title('Are you sure to delete this rows ?')
                     .ok('Yes')
                     .cancel('No');
-
                 $mdDialog.show(confirm).then(function() {
                     msSchemasService.deleteDocuments($scope.className, appId, checked,
                         function(error, results) {
                             if (error) {
                                 return alert(error.statusText);
                             }
-
-                            results.forEach(function(objectId, index) {
-                                checked = [];
-                                $scope.documents.forEach(function(_document, index) {
-                                    if (_document.objectId === objectId) {
-                                        return $scope.documents.splice(index, 1);
-                                    }
-                                });
-                            });
+                            // results.forEach(function(objectId, index) {
+                            //     checked = [];
+                            //     $scope.documents.forEach(function(_document, index) {
+                            //         if (_document.objectId === objectId) {
+                            //             return $scope.documents.splice(index, 1);
+                            //         }
+                            //     });
+                            // });
+                            pagination();
                         });
                 }, function() {});
             };
@@ -252,9 +271,7 @@
                 $scope.fields.forEach(function(field) {
                     if (field != 'objectId' && field != 'createdAt' &&
                         field != 'updatedAt') {
-
                         var value = $scope.add[field];
-
                         if ($scope.schemas[field].type === 'Number') {
                             if (!Number(value) && value) {
                                 checkType = false;
@@ -264,7 +281,6 @@
                                 value = Number(value);
                             }
                         }
-
                         if ($scope.schemas[field].type === 'Array' && value.length > 0) {
 
                             value = value.split(',');
@@ -272,7 +288,6 @@
                                 return v.trim();
                             });
                         }
-
                         if (checkType) {
                             newSchema[field] = value;
                         }
@@ -285,7 +300,8 @@
                                 return alert(error.statusText);
                             }
                             $scope.add = [];
-                            $scope.documents.push(results);
+                            // $scope.documents.push(results);
+                            pagination();
                             objectIdList.push(results.objectId);
                         });
                     $scope.addNewSchema = false;
@@ -304,12 +320,5 @@
                     $scope.add[field] = '';
                 });
             }
-
-            // $scope.dtOptions = {
-            //     dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
-            //     pagingType: 'full_numbers',
-            //     autoWidth: false,
-            //     responsive: false,
-            // };
         });
 })();

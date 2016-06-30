@@ -120,10 +120,8 @@
 
         $scope.addColumn = function() {
             if (!$scope.columnName || !$scope.type) {
-
                 msDialogService.showAlertDialog('Add New Column Fail', 'Name and Type not allow null');
             } else {
-
                 msSchemasService.addField(className, appId, $scope.columnName, $scope.type,
                     function(error, results) {
                         if (error) {

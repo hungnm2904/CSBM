@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.managements.users', ['datatables'])
+        .module('app.managements.users', [])
         .config(config);
 
     /** @ngInject */

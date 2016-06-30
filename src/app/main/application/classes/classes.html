@@ -58,13 +58,13 @@
     <div class="content" md-background-bg>
         <div class="white-bg md-whiteframe-4dp">
             <form name="myform" id="myform">
-                <table class="simple dataTable row-border hover" id="table" ms-responsive-table>
+                <table class="simple table-striped" id="table" ms-responsive-table>
                     <thead>
                         <tr>
                             <th>
                                 <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
                             </th>
-                            <th ng-repeat="field in fields">{{field}}</th>
+                            <th ng-repeat="field in fields"><!-- <a href="" ng-click="order(field)"> -->{{field}}<!-- </a> --></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,7 @@
                                 </md-input-container>
                             </td>
                         </tr>
-                        <tr ng-repeat="document in documents | orderBy:'updatedAt':true track by document.objectId" ng-init="position = $index">
+                        <tr ng-repeat="document in documents | orderBy:predicate:reverse | filter:paginate track by document.objectId" ng-init="position = $index">
                             <td>
                                 <md-checkbox aria-label=" " ng-checked="exists(document.objectId)" ng-click="toggle(document.objectId)"></md-checkbox>
                             </td>
@@ -106,10 +106,6 @@
                 </table>
             </form>
         </div>
-        <!-- BASIC FORM -->
-        <div class="form-wrapper md-whiteframe-4dp">
-        </div>
-        <!-- / BASIC FORM -->
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="5" boundary-links="true" items-per-page="numPerPage" class="pagination-lg"></uib-pagination>
+        <!-- / CONTENT -->
     </div>
-    <!-- / CONTENT -->
-</div>

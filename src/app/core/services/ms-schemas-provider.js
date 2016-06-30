@@ -127,23 +127,24 @@
             function setDocuments(className, documents) {
                 _schemas.forEach(function(schema, index) {
                     if (schema.className === className) {
-                        return schema.documents = documents
+                        return schema.documents = documents;
                     }
                 });
             };
 
-            function getDocuments(className, appId, callback) {
+            function getDocuments(appId, className, limit, skip, callback) {
                 $http({
                     method: 'GET',
-                    url: _domain + '/csbm/classes/' + className,
+                    url: _domain + '/csbm/classes/' + className + '?limit=' + limit + '&count=1&order=-updatedAt&skip=' + skip,
                     headers: {
                         'X-CSBM-Application-Id': appId
                     }
                 }).then(function(response) {
-                    var documents = response.data.results
+                    var documents = response.data.results;
+                    var count = response.data.count;
 
                     setDocuments(className, documents);
-                    callback(null, documents);
+                    callback(null, documents, count);
                 }, function(response) {
                     callback(response);
                 });
@@ -353,7 +354,7 @@
                 }, function(response) {
                     callback(response);
                 });
-            }
+            };
         };
     };
 })();

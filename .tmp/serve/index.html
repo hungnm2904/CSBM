@@ -11,9 +11,9 @@
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
     <link rel='stylesheet' href='../bower_components/datatables/media/css/jquery.dataTables.css' />
-    <link rel='stylesheet' href='../bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css' />
     <link rel='stylesheet' href='../bower_components/perfect-scrollbar/css/perfect-scrollbar.css' />
     <link rel='stylesheet' href='../bower_components/toastr/toastr.css' />
+    <link rel='stylesheet' href='../bower_components/bootstrap/dist/css/bootstrap.css' />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
@@ -62,19 +62,6 @@
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../bower_components/angular-aria/angular-aria.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="../bower_components/datatables/media/js/jquery.dataTables.js"></script>
-    <script src="../bower_components/angular-datatables/dist/angular-datatables.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
-    <script src="../bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
     <script src="../bower_components/angular-messages/angular-messages.js"></script>
     <script src="../bower_components/angular-material/angular-material.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
@@ -82,11 +69,14 @@
     <script src="../bower_components/angular-translate/angular-translate.js"></script>
     <script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.js"></script>
     <script src="../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="../bower_components/mobile-detect/mobile-detect.js"></script>
     <script src="../bower_components/moment/moment.js"></script>
     <script src="../bower_components/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="../bower_components/toastr/toastr.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
@@ -97,6 +87,8 @@
     <script src="app/main/pages/auth/login/login.controller.js"></script>
     <script src="app/main/application/classes/classes.module.js"></script>
     <script src="app/main/application/classes/dialogs/dialog.controller.js"></script>
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/directives/ms-stepper/ms-stepper.directive.js"></script>
     <script src="app/quick-panel/quick-panel.module.js"></script>
     <script src="app/quick-panel/tabs/chat/chat-tab.controller.js"></script>
     <script src="app/main/managements/users/users.module.js"></script>
@@ -106,10 +98,8 @@
     <script src="app/main/application/information/information.module.js"></script>
     <script src="app/main/application/information/information.controller.js"></script>
     <script src="app/main/application/classes/classes.controller.js"></script>
-    <script src="app/core/core.module.js"></script>
     <script src="app/core/directives/ms-widget/ms-widget.directive.js"></script>
     <script src="app/core/directives/ms-timeline/ms-timeline.js"></script>
-    <script src="app/core/directives/ms-stepper/ms-stepper.directive.js"></script>
     <script src="app/core/directives/ms-splash-screen/ms-splash-screen.directive.js"></script>
     <script src="app/core/directives/ms-sidenav-helper/ms-sidenav-helper.directive.js"></script>
     <script src="app/core/directives/ms-search-bar/ms-search-bar.directive.js"></script>
