@@ -57,12 +57,14 @@
                                 };
 
                                 $scope.documents.push(newDocument);
+                                console.log($scope.documents);
                             }
 
                             $scope.documents.forEach(function(_document) {
                                 objectIdList.push(_document.objectId);
                             });
                         });
+
                 });
             };
             renderClass();

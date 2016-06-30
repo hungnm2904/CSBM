@@ -1,5 +1,4 @@
-(function ()
-{
+(function() {
     'use strict';
 
     angular
@@ -8,11 +7,11 @@
             'app.pages.auth.register'
         ])
         .config(config);
+        // .run(run);
 
     /** @ngInject */
-    function config(msNavigationServiceProvider)
-    {
+    function config(msNavigationServiceProvider) {
         // Navigation
+    };
 
-    }
 })();

@@ -68,15 +68,6 @@ module.exports = function(appHelpers) {
         });
     };
 
-    // router.post('/applications', authentication.isAuthenticated, function(req, res) {
-    // });
-
-    // router.delete('/applications', authentication.isAuthenticated, function(req, res) {
-    // });
-
-    // router.get('/applications', authentication.isAuthenticated, function(req, res) {
-    // });
-
     return {
         create: create,
         remove: remove,

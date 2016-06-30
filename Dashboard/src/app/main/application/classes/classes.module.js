@@ -10,7 +10,7 @@
     function config($stateProvider, msApiProvider) {
 
         $stateProvider.state('app.application_classes', {
-            url: '/application/classes/:appId/:index',
+            url: '/application/:appId/classes/:index',
             views: {
                 'content@app': {
                     templateUrl: 'app/main/application/classes/classes.html',

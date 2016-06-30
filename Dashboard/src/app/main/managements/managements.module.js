@@ -7,8 +7,8 @@
             'app.managements.users'
             // 'app.managements.classes',
         ])
-        .config(config);
-
+        .config(config)
+        .run(run);
     /** @ngInject */
     function config(msNavigationServiceProvider, msModeServiceProvider) {
         // Navigation
@@ -32,5 +32,15 @@
             icon: 'icon-account-multiple',
             state: 'app.managements_users'
         });
-    }
+    };
+
+    function run($rootScope, msModeService) {
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            var appId = toParams.appId;
+            if (!appId) {
+                msModeService.setToUserMode();
+            }
+        });
+    };
+
 })();

@@ -10,6 +10,13 @@
         // if ($state.params.error) {
         //     vm.error = error;
         // }
+
+        msUserService.getCurrentUser(function(user) {
+            if (user.accessToken) {
+                $state.go('app.managements_applications');
+            }
+        });
+
         vm.login = function() {
             vm.dataLoading = true;
             msUserService.login(vm.username, vm.password, function(error, results) {

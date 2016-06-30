@@ -35,15 +35,16 @@
         }
 
         $scope.goToAppManagement = function(appId) {
-            msSchemasService.getSchemas(appId, null, function(error, results) {
-                if (error) {
-                    if (error.status === 401) {
-                        return $state.go('app.pages_auth_login', { error: error });
-                    }
+            $state.go('app.application_classes', { 'appId': appId, 'index': 0 });
+            // msSchemasService.getSchemas(appId, null, function(error, results) {
+            //     if (error) {
+            //         if (error.status === 401) {
+            //             return $state.go('app.pages_auth_login', { error: error });
+            //         }
 
-                    return alert(error.statusText);
-                }
-            });
+            //         return alert(error.statusText);
+            //     }
+            // });
         };
 
         // $rootScope.$on('app-added', function(event, agrs){

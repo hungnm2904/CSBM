@@ -2,14 +2,15 @@
     'use strict';
 
     angular
-        .module('app.application.info')
-        .controller('InformationController', function($scope, $http, $cookies, $window,
-            $state, $stateParams, $mdDialog, $document, $rootScope, msModeService,
-            msSchemasService, msDialogService, msApplicationService, msUserService) {
+        .module('app.application.appsettings.keys')
+        .controller('KeysController', function($scope, $stateParams, msModeService,
+            msApplicationService, msUserService) {
 
             if (!msUserService.getAccessToken()) {
                 $state.go('app.pages_auth_login');
             }
+
+            msModeService.setToApplicationMode();
 
             var appId = $stateParams.appId;
             $scope.appId = appId;

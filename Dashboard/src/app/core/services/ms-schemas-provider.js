@@ -11,7 +11,7 @@
         var _schemas = [];
 
         this.$get = function($rootScope, $http, $cookies, msConfigService,
-            msMasterKeyService, msModeService, msUserService) {
+            msMasterKeyService, msUserService) {
 
             var _domain = (msConfigService.getConfig()).domain;
 
@@ -43,7 +43,6 @@
                     index = 0;
                 }
 
-                msModeService.setToApplicationMode();
                 $rootScope.$broadcast('schemas-changed', { 'appId': appId, 'index': index });
             };
 
@@ -119,6 +118,7 @@
             };
 
             function addSchema(appId, schema) {
+                delete schema.fields.ACL
                 _schemas.push(schema);
                 var index = _schemas.length - 1;
                 $rootScope.$broadcast('schemas-changed', { 'appId': appId, 'index': index });

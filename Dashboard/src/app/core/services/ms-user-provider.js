@@ -43,7 +43,7 @@
                     var expiresDate = new Date();
                     expiresDate.setDate(expiresDate.getDate() + 1);
                     $cookies.putObject('USER', user, { expires: expiresDate });
-                    setCurrentUser(user);
+                    _setCurrentUser(user);
                     callback(null, _currentUser);
                 }, function(response) {
                     callback(response);
@@ -59,7 +59,7 @@
                         'Authorization': 'Bearer ' + accessToken
                     }
                 }).then(function(response) {
-                    deleteCurrentUser();
+                    _deleteCurrentUser();
                     callback(null, response);
                 }, function(response) {
                     callback(response);
@@ -88,22 +88,22 @@
                 });
             };
 
-            function setCurrentUser(user) {
-                _currentUser = user;
-            };
-
-            function getCurrentUser() {
+            function getCurrentUser(callback) {
                 if (_currentUser) {
-                    return _currentUser;
+                    return callback(_currentUser);
                 }
 
                 var user = $cookies.getObject('USER');
                 if (user) {
-                    setCurrentUser(user);
-                    return _currentUser;
+                    _setCurrentUser(user);
+                    return callback(_currentUser);
                 }
 
-                return null;
+                return callback(null);;
+            };
+
+            function _setCurrentUser(user) {
+                _currentUser = user;
             };
 
             function getAccessToken() {
@@ -113,7 +113,7 @@
 
                 var user = $cookies.getObject('USER');
                 if (user) {
-                    setCurrentUser(user);
+                    _setCurrentUser(user);
                     return _currentUser.accessToken;
                 }
 
@@ -127,14 +127,14 @@
 
                 var user = $cookies.getObject('USER');
                 if (user) {
-                    setCurrentUser(user);
+                    _setCurrentUser(user);
                     return _currentUser.username;
                 }
 
                 return null;
             }
 
-            function deleteCurrentUser() {
+            function _deleteCurrentUser() {
                 _currentUser = null;
                 $cookies.remove('USER');
             };

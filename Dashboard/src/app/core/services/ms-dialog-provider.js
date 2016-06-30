@@ -52,7 +52,7 @@
         $scope.applicationId;
         $scope.className = '';
         $scope.fields = [];
-        $scope.types = ['String', 'Number', 'Array'];
+        $scope.types = ['String', 'Number', 'Array', 'File'];
         $scope.type = '';
 
         if (appId) {

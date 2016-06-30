@@ -395,6 +395,7 @@
         // Data
         if ($scope.root) {
             vm.navigation = msNavigationService.getNavigationObject($scope.root);
+            alert('$scope.root');
         } else {
             vm.navigation = msNavigationService.getNavigationObject();
         }
