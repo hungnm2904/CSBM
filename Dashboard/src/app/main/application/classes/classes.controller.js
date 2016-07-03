@@ -22,6 +22,9 @@
             $scope.add = [];
             $scope.addNewSchema = false;
 
+            var skip;
+            $scope.numPerPage = 5;
+
             var renderClass = function() {
                 msSchemasService.getSchema(appId, index, function(error, results) {
                     if (error) {
@@ -39,57 +42,64 @@
                     $scope.fields_add = [].concat(fields);
                     $scope.fields_add.splice(0, 3);
 
-                    msSchemasService.getDocuments($scope.className, appId,
-                        function(error, results) {
-
-                            if (error) {
-                                return alert(error.statusText);
-                            }
-
-                            for (var i in results) {
-
-                                var _document = results[i];
-                                var newDocument = {};
-
-                                for (var y in $scope.fields) {
-                                    var field = $scope.fields[y];
-                                    newDocument[field] = _document[field];
-                                };
-
-                                $scope.documents.push(newDocument);
-                                console.log($scope.documents);
-                            }
-
-                            $scope.documents.forEach(function(_document) {
-                                objectIdList.push(_document.objectId);
-                            });
-                        });
-
+                    pagination();
                 });
             };
-            renderClass();
 
-            $rootScope.$on('fields-change', function(event, args) {
-                $scope.fields = Object.getOwnPropertyNames(args.fields);
-                msSchemasService.getDocuments($scope.className, appId,
-                    function(error, results) {
+            var pagination = function() {
+                if ($scope.currentPage === 1) {
+                    skip = 0;
+                } else {
+                    skip = ($scope.currentPage - 1) * $scope.numPerPage;
+                }
+                msSchemasService.getDocuments(appId, $scope.className, $scope.numPerPage, skip,
+                    function(error, results, count) {
                         if (error) {
-                            return results.statusText;
+                            return alert(error.statusText);
                         }
-
                         $scope.documents = [];
-
                         for (var i in results) {
                             var _document = results[i];
                             var newDocument = {};
-
                             for (var y in $scope.fields) {
                                 var field = $scope.fields[y];
                                 newDocument[field] = _document[field];
                             };
                             $scope.documents.push(newDocument);
                         }
+                        $scope.documents.forEach(function(_document) {
+                            objectIdList.push(_document.objectId);
+                        });
+
+                        $scope.totalItems = count;
                     });
+            }
+
+            var sort = function() {
+                $scope.predicate = 'updatedAt';
+                $scope.reverse = true;
+                $scope.currentPage = 1;
+                $scope.order = function(predicate) {
+                    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+                    $scope.predicate = predicate;
+                };
+            };
+
+            $scope.$watch('currentPage + numPerPage', function() {
+                pagination();
+                checked = [];
+            });
+
+            renderClass();
+            sort();
+
+            $rootScope.$on('fields-change', function(event, args) {
+                var fields = Object.getOwnPropertyNames(args.fields);
+                $scope.fields = [].concat(fields);
+                $scope.fields_add = [].concat(fields);
+                $scope.fields_add.splice(0, 3);
+                
+                pagination();
             });
 
             // $rootScope.$on('field-name-changed', function(event, args) {
@@ -176,6 +186,8 @@
                         msSchemasService.updateValues($scope.className, appId,
                             objectId, d,
                             function(results) {});
+
+                        pagination();
                     });
                 } else {
                     msDialogService.showAlertDialog(titleMessage, errorMessage);
@@ -234,14 +246,7 @@
                                 return alert(error.statusText);
                             }
 
-                            results.forEach(function(objectId, index) {
-                                checked = [];
-                                $scope.documents.forEach(function(_document, index) {
-                                    if (_document.objectId === objectId) {
-                                        return $scope.documents.splice(index, 1);
-                                    }
-                                });
-                            });
+                            pagination();
                         });
                 }, function() {});
             };
@@ -287,7 +292,9 @@
                                 return alert(error.statusText);
                             }
                             $scope.add = [];
-                            $scope.documents.push(results);
+                            
+                            pagination();
+
                             objectIdList.push(results.objectId);
                         });
                     $scope.addNewSchema = false;

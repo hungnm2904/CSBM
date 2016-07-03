@@ -56,6 +56,8 @@
     <!-- / HEADER -->
     <!-- CONTENT -->
     <div class="content" md-background-bg>
+        <div class="form-wrapper md-whiteframe-4dp">
+        </div>
         <div class="white-bg md-whiteframe-4dp">
             <form name="myform" id="myform">
                 <table class="simple dataTable row-border hover" id="table" ms-responsive-table>
@@ -64,7 +66,10 @@
                             <th>
                                 <md-checkbox aria-label=" " ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()"></md-checkbox>
                             </th>
-                            <th ng-repeat="field in fields">{{field}}</th>
+                            <th ng-repeat="field in fields">
+                                <!-- <a href="" ng-click="order(field)"> -->{{field}}
+                                <!-- </a> -->
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,7 +98,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr ng-repeat="document in documents | orderBy:'updatedAt':true track by document.objectId" ng-init="position = $index">
+                        <tr ng-repeat="document in documents | orderBy:predicate:reverse | filter:paginate track by document.objectId" ng-init="position = $index">
                             <td>
                                 <md-checkbox aria-label=" " ng-checked="exists(document.objectId)" ng-click="toggle(document.objectId)"></md-checkbox>
                             </td>
@@ -107,17 +112,15 @@
                                 <md-input-container ng-if="schemas[key].type == 'File'" md-no-float class="md-block">
                                     <a href="{{document[key].url}}">Image</a>
                                 </md-input-container>
-
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
         </div>
-        <!-- BASIC FORM -->
         <div class="form-wrapper md-whiteframe-4dp">
+            <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="5" boundary-links="true" items-per-page="numPerPage" class="pagination-lg"></uib-pagination>
         </div>
-        <!-- / BASIC FORM -->
     </div>
     <!-- / CONTENT -->
 </div>

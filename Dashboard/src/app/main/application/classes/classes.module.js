@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.application.classes', [])
+        .module('app.application.classes', ['ui.bootstrap'])
         .config(config);
     // .run(run);
 
