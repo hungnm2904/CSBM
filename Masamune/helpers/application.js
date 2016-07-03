@@ -23,18 +23,18 @@ module.exports = function(server) {
             clientKey: application.clientKey,
             masterKey: application.masterKey, // Keep it secret!
             serverURL: 'http://localhost:1337/csbm',
-            push: {
-                android: {
-                    senderId: '50356323544',
-                    apiKey: 'AIzaSyBYIsJeRnyY_yHgExuEaRWeMdOEwIh5AEo'
-                },
-            }
             // push: {
             //     android: {
-            //         senderId: '1657454733',
-            //         apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
+            //         senderId: '50356323544',
+            //         apiKey: 'AIzaSyBYIsJeRnyY_yHgExuEaRWeMdOEwIh5AEo'
             //     },
             // }
+            push: {
+                android: {
+                    senderId: '1657454733',
+                    apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
+                },
+            }
         });
 
         console.log(application.name + ' is running on http://localhost:1337/csbm/');
