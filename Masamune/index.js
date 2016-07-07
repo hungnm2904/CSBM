@@ -98,6 +98,7 @@ const appHelpers = require('./helpers/application')(csbm);
 const applicationsController = require('./controllers/applicationsController')(appHelpers);
 const usersController = require('./controllers/usersController');
 const schemasController = require('./controllers/schemasController');
+const pushNotificationsController = require('./controllers/pushNotificationsController');
 csbm.use('/csbm', parse);
 csbm.post('/login', usersController.login);
 csbm.post('/signup', usersController.signup);
@@ -108,6 +109,7 @@ csbm.get('/applications', authentication.isAuthenticated, applicationsController
 csbm.get('/masterKey', authentication.isAuthenticated, schemasController.getMasterKey);
 csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppName);
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
+csbm.post('/pushConfig', authentication.isAuthenticated, pushNotificationsController.pushConfig);
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
     if (err) {
