@@ -3,10 +3,11 @@ const Schema = mongoose.Schema;
 const randomstring = require('randomstring');
 
 var applicationSchema = new Schema({
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true},
     clientKey: String,
     masterKey: String,
     userId: { type: String, require: true },
+    databaseName: { type: String, unique: true },
     created_at: Date,
     updated_at: Date
 });
@@ -25,6 +26,10 @@ applicationSchema.pre('save', function(next) {
 
     if (!this.masterKey) {
         this.masterKey = randomstring.generate(48);
+    }
+
+    if (!this.databaseName) {
+        this.databaseName = this.userId + '--' + this.name;
     }
     next();
 });

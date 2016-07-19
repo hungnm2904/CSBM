@@ -4,6 +4,12 @@ const MongoClient = require('mongodb').MongoClient;
 exports.getMasterKey = function(req, res) {
 
     var appId = req.get('X-CSBM-Application-Id');
+    if (!appId) {
+        return res.status(403).send({
+            message: 'Unauthorized'
+        });
+    }
+
     Application.findOne({ '_id': appId }, function(err, application) {
         if (err) {
             console.log(err);
@@ -22,9 +28,34 @@ exports.getMasterKey = function(req, res) {
     });
 };
 
+exports.getAppId = function(req, res) {
+    var appName = req.get('X-CSBM-Application-Name');
+    var userId = req.user._id;
+    var databaseName = userId + '--' + appName;
+
+    Application.findOne({ 'databaseName': databaseName }, function(error, application) {
+        if (error) {
+            console.log(err);
+            return res.status(500).send({
+                message: 'Error occurred while processing'
+            });
+        }
+
+        res.status(200).send({
+            appId: application._id
+        });
+    });
+};
+
 exports.getAppName = function(req, res) {
 
     var appId = req.get('X-CSBM-Application-Id');
+    if (!appId) {
+        return res.status(403).send({
+            message: 'Unauthorized'
+        });
+    }
+    
     Application.findOne({ '_id': appId }, function(err, application) {
         if (err) {
             console.log(err);

@@ -17,8 +17,7 @@ module.exports = function(server) {
         // server.use('/csbm', api);
 
         new ParseServer({
-            databaseURI: 'mongodb://localhost:27017/' + application.name,
-            // cloud: __dirname + '/cloud/main.js',
+            databaseURI: 'mongodb://localhost:27017/' + application.databaseName,
             appId: application._id,
             clientKey: application.clientKey,
             masterKey: application.masterKey, // Keep it secret!
@@ -29,12 +28,12 @@ module.exports = function(server) {
             //         apiKey: 'AIzaSyBYIsJeRnyY_yHgExuEaRWeMdOEwIh5AEo'
             //     },
             // }
-            push: {
-                android: {
-                    senderId: '1657454733',
-                    apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
-                },
-            }
+            // push: {
+            //     android: {
+            //         senderId: '1657454733',
+            //         apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
+            //     },
+            // }
         });
 
         console.log(application.name + ' is running on http://localhost:1337/csbm/');

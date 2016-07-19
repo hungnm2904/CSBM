@@ -84,7 +84,7 @@ csbm.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization,X-CSBM-Application-Id');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization,X-CSBM-Application-Id,X-CSBM-Application-Name');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -107,6 +107,7 @@ csbm.post('/applications', authentication.isAuthenticated, applicationsControlle
 csbm.delete('/applications', authentication.isAuthenticated, applicationsController.remove);
 csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAll);
 csbm.get('/masterKey', authentication.isAuthenticated, schemasController.getMasterKey);
+csbm.get('/appId', authentication.isAuthenticated, schemasController.getAppId);
 csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppName);
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
 csbm.post('/pushConfig', authentication.isAuthenticated, pushNotificationsController.pushConfig);
