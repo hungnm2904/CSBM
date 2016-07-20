@@ -115,6 +115,9 @@ csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppNam
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
 csbm.post('/pushConfig', authentication.isAuthenticated, pushNotificationsController.pushConfig);
 csbm.get('/files/framework/ios', filesController.downloadiOSFrameWork);
+csbm.get('/files/starter-project/ios', filesController.downloadiOSStarterProject);
+csbm.get('/files/framework/android', filesController.downloadAndroidFrameWork);
+csbm.get('/files/starter-project/android', filesController.downloadAndroidStarterProject);
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
     if (err) {
