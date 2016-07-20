@@ -84,7 +84,7 @@ module.exports = function(appHelpers) {
 
                     if (!isMath) {
                         return res.status(403).send({
-                            message: 'Unauthorized'
+                            message: 'Password is incorrect'
                         });
                     }
 

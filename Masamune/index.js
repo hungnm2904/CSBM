@@ -26,6 +26,8 @@ const _GlobalConfigRouter = require('./parse-server/lib/Routers/GlobalConfigRout
 const _PurgeRouter = require('./parse-server/lib/Routers/PurgeRouter');
 const batch = require('./parse-server/lib/batch');
 
+global.__base = __dirname + '/';
+
 var csbm = express();
 var parse = express();
 const authentication = require('./authentication');
@@ -99,6 +101,7 @@ const applicationsController = require('./controllers/applicationsController')(a
 const usersController = require('./controllers/usersController');
 const schemasController = require('./controllers/schemasController');
 const pushNotificationsController = require('./controllers/pushNotificationsController');
+const filesController = require('./controllers/filesController');
 csbm.use('/csbm', parse);
 csbm.post('/login', usersController.login);
 csbm.post('/signup', usersController.signup);
@@ -111,6 +114,7 @@ csbm.get('/appId', authentication.isAuthenticated, schemasController.getAppId);
 csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppName);
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
 csbm.post('/pushConfig', authentication.isAuthenticated, pushNotificationsController.pushConfig);
+csbm.get('/files/framework/ios', filesController.downloadiOSFrameWork);
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
     if (err) {
