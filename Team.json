@@ -1,4 +1,0 @@
-{"_id":"EeNkPWQ72a","teamName":"team 3","city":"vung tau","_created_at":{"$date":"2016-07-30T10:53:16.325Z"},"_updated_at":{"$date":"2016-07-30T10:55:28.987Z"},"score":72}
-{"_id":"GyJvN9T5Bb","teamName":"team 4","city":"thai binh","score":17,"_created_at":{"$date":"2016-07-30T11:14:44.114Z"},"_updated_at":{"$date":"2016-07-30T11:14:44.114Z"}}
-{"_id":"KAVV0iUY68","teamName":"team 1","city":"cao lanh","_created_at":{"$date":"2016-07-30T10:52:28.015Z"},"_updated_at":{"$date":"2016-07-30T10:55:08.844Z"},"score":66}
-{"_id":"c4nOOKYCcE","teamName":"team 2","city":"nam dinh","_created_at":{"$date":"2016-07-30T10:52:41.808Z"},"_updated_at":{"$date":"2016-07-30T10:55:12.891Z"},"score":18}

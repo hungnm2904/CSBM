@@ -1,0 +1,222 @@
+[
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/chat.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/chat.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_simple_dropdown_hint.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_simple_dropdown_hint.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/chat_item_rcv.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/chat_item_rcv.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/chat_item_sent.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/chat_item_sent.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/login.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/login.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/photos_list.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/photos_list.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/user_list.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/user_list.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/layout_snackbar_include.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/chat_item.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/chat_item.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/layout_snackbar.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/layout_snackbar.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/activity_full_image.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/activity_full_image.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/register.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/register.xml"
+    },
+    {
+        "merged": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/build/intermediates/res/merged/debug/layout/drawer_header.xml",
+        "source": "/home/akela/Desktop/Android Chatt Demo Android Studo/app/src/main/res/layout/drawer_header.xml"
+    }
+]

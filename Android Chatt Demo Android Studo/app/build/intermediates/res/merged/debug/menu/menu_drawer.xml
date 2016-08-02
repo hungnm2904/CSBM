@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--All the items added without any grouping-->
+
+    <item
+        android:id="@+id/navigation_item_1"
+        android:icon="@drawable/ic_online"
+        android:title="Profile" />
+    <item
+        android:id="@+id/navigation_item_2"
+        android:icon="@drawable/ic_online"
+        android:title="Add Friend" />
+    <item
+        android:id="@+id/navigation_item_3"
+        android:icon="@drawable/ic_online"
+        android:title="Logout" />
+    <!--<item-->
+        <!--android:id="@+id/navigation_item_4"-->
+        <!--android:icon="@drawable/ic_online"-->
+        <!--android:title="Item 4" />-->
+    <!--<item-->
+        <!--android:id="@+id/navigation_item_5"-->
+        <!--android:icon="@drawable/ic_online"-->
+        <!--android:title="Item 5" />-->
+
+</menu>
