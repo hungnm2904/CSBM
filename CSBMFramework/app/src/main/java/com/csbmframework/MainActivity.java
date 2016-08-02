@@ -1,89 +1,40 @@
 package com.csbmframework;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.csbm.BEException;
-import com.csbm.BEUser;
-import com.csbm.LogInCallback;
-import com.csbm.SignUpCallback;
+import com.csbm.BEFile;
+import com.csbm.BEObject;
+import com.csbm.ProgressCallback;
+import com.csbm.SaveCallback;
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText txtUsername;
-    EditText txtPassword;
-    Button btnLogin;
-    Button btnSignup;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtUsername = (EditText) findViewById(R.id.txtUsername);
-        txtPassword = (EditText) findViewById(R.id.txtPassword);
-        btnLogin = (Button) findViewById(R.id.login);
-        btnSignup = (Button) findViewById(R.id.signup);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        // save data to cloud.
+        byte[] data = "text file generate to byte data".getBytes();
+        BEFile file = new BEFile(data);
+        file.saveInBackground(new SaveCallback() {
             @Override
-            public void onClick(View view) {
-                String username = txtUsername.getText().toString();
-                String password = txtPassword.getText().toString();
-                if (username.equals("") && password.equals("")){
-                    Toast.makeText(getApplicationContext(), "You must complate all field", Toast.LENGTH_SHORT).show();
-                } else {
-                    BEUser.logInInBackground(username, password, new LogInCallback() {
-                        @Override
-                        public void done(BEUser user, BEException e) {
-                            if (e == null){
-                                Intent intent = new Intent(MainActivity.this, Welcome.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Account doesn't exist. Please signup.",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
+            public void done(BEException e) {
+                // handle succeed or error save file
+            }
+        }, new ProgressCallback() {
+            @Override
+            public void done(Integer percentDone) {
+                // Update your progress spinner here. percentDone will be between 0 and 100.
             }
         });
-
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String username = txtUsername.getText().toString();
-                String password = txtPassword.getText().toString();
-                if (username.equals("") && password.equals("")){
-                    Toast.makeText(getApplicationContext(), "You must complate all field", Toast.LENGTH_SHORT).show();
-                } else {
-                    BEUser user = new BEUser();
-                    user.setUsername(username);
-                    user.setPassword(password);
-                    user.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(BEException e) {
-                            if (e == null){
-                                Intent intent = new Intent(MainActivity.this, Welcome.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(),
-                                        "ERROR " + e.getCode() + " - " + e.getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            }
-        });
+        // associate file onto a object just like any other piece of data.
+        BEObject dataApplication = new BEObject("DataApplication");
+        dataApplication.put("name", "ErrorData");
+        dataApplication.put("fileData", file);
+        dataApplication.saveInBackground();
 
     }
 }

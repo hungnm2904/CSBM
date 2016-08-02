@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TodoList</string>
+
+    <!--class object-->
+    <!--<string name="YOUR_CLIENT_KEY"></string>-->
+
+    <string name="YOUR_APP_ID">5776340b6d318c920fc59844</string>
+
+    <string name="YOUR_SERVER_IP">192.168.150.40</string>
+    <string name="Titlte">Title</string>
+    <string name="username">username</string>
+    <string name="msg_add_succeed">Save succeed</string>
+    <string name="title">title</string>
+    <string name="title_logout">Logout</string>
+    <string name="confirm_logout">Are you sure you want to logout</string>
+</resources>

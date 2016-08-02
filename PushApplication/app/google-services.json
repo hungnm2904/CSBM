@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "725885772964",
+    "project_id": "pushgcm-1357"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725885772964:android:df645f211d5e540c",
+        "android_client_info": {
+          "package_name": "com.pushapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwlbBY3xPA3tuY5uEcXAePZh82l6m_znk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

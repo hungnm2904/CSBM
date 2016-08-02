@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1657454733",
+    "project_id": "chatapppush-1361"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1657454733:android:83b751ec1b868027",
+        "android_client_info": {
+          "package_name": "csbm.com.pushandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkDT1aQweyiXOIKXx4o6uMZ4zIZFzcyvA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

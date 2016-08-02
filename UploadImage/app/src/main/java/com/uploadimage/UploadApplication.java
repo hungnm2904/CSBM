@@ -11,6 +11,11 @@ public class UploadApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CSBM.initialize(this, "lrskGXegM4tF9b0ooapCU5wSUE8LvLgsX8ZTgiyG", "pZXADgOHvn4w2Y95sKXdUkliYHNePAS35m261mz0");
+        CSBM.initialize(new CSBM.Configuration.Builder(this)
+                .applicationId("5776340b6d318c920fc59844")
+                .clientKey("ykYGQVXfmA1yAvOdvnnUPXZs")
+                .server("http://192.168.251.11:1337/csbm/")
+                .build());
+
     }
 }

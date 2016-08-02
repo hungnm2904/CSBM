@@ -44,7 +44,7 @@ public class CSBM {
       private String applicationId;
       private String clientKey;
 //      private String server = "https://api.parse.com/1/";
-      private String server = "http://192.168.0.105:1337/parse/";
+      private String server = "http://172.20.10.7:1337/csbm/";
       private boolean localDataStoreEnabled;
       private List<BENetworkInterceptor> interceptors;
 

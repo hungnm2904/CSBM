@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -27,14 +29,16 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.csbm.BEException;
+import com.csbm.BEFile;
 import com.csbm.BEObject;
 import com.csbm.BEQuery;
-import com.csbm.FindCallback;
 import com.csbm.GetCallback;
 import com.csbm.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,21 +109,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         btnTodo.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                BEQuery<BEObject> query = BEQuery.getQuery("Todo");
-                query.findInBackground(new FindCallback<BEObject>() {
-                    @Override
-                    public void done(List<BEObject> objects, BEException e) {
-                        if (e == null){
-                            for (BEObject object : objects){
-                                Log.d("RESULT: ", object.getString("MyList"));
-                                Log.d("RESULT: ", object.getString("MyPriority"));
-                            }
-                        } else {
-                            Log.d("ERROR: ", e.getMessage());
-                        }
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.thumb);
+                // Convert it to byte
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                // Compress image to lower quality scale 1 - 100
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] image = stream.toByteArray();
 
-                    }
-                });
+                // Create the ParseFile
+                BEFile file = new BEFile("android", image, "image/png");
+                // Upload the image into Parse Cloud
+                file.saveInBackground();
+
+                // Create a New Class called "ImageUpload" in Parse
+                BEObject imgupload = new BEObject("ImageUpload");
+
+                // Create a column named "ImageName" and set the string
+                imgupload.put("ImageName", "AndroidBegin Logo");
+
+                // Create a column named "ImageFile" and insert the image
+                imgupload.put("ImageFile", file);
+
+                // Create the class and the columns
+                imgupload.saveInBackground();
+
+                // Show a simple toast message
+                Toast.makeText(LoginActivity.this, "Image Uploaded",
+                        Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
 

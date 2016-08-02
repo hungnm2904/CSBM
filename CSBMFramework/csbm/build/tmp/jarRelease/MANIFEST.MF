@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Bundle-Name: parse-android
-Bundle-Version: 1.0.0
+Bundle-Version: unspecified
 

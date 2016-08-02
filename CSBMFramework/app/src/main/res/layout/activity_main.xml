@@ -9,47 +9,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.csbmframework.MainActivity">
 
-
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username" />
-
-    <EditText
-        android:id="@+id/txtUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:inputType="text" />
-
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtUsername"
-        android:text="Password" />
-
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtPassword"
-        android:text="Login" />
-
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:text="Signup" />
-
-
 </RelativeLayout>

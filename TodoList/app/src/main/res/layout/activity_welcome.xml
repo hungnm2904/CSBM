@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <Button
+        android:id="@+id/addTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_gravity="right"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignBottom="@+id/addTitle"
+        android:layout_alignParentStart="true"
+        android:inputType="text"
+        android:hint="Insert title here"
+        android:layout_toStartOf="@+id/addTitle" />
+
+    <ListView
+        android:id="@+id/listItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/addTitle"
+        android:layout_marginBottom="100dp"
+        android:scrollIndicators="left" />
+
+</RelativeLayout>
+
