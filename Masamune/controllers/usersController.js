@@ -3,22 +3,22 @@ const Token = require('../models/token');
 const uid = require('../helpers/uid');
 
 exports.login = function(req, res) {
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
 
-    User.findOne({ 'username': username },
+    User.findOne({ 'email': email },
         function(err, user) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({ message: 'Error occurred while processing' });
             }
-            // Username does not exist, log the error and redirect back
+            // User does not exist
             if (!user) {
                 return res.status(403).send({
-                    message: 'Invalid username'
+                    message: 'Invalid Email or Password'
                 });
             }
-            // User exists but wrong password, log the error 
+            // User exist but wrong password
             user.verifyPassword(password, function(err, isMath) {
                 if (err) {
                     console.log(err);
@@ -27,7 +27,7 @@ exports.login = function(req, res) {
 
                 if (!isMath) {
                     return res.status(403).send({
-                        message: 'Invalid password'
+                        message: 'Invalid Email or Password'
                     });
                 }
 
@@ -40,7 +40,7 @@ exports.login = function(req, res) {
                     }
                 });
 
-                // Valid username and password
+                // Valid email and password
                 var token = new Token({
                     value: uid.gen(256),
                     userId: user._id,
@@ -58,7 +58,7 @@ exports.login = function(req, res) {
                 res.status(200).send({
                     data: {
                         userId: user._id,
-                        name: user.name,
+                        email: user.email,
                         token: token.value
                     }
                 });
@@ -68,17 +68,16 @@ exports.login = function(req, res) {
 };
 
 exports.signup = function(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
     var email = req.body.email;
+    var password = req.body.password;
 
-    if (!username || !password || !email) {
+    if (!email || !password) {
         return res.status(403).send({
-            message: 'Username, Password and Email are required'
+            message: 'Email and Password are required'
         });
     }
 
-    User.findOne({ 'username': username },
+    User.findOne({ 'email': email },
         function(err, user) {
             if (err) {
                 console.log(err);
@@ -89,49 +88,30 @@ exports.signup = function(req, res) {
 
             if (user) {
                 return res.status(403).send({
-                    message: 'Username is already exists'
+                    message: 'Email is already in use'
                 });
             }
 
-            User.findOne({ 'email': email },
-                function(err, user) {
-                    if (err) {
-                        console.log(err);
-                        return res.status(500).send({
-                            message: 'Error occurred while processing'
-                        });
-                    }
+            var user = new User({
+                email: email,
+                password: password
+            });
 
-                    if (user) {
-                        return res.status(403).send({
-                            message: 'Email is already in use'
-                        });
-                    }
-
-                    var user = new User({
-                        username: username,
-                        password: password,
-                        email: email
-                    });
-
-                    user.save(function(err) {
-                        if (err) {
-                            return res.status(500).send({
-                                message: 'Error occurred while processing'
-                            });
-                        }
-                    });
-
-                    res.status(200).send({
-                        message: 'Signup successfully',
-                        data: {
-                            userId: user._id,
-                            name: user.username,
-                            email: user.email
-                        }
+            user.save(function(err) {
+                if (err) {
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
                     });
                 }
-            );
+            });
+
+            res.status(200).send({
+                message: 'Signup successfully',
+                data: {
+                    userId: user._id,
+                    email: user.email
+                }
+            });
         }
     );
 };

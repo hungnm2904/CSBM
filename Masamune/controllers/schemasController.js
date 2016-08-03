@@ -76,11 +76,12 @@ exports.getAppName = function(req, res) {
 exports.changeFieldName = function(req, res) {
 
     var appName = req.body.applicationName;
+    var dbName = req.user._id + '--' + appName
     var className = req.body.className;
     var fieldName = req.body.fieldName;
     var newFieldName = req.body.newFieldName;
 
-    var url = 'mongodb://localhost:27017/' + appName;
+    var url = 'mongodb://localhost:27017/' + dbName;
 
     MongoClient.connect(url, function(err, db) {
         if (err) {
