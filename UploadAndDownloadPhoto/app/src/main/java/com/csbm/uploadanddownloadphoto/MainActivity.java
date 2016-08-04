@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     int columindex = cursor.getColumnIndex(projection[0]);
                     String filePath = cursor.getString(columindex);
                     cursor.close();
-//                    Bitmap imgSelected = BitmapFactory.decodeFile(filePath);
-                    Bitmap imgSelected = BitmapFactory.decodeResource(getResources(), R.drawable.default_user);
+                    Bitmap imgSelected = BitmapFactory.decodeFile(filePath);
+//                    Bitmap imgSelected = BitmapFactory.decodeResource(getResources(), R.drawable.default_user);
 
                     // Convert it to ByteArrayOutputStream
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     imgSelected.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byte[] image = stream.toByteArray();
                     // Save image to cloud and to server
-                    new processdialog().execute(image);
+//                    new processdialog().execute(image);
                 }else {
                     // error
                 }
@@ -142,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
 
             //Create object ImageUpload
 
-            BEObject object = new BEObject("ImageUpload");
+            BEObject object = new BEObject("ProfilePicture");
 
             // Create a column named "ImageName" and set the string
-            object.put("ImageName", "androidname");
+            object.put("ProfilePictureName", "defaultIconUser");
             // Create a column named "ImageFile" and insert the image
-            object.put("ImageFile", file);
+            object.put("ProfilePictureFile", file);
             object.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(BEException e) {

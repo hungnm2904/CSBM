@@ -10,9 +10,9 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         CSBM.initialize(new CSBM.Configuration.Builder(this)
-                .applicationId("57a098124f35ae152187cf81")
+                .applicationId("57a32b539f7883732176d51d")
                 .clientKey("123123")
-                .server("http://192.168.1.18:1337/csbm/")
+                .server("http://192.168.1.20:1337/csbm/")
                 .build());
     }
 }
