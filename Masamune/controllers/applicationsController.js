@@ -10,7 +10,8 @@ module.exports = function(appHelpers) {
 
     method: POST
     headers: none
-    body: applicationName (String)
+    body: 
+        - applicationName (String)
     */
     var create = function(req, res) {
         var name = req.body.applicationName;
@@ -141,9 +142,227 @@ module.exports = function(appHelpers) {
         });
     };
 
+    /* Update application
+
+    method: PUT
+    headers: none
+    body: {object}
+    */
+    var update = function(req, res) {
+        var appId = req.params.appId;
+
+        if (!appId) {
+            return res.status(403).send({
+                message: 'Unauthorized'
+            });
+        }
+
+        var data = req.body;
+
+        Application.findOne({ '_id': appId }, function(err, application) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            if (!application) {
+                return res.status(403).send({
+                    message: 'Application not found'
+                });
+            }
+
+            for (var field in data) {
+                var value = data[field];
+                var newValue = undefined;
+
+                if (Application.schema.paths[field].instance === 'Array') {
+                    var op = value.__op;
+                    var values = value.objects;
+                    newValue = {};
+
+                    if (values) {
+                        values.forEach(function(item, index) {
+                            if (item instanceof Object) {
+                                for (var key in item) {
+                                    newValue[key] = item[key];
+                                }
+                            } else {
+                                newValue = item;
+                            }
+                        });
+                    }
+
+                    if (op === 'Add') {
+                        application[field].push(newValue);
+                        if (field === 'collaborators') {
+                            User.findOne({ 'email': newValue.email }, function(error, user) {
+                                if (error) {
+                                    console.log(error);
+                                    return res.status(500).send({
+                                        message: 'Error occurred while processing'
+                                    });
+                                }
+
+                                if (!user) {
+                                    return res.status(403).send({
+                                        message: 'User not found'
+                                    });
+                                }
+
+                                user.collaborations.push({
+                                    'appId': appId,
+                                    'role': newValue.role
+                                });
+
+                                user.save(function(error) {
+                                    if (error) {
+                                        console.log(error);
+                                        return res.status(500).send({
+                                            message: 'Error occurred while processing'
+                                        });
+                                    }
+                                });
+                            });
+                        }
+                    } else if (op === 'Remove') {
+                        if (application[field] && application[field].length > 0) {
+                            application[field].some(function(item, index) {
+                                if (item.email === newValue) {
+                                    application[field].splice(index, 1);
+
+                                    User.findOne({ 'email': newValue }, function(error, user) {
+                                        if (error) {
+                                            console.log(error);
+                                            return res.status(500).send({
+                                                message: 'Error occurred while processing'
+                                            });
+                                        }
+
+                                        if (user) {
+                                            var collaborations = user.collaborations;
+                                            collaborations.some(function(collaboration, index) {
+                                                if (collaboration.appId === appId) {
+                                                    user.collaborations.splice(index, 1);
+
+                                                    return true;
+                                                }
+                                            });
+
+                                            user.save(function(error) {
+                                                if (error) {
+                                                    console.log(error);
+                                                    return res.status(500).send({
+                                                        message: 'Error occurred while processing'
+                                                    });
+                                                }
+                                            });
+                                        }
+
+                                    });
+
+                                    return true;
+                                }
+                            });
+                        }
+                    } else if (op === 'Update') {
+                        if (application[field] && application[field].length > 0) {
+                            application[field].some(function(item, index) {
+                                if (item.email === newValue.email) {
+                                    application[field][index] = newValue;
+
+                                    User.findOne({ 'email': newValue.email }, function(error, user) {
+                                        if (error) {
+                                            console.log(error);
+                                            return res.status(500).send({
+                                                message: 'Error occurred while processing'
+                                            });
+                                        }
+
+                                        if (!user) {
+                                            return res.status(403).send({
+                                                message: 'User not found'
+                                            });
+                                        }
+
+                                        if (user) {
+                                            var collaborations = user.collaborations;
+                                            collaborations.some(function(collaboration, index) {
+                                                if (collaboration.appId === appId) {
+                                                    user.collaborations[index].role = newValue.role;
+
+                                                    return true;
+                                                }
+                                            });
+                                        }
+
+                                        user.save(function(error) {
+                                            if (error) {
+                                                console.log(error);
+                                                return res.status(500).send({
+                                                    message: 'Error occurred while processing'
+                                                });
+                                            }
+                                        });
+                                    });
+
+                                    return true;
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    application[field] = value;
+                }
+            }
+            application.save(function(error) {
+                if (error) {
+                    console.log(error);
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
+                    });
+                }
+                res.status(200).send()
+            });
+        });
+    };
+
+    /* Get all collaborators of specified application
+    This method will get all collaborators of specified application
+
+    method: GET
+    headers: none
+    body: none
+    */
+    var getCollaborators = function(req, res) {
+        var appId = req.params.appId;
+        Application.findOne({ '_id': appId }, function(err, application) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            if (!application) {
+                return res.status(403).send({
+                    message: 'Application not found'
+                });
+            }
+
+            var collaborators = application.collaborators
+            res.status(200).send({
+                data: collaborators
+            });
+        });
+    };
+
     return {
         create: create,
         remove: remove,
-        getAll: getAll
+        getAll: getAll,
+        update: update,
+        getCollaborators: getCollaborators
     };
 };

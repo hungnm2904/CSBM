@@ -31,9 +31,9 @@ exports.getMasterKey = function(req, res) {
 exports.getAppId = function(req, res) {
     var appName = req.get('X-CSBM-Application-Name');
     var userId = req.user._id;
-    var databaseName = userId + '--' + appName;
+    // var databaseName = userId + '--' + appName;
 
-    Application.findOne({ 'databaseName': databaseName }, function(error, application) {
+    Application.findOne({ 'name': appName }, function(error, application) {
         if (error) {
             console.log(err);
             return res.status(500).send({

@@ -103,21 +103,37 @@ const schemasController = require('./controllers/schemasController');
 const pushNotificationsController = require('./controllers/pushNotificationsController');
 const filesController = require('./controllers/filesController');
 csbm.use('/csbm', parse);
+// User Controller
 csbm.post('/login', usersController.login);
 csbm.post('/signup', usersController.signup);
 csbm.get('/signout', usersController.signout);
+csbm.get('/collaborations', authentication.isAuthenticated, usersController.getCollaboration);
+//
+
+// Application Controller
 csbm.post('/applications', authentication.isAuthenticated, applicationsController.create);
 csbm.delete('/applications', authentication.isAuthenticated, applicationsController.remove);
 csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAll);
+csbm.put('/applications/:appId', authentication.isAuthenticated, applicationsController.update);
+csbm.get('/applications/collaborators/:appId', authentication.isAuthenticated, applicationsController.getCollaborators)
+//
+
+// Schema Controller
 csbm.get('/masterKey', authentication.isAuthenticated, schemasController.getMasterKey);
 csbm.get('/appId', authentication.isAuthenticated, schemasController.getAppId);
 csbm.get('/appName', authentication.isAuthenticated, schemasController.getAppName);
 csbm.post('/fields', authentication.isAuthenticated, schemasController.changeFieldName);
+//
+
+// Push Notification Controller
 csbm.post('/pushConfig', authentication.isAuthenticated, pushNotificationsController.pushConfig);
+
+// File Controller (Documents)
 csbm.get('/files/framework/ios', filesController.downloadiOSFrameWork);
 csbm.get('/files/starter-project/ios', filesController.downloadiOSStarterProject);
 csbm.get('/files/framework/android', filesController.downloadAndroidFrameWork);
 csbm.get('/files/starter-project/android', filesController.downloadAndroidStarterProject);
+//
 
 mongoose.connect('mongodb://localhost:27017/csbm', (err) => {
     if (err) {
