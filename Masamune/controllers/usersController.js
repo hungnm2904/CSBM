@@ -4,6 +4,21 @@ const Token = require('../models/token');
 const uid = require('../helpers/uid');
 
 var acceptedRole = 'Dev';
+var clone = function(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return null;
+    }
+
+    var clone = {};
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            clone[key] = obj[key];
+        }
+    }
+
+    return clone._doc;
+};
+
 exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
@@ -169,6 +184,7 @@ exports.getCollaboration = function(req, res) {
 
         collaborations.forEach(function(collaboration, index) {
             var appId = collaboration.appId;
+            var role = collaboration.role;
 
             Application.findOne({ '_id': appId }, function(error, application) {
                 if (error) {
@@ -178,7 +194,14 @@ exports.getCollaboration = function(req, res) {
                 }
 
                 if (application) {
-                    applications.push(application);
+                    application.masterKey = '';
+                    application.databaseName = '';
+                    application.clientKey = '';
+                    application.collaborators = [];
+                    var app = clone(application);
+                    app.role = role;
+
+                    applications.push(app);
                 }
 
                 if (index === (collaborations.length - 1)) {
@@ -190,5 +213,42 @@ exports.getCollaboration = function(req, res) {
                 }
             });
         });
+    });
+};
+
+exports.getCollaborationRole = function(req, res) {
+    var appId = req.params.appId;
+    var userId = req.user._id;
+    User.findOne({ '_id': userId }, function(error, user) {
+        if (error) {
+            console.log(error);
+            return res.status(500).send({
+                message: 'Error occurred while processing'
+            });
+        }
+
+        if (!user) {
+            return res.status(403).send({
+                message: 'User not found'
+            });
+        }
+
+        var collaborations = user.collaborations;
+        var role = undefined;
+        collaborations.some(function(collaboration, index) {
+            if (collaboration.appId === appId) {
+                role = collaboration.role;
+
+                return true;
+            }
+        });
+
+        if (!role) {
+            return res.status(403).send({
+                message: 'Unauthorized'
+            });
+        }
+
+        res.status(200).send({'role': role});
     });
 };

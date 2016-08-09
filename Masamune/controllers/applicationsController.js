@@ -136,6 +136,8 @@ module.exports = function(appHelpers) {
             // Clear masterKey before response to client
             applications.forEach(function(application, index) {
                 application.masterKey = '';
+                application.databaseName = '';
+                application.clientKey = '';
             });
 
             res.status(200).send(applications);

@@ -108,6 +108,7 @@ csbm.post('/login', usersController.login);
 csbm.post('/signup', usersController.signup);
 csbm.get('/signout', usersController.signout);
 csbm.get('/collaborations', authentication.isAuthenticated, usersController.getCollaboration);
+csbm.get('/collaborations/:appId', authentication.isAuthenticated, usersController.getCollaborationRole);
 //
 
 // Application Controller
