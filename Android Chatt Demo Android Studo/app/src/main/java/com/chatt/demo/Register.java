@@ -2,22 +2,26 @@ package com.chatt.demo;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.chatt.demo.custom.CustomActivity;
 import com.chatt.demo.utils.Const;
+import com.chatt.demo.utils.ConstClass;
 import com.chatt.demo.utils.GPSTracker;
 import com.chatt.demo.utils.Utils;
 import com.csbm.BEException;
 import com.csbm.BEFile;
 import com.csbm.BEGeoPoint;
 import com.csbm.BEObject;
-import com.csbm.BEQuery;
 import com.csbm.BEUser;
-import com.csbm.GetCallback;
 import com.csbm.SignUpCallback;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 
 public class Register extends CustomActivity
@@ -48,15 +52,6 @@ public class Register extends CustomActivity
 		user = (EditText) findViewById(R.id.user);
 		pwd = (EditText) findViewById(R.id.pwd);
 		email = (EditText) findViewById(R.id.email);
-		// load default icon
-		BEQuery<BEObject> query = BEQuery.getQuery("ImageUpload");
-		query.getInBackground("5wUGdj97Lw", new GetCallback<BEObject>() {
-			@Override
-			public void done(BEObject beObject, BEException e) {
-				BEFile fileObject = (BEFile) beObject.get("ImageFile");
-				iconUser = fileObject;
-			}
-		});
 
 
 	}
@@ -82,8 +77,7 @@ public class Register extends CustomActivity
 		pu.setEmail(e);
 		pu.setPassword(p);
 		pu.setUsername(u);
-		pu.put("userLocation", currentLocation);
-		pu.put("userPicture", iconUser);
+		pu.put(ConstClass.USER_LOCATION, currentLocation);
 		pu.signUpInBackground(new SignUpCallback() {
 			@Override
 			public void done(BEException e)
@@ -91,13 +85,26 @@ public class Register extends CustomActivity
 				dia.dismiss();
 				if (e == null)
 				{
-					BEObject object = new BEObject("FriendList");
-					object.put("createdBy", u);
+					// set default image for new user
+					Bitmap imgSelected = BitmapFactory.decodeResource(getResources(), R.drawable.default_user_icon);
+					ByteArrayOutputStream stream = new ByteArrayOutputStream();
+					// Compress image to lower quality scale 1 - 100
+					imgSelected.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					byte[] image = stream.toByteArray();
+					BEFile file = new BEFile( image, "image/png");
+					file.saveInBackground();
+					pu.put(ConstClass.USER_PICTURE_PROFILE, file);
+					pu.saveInBackground();
+					// set friend for user
+					BEObject object = new BEObject(ConstClass.FRIEND_LIST);
+					object.put(ConstClass.FRIEND_LIST_CREATED_BY, pu);
+					object.put(ConstClass.FRIEND_LIST_FRIENDS, Arrays.asList());
 					object.saveInBackground();
 					UserList.user = pu;
 					startActivity(new Intent(Register.this, UserList.class));
 					setResult(RESULT_OK);
 					finish();
+
 				}
 				else
 				{
@@ -107,6 +114,7 @@ public class Register extends CustomActivity
 									+ e.getMessage());
 					e.printStackTrace();
 				}
+
 			}
 		});
 

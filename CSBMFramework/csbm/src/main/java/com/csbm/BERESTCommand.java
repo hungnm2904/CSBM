@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2015-present, Parse, LLC.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 package com.csbm;
 
 
@@ -35,17 +27,6 @@ import bolts.Task;
 
 /** package */ class BERESTCommand extends BERequest<JSONObject> {
 
-//  /* package */ static final String HEADER_APPLICATION_ID = "X-Parse-Application-Id";
-//  /* package */ static final String HEADER_CLIENT_KEY = "X-Parse-Client-Key";
-//  /* package */ static final String HEADER_CLIENT_VERSION = "X-Parse-Client-Version";
-//  /* package */ static final String HEADER_APP_BUILD_VERSION = "X-Parse-App-Build-Version";
-//  /* package */ static final String HEADER_APP_DISPLAY_VERSION = "X-Parse-App-Display-Version";
-//  /* package */ static final String HEADER_OS_VERSION = "X-Parse-OS-Version";
-//
-//  /* package */ static final String HEADER_INSTALLATION_ID = "X-Parse-Installation-Id";
-//  /* package */ static final String USER_AGENT = "User-Agent";
-//  private static final String HEADER_SESSION_TOKEN = "X-Parse-Session-Token";
-//  private static final String HEADER_MASTER_KEY = "X-Parse-Master-Key";
 
   /* package */ static final String HEADER_APPLICATION_ID = "X-CSBM-Application-Id";
   /* package */ static final String HEADER_CLIENT_KEY = "X-CSBM-Client-Key";

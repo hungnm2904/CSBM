@@ -20,6 +20,11 @@ public class GridViewAdapter  extends ArrayAdapter<Photos> {
     private Context context;
     private int layoutResourceId;
 
+    public void setLayoutResourceId(int layoutResourceId) {
+        this.layoutResourceId = layoutResourceId;
+    }
+
+
     public ArrayList<Photos> getData() {
         return data;
     }

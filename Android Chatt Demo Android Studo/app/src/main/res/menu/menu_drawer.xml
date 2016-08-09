@@ -3,21 +3,21 @@
     <!--All the items added without any grouping-->
 
     <item
-        android:id="@+id/navigation_item_1"
+        android:id="@+id/navigation_item_profle"
         android:icon="@drawable/ic_online"
         android:title="Profile" />
     <item
-        android:id="@+id/navigation_item_2"
+        android:id="@+id/navigation_item_addFriend"
         android:icon="@drawable/ic_online"
-        android:title="Add Friend" />
+        android:title="People nearby" />
     <item
-        android:id="@+id/navigation_item_3"
+        android:id="@+id/navigation_item_listFriend"
+        android:icon="@drawable/ic_online"
+        android:title="List friend" />
+    <item
+        android:id="@+id/navigation_item_logOut"
         android:icon="@drawable/ic_online"
         android:title="Logout" />
-    <!--<item-->
-        <!--android:id="@+id/navigation_item_4"-->
-        <!--android:icon="@drawable/ic_online"-->
-        <!--android:title="Item 4" />-->
     <!--<item-->
         <!--android:id="@+id/navigation_item_5"-->
         <!--android:icon="@drawable/ic_online"-->

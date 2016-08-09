@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2015-present, Parse, LLC.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 package com.csbm;
 
 import org.json.JSONArray;
@@ -3677,7 +3669,7 @@ public class BEObject {
 
   /**
    * Stores the objects and every object they point to in the local datastore, recursively. If
-   * those other objects have not been fetched from Parse, they will not be stored. However, if they
+   * those other objects have not been fetched from CSBM, they will not be stored. However, if they
    * have changed data, all of the changes will be retained. To get the objects back later, you can
    * use {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on it.
@@ -3919,7 +3911,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on
@@ -3936,7 +3928,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on
@@ -3956,7 +3948,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on
@@ -3972,7 +3964,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on
@@ -3990,7 +3982,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on
@@ -4007,7 +3999,7 @@ public class BEObject {
 
   /**
    * Stores the object and every object it points to in the local datastore, recursively. If those
-   * other objects have not been fetched from Parse, they will not be stored. However, if they have
+   * other objects have not been fetched from CSBM, they will not be stored. However, if they have
    * changed data, all of the changes will be retained. To get the objects back later, you can use
    * {@link BEQuery#fromLocalDatastore()}, or you can create an unfetched pointer with
    * {@link #createWithoutData(Class, String)} and then call {@link #fetchFromLocalDatastore()} on

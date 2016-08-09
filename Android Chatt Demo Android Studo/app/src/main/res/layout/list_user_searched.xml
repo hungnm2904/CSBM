@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <ImageView
+        android:src="@drawable/logo_login"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/iconBuddy" />
+
+    <TextView
+        android:id="@+id/buddyItemSearched"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:padding="@dimen/pad_10dp"
+        android:text="TextView"
+        android:textColor="@color/main_color_gray_dk"
+        android:textSize="@dimen/txt_18sp"
+        android:paddingLeft="@dimen/pad_10dp"
+        android:drawablePadding="@dimen/pad_10dp"
+        android:layout_weight="0.76" />
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/iconLocation"
+        android:src="@drawable/location"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="bottom"
+        />
+    <TextView
+        android:id="@+id/distanceKm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_15sp"
+        android:text="10km"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="0.26" />
+
+</LinearLayout>

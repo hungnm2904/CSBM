@@ -23,14 +23,33 @@ public class MainActivity extends AppCompatActivity {
 //                if (gps.isCanGetLocation()){
 //                    double latitude = gps.getLatitude();
 //                    double longitude = gps.getLongtitude();
+////                    Toast.makeText(getApplicationContext()
+////                            , latitude + " - " + longitude
+////                            , Toast.LENGTH_SHORT).show();
+//
+//                    Geocoder gcd = new Geocoder(getApplicationContext(), Locale.getDefault());
+//                    List<Address> addresses = null;
+//                    try {
+//                        addresses = gcd.getFromLocation(latitude, longitude, 1);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    if (addresses.size() > 0)
 //                    Toast.makeText(getApplicationContext()
-//                            , latitude + " - " + longitude
-//                            , Toast.LENGTH_SHORT).show();
+//                            , addresses.get(0).getAdminArea() + " - " + addresses.get(0).getSubAdminArea()
+//                            + " - " + addresses.get(0).getThoroughfare()
+//                            , Toast.LENGTH_LONG).show();
+//
 //                } else {
 //                    gps.isShowSettingAlert();
 //                }
 //            }
 //        });
+
+
+
+
+
 
 ////         if current user  null go to login
         if(BEAnonymousUtils.isLinked(BEUser.getCurrentUser())){

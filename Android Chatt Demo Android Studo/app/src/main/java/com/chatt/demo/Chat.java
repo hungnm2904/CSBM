@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +30,12 @@ import com.chatt.demo.custom.CustomActivity;
 import com.chatt.demo.model.Conversation;
 import com.chatt.demo.model.Photos;
 import com.chatt.demo.utils.Const;
+import com.chatt.demo.utils.ConstClass;
 import com.csbm.BEException;
 import com.csbm.BEFile;
 import com.csbm.BEObject;
 import com.csbm.BEQuery;
+import com.csbm.BEUser;
 import com.csbm.FindCallback;
 import com.csbm.GetCallback;
 import com.csbm.GetDataCallback;
@@ -52,6 +55,7 @@ public class Chat extends CustomActivity {
 
     List<Photos> myImgs = new ArrayList<>();
 
+
     /**
      * The chat adapter.
      */
@@ -70,6 +74,8 @@ public class Chat extends CustomActivity {
      * The user name of buddy.
      */
     private String buddy;
+    private String sentFromLocation;
+    public static BEUser buddyUser;
 
     /**
      * The date of last message in conversation.
@@ -128,11 +134,14 @@ public class Chat extends CustomActivity {
             @Override
             public void onClick(View v) {
                 showImagePopup();
+
+
             }
         });
 
         buddy = getIntent().getStringExtra(Const.EXTRA_DATA);
         getActionBar().setTitle(buddy);
+        sentFromLocation = getIntent().getStringExtra(Const.DEFAULT_LOCATION);
 
         handler = new Handler();
 
@@ -191,14 +200,14 @@ public class Chat extends CustomActivity {
         adp.notifyDataSetChanged();
         txt.setText(null);
 
-        BEObject po = new BEObject(getString(R.string.Chat));
-        po.put(getString(R.string.sender), UserList.user.getUsername());
-        po.put(getString(R.string.receiver), buddy);
-        po.put(getString(R.string.message), s);
+        BEObject po = new BEObject(ConstClass.CHAT);
+        po.put(ConstClass.CHAT_SENDER, UserList.user.getUsername());
+        po.put(ConstClass.CHAT_RECEIVER, buddy);
+        po.put(ConstClass.CHAT_MESSAGE, s);
         if (strImgId == null){
             // do nothing
         } else {
-            po.put(getString(R.string.imgId), strImgId);
+            po.put(ConstClass.IMG_ID, strImgId);
         }
 
         po.saveEventually(new SaveCallback() {
@@ -207,16 +216,9 @@ public class Chat extends CustomActivity {
             public void done(BEException e) {
                 if (e == null) {
                     c.setStatus(Conversation.STATUS_SENT);
-                    // ring tone
-//                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//                    r.play();
-
-
                 } else {
                     c.setStatus(Conversation.STATUS_FAILED);
-                    System.out.println(e.getCode() + " - - - " + e.getMessage());
-
+                    Log.d("ERROR", e.getMessage());
                 }
                 adp.notifyDataSetChanged();
             }
@@ -226,21 +228,21 @@ public class Chat extends CustomActivity {
 
 
     private void loadConversationList() {
-        BEQuery<BEObject> q = BEQuery.getQuery(getString(R.string.Chat));
+        BEQuery<BEObject> q = BEQuery.getQuery(ConstClass.CHAT);
         if (convList.size() == 0) {
             // load all messages...
             ArrayList<String> al = new ArrayList<String>();
             al.add(buddy);
             al.add(UserList.user.getUsername());
-            q.whereContainedIn(getString(R.string.sender), al);
-            q.whereContainedIn(getString(R.string.receiver), al);
+            q.whereContainedIn(ConstClass.CHAT_SENDER, al);
+            q.whereContainedIn(ConstClass.CHAT_RECEIVER, al);
         } else {
             // load only newly received message..
             if (lastMsgDate != null) {
-                BEQuery<BEObject> query = BEQuery.getQuery(getString(R.string.Chat));
-                query.whereGreaterThan(getString(R.string.createdAt), lastMsgDate);
-                query.whereEqualTo(getString(R.string.sender), buddy);
-                query.whereEqualTo(getString(R.string.receiver), UserList.user.getUsername());
+                BEQuery<BEObject> query = BEQuery.getQuery(ConstClass.CHAT);
+                query.whereGreaterThan(ConstClass.CREATED_AT, lastMsgDate);
+                query.whereEqualTo(ConstClass.CHAT_SENDER, buddy);
+                query.whereEqualTo(ConstClass.CHAT_RECEIVER, UserList.user.getUsername());
 
                 List<BEObject> newMsg = null;
                 try {
@@ -256,11 +258,11 @@ public class Chat extends CustomActivity {
 //                    r.play();
                 }
             }
-            q.whereGreaterThan(getString(R.string.createdAt), lastMsgDate);
-            q.whereEqualTo(getString(R.string.sender), buddy);
-            q.whereEqualTo(getString(R.string.receiver), UserList.user.getUsername());
+            q.whereGreaterThan(ConstClass.CREATED_AT, lastMsgDate);
+            q.whereEqualTo(ConstClass.CHAT_SENDER, buddy);
+            q.whereEqualTo(ConstClass.CHAT_RECEIVER, UserList.user.getUsername());
         }
-        q.orderByDescending(getString(R.string.createdAt));
+        q.orderByDescending(ConstClass.CREATED_AT);
         q.setLimit(30);
         q.findInBackground(new FindCallback<BEObject>() {
 
@@ -270,8 +272,8 @@ public class Chat extends CustomActivity {
                     for (int i = li.size() - 1; i >= 0; i--) {
                         BEObject po = li.get(i);
                         Conversation c = new Conversation(po
-                                .getString(getString(R.string.message)), po.getString(getString(R.string.imgId)),
-                                po.getCreatedAt(), po.getString(getString(R.string.sender)));
+                                .getString(ConstClass.CHAT_MESSAGE), po.getString(ConstClass.IMG_ID),
+                                po.getCreatedAt(), po.getString(ConstClass.CHAT_SENDER));
                         convList.add(c);
                         if (lastMsgDate == null
                                 || lastMsgDate.before(c.getDate()))
@@ -335,22 +337,21 @@ public class Chat extends CustomActivity {
                 lbl.setText(c.getMsg());
             }
 
-
             if (c.getStrImg() != null) {
                 final String imgId = c.getStrImg();
-
-                BEQuery<BEObject> query = BEQuery.getQuery(getString(R.string.ImageUpload));
+                progressDialog = ProgressDialog.show(Chat.this, "",
+                        "Loading file in conversation ...", true);
+                BEQuery<BEObject> query = BEQuery.getQuery(ConstClass.WALL_POST);
                 query.getInBackground(c.getStrImg(), new GetCallback<BEObject>() {
                     @Override
                     public void done(BEObject beObject, BEException e) {
                         if (e == null) {
-                            progressDialog = ProgressDialog.show(Chat.this, "",
-                                    "Loading file in conversation ...", true);
-//                        BEFile fileObject = (BEFile) img.get("hinhanh");
-                            BEFile fileObject = (BEFile) beObject.get(getString(R.string.ImageFile));
+
+                            BEFile fileObject = (BEFile) beObject.get(ConstClass.PROFILE_IMAGE);
                             fileObject.getDataInBackground(new GetDataCallback() {
                                 @Override
                                 public void done(byte[] data, BEException ex) {
+                                    progressDialog.dismiss();
                                     if (ex == null) {
                                         Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
 //                                imgView = (ImageView) findViewById(R.id.imgview);
@@ -368,18 +369,16 @@ public class Chat extends CustomActivity {
                                         });
 
                                     } else {
-                                        System.out.println(ex.getMessage() + "+++LOAD BITMAP+++++" + ex.getCode());
+                                        Log.d("ERROR", ex.getMessage());
                                     }
                                 }
                             });
                         } else {
-                            System.out.println(e.getMessage() + "===LOAD FILE==" + e.getCode() + e.getCause());
+                            Log.d("ERROR", e.getMessage());
                         }
-                        progressDialog.dismiss();
                     }
                 });
                 //set view
-//                loadImage(c.getStrImg());
             } else {
                 imgView.setVisibility(View.INVISIBLE);
                 imgView.setVisibility(View.GONE);
@@ -388,12 +387,13 @@ public class Chat extends CustomActivity {
             lbl = (TextView) v.findViewById(R.id.lbl3);
             if (c.isSent()) {
                 if (c.getStatus() == Conversation.STATUS_SENT)
-                    lbl.setText(getString(R.string.sent));
+//                    lbl.setText(ConstClass.SENT);
+                    lbl.setText(sentFromLocation);
                 else if (c.getStatus() == Conversation.STATUS_SENDING) {
-                    lbl.setText(getString(R.string.sending));
+                    lbl.setText(ConstClass.SENDING);
 
                 } else
-                    lbl.setText(getString(R.string.fail));
+                    lbl.setText(ConstClass.FAILED);
 
             } else
                 lbl.setText("");
@@ -412,13 +412,13 @@ public class Chat extends CustomActivity {
 
     private void populateImgList() {
 
-        BEQuery<BEObject> query = BEQuery.getQuery(getString(R.string.ImageUpload));
+        BEQuery<BEObject> query = BEQuery.getQuery(ConstClass.WALL_POST);
         query.findInBackground(new FindCallback<BEObject>() {
             @Override
             public void done(List<BEObject> list, BEException e) {
                 if (e == null) {
                     for (final BEObject img : list) {
-                        BEFile fileObject = (BEFile) img.get(getString(R.string.ImageFile));
+                        BEFile fileObject = (BEFile) img.get(ConstClass.PROFILE_IMAGE);
                         fileObject.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] data, BEException ex) {
@@ -428,35 +428,35 @@ public class Chat extends CustomActivity {
                                     Bitmap reScale = Bitmap.createScaledBitmap(bmp, 100, 100, false);
                                     myImgs.add(new Photos(reScale, img.getObjectId()));
                                 } else {
-                                    System.out.println(ex.getMessage() + "++++++++" + ex.getCode());
+                                    Log.d("ERROR", ex.getMessage());
                                 }
                             }
                         });
                     }
 
                 } else {
-                    System.out.println(e.getMessage() + "=====" + e.getCode() + e.getCause());
+                    Log.d("ERROR", e.getMessage());
                 }
             }
         });
 
-
-        populateListView();
+//        populateListView();
     }
 
     //add data to list view
     private void populateListView() {
         ArrayAdapter<Photos> adapter = new MyListAdapter();
-        GridView list1 = (GridView) findViewById(R.id.imgsList);
-        list1.setAdapter(adapter);
-        registerClickCallback();
+//        GridView list1 = (GridView) findViewById(R.id.imgsList);
+        scrollView.setAdapter(adapter);
+//        list1.setAdapter(adapter);
+//        registerClickCallback();
 
     }
 
     // action click position
     private void registerClickCallback() {
-        GridView list = (GridView) findViewById(R.id.imgsList);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//        GridView list = (GridView) findViewById(R.id.imgsList);
+        scrollView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked,
                                     int position, long id) {
@@ -490,12 +490,13 @@ public class Chat extends CustomActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            progressDialog.dismiss();
 //            showImagePopup();
+            populateListView();
+            registerClickCallback();
+            progressDialog.dismiss();
+
         }
     }
-
-
     private class MyListAdapter extends ArrayAdapter<Photos> {
         public MyListAdapter() {
             super(Chat.this, R.layout.photos_list, myImgs);

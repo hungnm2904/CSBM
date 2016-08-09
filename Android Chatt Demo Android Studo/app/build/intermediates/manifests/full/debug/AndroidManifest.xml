@@ -91,6 +91,7 @@
         <activity
             android:name="com.chatt.demo.FullImageActivity"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name="com.chatt.demo.FindFriendActivity" />
     </application>
 
 </manifest>

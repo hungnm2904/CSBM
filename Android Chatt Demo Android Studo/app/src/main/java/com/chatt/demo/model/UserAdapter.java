@@ -1,13 +1,14 @@
 package com.chatt.demo.model;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chatt.demo.R;
-import com.csbm.BEUser;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class UserAdapter extends BaseAdapter  {
 
-    private ArrayList<BEUser> uList;
+    private ArrayList<FriendUser> uList;
     /* (non-Javadoc)
      * @see android.widget.Adapter#getCount()
      */
@@ -29,7 +30,7 @@ public class UserAdapter extends BaseAdapter  {
      * @see android.widget.Adapter#getItem(int)
      */
     @Override
-    public BEUser getItem(int arg0) {
+    public FriendUser getItem(int arg0) {
         return uList.get(arg0);
     }
 
@@ -46,28 +47,46 @@ public class UserAdapter extends BaseAdapter  {
      */
     @Override
     public View getView(int pos, View v, ViewGroup viewGroup) {
+        ViewHolder holder ;
+        View row = v;
         if (v == null){
             LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-            v = inflater.inflate(R.layout.chat_item, null);
+            row = inflater.inflate(R.layout.chat_item, null);
+            holder = new ViewHolder();
+            holder.image = (ImageView) row.findViewById(R.id.iconBuddy);
+            holder.buddyName = (TextView) row.findViewById(R.id.buddyName);
+            row.setTag(holder);
+        } else {
+            holder = (ViewHolder) row.getTag();
         }
-//            v = getLayoutInflater().inflate(R.layout.chat_item, null);
 
-        BEUser c = getItem(pos);
-        TextView lbl = (TextView) v;
-        lbl.setText(c.getUsername());
-        lbl.setCompoundDrawablesWithIntrinsicBounds(
-                c.getBoolean("online") ? R.drawable.ic_online
-                        : R.drawable.ic_offline, 0, R.drawable.arrow, 0);
+        FriendUser buddyItem = getItem(pos);
+        holder.image.setImageBitmap(buddyItem.getIconFriend());
+//        holder.image.setImageBitmap(getBmp());
+        holder.buddyName.setText(buddyItem.getFriend().getUsername());
+//        getBuddyIcon(buddyItem);
 
-        return v;
+        if (buddyItem.getFriend().getBoolean("online")){
+            holder.buddyName.setTextColor(Color.parseColor("#00b863"));
+        } else {
+            holder.buddyName.setTextColor(Color.parseColor("#7d7d7d"));
+        }
+        return row;
+
     }
+
+    static class ViewHolder {
+        ImageView image;
+        TextView buddyName;
+    }
+
 
 
     public UserAdapter() {
         uList = new ArrayList<>();
     }
 
-    public void setUList(ArrayList<BEUser> uList){
+    public void setUList(ArrayList<FriendUser> uList){
         this.uList = uList;
     }
 

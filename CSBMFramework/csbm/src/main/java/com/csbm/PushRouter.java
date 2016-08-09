@@ -1,11 +1,4 @@
-/*
- * Copyright (c) 2015-present, Parse, LLC.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+
 package com.csbm;
 
 import android.content.Context;
@@ -19,9 +12,6 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * PushRouter handles distribution of push payloads through a broadcast intent with the
- * "com.parse.push.intent.RECEIVE" action. It also serializes a history of the last several pushes
- * seen by this app. This history is necessary for two reasons:
  *
  *  - For PPNS, we provide the last-seen timestamp to the server as part of the handshake. This is
  *    used as a cursor into the server-side inbox of recent pushes for this client.

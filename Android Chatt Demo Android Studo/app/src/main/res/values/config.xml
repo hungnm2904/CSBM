@@ -3,10 +3,7 @@
     <string name="user_name">username</string>
     <string name="pass_word">password</string>
     <string name="online">online</string>
-    <string name="Chat">Chat</string>
-    <string name="sender">sender</string>
-    <string name="receiver">receiver</string>
-    <string name="message">message</string>
+
     <string name="imgId">imgId</string>
     <string name="createdAt">createdAt</string>
     <string name="sent">Sent</string>
@@ -15,18 +12,14 @@
 
 
     <!-- load image-->
-    <string name="ImageUpload">ImageUpload</string>
-    <string name="ImageFile">ImageFile</string>
+    <string name="ImageUpload">WallPost</string>
+    <string name="ImageFile">ProfileImage</string>
 
     <!--friend list-->
     <string name="friend_list">FriendList</string>
     <string name="created_by">createdBy</string>
     <string name="friends">friends</string>
 
-    <!--Application-->
-    <string name="MY_APP_ID">57a098124f35ae152187cf81</string>
-    <string name="MY_APP_CLIENT_KEY">123123</string>
-    <string name="MY_SERVER_IP">192.168.1.18</string>
 
     <string name="processing">Processing...</string>
     <string name="welcome">Welcome:  </string>

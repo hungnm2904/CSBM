@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -153,6 +152,10 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     // Set the interval ceiling to one minute
     locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
 
+
+
+
+
     // Create a new location client, using the enclosing class to handle callbacks.
     locationClient = new GoogleApiClient.Builder(this)
               .addApi(LocationServices.API)
@@ -171,6 +174,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
                 * METERS_PER_FEET / METERS_PER_KILOMETER);
             query.setLimit(MAX_POST_SEARCH_RESULTS);
+
             return query;
           }
         };
@@ -235,6 +239,14 @@ public class MainActivity extends FragmentActivity implements LocationListener,
       public void onCameraChange(CameraPosition position) {
         // When the camera changes, update the query
         doMapQuery();
+      }
+    });
+
+    Button settingBtn = (Button) findViewById(R.id.setting_button);
+    settingBtn.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
       }
     });
 
@@ -726,19 +738,27 @@ public class MainActivity extends FragmentActivity implements LocationListener,
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.main, menu);
-
-    menu.findItem(R.id.action_settings).setOnMenuItemClickListener(new OnMenuItemClickListener() {
-      public boolean onMenuItemClick(MenuItem item) {
-        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-        return true;
-      }
-    });
     return true;
+
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings) {
+      startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+      finish();
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
+
   }
 
   /*
-   * Show a dialog returned by Google Play services for the connection error code
-   */
+     * Show a dialog returned by Google Play services for the connection error code
+     */
   private void showErrorDialog(int errorCode) {
     // Get the error dialog from Google Play services
     Dialog errorDialog =

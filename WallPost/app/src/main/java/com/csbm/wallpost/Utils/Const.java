@@ -8,7 +8,7 @@ public class Const {
     public static final String ALERT_WAIT = "Please wait...";
     public static final String APP_ID = "57a32b539f7883732176d51d";
     public static final String CLIENT_KEY = "";
-    public static final String SERVER_IP = "http://192.168.0.107:1337/csbm/";
+    public static final String SERVER_IP = "http://192.168.1.20:1337/csbm/";
 
 
     // table upload image

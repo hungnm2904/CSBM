@@ -23,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/main_color_gray_dk"
-                android:textSize="@dimen/txt_13sp" />
+                android:textColor="@color/main_color_gray_lt"
+                android:textSize="@dimen/txt_10sp" />
             <TextView
                 android:id="@+id/lbl2"
                 android:layout_width="wrap_content"

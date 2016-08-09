@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chatt.demo.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_color_green"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <!--swipe to fresh-->
+        <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView android:id="@+id/listResultFriend"
+                android:layout_marginTop="@dimen/pad_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/main_color_green"
+                android:dividerHeight="1dp"
+                tools:listitem="@layout/list_user_searched">
+            </ListView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <!---->
+        <!--<ListView android:id="@+id/listResultFriend"-->
+            <!--android:layout_marginTop="@dimen/pad_10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:divider="@color/main_color_green"-->
+            <!--android:dividerHeight="1dp"-->
+            <!--tools:listitem="@layout/list_user_searched">-->
+        <!--</ListView>-->
+    </LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/main_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
+        app:itemIconTint="@color/main_color_green"
+        app:itemTextColor="@color/colorTextSecondary"
+        app:menu="@menu/menu_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
+

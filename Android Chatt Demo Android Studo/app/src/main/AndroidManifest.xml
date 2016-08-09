@@ -10,10 +10,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-<permission
+    <permission
         android:name="com.chatt.demo.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
@@ -84,9 +84,10 @@
             android:name="com.csbm.push.gcm_sender_id"
             android:value="id:1657454733" />
 
-        <activity android:name=".FullImageActivity"
-         android:theme="@style/AppTheme.CustomTheme"
-            ></activity>
+        <activity
+            android:name=".FullImageActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".FindFriendActivity"></activity>
     </application>
 
 </manifest>
