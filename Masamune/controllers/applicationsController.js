@@ -29,7 +29,7 @@ module.exports = function(appHelpers) {
                     });
                 } else {
                     res.status(500).send({
-                        message: 'Error while processing'
+                        message: 'Error occurred while processing'
                     });
                 }
             } else {

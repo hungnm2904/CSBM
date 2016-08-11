@@ -7,6 +7,15 @@ var collaborator = mongoose.Schema({
     role: String
 }, { _id: false });
 
+var androidPush = mongoose.Schema({
+    senderId: String,
+    apiKey: String
+}, { _id: false });
+
+var push = mongoose.Schema({
+    android: androidPush
+}, { _id: false });
+
 var applicationSchema = new Schema({
     name: { type: String, required: true },
     clientKey: String,
@@ -14,6 +23,7 @@ var applicationSchema = new Schema({
     userId: { type: String, require: true },
     databaseName: { type: String, unique: true },
     collaborators: [collaborator],
+    push: push,
     created_at: Date,
     updated_at: Date
 });
