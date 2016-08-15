@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 
-var collaboration = mongoose.Schema({
-    appId: { type: String, unique: true },
+var collaboration = new Schema({
+    appId: { type: String, unique: true, sparse: true },
     role: String
-}, { _id: false });
+});
 
 var userSchema = new Schema({
     email: { type: String, required: true },
@@ -22,6 +22,10 @@ userSchema.pre('save', function(next, done) {
 
     if (!user.role) {
         user.role = 'Dev'
+    }
+
+    if (!user.collaborations || user.collaborations.length == 0) {
+        user.collaborations = undefined;
     }
 
     user.updated_at = curDate;

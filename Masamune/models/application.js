@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const randomstring = require('randomstring');
 
 var collaborator = mongoose.Schema({
-    email: { type: String, unique: true },
+    email: { type: String, unique: true, sparse: true },
     role: String
-}, { _id: false });
+});
 
 var androidPush = mongoose.Schema({
     senderId: String,
@@ -24,12 +24,15 @@ var applicationSchema = new Schema({
     databaseName: { type: String, unique: true },
     collaborators: [collaborator],
     push: push,
+    status: Boolean,
     created_at: Date,
     updated_at: Date
 });
 
 applicationSchema.pre('save', function(next) {
     var curDate = Date();
+
+    console.log(this);
 
     this.updated_at = curDate;
     if (!this.created_at) {
@@ -45,8 +48,17 @@ applicationSchema.pre('save', function(next) {
     }
 
     if (!this.databaseName) {
-        this.databaseName = this.userId + '--' + this.name;
+        this.databaseName = this.userId + '--' + this._id;
     }
+
+    if (!this.status) {
+        this.status = true;
+    }
+
+    if (!this.collaborators || this.collaborators.length == 0) {
+        this.collaborators = undefined;
+    }
+
     next();
 });
 

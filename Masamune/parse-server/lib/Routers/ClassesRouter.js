@@ -138,6 +138,10 @@ var ClassesRouter = exports.ClassesRouter = function (_PromiseRouter) {
     }, {
         key: 'handleGet',
         value: function handleGet(req) {
+
+            console.log(req.query);
+            console.log(ClassesRouter.JSONFromQuery(req.query));
+
             var body = Object.assign(req.body, ClassesRouter.JSONFromQuery(req.query));
             var options = {};
 

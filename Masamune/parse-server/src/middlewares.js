@@ -18,14 +18,14 @@ function handleParseHeaders(req, res, next) {
   var mount = req.protocol + '://' + req.get('host') + mountPath;
 
   var info = {
-    appId: req.get('X-Parse-Application-Id'),
-    sessionToken: req.get('X-Parse-Session-Token'),
-    masterKey: req.get('X-Parse-Master-Key'),
-    installationId: req.get('X-Parse-Installation-Id'),
-    clientKey: req.get('X-Parse-Client-Key'),
-    javascriptKey: req.get('X-Parse-Javascript-Key'),
-    dotNetKey: req.get('X-Parse-Windows-Key'),
-    restAPIKey: req.get('X-Parse-REST-API-Key')
+    appId: req.get('X-CSBM-Application-Id'),
+    sessionToken: req.get('X-CSBM-Session-Token'),
+    masterKey: req.get('X-CSBM-Master-Key'),
+    installationId: req.get('X-CSBM-Installation-Id'),
+    clientKey: req.get('X-CSBM-Client-Key'),
+    javascriptKey: req.get('X-CSBM-Javascript-Key'),
+    dotNetKey: req.get('X-CSBM-Windows-Key'),
+    restAPIKey: req.get('X-CSBM-REST-API-Key')
   };
 
   var basicAuth = httpAuth(req);
@@ -111,7 +111,7 @@ function handleParseHeaders(req, res, next) {
     return;
   }
 
-  // Client keys are not required in parse-server, but if any have been configured in the server, validate them
+  // Client keys are not required in csbm-server, but if any have been configured in the server, validate them
   //  to preserve original behavior.
   let keys = ["clientKey", "javascriptKey", "dotNetKey", "restAPIKey"];
 
@@ -198,7 +198,7 @@ function decodeBase64(str) {
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'X-Parse-Master-Key, X-Parse-REST-API-Key, X-Parse-Javascript-Key, X-Parse-Application-Id, X-Parse-Client-Version, X-Parse-Session-Token, X-Requested-With, X-Parse-Revocable-Session, Content-Type');
+  res.header('Access-Control-Allow-Headers', 'X-CSBM-Master-Key, X-CSBM-REST-API-Key, X-CSBM-Javascript-Key, X-CSBM-Application-Id, X-CSBM-Client-Version, X-CSBM-Session-Token, X-Requested-With, X-CSBM-Revocable-Session, Content-Type');
 
   // intercept OPTIONS method
   if ('OPTIONS' == req.method) {

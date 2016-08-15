@@ -122,19 +122,20 @@ exports.signup = function(req, res) {
 
             user.save(function(err) {
                 if (err) {
+                    console.log(err);
                     return res.status(500).send({
                         message: 'Error occurred while processing'
                     });
                 }
-            });
 
-            res.status(200).send({
-                message: 'Signup successfully',
-                data: {
-                    userId: user._id,
-                    role: user.role,
-                    email: user.email
-                }
+                res.status(200).send({
+                    message: 'Signup successfully',
+                    data: {
+                        userId: user._id,
+                        role: user.role,
+                        email: user.email
+                    }
+                });
             });
         }
     );
@@ -249,6 +250,6 @@ exports.getCollaborationRole = function(req, res) {
             });
         }
 
-        res.status(200).send({'role': role});
+        res.status(200).send({ 'role': role });
     });
 };

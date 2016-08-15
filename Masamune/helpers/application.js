@@ -21,10 +21,10 @@ module.exports = function(server) {
             appId: application._id,
             clientKey: application.clientKey,
             masterKey: application.masterKey, // Keep it secret!
-            serverURL: 'http://localhost:1337/csbm',
-            liveQuery: {
-                classNames: ['Message']
-            }
+            serverURL: 'http://localhost:1337/csbm'
+            // liveQuery: {
+            //     classNames: ['Message']
+            // }
             // push: {
             //     android: {
             //         senderId: '50356323544',

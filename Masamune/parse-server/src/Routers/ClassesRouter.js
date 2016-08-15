@@ -61,6 +61,10 @@ export class ClassesRouter extends PromiseRouter {
 
     // Returns a promise for a {response} object.
     handleGet(req) {
+
+        console.log(req.query);
+        console.log(ClassesRouter.JSONFromQuery(req.query));
+
         let body = Object.assign(req.body, ClassesRouter.JSONFromQuery(req.query));
         let options = {};
 

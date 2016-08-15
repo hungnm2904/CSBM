@@ -116,7 +116,7 @@ function handleParseHeaders(req, res, next) {
     return;
   }
 
-  // Client keys are not required in parse-server, but if any have been configured in the server, validate them
+  // Client keys are not required in csbm-server, but if any have been configured in the server, validate them
   //  to preserve original behavior.
   var keys = ["clientKey", "javascriptKey", "dotNetKey", "restAPIKey"];
 
