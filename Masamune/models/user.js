@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 
 var collaboration = new Schema({
-    appId: { type: String, unique: true, sparse: true },
+    appId: String,
     role: String
 });
 
