@@ -117,6 +117,26 @@ module.exports = function(appHelpers) {
         );
     };
 
+    var getAll = function(req, res) {
+        Application.find({}, function(error, applications) {
+            if (error) {
+                console.log(error);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            // Clear masterKey, databaseName, clientKey before response to client
+            applications.forEach(function(application, index) {
+                application.masterKey = '';
+                application.databaseName = '';
+                application.clientKey = '';
+            });
+
+            res.status(200).send(applications);
+        });
+    };
+
     /* Get all application of a user
     This method will get all applications of current user 
 
@@ -124,7 +144,7 @@ module.exports = function(appHelpers) {
     headers: none
     body: none
     */
-    var getAll = function(req, res) {
+    var getAllUserById = function(req, res) {
         Application.find({ 'userId': req.user._id }, function(err, applications) {
             if (err) {
                 console.log(err);
@@ -133,7 +153,7 @@ module.exports = function(appHelpers) {
                 });
             }
 
-            // Clear masterKey before response to client
+            // Clear masterKey, databaseName, clientKey before response to client
             applications.forEach(function(application, index) {
                 application.masterKey = '';
                 application.databaseName = '';
@@ -364,6 +384,7 @@ module.exports = function(appHelpers) {
         create: create,
         remove: remove,
         getAll: getAll,
+        getAllUserById: getAllUserById,
         update: update,
         getCollaborators: getCollaborators
     };
