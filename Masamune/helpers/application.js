@@ -16,28 +16,41 @@ module.exports = function(server) {
 
         // server.use('/csbm', api);
 
-        new ParseServer({
+        var server = {
             databaseURI: 'mongodb://localhost:27017/' + application.databaseName,
             appId: application._id,
             clientKey: application.clientKey,
             masterKey: application.masterKey, // Keep it secret!
             serverURL: 'http://localhost:1337/csbm'
-            // liveQuery: {
-            //     classNames: ['Message']
-            // }
-            // push: {
-            //     android: {
-            //         senderId: '50356323544',
-            //         apiKey: 'AIzaSyBYIsJeRnyY_yHgExuEaRWeMdOEwIh5AEo'
-            //     },
-            // }
-            // push: {
-            //     android: {
-            //         senderId: '1657454733',
-            //         apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
-            //     },
-            // }
-        });
+        }
+
+        if (application.push) {
+            if (application.push.android) {
+                server.push = {
+                    'android': {
+                        'senderId': application.push.android.senderId,
+                        'apiKey': application.push.android.apiKey
+                    }
+                }
+            }
+        }
+
+        new ParseServer(server);
+        // liveQuery: {
+        //     classNames: ['Message']
+        // }
+        // push: {
+        //     android: {
+        //         senderId: '50356323544',
+        //         apiKey: 'AIzaSyBYIsJeRnyY_yHgExuEaRWeMdOEwIh5AEo'
+        //     },
+        // }
+        // push: {
+        //     android: {
+        //         senderId: '1657454733',
+        //         apiKey: 'AIzaSyDcmGLrwgfrpuPIfBIrefBTH3PAKxC5wq0'
+        //     },
+        // }
 
         console.log(application.name + ' is running on http://localhost:1337/csbm/');
     };

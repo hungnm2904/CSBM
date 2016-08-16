@@ -32,8 +32,6 @@ var applicationSchema = new Schema({
 applicationSchema.pre('save', function(next) {
     var curDate = Date();
 
-    console.log(this);
-
     this.updated_at = curDate;
     if (!this.created_at) {
         this.created_at = curDate;
