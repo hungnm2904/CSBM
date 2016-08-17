@@ -75,8 +75,8 @@ exports.getAppName = function(req, res) {
 
 exports.changeFieldName = function(req, res) {
 
-    var appName = req.body.applicationName;
-    var dbName = req.user._id + '--' + appName
+    var appId = req.body.appId;
+    var dbName = req.user._id + '--' + appId
     var className = req.body.className;
     var fieldName = req.body.fieldName;
     var newFieldName = req.body.newFieldName;
