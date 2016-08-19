@@ -253,3 +253,33 @@ exports.getCollaborationRole = function(req, res) {
         res.status(200).send({ 'role': role });
     });
 };
+
+exports.checkPasswordWithCurrentUser = function(req, res) {
+    var password = req.body.password;
+    var userId = req.user._id
+    User.findOne({ '_id': userId }, function(error, user) {
+        if (error) {
+            console.log(error);
+            return res.status(500).send({
+                message: 'Error occurred while processing'
+            });
+        }
+
+        if (!user) {
+            return res.status(403).send({
+                message: 'User not found'
+            });
+        }
+
+        user.verifyPassword(password, function(err, isMath) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({ message: 'Error occurred while processing' });
+            }
+
+            return res.status(200).send({
+                isMath: isMath
+            });
+        });
+    });
+};

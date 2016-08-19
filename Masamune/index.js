@@ -109,6 +109,7 @@ csbm.post('/signup', usersController.signup);
 csbm.get('/signout', usersController.signout);
 csbm.get('/collaborations', authentication.isAuthenticated, usersController.getCollaboration);
 csbm.get('/collaborations/:appId', authentication.isAuthenticated, usersController.getCollaborationRole);
+csbm.post('/checkPassword', authentication.isAuthenticated, usersController.checkPasswordWithCurrentUser);
 //
 
 // Application Controller
@@ -117,7 +118,7 @@ csbm.delete('/applications', authentication.isAuthenticated, applicationsControl
 csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAllUserById);
 csbm.get('/applications/all', authentication.isAuthenticated, applicationsController.getAll);
 csbm.put('/applications/:appId', authentication.isAuthenticated, applicationsController.update);
-csbm.get('/applications/collaborators/:appId', authentication.isAuthenticated, applicationsController.getCollaborators)
+csbm.get('/applications/collaborators/:appId', authentication.isAuthenticated, applicationsController.getCollaborators);
 //
 
 // Schema Controller

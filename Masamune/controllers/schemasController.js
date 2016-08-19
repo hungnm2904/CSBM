@@ -55,7 +55,7 @@ exports.getAppName = function(req, res) {
             message: 'Unauthorized'
         });
     }
-    
+
     Application.findOne({ '_id': appId }, function(err, application) {
         if (err) {
             console.log(err);
@@ -76,25 +76,26 @@ exports.getAppName = function(req, res) {
 exports.changeFieldName = function(req, res) {
 
     var appId = req.body.appId;
-    var dbName = req.user._id + '--' + appId
     var className = req.body.className;
     var fieldName = req.body.fieldName;
     var newFieldName = req.body.newFieldName;
 
-    var url = 'mongodb://localhost:27017/' + dbName;
-
-    MongoClient.connect(url, function(err, db) {
-        if (err) {
-            console.log(err);
+    Application.findOne({ '_id': appId }, function(error, application) {
+        if (error) {
             return res.status(500).send({
                 message: 'Error occurred while processing'
             });
         }
 
-        var rename = {};
-        rename[fieldName] = newFieldName;
+        if (!application) {
+            return res.status(403).send({
+                message: 'Application not found'
+            });
+        }
 
-        db.collection(className).updateMany({}, { $rename: rename }, function(err, results) {
+        var url = 'mongodb://localhost:27017/' + application.databaseName;
+
+        MongoClient.connect(url, function(err, db) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
@@ -102,7 +103,10 @@ exports.changeFieldName = function(req, res) {
                 });
             }
 
-            db.collection('_SCHEMA').update({ _id: className }, { $rename: rename }, function(err, results) {
+            var rename = {};
+            rename[fieldName] = newFieldName;
+
+            db.collection(className).updateMany({}, { $rename: rename }, function(err, results) {
                 if (err) {
                     console.log(err);
                     return res.status(500).send({
@@ -110,10 +114,19 @@ exports.changeFieldName = function(req, res) {
                     });
                 }
 
-                db.close();
-                res.status(200).send();
-            });
+                db.collection('_SCHEMA').update({ _id: className }, { $rename: rename }, function(err, results) {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).send({
+                            message: 'Error occurred while processing'
+                        });
+                    }
 
+                    db.close();
+                    res.status(200).send();
+                });
+
+            });
         });
     });
 };
