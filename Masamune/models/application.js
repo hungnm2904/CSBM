@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const randomstring = require('randomstring');
 
 var collaborator = mongoose.Schema({
-    email: { type: String, unique: true, sparse: true },
+    email: String,
     role: String
 });
 

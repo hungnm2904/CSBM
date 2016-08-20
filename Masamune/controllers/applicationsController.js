@@ -37,6 +37,8 @@ module.exports = function(appHelpers) {
 
                 // Clear masterKey before response to client
                 application.masterKey = '';
+                application.databaseName = '';
+                application.clientKey = '';
                 res.send(application);
             }
         });
@@ -118,7 +120,7 @@ module.exports = function(appHelpers) {
     };
 
     var getAll = function(req, res) {
-        Application.find({}, function(error, applications) {
+        Application.find({}, null, {sort: '-created_at'}, function(error, applications) {
             if (error) {
                 console.log(error);
                 return res.status(500).send({
@@ -145,7 +147,7 @@ module.exports = function(appHelpers) {
     body: none
     */
     var getAllUserById = function(req, res) {
-        Application.find({ 'userId': req.user._id }, function(err, applications) {
+        Application.find({ 'userId': req.user._id }, null, {sort: '-created_at'}, function(err, applications) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
