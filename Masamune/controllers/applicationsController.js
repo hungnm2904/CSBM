@@ -162,7 +162,7 @@ module.exports = function(appHelpers) {
     body: none
     */
     var getAllUserById = function(req, res) {
-        Application.find({ 'userId': req.user._id }, null, { sort: '-created_at' }, function(err, applications) {
+        Application.find({ $and: [{'userId': req.user._id}, {'status': true}] }, null, { sort: '-created_at' }, function(err, applications) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
@@ -245,12 +245,7 @@ module.exports = function(appHelpers) {
                                     });
                                 }
 
-                                console.log(user);
-
                                 if (!user) {
-
-                                    console.log('Here here');
-
                                     collaError = true;
                                 } else {
                                     user.collaborations.push({
@@ -382,7 +377,7 @@ module.exports = function(appHelpers) {
     */
     var getCollaborators = function(req, res) {
         var appId = req.params.appId;
-        Application.findOne({ '_id': appId }, function(err, application) {
+        Application.findOne({ $and: [{'_id': appId}, {'status': true}] }, function(err, application) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
@@ -404,8 +399,7 @@ module.exports = function(appHelpers) {
     };
 
     var getAllApplications = function(req, res) {
-
-        Application.find({ 'userId': req.user._id }, null, { sort: '-created_at' }, function(err, applications) {
+        Application.find({ $and: [{'userId': req.user._id}, {'status': true}] }, null, { sort: '-created_at' }, function(err, applications) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
@@ -450,7 +444,8 @@ module.exports = function(appHelpers) {
                     var appId = collaboration.appId;
                     var role = collaboration.role;
 
-                    Application.findOne({ '_id': appId }, function(error, application) {
+
+                    Application.findOne({ $and: [{'_id': appId}, {'status': true}] }, function(error, application) {
                         if (error) {
                             return res.status(500).send({
                                 message: 'Error occurred while processing'

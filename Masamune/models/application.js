@@ -49,7 +49,7 @@ applicationSchema.pre('save', function(next) {
         this.databaseName = this.userId + '--' + this._id;
     }
 
-    if (!this.status) {
+    if (this.status === undefined || this.status === null) {
         this.status = true;
     }
 

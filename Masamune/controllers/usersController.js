@@ -23,7 +23,7 @@ exports.login = function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
 
-    User.findOne({ 'email': email },
+    User.findOne({$and: [{ 'email': email }, { 'role': { $ne: 'Disable' } }]},
         function(err, user) {
             if (err) {
                 console.log(err);
@@ -187,7 +187,7 @@ exports.getCollaboration = function(req, res) {
             var appId = collaboration.appId;
             var role = collaboration.role;
 
-            Application.findOne({ '_id': appId }, function(error, application) {
+            Application.findOne({ $and: [{ '_id': appId }, { 'status': true }] }, function(error, application) {
                 if (error) {
                     return res.status(500).send({
                         message: 'Error occurred while processing'
@@ -281,5 +281,51 @@ exports.checkPasswordWithCurrentUser = function(req, res) {
                 isMath: isMath
             });
         });
+    });
+};
+
+exports.getAllUser = function(req, res) {
+    User.find({ 'role': { $ne: 'Admin' } }, function(error, users) {
+        if (error) {
+            console.log(error);
+            return res.status(500).send({ message: 'Error occurred while processing' });
+        }
+
+        return res.status(200).send({
+            data: {
+                users: users
+            }
+        });
+    });
+};
+
+exports.changeUserStatus = function(req, res) {
+    userId = req.body.userId;
+    status = req.body.status;
+    User.findOne({ '_id': userId }, function(error, user) {
+        if (error) {
+            console.log(error);
+            return res.status(500).send({
+                message: 'Error occurred while processing'
+            });
+        }
+
+        if (user) {
+            if (status === true) {
+                user.role = 'Dev';
+            } else {
+                user.role = 'Disable';
+            }
+            user.save(function(error) {
+                if (error) {
+                    console.log(error);
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
+                    });
+                }
+
+                res.status(200).send();
+            });
+        }
     });
 };
