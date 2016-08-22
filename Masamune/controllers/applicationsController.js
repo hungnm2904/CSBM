@@ -3,6 +3,21 @@ const Application = require('../models/application');
 const User = require('../models/user');
 var appCache = require('../parse-server/lib/cache').default;
 
+var clone = function(obj) {
+    if (!obj || typeof obj !== 'object') {
+        return null;
+    }
+
+    var clone = {};
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            clone[key] = obj[key];
+        }
+    }
+
+    return clone._doc;
+};
+
 module.exports = function(appHelpers) {
 
     /* Create new application
@@ -119,8 +134,8 @@ module.exports = function(appHelpers) {
         );
     };
 
-    var getAll = function(req, res) {
-        Application.find({}, null, {sort: '-created_at'}, function(error, applications) {
+    var getApplications = function(req, res) {
+        Application.find({}, null, { sort: '-created_at' }, function(error, applications) {
             if (error) {
                 console.log(error);
                 return res.status(500).send({
@@ -147,7 +162,7 @@ module.exports = function(appHelpers) {
     body: none
     */
     var getAllUserById = function(req, res) {
-        Application.find({ 'userId': req.user._id }, null, {sort: '-created_at'}, function(err, applications) {
+        Application.find({ 'userId': req.user._id }, null, { sort: '-created_at' }, function(err, applications) {
             if (err) {
                 console.log(err);
                 return res.status(500).send({
@@ -382,12 +397,92 @@ module.exports = function(appHelpers) {
         });
     };
 
+    var getAllApplications = function(req, res) {
+
+        Application.find({ 'userId': req.user._id }, null, { sort: '-created_at' }, function(err, applications) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: 'Error occurred while processing'
+                });
+            }
+
+            // Clear masterKey, databaseName, clientKey before response to client
+            applications.forEach(function(application, index) {
+                application.masterKey = '';
+                application.databaseName = '';
+                application.clientKey = '';
+            });
+
+            var userId = req.user._id;
+            User.findOne({ '_id': userId }, function(error, user) {
+                if (error) {
+                    console.log(error)
+                    return res.status(500).send({
+                        message: 'Error occurred while processing'
+                    });
+                }
+
+                if (!user) {
+                    return res.status(403).send({
+                        message: 'User not found'
+                    });
+                }
+
+                var collaborations = user.collaborations;
+
+                if (!collaborations || collaborations.length === 0) {
+                    return res.status(200).send({
+                        data: {
+                            'applications': applications
+                        }
+                    });
+                }
+
+                var collaborationApps = [];
+                collaborations.forEach(function(collaboration, index) {
+                    var appId = collaboration.appId;
+                    var role = collaboration.role;
+
+                    Application.findOne({ '_id': appId }, function(error, application) {
+                        if (error) {
+                            return res.status(500).send({
+                                message: 'Error occurred while processing'
+                            });
+                        }
+
+                        if (application) {
+                            application.masterKey = '';
+                            application.databaseName = '';
+                            application.clientKey = '';
+                            application.collaborators = [];
+                            var app = clone(application);
+                            app.role = role;
+
+                            collaborationApps.push(app);
+                        }
+
+                        if (index === (collaborations.length - 1)) {
+                            res.status(200).send({
+                                data: {
+                                    'applications': applications,
+                                    'collaborationApps': collaborationApps
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    };
+
     return {
         create: create,
         remove: remove,
-        getAll: getAll,
-        getAllUserById: getAllUserById,
         update: update,
-        getCollaborators: getCollaborators
+        getApplications: getApplications,
+        getCollaborators: getCollaborators,
+        getAllApplications: getAllApplications,
+        getAllUserById: getAllUserById
     };
 };

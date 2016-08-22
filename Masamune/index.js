@@ -116,7 +116,8 @@ csbm.post('/checkPassword', authentication.isAuthenticated, usersController.chec
 csbm.post('/applications', authentication.isAuthenticated, applicationsController.create);
 csbm.delete('/applications', authentication.isAuthenticated, applicationsController.remove);
 csbm.get('/applications', authentication.isAuthenticated, applicationsController.getAllUserById);
-csbm.get('/applications/all', authentication.isAuthenticated, applicationsController.getAll);
+csbm.get('/applications/all', authentication.isAuthenticated, applicationsController.getApplications);
+csbm.get('/applications/allAndColl', authentication.isAuthenticated, applicationsController.getAllApplications);
 csbm.put('/applications/:appId', authentication.isAuthenticated, applicationsController.update);
 csbm.get('/applications/collaborators/:appId', authentication.isAuthenticated, applicationsController.getCollaborators);
 //
