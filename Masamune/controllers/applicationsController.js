@@ -197,6 +197,7 @@ module.exports = function(appHelpers) {
         }
 
         var data = req.body;
+        var collaError = false;
 
         Application.findOne({ '_id': appId }, function(err, application) {
             if (err) {
@@ -244,25 +245,29 @@ module.exports = function(appHelpers) {
                                     });
                                 }
 
+                                console.log(user);
+
                                 if (!user) {
-                                    return res.status(403).send({
-                                        message: 'User not found'
+
+                                    console.log('Here here');
+
+                                    collaError = true;
+                                } else {
+                                    user.collaborations.push({
+                                        'appId': appId,
+                                        'role': newValue.role
+                                    });
+
+                                    user.save(function(error) {
+                                        if (error) {
+                                            console.log(error);
+                                            return res.status(500).send({
+                                                message: 'Error occurred while processing'
+                                            });
+                                        }
                                     });
                                 }
 
-                                user.collaborations.push({
-                                    'appId': appId,
-                                    'role': newValue.role
-                                });
-
-                                user.save(function(error) {
-                                    if (error) {
-                                        console.log(error);
-                                        return res.status(500).send({
-                                            message: 'Error occurred while processing'
-                                        });
-                                    }
-                                });
                             });
                         }
                     } else if (op === 'Remove') {
@@ -355,6 +360,7 @@ module.exports = function(appHelpers) {
                     application[field] = value;
                 }
             }
+
             application.save(function(error) {
                 if (error) {
                     console.log(error);
